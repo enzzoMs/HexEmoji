@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Initial Screen -->
+    <dimen name="initial_screen_app_subtitle_text_size">@dimen/text_size_medium_2</dimen>
+    <dimen name="button_text_size">@dimen/text_size_medium_2</dimen>
+    <dimen name="button_padding">@dimen/spacing_small_2</dimen>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- General -->
+    <attr name="primaryButtonStyle" format="reference"/>
+    <attr name="secondaryButtonStyle" format="reference"/>
+
+    <!-- Initial Screen -->
+    <attr name="appTitleFirstPartAppearance" format="reference"/>
+    <attr name="appTitleLastPartAppearance" format="reference"/>
+    <attr name="appSubtitleAppearance" format="reference"/>
+
+</resources>

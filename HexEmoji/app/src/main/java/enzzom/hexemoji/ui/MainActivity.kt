@@ -1,8 +1,9 @@
-package enzzom.hexemoji
+package enzzom.hexemoji.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import enzzom.hexemoji.R
 
 class MainActivity: AppCompatActivity() {
 

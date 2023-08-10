@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- General -->
+    <dimen name="button_shape_radius">8dp</dimen>
+    <dimen name="button_text_size">16sp</dimen>
+    <dimen name="button_padding">0dp</dimen>
+
+    <!-- Initial Screen -->
+    <dimen name="initial_screen_honeycomb_guideline_percentage">0.22</dimen>
+    <dimen name="initial_screen_app_title_text_size">@dimen/text_size_extra_large</dimen>
+    <dimen name="initial_screen_app_title_spacing">@dimen/spacing_small_1</dimen>
+    <dimen name="initial_screen_app_subtitle_top_margin">@dimen/spacing_small_2</dimen>
+    <dimen name="initial_screen_app_subtitle_text_size">@dimen/text_size_medium_1</dimen>
+    <dimen name="initial_screen_bottom_guideline_percentage">0.90</dimen>
+    <dimen name="initial_screen_start_guideline_bias">0.75</dimen>
+    <dimen name="initial_screen_end_guideline_bias">0.25</dimen>
+    <dimen name="initial_screen_buttons_spacing">@dimen/spacing_medium</dimen>
+
+    <!-- General -->
+    <dimen name="spacing_small_1">8dp</dimen>
+    <dimen name="spacing_small_2">10dp</dimen>
+    <dimen name="spacing_medium">20dp</dimen>
+    <dimen name="spacing_large">32dp</dimen>
+    <dimen name="spacing_extra_large">64dp</dimen>
+    <dimen name="text_size_medium_1">16sp</dimen>
+    <dimen name="text_size_medium_2">22sp</dimen>
+    <dimen name="text_size_large">28sp</dimen>
+    <dimen name="text_size_extra_large">50sp</dimen>
+    <dimen name="text_size_huge">90sp</dimen>
+</resources>

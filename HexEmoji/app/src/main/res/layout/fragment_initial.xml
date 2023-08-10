@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.HexEmoji.Initial"
+    tools:context=".ui.initial.InitialFragment">
+
+    <ImageView
+        android:id="@+id/honeycomb"
+        android:src="@drawable/honeycomb"
+        android:scaleType="fitStart"
+        android:importantForAccessibility="no"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/honeycombGuideLine"
+        app:layout_constraintEnd_toEndOf="@id/startGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/honeycombGuideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="@dimen/initial_screen_honeycomb_guideline_percentage" />
+
+    <Space
+        android:id="@+id/appTitleGuideLine"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/honeycombGuideLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/honeycomb"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/appTitleFirstPart"
+        android:text="@string/initial_screen_app_name_first_part"
+        android:textAppearance="?attr/appTitleFirstPartAppearance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/initial_screen_app_title_spacing"
+        app:layout_constraintEnd_toStartOf="@+id/appTitleLastPart"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appTitleGuideLine" />
+
+    <TextView
+        android:id="@+id/appTitleLastPart"
+        android:text="@string/initial_screen_app_name_last_part"
+        android:textAppearance="?attr/appTitleLastPartAppearance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@id/appTitleFirstPart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/appTitleFirstPart" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/appTitleBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="appTitleFirstPart, appTitleLastPart" />
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:text="@string/initial_screen_app_subtitle"
+        android:textAlignment="center"
+        android:textAppearance="?attr/appSubtitleAppearance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/initial_screen_app_subtitle_top_margin"
+        app:layout_constraintEnd_toStartOf="@+id/endGuideline"
+        app:layout_constraintStart_toStartOf="@+id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/appTitleBarrier" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonPlay"
+        android:text="@string/initial_screen_button_play"
+        style="?attr/primaryButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/initial_screen_buttons_spacing"
+        app:layout_constraintBottom_toTopOf="@+id/buttonInstructions"
+        app:layout_constraintEnd_toStartOf="@+id/endGuideline"
+        app:layout_constraintStart_toStartOf="@+id/startGuideline" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonInstructions"
+        android:text="@string/initial_screen_button_instructions"
+        style="?attr/secondaryButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/bottomGuideLine"
+        app:layout_constraintEnd_toStartOf="@+id/endGuideline"
+        app:layout_constraintStart_toStartOf="@+id/startGuideline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottomGuideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="@dimen/initial_screen_bottom_guideline_percentage" />
+
+    <Space
+        android:id="@+id/startGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintHorizontal_bias="@dimen/initial_screen_start_guideline_bias"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/appTitleFirstPart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Space
+        android:id="@+id/endGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintHorizontal_bias="@dimen/initial_screen_end_guideline_bias"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/appTitleLastPart"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
