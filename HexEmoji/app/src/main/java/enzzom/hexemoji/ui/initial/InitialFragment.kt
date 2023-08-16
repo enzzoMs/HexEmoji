@@ -5,13 +5,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import enzzom.hexemoji.R
+import enzzom.hexemoji.databinding.FragmentInitialBinding
+
 class InitialFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_initial, container, false)
+    ): View {
+        val binding = FragmentInitialBinding.inflate(inflater, container, false)
+
+        binding.buttonPlay.setOnClickListener { navigateToMainScreen() }
+
+        return binding.root
+    }
+
+    private fun navigateToMainScreen() {
+        findNavController().navigate(R.id.action_navigate_to_main_screen)
     }
 }

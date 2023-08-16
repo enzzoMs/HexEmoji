@@ -1,6 +1,10 @@
 <resources>
     <!-- Base application theme -->
     <style name="Theme.HexEmoji" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorAccent">@color/accent_color</item>
+        <item name="colorSurface">@color/surface_color</item>
+        <item name="android:colorBackground">@color/background_color</item>
+
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -8,15 +12,30 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
 
+        <item name="bottomNavigationStyle">@style/Widget.HexEmoji.BottomNavigation</item>
         <item name="android:statusBarColor">@color/status_bar_color</item>
-        <item name="android:fontFamily">@font/lexend_family</item>
         <item name="primaryButtonStyle">@style/Widget.HexEmoji.Button.Primary</item>
         <item name="secondaryButtonStyle">@style/Widget.HexEmoji.Button.Secondary</item>
     </style>
 
+    <!-- BottomNavigation -->
+    <style name="Widget.HexEmoji.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemBackground">@drawable/bottom_nav_item_back_anim</item>
+        <item name="itemTextColor">@color/bottom_nav_item_color</item>
+        <item name="itemIconTint">@color/bottom_nav_item_color</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.HexEmoji.BottomNavigation</item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.HexEmoji.BottomNavigation</item>
+    </style>
+
+    <style name="TextAppearance.HexEmoji.BottomNavigation" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/lexend_medium</item>
+    </style>
+
+    <!-- Buttons -->
     <style name="Widget.HexEmoji.Button" parent="Widget.AppCompat.Button">
         <item name="android:textSize">@dimen/button_text_size</item>
         <item name="android:padding">@dimen/button_padding</item>
+        <item name="fontFamily">@font/lexend_bold</item>
     </style>
 
     <style name="Widget.HexEmoji.Button.Primary">
@@ -37,16 +56,16 @@
     </style>
 
     <!-- Initial Screen -->
-    <style name="Theme.HexEmoji.Initial">
-        <item name="android:background">@color/screen_initial_background_color</item>
-        <item name="appTitleFirstPartAppearance">@style/TextAppearance.HexEmoji.AppTitle.FirstPart</item>
-        <item name="appTitleLastPartAppearance">@style/TextAppearance.HexEmoji.AppTitle.LastPart</item>
-        <item name="appSubtitleAppearance">@style/TextAppearance.HexEmoji.AppSubtitle</item>
+    <style name="ThemeOverlay.HexEmoji.Initial" parent="">
+        <item name="android:colorBackground">@color/screen_initial_background_color</item>
+        <item name="appTitleFirstPartTextAppearance">@style/TextAppearance.HexEmoji.AppTitle.FirstPart</item>
+        <item name="appTitleLastPartTextAppearance">@style/TextAppearance.HexEmoji.AppTitle.LastPart</item>
+        <item name="appSubtitleTextAppearance">@style/TextAppearance.HexEmoji.AppSubtitle</item>
     </style>
 
     <style name="TextAppearance.HexEmoji.AppTitle" parent="TextAppearance.MaterialComponents.Headline2">
         <item name="android:textSize">@dimen/initial_screen_app_title_text_size</item>
-        <item name="fontWeight">800</item>
+        <item name="fontFamily">@font/lexend_bold</item>
     </style>
 
     <style name="TextAppearance.HexEmoji.AppTitle.FirstPart">
@@ -60,7 +79,7 @@
     <style name="TextAppearance.HexEmoji.AppSubtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="android:textColor">@color/screen_initial_app_subtitle_color</item>
         <item name="android:textSize">@dimen/initial_screen_app_subtitle_text_size</item>
-        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/lexend_bold</item>
     </style>
 
 </resources>

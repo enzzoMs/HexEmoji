@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/play_fragment"
+        android:icon="@drawable/ic_stadia_controller"
+        android:title="@string/icon_title_page_play"
+        android:contentDescription="@string/icon_content_description_page_play"/>
+
+    <item
+        android:id="@+id/statistics_fragment"
+        android:icon="@drawable/ic_leaderboard"
+        android:title="@string/icon_title_page_statistics"
+        android:contentDescription="@string/icon_content_description_page_statistics"/>
+
+    <item
+        android:id="@+id/emojis_fragment"
+        android:icon="@drawable/ic_emoji_face"
+        android:title="@string/icon_title_page_emojis"
+        android:contentDescription="@string/icon_content_description_page_emojis"/>
+
+</menu>

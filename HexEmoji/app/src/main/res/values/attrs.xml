@@ -5,8 +5,8 @@
     <attr name="secondaryButtonStyle" format="reference"/>
 
     <!-- Initial Screen -->
-    <attr name="appTitleFirstPartAppearance" format="reference"/>
-    <attr name="appTitleLastPartAppearance" format="reference"/>
-    <attr name="appSubtitleAppearance" format="reference"/>
+    <attr name="appTitleFirstPartTextAppearance" format="reference"/>
+    <attr name="appTitleLastPartTextAppearance" format="reference"/>
+    <attr name="appSubtitleTextAppearance" format="reference"/>
 
 </resources>

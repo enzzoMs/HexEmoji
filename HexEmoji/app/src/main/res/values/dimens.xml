@@ -20,11 +20,10 @@
     <dimen name="spacing_small_1">8dp</dimen>
     <dimen name="spacing_small_2">10dp</dimen>
     <dimen name="spacing_medium">20dp</dimen>
-    <dimen name="spacing_large">32dp</dimen>
-    <dimen name="spacing_extra_large">64dp</dimen>
     <dimen name="text_size_medium_1">16sp</dimen>
     <dimen name="text_size_medium_2">22sp</dimen>
     <dimen name="text_size_large">28sp</dimen>
     <dimen name="text_size_extra_large">50sp</dimen>
     <dimen name="text_size_huge">90sp</dimen>
+
 </resources>
