@@ -8,16 +8,16 @@
     <fragment
         android:id="@+id/play_fragment"
         android:name="enzzom.hexemoji.ui.play.PlayFragment"
-        android:label="fragment_play"
+        android:label="@string/page_title_play"
         tools:layout="@layout/fragment_play" />
     <fragment
         android:id="@+id/statistics_fragment"
         android:name="enzzom.hexemoji.ui.statistics.StatisticsFragment"
-        android:label="fragment_statistics"
+        android:label="@string/page_title_statistics"
         tools:layout="@layout/fragment_statistics" />
     <fragment
         android:id="@+id/emojis_fragment"
         android:name="enzzom.hexemoji.ui.emojis.EmojisFragment"
-        android:label="fragment_emojis"
+        android:label="@string/page_title_emojis"
         tools:layout="@layout/fragment_emojis" />
 </navigation>

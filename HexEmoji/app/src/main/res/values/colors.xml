@@ -3,9 +3,12 @@
     <color name="ic_launcher_background">@color/yellow_maximum</color>
 
     <!-- General -->
+    <color name="primary_color">@color/yellow_white</color>
+    <color name="on_primary_color">@color/gold_dark</color>
     <color name="accent_color">@color/orange_beer</color>
     <color name="background_color">@color/white_anti_flash</color>
     <color name="surface_color">@color/white</color>
+    <color name="icon_tint">@color/gold_dark</color>
     <color name="button_ripple_color">@color/silver</color>
     <color name="button_primary_gradient_start_color">@color/yellow_orange</color>
     <color name="button_primary_gradient_end_color">@color/orange_beer</color>
@@ -29,6 +32,7 @@
     <color name="yellow_maximum">#F9BF58</color>
     <color name="yellow_orange">#FDC966</color>
     <color name="yellow_dark">#FFB000</color>
+    <color name="yellow_white">#FFE5AC</color>
     <color name="orange_beer">#E88914</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white_ghost">#F7F8FB</color>
@@ -39,9 +43,9 @@
     <color name="gray_dark">#929292</color>
     <color name="gold">#CF8F00</color>
     <color name="gold_light">#E29C00</color>
+    <color name="gold_dark">#B57C00</color>
 
     <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>

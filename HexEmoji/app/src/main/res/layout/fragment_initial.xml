@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/honeycomb"
-        android:src="@drawable/honeycomb"
+        android:src="@drawable/honeycomb_big"
         android:scaleType="fitStart"
         android:importantForAccessibility="no"
         android:layout_width="0dp"

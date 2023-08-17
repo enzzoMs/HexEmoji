@@ -10,9 +10,11 @@
     <string name="initial_screen_button_instructions">Instruções</string>
 
     <!-- Main Screen -->
-    <string name="icon_title_page_play">Jogar</string>
-    <string name="icon_title_page_statistics">Estatísticas</string>
-    <string name="icon_title_page_emojis">Emojis</string>
+    <string name="page_title_play">Jogar</string>
+    <string name="page_title_statistics">Estatísticas</string>
+    <string name="page_title_emojis">Emojis</string>
+    <string name="icon_title_settings">Configurações</string>
+    <string name="icon_content_description_settings">Ver configurações</string>
     <string name="icon_content_description_page_play">Navegar para página de modos de jogo</string>
     <string name="icon_content_description_page_statistics">Navegar para página de estatísticas</string>
     <string name="icon_content_description_page_emojis">Navegar para página de emojis</string>
