@@ -1,11 +1,13 @@
 <resources>
     <!-- General -->
     <string name="app_name_complete">HexEmoji</string>
+    <string name="app_logo_content_description">Logo do aplicativo</string>
+    <string name="app_name_first_part">Hex</string>
+    <string name="app_name_last_part">Emoji</string>
+    <string name="app_subtitle">Desafie sua memória e divirta-se combinando emojis!</string>
+    <string name="app_subtitle_shortened">Divirta-se combinando emojis!</string>
 
     <!-- Initial Screen -->
-    <string name="initial_screen_app_name_first_part">Hex</string>
-    <string name="initial_screen_app_name_last_part">Emoji</string>
-    <string name="initial_screen_app_subtitle">Desafie sua memória e divirta-se combinando emojis!</string>
     <string name="initial_screen_button_play">Jogar</string>
     <string name="initial_screen_button_instructions">Instruções</string>
 

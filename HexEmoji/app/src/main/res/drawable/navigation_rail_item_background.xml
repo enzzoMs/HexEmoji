@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/checked"
+        android:drawable="@drawable/navigation_rail_item_selected_back"
+        android:state_checked="true" />
+
+    <item
+        android:id="@+id/unchecked"
+        android:drawable="@color/surface_color"
+        android:state_checked="false" />
+
+    <transition
+        android:drawable="@drawable/navigation_rail_item_selected_anim"
+        android:fromId="@id/unchecked"
+        android:toId="@id/checked" />
+
+</animated-selector>

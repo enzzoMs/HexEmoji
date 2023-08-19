@@ -4,20 +4,20 @@
 
     <!-- General -->
     <color name="primary_color">@color/yellow_white</color>
-    <color name="on_primary_color">@color/gold_dark</color>
+    <color name="on_primary_color">@color/orange_brown</color>
     <color name="accent_color">@color/orange_beer</color>
     <color name="background_color">@color/white_anti_flash</color>
     <color name="surface_color">@color/white</color>
-    <color name="icon_tint">@color/gold_dark</color>
+    <color name="icon_tint">@color/orange_brown</color>
+    <color name="status_bar_color">@color/gold_light</color>
+
+    <!-- Buttons -->
     <color name="button_ripple_color">@color/silver</color>
     <color name="button_primary_gradient_start_color">@color/yellow_orange</color>
     <color name="button_primary_gradient_end_color">@color/orange_beer</color>
     <color name="button_primary_text_color">@color/white</color>
-    <color name="button_secondary_shape_color">@color/white_gray</color>
-    <color name="button_secondary_text_color">@color/gray_dark</color>
-    <color name="status_bar_color">@color/gold_light</color>
-    <color name="bottom_nav_unselected_icon_color">@color/gray_dark</color>
-    <color name="bottom_nav_unselected_text_color">@color/gray_dark</color>
+    <color name="button_secondary_shape_color">@color/silver_light</color>
+    <color name="button_secondary_text_color">@color/gray</color>
 
     <!-- Splash Screen -->
     <color name="screen_splash_background_color">@color/yellow_maximum</color>
@@ -28,26 +28,26 @@
     <color name="screen_initial_app_title_first_part_color">@color/gold</color>
     <color name="screen_initial_app_title_last_part_color">@color/yellow_dark</color>
 
+    <!-- Main Screen -->
+    <color name="navigation_unselected_icon_color">@color/gray</color>
+    <color name="navigation_unselected_text_color">@color/gray</color>
+    <color name="side_navigation_item_color">@color/gray</color>
+    <color name="side_navigation_selected_back_color">@color/silver_light</color>
+
     <!-- Color Palette -->
     <color name="yellow_maximum">#F9BF58</color>
     <color name="yellow_orange">#FDC966</color>
     <color name="yellow_dark">#FFB000</color>
     <color name="yellow_white">#FFE5AC</color>
     <color name="orange_beer">#E88914</color>
+    <color name="orange_brown">#8C6000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white_ghost">#F7F8FB</color>
-    <color name="white_gray">#E0E0E0</color>
     <color name="white_anti_flash">#F2F2F2</color>
     <color name="silver">#B3B3B3</color>
-    <color name="gray">#808080</color>
-    <color name="gray_dark">#929292</color>
+    <color name="silver_light">#E1E1E1</color>
+    <color name="gray">#737373</color>
     <color name="gold">#CF8F00</color>
     <color name="gold_light">#E29C00</color>
-    <color name="gold_dark">#B57C00</color>
 
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
 </resources>

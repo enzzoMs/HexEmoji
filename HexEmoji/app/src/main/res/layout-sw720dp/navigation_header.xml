@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/ThemeOverlay.HexEmoji.Initial">
+
+    <ImageView
+        android:id="@+id/nav_drawer_app_logo"
+        app:srcCompat="@drawable/app_logo"
+        android:contentDescription="@string/app_logo_content_description"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/navigation_header_logo_horizontal_margin"
+        android:layout_marginTop="@dimen/navigation_header_logo_vertical_margin"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nav_header_app_title_first_part"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/navigation_header_logo_horizontal_margin"
+        android:text="@string/app_name_first_part"
+        android:textAppearance="?attr/appTitleFirstPartTextAppearance"
+        android:textSize="@dimen/navigation_drawer_app_title_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/nav_drawer_app_logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/nav_header_app_title_last_part"
+        android:text="@string/app_name_last_part"
+        android:textAppearance="?attr/appTitleLastPartTextAppearance"
+        android:textSize="@dimen/navigation_drawer_app_title_text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/navigation_drawer_app_title_spacing"
+        app:layout_constraintBaseline_toBaselineOf="@id/nav_header_app_title_first_part"
+        app:layout_constraintStart_toEndOf="@+id/nav_header_app_title_first_part" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/navigation_header_logo_vertical_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nav_drawer_app_logo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,7 +29,8 @@
 
     <TextView
         android:id="@+id/app_title_first_part"
-        android:text="@string/initial_screen_app_name_first_part"
+        android:text="@string/app_name_first_part"
+        android:textSize="@dimen/initial_screen_app_title_text_size"
         android:textAppearance="?attr/appTitleFirstPartTextAppearance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,7 +42,8 @@
 
     <TextView
         android:id="@+id/app_title_last_part"
-        android:text="@string/initial_screen_app_name_last_part"
+        android:text="@string/app_name_last_part"
+        android:textSize="@dimen/initial_screen_app_title_text_size"
         android:textAppearance="?attr/appTitleLastPartTextAppearance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,7 +61,8 @@
 
     <TextView
         android:id="@+id/subtitle"
-        android:text="@string/initial_screen_app_subtitle"
+        android:text="@string/app_subtitle"
+        android:textSize="@dimen/initial_screen_app_subtitle_text_size"
         android:textAlignment="center"
         android:textAppearance="?attr/appSubtitleTextAppearance"
         android:layout_width="0dp"

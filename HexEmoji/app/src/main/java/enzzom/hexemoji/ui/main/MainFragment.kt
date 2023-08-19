@@ -33,7 +33,9 @@ class MainFragment : Fragment() {
         val appBarConfiguration = AppBarConfiguration(destinationIds)
 
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
-        binding.bottomNav.setupWithNavController(navController)
+        binding.bottomNav?.setupWithNavController(navController)
+        binding.navRail?.setupWithNavController(navController)
+        binding.navView?.setupWithNavController(navController)
 
         return binding.root
     }
