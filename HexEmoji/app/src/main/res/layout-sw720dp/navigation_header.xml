@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/navigation_header_logo_horizontal_margin"
         android:text="@string/app_name_first_part"
-        android:textAppearance="?attr/appTitleFirstPartTextAppearance"
+        android:textAppearance="@style/TextAppearance.HexEmoji.AppTitle.FirstPart"
         android:textSize="@dimen/navigation_drawer_app_title_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/nav_drawer_app_logo"
@@ -34,7 +34,7 @@
     <TextView
         android:id="@+id/nav_header_app_title_last_part"
         android:text="@string/app_name_last_part"
-        android:textAppearance="?attr/appTitleLastPartTextAppearance"
+        android:textAppearance="@style/TextAppearance.HexEmoji.AppTitle.LastPart"
         android:textSize="@dimen/navigation_drawer_app_title_text_size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -12,13 +12,59 @@
     <string name="initial_screen_button_instructions">Instruções</string>
 
     <!-- Main Screen -->
-    <string name="page_title_play">Jogar</string>
-    <string name="page_title_statistics">Estatísticas</string>
-    <string name="page_title_emojis">Emojis</string>
-    <string name="icon_title_settings">Configurações</string>
-    <string name="icon_content_description_settings">Ver configurações</string>
-    <string name="icon_content_description_page_play">Navegar para página de modos de jogo</string>
-    <string name="icon_content_description_page_statistics">Navegar para página de estatísticas</string>
-    <string name="icon_content_description_page_emojis">Navegar para página de emojis</string>
+    <string name="main_screen_page_title_play">Jogar</string>
+    <string name="main_screen_page_title_statistics">Estatísticas</string>
+    <string name="main_screen_page_title_emojis">Emojis</string>
+    <string name="main_screen_icon_title_settings">Configurações</string>
+    <string name="main_screen_icon_content_description_settings">Ver configurações</string>
+    <string name="main_screen_icon_content_description_page_play">Navegar para página de modos de jogo</string>
+    <string name="main_screen_icon_content_description_page_statistics">Navegar para página de estatísticas</string>
+    <string name="main_screen_icon_content_description_page_emojis">Navegar para página de emojis</string>
+    <string name="main_screen_page_description_play">Explore diferentes modos e desafios!</string>
+
+    <!-- Play Page -->
+    <string name="game_mode_card_emoji_lotus">🪷</string>
+    <string name="game_mode_card_emoji_hourglass_done">⌛</string>
+    <string name="game_mode_card_emoji_triangular_ruler">📐</string>
+    <string name="game_mode_card_emoji_brain">🧠</string>
+    <string name="game_mode_card_emoji_dice">🎲</string>
+    <string name="game_mode_card_emoji_recycling">🌊</string>
+    <string name="game_mode_card_emoji_spiral_eyes">😵‍💫</string>
+
+    <string name="game_mode_title_zen">Modo Zen</string>
+    <string name="game_mode_title_against_clock">Contra o Relógio</string>
+    <string name="game_mode_title_limited_moves">Movimentos Limitados</string>
+    <string name="game_mode_title_sequence">Sequência</string>
+    <string name="game_mode_title_shuffled">Embaralhado</string>
+    <string name="game_mode_title_flood">Inundação</string>
+    <string name="game_mode_title_chaos">Caos Total!</string>
+
+    <string name="game_mode_description_zen">
+        Um modo relaxante sem limite de tempo ou pontuação. Você pode aproveitar o jogo sem pressão
+        e desfrutar a experiência.
+    </string>
+    <string name="game_mode_description_against_clock">
+        Desafie o relógio! Encontre todos os pares de emojis antes que o tempo se esgote e teste
+        sua habilidade!
+    </string>
+    <string name="game_mode_description_limited_moves">
+        Enfrente o desafio e junte todos os pares de emojis com um número limitado de movimentos.
+        Pense com cuidado!
+    </string>
+    <string name="game_mode_description_sequence">
+        Teste sua memória e agilidade! Repita as sequências de emojis na ordem correta para vencer!
+    </string>
+    <string name="game_mode_description_shuffled">
+        Os emojis são embaralhados a todo momento. Seja rápido e encontre os pares antes deles
+        mudarem de lugar!
+    </string>
+    <string name="game_mode_description_flow">
+        Combine os emojis rapidamente para evitar o caos! Eles vão aparecer sem parar, e você
+        deve formar os pares para liberar espaço no tabuleiro e evitar que ele fique lotado.
+    </string>
+    <string name="game_mode_description_chaos">
+        Prepare-se para um desafio caótico! Supere seus limites e demonstre suas habilidades
+        jogando “Contra o Relógio”, “Movimentos Limitados” e “Embaralhado” ao mesmo tempo!
+    </string>
 
 </resources>

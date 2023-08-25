@@ -6,17 +6,25 @@
         <item name="colorAccent">@color/accent_color</item>
         <item name="colorSurface">@color/surface_color</item>
         <item name="android:colorBackground">@color/background_color</item>
+        <item name="android:textColorPrimary">@color/text_color_primary</item>
         <item name="iconTint">@color/icon_tint</item>
         <item name="toolbarStyle">@style/Widget.HexEmoji.Toolbar</item>
         <item name="navigationViewStyle">@style/Widget.HexEmoji.NavigationView</item>
         <item name="navigationRailStyle">@style/Widget.HexEmoji.NavigationRail</item>
         <item name="bottomNavigationStyle">@style/Widget.HexEmoji.BottomNavigation</item>
         <item name="android:statusBarColor">@color/status_bar_color</item>
-        <item name="primaryButtonStyle">@style/Widget.HexEmoji.Button.Primary</item>
-        <item name="secondaryButtonStyle">@style/Widget.HexEmoji.Button.Secondary</item>
-        <item name="appTitleFirstPartTextAppearance">@style/TextAppearance.HexEmoji.AppTitle.FirstPart</item>
-        <item name="appTitleLastPartTextAppearance">@style/TextAppearance.HexEmoji.AppTitle.LastPart</item>
-        <item name="appSubtitleTextAppearance">@style/TextAppearance.HexEmoji.AppSubtitle</item>
+    </style>
+
+    <!-- Splash Screen -->
+    <style name="Theme.HexEmoji.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/screen_splash_background_color</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/app_logo_alternative</item>
+        <item name="postSplashScreenTheme">@style/Theme.HexEmoji</item>
+    </style>
+
+    <!-- Initial Screen -->
+    <style name="ThemeOverlay.HexEmoji.Initial" parent="">
+        <item name="android:colorBackground">@color/screen_initial_background_color</item>
     </style>
 
     <!-- Toolbar -->
@@ -30,14 +38,19 @@
         <item name="fontFamily">@font/lexend_semibold</item>
     </style>
 
+    <!-- General Navigation -->
+    <style name="TextAppearance.HexEmoji.Navigation" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/lexend_medium</item>
+    </style>
+
     <!-- Navigation Rail -->
     <style name="Widget.HexEmoji.NavigationRail" parent="Widget.MaterialComponents.NavigationRailView">
         <item name="itemBackground">@drawable/navigation_rail_item_background</item>
         <item name="itemTextColor">@color/side_navigation_item_color</item>
         <item name="itemIconTint">@color/side_navigation_item_color</item>
         <item name="itemIconSize">@dimen/navigation_rail_icon_size</item>
-        <item name="itemTextAppearanceActive">@style/TextAppearance.HexEmoji.BottomNavigation</item>
-        <item name="itemTextAppearanceInactive">@style/TextAppearance.HexEmoji.BottomNavigation</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.HexEmoji.Navigation</item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.HexEmoji.Navigation</item>
         <item name="elevation">0dp</item>
     </style>
 
@@ -56,23 +69,19 @@
         <item name="fontFamily">@font/lexend_medium</item>
     </style>
 
-    <!-- BottomNavigation -->
+    <!-- Bottom Navigation -->
     <style name="Widget.HexEmoji.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="itemBackground">@drawable/bottom_nav_item_background</item>
         <item name="itemTextColor">@color/bottom_navigation_item_color</item>
         <item name="itemIconTint">@color/bottom_navigation_item_color</item>
-        <item name="itemTextAppearanceActive">@style/TextAppearance.HexEmoji.BottomNavigation</item>
-        <item name="itemTextAppearanceInactive">@style/TextAppearance.HexEmoji.BottomNavigation</item>
-    </style>
-
-    <style name="TextAppearance.HexEmoji.BottomNavigation" parent="TextAppearance.MaterialComponents.Subtitle2">
-        <item name="fontFamily">@font/lexend_medium</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.HexEmoji.Navigation</item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.HexEmoji.Navigation</item>
     </style>
 
     <!-- Buttons -->
     <style name="Widget.HexEmoji.Button" parent="Widget.AppCompat.Button">
         <item name="android:textSize">@dimen/button_text_size</item>
-        <item name="android:padding">@dimen/button_padding</item>
+        <item name="android:padding">@dimen/button_inner_padding</item>
         <item name="fontFamily">@font/lexend_bold</item>
     </style>
 
@@ -89,29 +98,39 @@
     <!-- App Title and Subtitle -->
     <style name="TextAppearance.HexEmoji.AppTitle.FirstPart" parent="TextAppearance.MaterialComponents.Headline2">
         <item name="fontFamily">@font/lexend_bold</item>
-        <item name="android:textColor">@color/screen_initial_app_title_first_part_color</item>
+        <item name="android:textColor">@color/app_title_first_part_color</item>
     </style>
 
     <style name="TextAppearance.HexEmoji.AppTitle.LastPart" parent="TextAppearance.MaterialComponents.Headline2">
         <item name="fontFamily">@font/lexend_bold</item>
-        <item name="android:textColor">@color/screen_initial_app_title_last_part_color</item>
+        <item name="android:textColor">@color/app_title_last_part_color</item>
     </style>
 
     <style name="TextAppearance.HexEmoji.AppSubtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <item name="android:textColor">@color/screen_initial_app_subtitle_color</item>
         <item name="fontFamily">@font/lexend_bold</item>
     </style>
 
-    <!-- Splash Screen -->
-    <style name="Theme.HexEmoji.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/screen_splash_background_color</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/app_logo_alternative</item>
-        <item name="postSplashScreenTheme">@style/Theme.HexEmoji</item>
+    <!-- Page Description -->
+    <style name="TextAppearance.HexEmoji.PageDescription" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/lexend_semibold</item>
+        <item name="android:background">?attr/colorSurface</item>
+        <item name="android:textColor">@color/page_description_text_color</item>
+        <item name="android:padding">@dimen/page_description_padding</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
-    <!-- Initial Screen -->
-    <style name="ThemeOverlay.HexEmoji.Initial" parent="">
-        <item name="android:colorBackground">@color/screen_initial_background_color</item>
+    <!-- Game Mode Card -->
+    <style name="Widget.HexEmoji.GameModeCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/game_mode_card_corner_radius</item>
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
     </style>
 
+    <style name="TextAppearance.HexEmoji.GameModeCard.Title" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/lexend_semibold</item>
+    </style>
+
+    <style name="TextAppearance.HexEmoji.GameModeCard.Description" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/lexend_medium</item>
+    </style>
+    
 </resources>

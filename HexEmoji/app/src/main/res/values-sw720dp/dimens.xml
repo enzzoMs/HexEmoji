@@ -4,7 +4,7 @@
     <dimen name="initial_screen_app_title_text_size">@dimen/text_size_extra_large_2</dimen>
     <dimen name="initial_screen_app_subtitle_text_size">@dimen/text_size_medium_2</dimen>
     <dimen name="button_text_size">@dimen/text_size_medium_2</dimen>
-    <dimen name="button_padding">@dimen/spacing_small_2</dimen>
+    <dimen name="button_inner_padding">@dimen/spacing_small_2</dimen>
 
     <!-- Main Screen -->
     <dimen name="navigation_header_logo_horizontal_margin">@dimen/spacing_medium_1</dimen>

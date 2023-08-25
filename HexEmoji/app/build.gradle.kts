@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "enzzom.hexemoji"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "enzzom.hexemoji"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -43,10 +43,10 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.core:core-splashscreen:1.0.1")
-
-    val navVersion = "2.6.0"
+    implementation("androidx.emoji2:emoji2-bundled:1.4.0")
 
     // Navigation
+    val navVersion = "2.7.0"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 

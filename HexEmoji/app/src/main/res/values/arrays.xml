@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="game_mode_titles">
+        <item>@string/game_mode_title_zen</item>
+        <item>@string/game_mode_title_against_clock</item>
+        <item>@string/game_mode_title_limited_moves</item>
+        <item>@string/game_mode_title_sequence</item>
+        <item>@string/game_mode_title_shuffled</item>
+        <item>@string/game_mode_title_flood</item>
+        <item>@string/game_mode_title_chaos</item>
+    </string-array>
+
+    <string-array name="game_mode_descriptions">
+        <item>@string/game_mode_description_zen</item>
+        <item>@string/game_mode_description_against_clock</item>
+        <item>@string/game_mode_description_limited_moves</item>
+        <item>@string/game_mode_description_sequence</item>
+        <item>@string/game_mode_description_shuffled</item>
+        <item>@string/game_mode_description_flow</item>
+        <item>@string/game_mode_description_chaos</item>
+    </string-array>
+
+    <array name="game_mode_primary_color">
+        <item>@color/game_mode_card_primary_color_zen</item>
+        <item>@color/game_mode_card_primary_color_against_clock</item>
+        <item>@color/game_mode_card_primary_color_limited_moves</item>
+        <item>@color/game_mode_card_primary_color_sequence</item>
+        <item>@color/game_mode_card_primary_color_shuffled</item>
+        <item>@color/game_mode_card_primary_color_flood</item>
+        <item>@color/game_mode_card_primary_color_chaos</item>
+    </array>
+
+    <array name="game_mode_title_text_color">
+        <item>@color/game_mode_card_text_color_zen</item>
+        <item>@color/game_mode_card_text_color_against_clock</item>
+        <item>@color/game_mode_card_text_color_limited_moves</item>
+        <item>@color/game_mode_card_text_color_sequence</item>
+        <item>@color/game_mode_card_text_color_shuffled</item>
+        <item>@color/game_mode_card_text_color_flood</item>
+        <item>@color/game_mode_card_text_color_chaos</item>
+    </array>
+
+    <array name="game_mode_emoji">
+        <item>@string/game_mode_card_emoji_lotus</item>
+        <item>@string/game_mode_card_emoji_hourglass_done</item>
+        <item>@string/game_mode_card_emoji_triangular_ruler</item>
+        <item>@string/game_mode_card_emoji_brain</item>
+        <item>@string/game_mode_card_emoji_dice</item>
+        <item>@string/game_mode_card_emoji_recycling</item>
+        <item>@string/game_mode_card_emoji_spiral_eyes</item>
+    </array>
+
+</resources>

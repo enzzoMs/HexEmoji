@@ -8,8 +8,11 @@
     <color name="accent_color">@color/orange_beer</color>
     <color name="background_color">@color/white_anti_flash</color>
     <color name="surface_color">@color/white</color>
+    <color name="text_color_primary">@color/gray</color>
     <color name="icon_tint">@color/orange_brown</color>
     <color name="status_bar_color">@color/gold_light</color>
+    <color name="app_title_first_part_color">@color/gold</color>
+    <color name="app_title_last_part_color">@color/yellow_dark</color>
 
     <!-- Buttons -->
     <color name="button_ripple_color">@color/silver</color>
@@ -17,22 +20,37 @@
     <color name="button_primary_gradient_end_color">@color/orange_beer</color>
     <color name="button_primary_text_color">@color/white</color>
     <color name="button_secondary_shape_color">@color/silver_light</color>
-    <color name="button_secondary_text_color">@color/gray</color>
+    <color name="button_secondary_text_color">@color/gray_light</color>
 
     <!-- Splash Screen -->
     <color name="screen_splash_background_color">@color/yellow_maximum</color>
     
     <!-- Initial Screen -->
     <color name="screen_initial_background_color">@color/white_ghost</color>
-    <color name="screen_initial_app_subtitle_color">@color/gray</color>
-    <color name="screen_initial_app_title_first_part_color">@color/gold</color>
-    <color name="screen_initial_app_title_last_part_color">@color/yellow_dark</color>
 
     <!-- Main Screen -->
     <color name="navigation_unselected_icon_color">@color/gray</color>
     <color name="navigation_unselected_text_color">@color/gray</color>
     <color name="side_navigation_item_color">@color/gray</color>
     <color name="side_navigation_selected_back_color">@color/silver_light</color>
+    <color name="page_description_text_color">@color/gray</color>
+
+    <!-- Play Page -->
+    <color name="game_mode_card_primary_color_zen">@color/pink_light</color>
+    <color name="game_mode_card_primary_color_against_clock">@color/yellow_light</color>
+    <color name="game_mode_card_primary_color_limited_moves">@color/blue_light</color>
+    <color name="game_mode_card_primary_color_sequence">@color/purple_light</color>
+    <color name="game_mode_card_primary_color_shuffled">@color/red_dark</color>
+    <color name="game_mode_card_primary_color_flood">@color/green_blue_light</color>
+    <color name="game_mode_card_primary_color_chaos">@color/orange_light</color>
+
+    <color name="game_mode_card_text_color_zen">@color/pink</color>
+    <color name="game_mode_card_text_color_against_clock">@color/yellow</color>
+    <color name="game_mode_card_text_color_limited_moves">@color/blue</color>
+    <color name="game_mode_card_text_color_sequence">@color/purple</color>
+    <color name="game_mode_card_text_color_shuffled">@color/red</color>
+    <color name="game_mode_card_text_color_flood">@color/green_blue</color>
+    <color name="game_mode_card_text_color_chaos">@color/orange</color>
 
     <!-- Color Palette -->
     <color name="yellow_maximum">#F9BF58</color>
@@ -47,7 +65,23 @@
     <color name="silver">#B3B3B3</color>
     <color name="silver_light">#E1E1E1</color>
     <color name="gray">#737373</color>
+    <color name="gray_light">#818181</color>
     <color name="gold">#CF8F00</color>
     <color name="gold_light">#E29C00</color>
+
+    <color name="pink">#FF7683</color>
+    <color name="pink_light">#FFD4D7</color>
+    <color name="yellow">#F19B00</color>
+    <color name="yellow_light">#FFD282</color>
+    <color name="blue">#1A7EE3</color>
+    <color name="blue_light">#80BFFF</color>
+    <color name="purple">#814CB5</color>
+    <color name="purple_light">#A989C8</color>
+    <color name="red">#A71C1C</color>
+    <color name="red_dark">#972828</color>
+    <color name="green_blue">#00766E</color>
+    <color name="green_blue_light">#639A97</color>
+    <color name="orange">#E79400</color>
+    <color name="orange_light">#FFA553</color>
 
 </resources>

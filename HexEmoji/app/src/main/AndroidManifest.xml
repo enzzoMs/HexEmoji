@@ -9,6 +9,7 @@
         android:xlargeScreens="true" />
 
     <application
+        android:name=".HexEmojiApp"
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
