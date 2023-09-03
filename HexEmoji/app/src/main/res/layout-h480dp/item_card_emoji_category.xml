@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/emoji_category_card"
+        style="@style/Widget.HexEmoji.CardView"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/card_outer_margin"
+        android:layout_marginBottom="@dimen/card_outer_margin">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/emoji_category_card_border"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/emoji_category_image"
+                app:srcCompat="@drawable/emoji_category_example_people_emotions"
+                android:contentDescription="@string/emoji_category_image_content_description"
+                android:layout_width="@dimen/emoji_category_card_image_size"
+                android:layout_height="@dimen/emoji_category_card_image_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/emoji_category_title"
+                app:layout_constraintVertical_bias="1.0"
+                android:layout_marginTop="@dimen/emoji_category_card_image_top_margin" />
+
+            <TextView
+                android:id="@+id/emoji_category_title"
+                android:text="@string/emoji_category_title_people_emotions"
+                android:textColor="@color/emoji_category_card_title_color_people_emotions"
+                android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/card_inner_margin"
+                android:layout_marginTop="@dimen/card_title_vertical_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/emoji_category_description"
+                android:text="@string/emoji_category_description_people_emotions"
+                android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Description"
+                android:hyphenationFrequency="full"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/card_inner_margin"
+                android:layout_marginVertical="@dimen/card_title_vertical_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/emoji_category_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/emoji_category_title" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

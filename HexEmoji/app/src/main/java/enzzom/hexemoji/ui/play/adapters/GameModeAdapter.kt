@@ -4,38 +4,47 @@ import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import enzzom.hexemoji.databinding.ItemGameModeCardBinding
-import enzzom.hexemoji.models.GameMode
+import enzzom.hexemoji.databinding.ItemCardGameModeBinding
+import enzzom.hexemoji.models.GameModeCard
 
 class GameModeAdapter(
-    private val gameModes: List<GameMode>
+    private val gameModeCards: List<GameModeCard>,
+    private val onGameModeClicked: (GameModeCard) -> Unit
 ) : RecyclerView.Adapter<GameModeAdapter.GameModeHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameModeHolder {
         val inflater = LayoutInflater.from(parent.context)
 
         return GameModeHolder(
-            ItemGameModeCardBinding.inflate(inflater, parent, false)
+            ItemCardGameModeBinding.inflate(inflater, parent, false)
         )
     }
 
     override fun onBindViewHolder(holder: GameModeHolder, position: Int) {
-        holder.bind(gameModes[position])
+        holder.bind(gameModeCards[position])
     }
 
-    override fun getItemCount() = gameModes.size
+    override fun getItemCount(): Int = gameModeCards.size
 
     inner class GameModeHolder(
-        private val binding: ItemGameModeCardBinding
+        private val binding: ItemCardGameModeBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(gameMode: GameMode) {
+        private lateinit var gameModeCard: GameModeCard
+
+        init {
+            binding.gameModeCard.setOnClickListener { onGameModeClicked(gameModeCard) }
+        }
+
+        fun bind(gameModeCard: GameModeCard) {
+            this.gameModeCard = gameModeCard
+
             binding.apply {
-                gameModeTitle.text = gameMode.title
-                gameModeTitle.setTextColor(gameMode.titleColor)
-                gameModeDescription?.text = gameMode.description
-                emojiBackground?.backgroundTintList = ColorStateList.valueOf(gameMode.primaryColor)
-                emoji.text = gameMode.emoji
+                gameModeTitle.text = gameModeCard.title
+                gameModeTitle.setTextColor(gameModeCard.titleColor)
+                gameModeDescription?.text = gameModeCard.description
+                emojiBackground.backgroundTintList = ColorStateList.valueOf(gameModeCard.emojiBackgroundColor)
+                emoji.text = gameModeCard.emoji
             }
         }
     }

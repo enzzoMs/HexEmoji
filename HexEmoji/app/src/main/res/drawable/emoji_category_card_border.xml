@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_selected="true"
+        android:drawable="@drawable/emoji_category_card_selected_border"/>
+
+    <item android:drawable="@drawable/emoji_category_card_unselected_border"/>
+
+</selector>

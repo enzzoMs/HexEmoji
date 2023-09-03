@@ -5,6 +5,12 @@
     <dimen name="button_shape_radius">8dp</dimen>
     <dimen name="button_inner_padding">0dp</dimen>
 
+    <!-- Cards (Game mode and emoji category card) -->
+    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="card_outer_margin">@dimen/spacing_medium_1</dimen>
+    <dimen name="card_inner_margin">@dimen/spacing_medium_1</dimen>
+    <dimen name="card_title_vertical_margin">@dimen/spacing_small_2</dimen>
+
     <!-- Initial Screen -->
     <dimen name="initial_screen_honeycomb_guideline_percentage">0.22</dimen>
     <dimen name="initial_screen_app_title_text_size">@dimen/text_size_extra_large_1</dimen>
@@ -26,15 +32,19 @@
     <dimen name="navigation_header_logo_vertical_margin">@dimen/spacing_small_1</dimen>
     <dimen name="page_description_padding">@dimen/spacing_medium_1</dimen>
 
-    <!-- Play Page -->
-    <dimen name="play_screen_margin">@dimen/spacing_medium_1</dimen>
-    <dimen name="game_mode_card_outer_margin">@dimen/spacing_medium_1</dimen>
-    <dimen name="game_mode_card_inner_margin">@dimen/spacing_medium_1</dimen>
+    <!-- Play Screens = GameModes, EmojisSelection -->
+    <dimen name="play_screens_margin">@dimen/spacing_medium_1</dimen>
+
+    <!-- Game Modes Page -->
     <dimen name="game_mode_card_emoji_margin">@dimen/spacing_small_2</dimen>
-    <dimen name="game_mode_card_title_vertical_margin">@dimen/spacing_small_2</dimen>
-    <dimen name="game_mode_card_corner_radius">8dp</dimen>
     <dimen name="game_mode_card_emoji_back_corner_radius">8dp</dimen>
     <dimen name="game_mode_card_emoji_size">120dp</dimen>
+
+    <!-- Emojis Selection Page -->
+    <dimen name="emojis_selection_page_landscape_button_padding">@dimen/spacing_huge</dimen>
+    <dimen name="emoji_category_card_border_width">3dp</dimen>
+    <dimen name="emoji_category_card_image_size">110dp</dimen>
+    <dimen name="emoji_category_card_image_top_margin">@dimen/text_size_medium_1</dimen>
 
     <!-- General -->
     <dimen name="spacing_extra_small">4dp</dimen>
@@ -42,6 +52,7 @@
     <dimen name="spacing_small_2">10dp</dimen>
     <dimen name="spacing_medium_1">16dp</dimen>
     <dimen name="spacing_medium_2">20dp</dimen>
+    <dimen name="spacing_huge">64dp</dimen>
 
     <dimen name="text_size_medium_1">16sp</dimen>
     <dimen name="text_size_medium_2">18sp</dimen>

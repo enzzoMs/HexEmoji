@@ -3,21 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/play_fragment">
+    app:startDestination="@id/game_modes_fragment">
 
     <fragment
-        android:id="@+id/play_fragment"
-        android:name="enzzom.hexemoji.ui.play.PlayFragment"
-        android:label="@string/main_screen_page_title_play"
-        tools:layout="@layout/fragment_play" />
+        android:id="@+id/game_modes_fragment"
+        android:name="enzzom.hexemoji.ui.play.GameModesFragment"
+        android:label="@string/page_title_game_modes"
+        tools:layout="@layout/fragment_game_modes" >
+        <action
+            android:id="@+id/action_navigate_to_emojis_selection"
+            app:destination="@id/emojis_selection_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/statistics_fragment"
         android:name="enzzom.hexemoji.ui.statistics.StatisticsFragment"
-        android:label="@string/main_screen_page_title_statistics"
+        android:label="@string/page_title_statistics"
         tools:layout="@layout/fragment_statistics" />
     <fragment
         android:id="@+id/emojis_fragment"
         android:name="enzzom.hexemoji.ui.emojis.EmojisFragment"
-        android:label="@string/main_screen_page_title_emojis"
+        android:label="@string/page_title_emojis"
         tools:layout="@layout/fragment_emojis" />
+    <fragment
+        android:id="@+id/emojis_selection_fragment"
+        android:name="enzzom.hexemoji.ui.play.EmojisSelectionFragment"
+        tools:layout="@layout/fragment_emojis_selection" >
+    </fragment>
 </navigation>

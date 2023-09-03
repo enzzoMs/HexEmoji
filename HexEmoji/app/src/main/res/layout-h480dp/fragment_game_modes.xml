@@ -6,14 +6,22 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".ui.play.PlayFragment">
+    tools:context=".ui.play.GameModesFragment">
+
+    <TextView
+        android:text="@string/page_description_play"
+        style="@style/TextAppearance.HexEmoji.PageDescription"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/play_screens_margin" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/game_mode_list"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/play_screen_margin" />
+        android:layout_marginBottom="@dimen/play_screens_margin" />
 
 </LinearLayout>

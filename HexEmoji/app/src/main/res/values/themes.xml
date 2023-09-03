@@ -8,6 +8,7 @@
         <item name="android:colorBackground">@color/background_color</item>
         <item name="android:textColorPrimary">@color/text_color_primary</item>
         <item name="iconTint">@color/icon_tint</item>
+        <item name="navigationIconTint">@color/icon_tint</item>
         <item name="toolbarStyle">@style/Widget.HexEmoji.Toolbar</item>
         <item name="navigationViewStyle">@style/Widget.HexEmoji.NavigationView</item>
         <item name="navigationRailStyle">@style/Widget.HexEmoji.NavigationRail</item>
@@ -81,12 +82,16 @@
     <!-- Buttons -->
     <style name="Widget.HexEmoji.Button" parent="Widget.AppCompat.Button">
         <item name="android:textSize">@dimen/button_text_size</item>
-        <item name="android:padding">@dimen/button_inner_padding</item>
+        <!-- Using edge-specific padding values so that they can be overridden in other situations -->
+        <item name="android:paddingStart">@dimen/button_inner_padding</item>
+        <item name="android:paddingEnd">@dimen/button_inner_padding</item>
+        <item name="android:paddingTop">@dimen/button_inner_padding</item>
+        <item name="android:paddingBottom">@dimen/button_inner_padding</item>
         <item name="fontFamily">@font/lexend_bold</item>
     </style>
 
     <style name="Widget.HexEmoji.Button.Primary">
-        <item name="android:background">@drawable/button_primary_gradient</item>
+        <item name="android:background">@drawable/button_primary_background</item>
         <item name="android:textColor">@color/button_primary_text_color</item>
     </style>
 
@@ -114,23 +119,29 @@
     <style name="TextAppearance.HexEmoji.PageDescription" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="fontFamily">@font/lexend_semibold</item>
         <item name="android:background">?attr/colorSurface</item>
-        <item name="android:textColor">@color/page_description_text_color</item>
         <item name="android:padding">@dimen/page_description_padding</item>
         <item name="android:textAlignment">center</item>
     </style>
 
-    <!-- Game Mode Card -->
-    <style name="Widget.HexEmoji.GameModeCard" parent="Widget.MaterialComponents.CardView">
-        <item name="cardCornerRadius">@dimen/game_mode_card_corner_radius</item>
+    <!-- Card View -->
+    <style name="Widget.HexEmoji.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
         <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
 
-    <style name="TextAppearance.HexEmoji.GameModeCard.Title" parent="TextAppearance.MaterialComponents.Subtitle1">
+    <style name="TextAppearance.HexEmoji.CardView.Title" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="fontFamily">@font/lexend_semibold</item>
     </style>
 
-    <style name="TextAppearance.HexEmoji.GameModeCard.Description" parent="TextAppearance.MaterialComponents.Subtitle2">
+    <style name="TextAppearance.HexEmoji.CardView.Description" parent="TextAppearance.MaterialComponents.Subtitle2">
         <item name="fontFamily">@font/lexend_medium</item>
     </style>
-    
+
+    <!-- Check Box -->
+    <style name="Widget.HexEmoji.CheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="fontFamily">@font/lexend_semibold</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
 </resources>

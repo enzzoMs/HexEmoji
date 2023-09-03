@@ -6,23 +6,76 @@
     <string name="app_name_last_part">Emoji</string>
     <string name="app_subtitle">Desafie sua memória e divirta-se combinando emojis!</string>
     <string name="app_subtitle_shortened">Divirta-se combinando emojis!</string>
+    <string name="button_continue">Continuar</string>
 
     <!-- Initial Screen -->
     <string name="initial_screen_button_play">Jogar</string>
     <string name="initial_screen_button_instructions">Instruções</string>
 
     <!-- Main Screen -->
-    <string name="main_screen_page_title_play">Jogar</string>
-    <string name="main_screen_page_title_statistics">Estatísticas</string>
-    <string name="main_screen_page_title_emojis">Emojis</string>
-    <string name="main_screen_icon_title_settings">Configurações</string>
-    <string name="main_screen_icon_content_description_settings">Ver configurações</string>
-    <string name="main_screen_icon_content_description_page_play">Navegar para página de modos de jogo</string>
-    <string name="main_screen_icon_content_description_page_statistics">Navegar para página de estatísticas</string>
-    <string name="main_screen_icon_content_description_page_emojis">Navegar para página de emojis</string>
-    <string name="main_screen_page_description_play">Explore diferentes modos e desafios!</string>
+    <string name="page_title_game_modes">Jogar</string>
+    <string name="page_title_statistics">Estatísticas</string>
+    <string name="page_title_emojis">Emojis</string>
+    <string name="icon_title_settings">Configurações</string>
+    <string name="icon_content_description_settings">Ver configurações</string>
+    <string name="icon_content_description_page_play">Navegar para página de modos de jogo</string>
+    <string name="icon_content_description_page_statistics">Navegar para página de estatísticas</string>
+    <string name="icon_content_description_page_emojis">Navegar para página de emojis</string>
 
-    <!-- Play Page -->
+    <!-- Emojis Selection Page -->
+    <string name="page_description_emojis_selection">Escolha os emojis que você quer jogar</string>
+    <string name="all_emojis_checkbox">Todos os Emojis</string>
+
+    <string name="emoji_category_title_people_emotions">Pessoas e Emoções</string>
+    <string name="emoji_category_title_nature">Natureza e Animais</string>
+    <string name="emoji_category_title_food">Comida e Bebidas</string>
+    <string name="emoji_category_title_activities">Esportes e Atividades</string>
+    <string name="emoji_category_title_places_travel">Viagens e Lugares</string>
+    <string name="emoji_category_title_objects">Objetos</string>
+    <string name="emoji_category_title_symbols">Símbolos</string>
+    <string name="emoji_category_title_flags">Bandeiras</string>
+    <string name="emoji_category_title_numbers_letters">Números e Letras</string>
+
+    <string name="emoji_category_image_content_description">
+        Imagem com exemplos de emojis que fazem parte desta categoria
+    </string>
+
+    <string name="emoji_category_description_people_emotions">
+        Pessoas e diferentes expressões faciais, como sorrisos, risadas, tristeza, surpresa,
+        raiva, entre outros.
+    </string>
+    <string name="emoji_category_description_nature">
+        Emojis que representam animais, insetos, flores, árvores e elementos naturais, como sol,
+        lua e chuva.
+    </string>
+    <string name="emoji_category_description_food">
+        Emojis relacionados a alimentos, bebidas e guloseimas, como pizza, hambúrguer, sorvete,
+        café, entre outros.
+    </string>
+    <string name="emoji_category_description_activities">
+        Representam atividades, hobbies, esportes, instrumentos musicais, jogos e
+        outras formas de entretenimento.
+    </string>
+    <string name="emoji_category_description_places_travel">
+        Viagens, localizações, modos de transportes e construções variadas, como aviões, carros,
+        prédios e monumentos.
+    </string>
+    <string name="emoji_category_description_objects">
+        Emojis para items domésticos, celebrações e os mais diversos objetos.
+    </string>
+    <string name="emoji_category_description_symbols">
+        Compreende emojis com diferentes formas e cores de coração, além de sinais, símbolos e formas.
+    </string>
+    <string name="emoji_category_description_flags">
+        Um grupo de bandeiras de diversos países e localidades.
+    </string>
+    <string name="emoji_category_description_numbers_letters">
+        Emojis para os números de 0 a 9 e as 26 letras do alfabeto latino.
+    </string>
+
+    <!-- Game Modes Page -->
+    <string name="page_description_play">Explore diferentes modos e desafios!</string>
+
     <string name="game_mode_card_emoji_lotus">🪷</string>
     <string name="game_mode_card_emoji_hourglass_done">⌛</string>
     <string name="game_mode_card_emoji_triangular_ruler">📐</string>

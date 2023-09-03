@@ -1,5 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Emoji Categories -->
+    <string-array name="emoji_category_titles">
+        <item>@string/emoji_category_title_people_emotions</item>
+        <item>@string/emoji_category_title_nature</item>
+        <item>@string/emoji_category_title_food</item>
+        <item>@string/emoji_category_title_activities</item>
+        <item>@string/emoji_category_title_places_travel</item>
+        <item>@string/emoji_category_title_objects</item>
+        <item>@string/emoji_category_title_symbols</item>
+        <item>@string/emoji_category_title_flags</item>
+        <item>@string/emoji_category_title_numbers_letters</item>
+    </string-array>
+
+    <array name="emoji_category_title_color">
+        <item>@color/emoji_category_card_title_color_people_emotions</item>
+        <item>@color/emoji_category_card_title_color_nature</item>
+        <item>@color/emoji_category_card_title_color_food</item>
+        <item>@color/emoji_category_card_title_color_activities</item>
+        <item>@color/emoji_category_card_title_color_places_travel</item>
+        <item>@color/emoji_category_card_title_color_objects</item>
+        <item>@color/emoji_category_card_title_color_symbols</item>
+        <item>@color/emoji_category_card_title_color_flags</item>
+        <item>@color/emoji_category_card_title_color_numbers_letters</item>
+    </array>
+
+    <string-array name="emoji_category_descriptions">
+        <item>@string/emoji_category_description_people_emotions</item>
+        <item>@string/emoji_category_description_nature</item>
+        <item>@string/emoji_category_description_food</item>
+        <item>@string/emoji_category_description_activities</item>
+        <item>@string/emoji_category_description_places_travel</item>
+        <item>@string/emoji_category_description_objects</item>
+        <item>@string/emoji_category_description_symbols</item>
+        <item>@string/emoji_category_description_flags</item>
+        <item>@string/emoji_category_description_numbers_letters</item>
+    </string-array>
+
+    <integer-array name="emoji_category_images">
+        <item>@drawable/emoji_category_example_people_emotions</item>
+        <item>@drawable/emoji_category_example_nature</item>
+        <item>@drawable/emoji_category_example_food</item>
+        <item>@drawable/emoji_category_example_activities</item>
+        <item>@drawable/emoji_category_example_places_travel</item>
+        <item>@drawable/emoji_category_example_objects</item>
+        <item>@drawable/emoji_category_example_symbols</item>
+        <item>@drawable/emoji_category_example_flags</item>
+        <item>@drawable/emoji_category_example_numbers_letters</item>
+    </integer-array>
+
+    <!-- Game Modes -->
     <string-array name="game_mode_titles">
         <item>@string/game_mode_title_zen</item>
         <item>@string/game_mode_title_against_clock</item>
@@ -20,24 +70,24 @@
         <item>@string/game_mode_description_chaos</item>
     </string-array>
 
-    <array name="game_mode_primary_color">
-        <item>@color/game_mode_card_primary_color_zen</item>
-        <item>@color/game_mode_card_primary_color_against_clock</item>
-        <item>@color/game_mode_card_primary_color_limited_moves</item>
-        <item>@color/game_mode_card_primary_color_sequence</item>
-        <item>@color/game_mode_card_primary_color_shuffled</item>
-        <item>@color/game_mode_card_primary_color_flood</item>
-        <item>@color/game_mode_card_primary_color_chaos</item>
+    <array name="game_mode_emoji_back_color">
+        <item>@color/game_mode_card_emoji_back_color_zen</item>
+        <item>@color/game_mode_card_emoji_back_color_against_clock</item>
+        <item>@color/game_mode_card_emoji_back_color_limited_moves</item>
+        <item>@color/game_mode_card_emoji_back_color_sequence</item>
+        <item>@color/game_mode_card_emoji_back_color_shuffled</item>
+        <item>@color/game_mode_card_emoji_back_color_flood</item>
+        <item>@color/game_mode_card_emoji_back_color_chaos</item>
     </array>
 
     <array name="game_mode_title_text_color">
-        <item>@color/game_mode_card_text_color_zen</item>
-        <item>@color/game_mode_card_text_color_against_clock</item>
-        <item>@color/game_mode_card_text_color_limited_moves</item>
-        <item>@color/game_mode_card_text_color_sequence</item>
-        <item>@color/game_mode_card_text_color_shuffled</item>
-        <item>@color/game_mode_card_text_color_flood</item>
-        <item>@color/game_mode_card_text_color_chaos</item>
+        <item>@color/game_mode_card_title_text_color_zen</item>
+        <item>@color/game_mode_card_title_text_color_against_clock</item>
+        <item>@color/game_mode_card_title_text_color_limited_moves</item>
+        <item>@color/game_mode_card_title_text_color_sequence</item>
+        <item>@color/game_mode_card_title_text_color_shuffled</item>
+        <item>@color/game_mode_card_title_text_color_flood</item>
+        <item>@color/game_mode_card_title_text_color_chaos</item>
     </array>
 
     <array name="game_mode_emoji">
