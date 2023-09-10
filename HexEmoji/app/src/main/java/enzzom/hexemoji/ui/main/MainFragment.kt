@@ -1,9 +1,11 @@
 package enzzom.hexemoji.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -17,7 +19,7 @@ class MainFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         binding = FragmentMainBinding.inflate(inflater, container, false)
 
         val navController = NavHostFragment.findNavController(
@@ -29,21 +31,16 @@ class MainFragment : Fragment() {
         // animation to the toolbar title when navigating back
 
         navController.addOnDestinationChangedListener { _, navDestination, _ ->
-            binding!!.toolbar.title = navDestination.label
-
             when (navDestination.id) {
-                R.id.emojis_selection_fragment -> {
-                    showNavigationViews(false)
-                    binding!!.toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
-                }
-                else -> {
+                R.id.game_modes_fragment, R.id.statistics_fragment, R.id.emojis_fragment -> {
                     showNavigationViews(true)
-                    binding!!.toolbar.navigationIcon = null
+                    setToolbarTitle(navDestination.label as String)
+                    showBackArrow(false)
                 }
             }
         }
 
-        binding!!.apply {
+        binding?.apply {
             toolbar.setNavigationOnClickListener {
                 navController.popBackStack()
             }
@@ -53,7 +50,7 @@ class MainFragment : Fragment() {
             navView?.setupWithNavController(navController)
         }
 
-        return binding!!.root
+        return binding?.root
     }
 
     override fun onDestroy() {
@@ -62,7 +59,7 @@ class MainFragment : Fragment() {
         binding = null
     }
 
-    private fun showNavigationViews(show: Boolean) {
+    fun showNavigationViews(show: Boolean) {
         val visibility = if (show) View.VISIBLE else View.GONE
 
         binding?.apply {
@@ -75,5 +72,13 @@ class MainFragment : Fragment() {
 
     fun setToolbarTitle(title: String) {
         binding?.toolbar?.title = title
+    }
+
+    fun showBackArrow(show: Boolean) {
+        if (show) {
+            binding?.toolbar?.setNavigationIcon(R.drawable.ic_arrow_back)
+        } else {
+            binding?.toolbar?.navigationIcon = null
+        }
     }
 }

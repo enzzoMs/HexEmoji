@@ -14,7 +14,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/play_screens_margin" />
+        android:layout_marginHorizontal="@dimen/play_screens_outer_margin"
+        android:layout_marginTop="@dimen/play_screens_outer_margin"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/game_mode_list"
@@ -22,6 +23,6 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/play_screens_margin" />
+        android:layout_marginVertical="@dimen/play_screens_contents_margin" />
 
 </LinearLayout>

@@ -7,9 +7,9 @@
     <string name="app_subtitle">Desafie sua memória e divirta-se combinando emojis!</string>
     <string name="app_subtitle_shortened">Divirta-se combinando emojis!</string>
     <string name="button_continue">Continuar</string>
+    <string name="button_play">Jogar</string>
 
     <!-- Initial Screen -->
-    <string name="initial_screen_button_play">Jogar</string>
     <string name="initial_screen_button_instructions">Instruções</string>
 
     <!-- Main Screen -->
@@ -21,6 +21,9 @@
     <string name="icon_content_description_page_play">Navegar para página de modos de jogo</string>
     <string name="icon_content_description_page_statistics">Navegar para página de estatísticas</string>
     <string name="icon_content_description_page_emojis">Navegar para página de emojis</string>
+
+    <!-- Board Size Selection Page -->
+    <string name="page_description_board_selection">Escolha o tamanho do tabuleiro</string>
 
     <!-- Emojis Selection Page -->
     <string name="page_description_emojis_selection">Escolha os emojis que você quer jogar</string>
@@ -119,5 +122,6 @@
         Prepare-se para um desafio caótico! Supere seus limites e demonstre suas habilidades
         jogando “Contra o Relógio”, “Movimentos Limitados” e “Embaralhado” ao mesmo tempo!
     </string>
+    <string name="board_size_template">%1$sx%2$s</string>
 
 </resources>

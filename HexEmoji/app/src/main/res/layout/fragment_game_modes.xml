@@ -3,9 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/play_screens_outer_margin"
     tools:context=".ui.play.GameModesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -13,7 +14,6 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/play_screens_margin" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

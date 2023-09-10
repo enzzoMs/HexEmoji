@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.FragmentEmojisSelectionBinding
 import enzzom.hexemoji.models.EmojiCategory
@@ -26,22 +28,28 @@ class EmojisSelectionFragment : Fragment() {
     ): View? {
         binding = FragmentEmojisSelectionBinding.inflate(inflater, container, false)
 
-        emojiCategoryCards = getEmojiCategoryCards()
-
         val mainFragment = parentFragment?.parentFragment as MainFragment
-        mainFragment.setToolbarTitle(playViewModel.getGameModeTitle())
+        mainFragment.apply {
+            setToolbarTitle(playViewModel.getGameModeTitle())
+            showBackArrow(true)
+            showNavigationViews(false)
+        }
 
         playViewModel.hasSelectedAnyCategory.observe(viewLifecycleOwner) {
-            binding!!.buttonContinue.isEnabled = it
+            binding?.buttonContinue?.isEnabled = it
         }
 
         playViewModel.hasSelectedAllCategories.observe(viewLifecycleOwner) {
-            binding!!.allEmojisCheckBox.isChecked = it
+            binding?.allEmojisCheckBox?.isChecked = it
         }
 
-        binding!!.apply {
+        emojiCategoryCards = getEmojiCategoryCards()
+
+        binding?.apply {
             // Removing the recycler view animations (mainly to prevent blink after 'notifyItemChanged')
             emojiCategoriesList.itemAnimator = null
+
+            buttonContinue.setOnClickListener { navigateToBoardSelection() }
 
             allEmojisCheckBox.setOnClickListener {
                 if (allEmojisCheckBox.isChecked) {
@@ -53,6 +61,18 @@ class EmojisSelectionFragment : Fragment() {
                 emojiCategoriesList.adapter?.notifyItemRangeChanged(0, emojiCategoryCards.size)
             }
         }
+
+        // Manually configuring the behavior of the back button due to an error that
+        // caused a synchronization issue between what was shown on the screen and the actual
+        // current destination tracked by the NavController.
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object: OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().navigate(R.id.action_emojis_selection_to_game_modes)
+                }
+            }
+        )
 
         return binding?.root
     }
@@ -74,6 +94,10 @@ class EmojisSelectionFragment : Fragment() {
         super.onDestroy()
 
         binding = null
+    }
+
+    private fun navigateToBoardSelection() {
+        findNavController().navigate(R.id.action_emojis_selection_to_board_selection)
     }
 
     private fun getEmojiCategoryCards(): List<EmojiCategoryCard> {

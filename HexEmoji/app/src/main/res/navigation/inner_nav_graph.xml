@@ -11,7 +11,7 @@
         android:label="@string/page_title_game_modes"
         tools:layout="@layout/fragment_game_modes" >
         <action
-            android:id="@+id/action_navigate_to_emojis_selection"
+            android:id="@+id/action_game_modes_to_emojis_selection"
             app:destination="@id/emojis_selection_fragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
@@ -32,5 +32,35 @@
         android:id="@+id/emojis_selection_fragment"
         android:name="enzzom.hexemoji.ui.play.EmojisSelectionFragment"
         tools:layout="@layout/fragment_emojis_selection" >
+        <action
+            android:id="@+id/action_emojis_selection_to_board_selection"
+            app:destination="@id/board_selection_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_emojis_selection_to_game_modes"
+            app:destination="@id/game_modes_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/game_modes_fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/board_selection_fragment"
+        android:name="enzzom.hexemoji.ui.play.BoardSelectionFragment"
+        tools:layout="@layout/fragment_board_selection" >
+        <action
+            android:id="@+id/action_board_selection_to_emojis_selection"
+            app:destination="@id/emojis_selection_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/emojis_selection_fragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

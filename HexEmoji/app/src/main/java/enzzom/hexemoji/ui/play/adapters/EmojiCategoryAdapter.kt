@@ -48,7 +48,7 @@ class EmojiCategoryAdapter(
                 emojiCategoryTitle.text = categoryCard.title
                 emojiCategoryTitle.setTextColor(categoryCard.titleColor)
                 emojiCategoryDescription?.text = categoryCard.description
-                emojiCategoryImage?.setImageResource(categoryCard.categoryImageId)
+                emojiCategoryImage.setImageResource(categoryCard.categoryImageId)
             }
         }
     }

@@ -11,12 +11,8 @@
         android:label="fragment_initial"
         tools:layout="@layout/fragment_initial" >
         <action
-            android:id="@+id/action_navigate_to_main_screen"
-            app:destination="@id/mainFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            android:id="@+id/action_initial_screen_to_main_screen"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"

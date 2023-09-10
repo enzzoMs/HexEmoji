@@ -66,15 +66,20 @@
     <color name="emoji_category_card_selected_back_color">@color/orange_beer_alpha_8</color>
     <color name="emoji_category_card_unselected_border_color">@color/silver_light</color>
 
+    <!-- Board Selecion Page -->
+    <color name="board_size_card_text_color">@color/orange_brown_light</color>
+    <color name="board_size_card_unselected_border_color">@color/yellow_white</color>
+
     <!-- Color Palette -->
     <color name="yellow_maximum">#F9BF58</color>
     <color name="yellow_orange">#FDC966</color>
     <color name="yellow_dark">#FFB000</color>
     <color name="yellow_white">#FFE5AC</color>
-    <color name="orange_beer">#E88914</color>
+    <color name="orange_beer">#C66E00</color>
     <color name="orange_beer_alpha_8">#14E88914</color>
     <color name="orange_beer_alpha_40">#66E88914</color>
     <color name="orange_brown">#8C6000</color>
+    <color name="orange_brown_light">#B38012</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white_ghost">#F7F8FB</color>
     <color name="white_anti_flash">#F2F2F2</color>

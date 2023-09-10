@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:layout_margin="@dimen/play_screens_outer_margin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.play.EmojisSelectionFragment">
@@ -13,17 +14,14 @@
         style="@style/TextAppearance.HexEmoji.PageDescription"
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/play_screens_margin"
-        android:layout_marginTop="@dimen/play_screens_margin"/>
+        android:layout_height="wrap_content"/>
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/all_emojis_check_box"
         android:text="@string/all_emojis_checkbox"
         style="@style/Widget.HexEmoji.CheckBox"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/play_screens_margin" />
+        android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/emoji_categories_list"
@@ -31,20 +29,18 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="@dimen/play_screens_margin" />
+        android:layout_height="0dp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_continue"
         android:text="@string/button_continue"
         android:enabled="false"
         style="@style/Widget.HexEmoji.Button.Primary"
-        android:paddingStart="@dimen/emojis_selection_page_landscape_button_padding"
-        android:paddingEnd="@dimen/emojis_selection_page_landscape_button_padding"
+        android:paddingStart="@dimen/play_screens_landscape_button_padding"
+        android:paddingEnd="@dimen/play_screens_landscape_button_padding"
         android:layout_gravity="end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/play_screens_margin"
-        android:layout_marginVertical="@dimen/play_screens_margin"/>
+        android:layout_marginTop="@dimen/play_screens_contents_margin"/>
 
 </LinearLayout>

@@ -32,8 +32,10 @@
     <dimen name="navigation_header_logo_vertical_margin">@dimen/spacing_small_1</dimen>
     <dimen name="page_description_padding">@dimen/spacing_medium_1</dimen>
 
-    <!-- Play Screens = GameModes, EmojisSelection -->
-    <dimen name="play_screens_margin">@dimen/spacing_medium_1</dimen>
+    <!-- Play Screens = GameModes, EmojisSelection, BoardSelection -->
+    <dimen name="play_screens_outer_margin">@dimen/spacing_medium_1</dimen>
+    <dimen name="play_screens_contents_margin">@dimen/spacing_medium_1</dimen>
+    <dimen name="play_screens_landscape_button_padding">@dimen/spacing_huge</dimen>
 
     <!-- Game Modes Page -->
     <dimen name="game_mode_card_emoji_margin">@dimen/spacing_small_2</dimen>
@@ -41,10 +43,14 @@
     <dimen name="game_mode_card_emoji_size">120dp</dimen>
 
     <!-- Emojis Selection Page -->
-    <dimen name="emojis_selection_page_landscape_button_padding">@dimen/spacing_huge</dimen>
     <dimen name="emoji_category_card_border_width">3dp</dimen>
     <dimen name="emoji_category_card_image_size">110dp</dimen>
     <dimen name="emoji_category_card_image_top_margin">@dimen/text_size_medium_1</dimen>
+
+    <!-- Board Size Selecion Page -->
+    <dimen name="board_size_card_size">100dp</dimen>
+    <dimen name="board_size_card_inner_margin">@dimen/spacing_medium_2</dimen>
+    <dimen name="board_size_card_outer_margin">@dimen/spacing_extra_small</dimen>
 
     <!-- General -->
     <dimen name="spacing_extra_small">4dp</dimen>

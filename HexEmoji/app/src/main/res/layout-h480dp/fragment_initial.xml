@@ -78,14 +78,14 @@
         android:importantForAccessibility="no"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_play"
+        app:layout_constraintBottom_toTopOf="@+id/initial_button_play"
         app:layout_constraintEnd_toStartOf="@+id/end_guideline"
         app:layout_constraintStart_toStartOf="@+id/start_guideline"
         app:layout_constraintTop_toBottomOf="@+id/subtitle" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_play"
-        android:text="@string/initial_screen_button_play"
+        android:id="@+id/initial_button_play"
+        android:text="@string/button_play"
         style="@style/Widget.HexEmoji.Button.Primary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

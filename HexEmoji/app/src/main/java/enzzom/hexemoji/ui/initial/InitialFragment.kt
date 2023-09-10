@@ -17,12 +17,12 @@ class InitialFragment : Fragment() {
     ): View {
         val binding = FragmentInitialBinding.inflate(inflater, container, false)
 
-        binding.buttonPlay.setOnClickListener { navigateToMainScreen() }
+        binding.initialButtonPlay.setOnClickListener { navigateToMainScreen() }
 
         return binding.root
     }
 
     private fun navigateToMainScreen() {
-        findNavController().navigate(R.id.action_navigate_to_main_screen)
+        findNavController().navigate(R.id.action_initial_screen_to_main_screen)
     }
 }

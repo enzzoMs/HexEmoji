@@ -82,7 +82,7 @@
     <!-- Buttons -->
     <style name="Widget.HexEmoji.Button" parent="Widget.AppCompat.Button">
         <item name="android:textSize">@dimen/button_text_size</item>
-        <!-- Using edge-specific padding values so that they can be overridden in other situations -->
+        <!-- Using edge-specific padding values so that they can be overridden in certain situations -->
         <item name="android:paddingStart">@dimen/button_inner_padding</item>
         <item name="android:paddingEnd">@dimen/button_inner_padding</item>
         <item name="android:paddingTop">@dimen/button_inner_padding</item>
@@ -123,7 +123,7 @@
         <item name="android:textAlignment">center</item>
     </style>
 
-    <!-- Card View -->
+    <!-- Cards -->
     <style name="Widget.HexEmoji.CardView" parent="Widget.MaterialComponents.CardView">
         <item name="cardCornerRadius">@dimen/card_corner_radius</item>
         <item name="cardBackgroundColor">?attr/colorSurface</item>
@@ -138,6 +138,11 @@
         <item name="fontFamily">@font/lexend_medium</item>
     </style>
 
+    <style name="TextAppearance.HexEmoji.BoardSize" parent="TextAppearance.HexEmoji.CardView.Title">
+        <item name="fontFamily">@font/lexend_bold</item>
+        <item name="android:textColor">@color/board_size_text_color</item>
+    </style>
+    
     <!-- Check Box -->
     <style name="Widget.HexEmoji.CheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
         <item name="fontFamily">@font/lexend_semibold</item>

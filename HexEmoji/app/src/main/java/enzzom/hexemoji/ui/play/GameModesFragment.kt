@@ -11,6 +11,7 @@ import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.FragmentGameModesBinding
 import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.models.GameModeCard
+import enzzom.hexemoji.ui.main.MainFragment
 import enzzom.hexemoji.ui.play.adapters.GameModeAdapter
 import enzzom.hexemoji.ui.play.models.PlayViewModel
 
@@ -49,7 +50,7 @@ class GameModesFragment : Fragment() {
     }
 
     private fun navigateToEmojisSelection() {
-        findNavController().navigate(R.id.action_navigate_to_emojis_selection)
+        findNavController().navigate(R.id.emojis_selection_fragment)
     }
 
     private fun getGameModeCards(): List<GameModeCard> {
