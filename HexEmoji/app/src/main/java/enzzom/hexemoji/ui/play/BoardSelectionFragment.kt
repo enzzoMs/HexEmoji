@@ -83,6 +83,7 @@ class BoardSelectionFragment : Fragment() {
             object: OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     findNavController().navigate(R.id.action_board_selection_to_emojis_selection)
+                    playViewModel.clearBoardSizeSelection()
                 }
             }
         )

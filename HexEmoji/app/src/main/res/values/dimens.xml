@@ -35,7 +35,7 @@
     <!-- Play Screens = GameModes, EmojisSelection, BoardSelection -->
     <dimen name="play_screens_outer_margin">@dimen/spacing_medium_1</dimen>
     <dimen name="play_screens_contents_margin">@dimen/spacing_medium_1</dimen>
-    <dimen name="play_screens_landscape_button_padding">@dimen/spacing_huge</dimen>
+    <dimen name="play_screens_button_start_guideline_percentage">0.7</dimen>
 
     <!-- Game Modes Page -->
     <dimen name="game_mode_card_emoji_margin">@dimen/spacing_small_2</dimen>

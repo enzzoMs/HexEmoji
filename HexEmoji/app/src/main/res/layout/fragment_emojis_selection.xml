@@ -1,46 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_margin="@dimen/play_screens_outer_margin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.play.EmojisSelectionFragment">
 
     <TextView
+        android:id="@+id/emojis_selection_page_description"
         android:text="@string/page_description_emojis_selection"
         style="@style/TextAppearance.HexEmoji.PageDescription"
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/all_emojis_check_box"
         android:text="@string/all_emojis_checkbox"
         style="@style/Widget.HexEmoji.CheckBox"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emojis_selection_page_description"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/emoji_categories_list"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp" />
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/play_screens_contents_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/all_emojis_check_box"
+        app:layout_constraintBottom_toTopOf="@id/button_continue"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_continue"
         android:text="@string/button_continue"
         android:enabled="false"
         style="@style/Widget.HexEmoji.Button.Primary"
-        android:paddingStart="@dimen/play_screens_landscape_button_padding"
-        android:paddingEnd="@dimen/play_screens_landscape_button_padding"
         android:layout_gravity="end"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/button_continue_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/button_continue_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/play_screens_contents_margin"/>
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/play_screens_button_start_guideline_percentage" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

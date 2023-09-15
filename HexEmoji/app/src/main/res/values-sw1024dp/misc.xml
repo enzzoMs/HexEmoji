@@ -4,6 +4,5 @@
     <integer name="emoji_categories_grid_span">1</integer>
 
     <!-- Board Size Selection Page -->
-    <bool name="board_selection_use_hexagon_board">false</bool>
     <integer name="board_selection_hexagonal_grid_span">2</integer>
 </resources>

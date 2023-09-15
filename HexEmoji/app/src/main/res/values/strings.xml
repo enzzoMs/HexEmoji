@@ -13,7 +13,7 @@
     <string name="initial_screen_button_instructions">Instruções</string>
 
     <!-- Main Screen -->
-    <string name="page_title_game_modes">Jogar</string>
+    <string name="page_title_play">Jogar</string>
     <string name="page_title_statistics">Estatísticas</string>
     <string name="page_title_emojis">Emojis</string>
     <string name="icon_title_settings">Configurações</string>

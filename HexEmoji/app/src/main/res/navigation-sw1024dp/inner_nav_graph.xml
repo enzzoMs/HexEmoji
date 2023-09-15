@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/play_fragment">
+
+    <fragment
+        android:id="@+id/play_fragment"
+        android:name="enzzom.hexemoji.ui.play.PlayFragment"
+        android:label="@string/page_title_play"
+        tools:layout="@layout/fragment_play" />
+    <fragment
+        android:id="@+id/statistics_fragment"
+        android:name="enzzom.hexemoji.ui.statistics.StatisticsFragment"
+        android:label="@string/page_title_statistics"
+        tools:layout="@layout/fragment_statistics" />
+    <fragment
+        android:id="@+id/emojis_fragment"
+        android:name="enzzom.hexemoji.ui.emojis.EmojisFragment"
+        android:label="@string/page_title_emojis"
+        tools:layout="@layout/fragment_emojis" />
+</navigation>

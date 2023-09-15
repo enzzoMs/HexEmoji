@@ -36,7 +36,7 @@
     <color name="side_navigation_selected_back_color">@color/silver_light</color>
     <color name="page_description_text_color">@color/gray</color>
 
-    <!-- Play Page -->
+    <!-- Game Modes Page -->
     <color name="game_mode_card_emoji_back_color_zen">@color/pink_light</color>
     <color name="game_mode_card_emoji_back_color_against_clock">@color/yellow_light</color>
     <color name="game_mode_card_emoji_back_color_limited_moves">@color/blue_light</color>

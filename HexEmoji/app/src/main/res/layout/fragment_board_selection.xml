@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/play_screens_outer_margin"
     tools:context=".ui.play.BoardSelectionFragment">
 
     <TextView
@@ -14,34 +13,56 @@
         style="@style/TextAppearance.HexEmoji.PageDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/play_screens_outer_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/board_size_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/play_screens_contents_margin"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="horizontal"
+    <!-- This FrameLayout serves as a container to center the RecyclerView with 'wrap_content' height
+    Without this container, using 'wrap_content' could result in the RecyclerView's layout constraints
+    being exceeded. If a different height setting is used, the grid contents may not be centered
+    on the screen as intended -->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/board_selection_button_play"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/board_selection_page_description" />
+        app:layout_constraintTop_toBottomOf="@+id/board_selection_page_description">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/board_size_list"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/play_screens_outer_margin"
+            app:layout_constraintBottom_toTopOf="@+id/board_selection_button_play"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/board_selection_page_description" />
+
+    </FrameLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/board_selection_button_play"
         android:text="@string/button_play"
         android:enabled="false"
         style="@style/Widget.HexEmoji.Button.Primary"
-        android:paddingStart="@dimen/play_screens_landscape_button_padding"
-        android:paddingEnd="@dimen/play_screens_landscape_button_padding"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/play_screens_outer_margin"
+        android:layout_marginBottom="@dimen/play_screens_outer_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/button_play_guideline"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/button_play_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/play_screens_button_start_guideline_percentage"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

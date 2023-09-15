@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.play.EmojisSelectionFragment">
 
     <TextView
+        android:id="@+id/emojis_selection_page_description"
         android:text="@string/page_description_emojis_selection"
         style="@style/TextAppearance.HexEmoji.PageDescription"
-        android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginHorizontal="@dimen/play_screens_outer_margin"
-        android:layout_marginTop="@dimen/play_screens_outer_margin"/>
+        android:layout_marginTop="@dimen/play_screens_outer_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/all_emojis_check_box"
@@ -24,29 +27,49 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/play_screens_outer_margin"
-        android:layout_marginTop="@dimen/play_screens_contents_margin"/>
+        android:layout_marginTop="@dimen/play_screens_contents_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emojis_selection_page_description" />
 
     <com.google.android.material.divider.MaterialDivider
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/play_screens_outer_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/all_emojis_check_box" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/emoji_categories_list"
         android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:layout_weight="1"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="@integer/emoji_categories_grid_span"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginVertical="@dimen/play_screens_contents_margin"/>
+        android:layout_marginVertical="@dimen/play_screens_contents_margin"
+        app:layout_constraintBottom_toTopOf="@id/button_continue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/all_emojis_check_box" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_continue"
         android:text="@string/button_continue"
         android:enabled="false"
         style="@style/Widget.HexEmoji.Button.Primary"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/play_screens_outer_margin"
-        android:layout_marginBottom="@dimen/play_screens_outer_margin"/>
+        android:layout_marginEnd="@dimen/play_screens_outer_margin"
+        android:layout_marginBottom="@dimen/play_screens_outer_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/button_continue_guideline" />
 
-</LinearLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/button_continue_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/play_screens_button_start_guideline_percentage" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

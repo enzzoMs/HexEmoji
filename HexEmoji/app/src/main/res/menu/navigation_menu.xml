@@ -5,9 +5,9 @@
         android:checkableBehavior="single">
 
         <item
-            android:id="@+id/game_modes_fragment"
+            android:id="@+id/play_fragment"
             android:icon="@drawable/ic_stadia_controller"
-            android:title="@string/page_title_game_modes"
+            android:title="@string/page_title_play"
             android:contentDescription="@string/icon_content_description_page_play" />
 
         <item

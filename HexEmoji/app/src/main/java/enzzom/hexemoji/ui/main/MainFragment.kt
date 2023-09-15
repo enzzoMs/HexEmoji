@@ -1,11 +1,9 @@
 package enzzom.hexemoji.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -32,7 +30,7 @@ class MainFragment : Fragment() {
 
         navController.addOnDestinationChangedListener { _, navDestination, _ ->
             when (navDestination.id) {
-                R.id.game_modes_fragment, R.id.statistics_fragment, R.id.emojis_fragment -> {
+                R.id.play_fragment, R.id.statistics_fragment, R.id.emojis_fragment -> {
                     showNavigationViews(true)
                     setToolbarTitle(navDestination.label as String)
                     showBackArrow(false)

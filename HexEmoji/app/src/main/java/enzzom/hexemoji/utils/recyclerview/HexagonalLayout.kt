@@ -1,6 +1,8 @@
 package enzzom.hexemoji.utils.recyclerview
 
+import android.view.Gravity
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlin.math.tan
@@ -18,7 +20,8 @@ object HexagonalLayout {
      * A method to assist in creating a hexagonal grid pattern by manipulating a view's margins.
      *
      * To guarantee the desired behavior this method should be used within a RecyclerView
-     * using [GridLayoutManager] and [HexagonalSpanSizeLookup].
+     * using [GridLayoutManager] and [HexagonalSpanSizeLookup]. For better results the RecyclerView's
+     * width should be set to 'wrap_content'.
      *
      * It should typically be invoked within the onBindViewHolder()' method of the
      * RecyclerView's adapter

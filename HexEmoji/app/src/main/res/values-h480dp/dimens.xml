@@ -5,4 +5,8 @@
     <dimen name="initial_screen_app_title_text_size">@dimen/text_size_extra_large_1</dimen>
     <dimen name="initial_screen_app_subtitle_text_size">@dimen/text_size_medium_1</dimen>
     <dimen name="initial_screen_bottom_guideline_percentage">0.95</dimen>
+
+    <!-- Play Screens = GameModes, EmojisSelection, BoardSelection -->
+    <dimen name="play_screens_button_start_guideline_percentage">0.04</dimen>
+
 </resources>

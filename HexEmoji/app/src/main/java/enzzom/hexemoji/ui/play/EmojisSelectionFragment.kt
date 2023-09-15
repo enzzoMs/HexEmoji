@@ -43,7 +43,7 @@ class EmojisSelectionFragment : Fragment() {
             binding?.allEmojisCheckBox?.isChecked = it
         }
 
-        emojiCategoryCards = getEmojiCategoryCards()
+        emojiCategoryCards = playViewModel.getEmojiCategoryCards(resources)
 
         binding?.apply {
             // Removing the recycler view animations (mainly to prevent blink after 'notifyItemChanged')
@@ -97,31 +97,7 @@ class EmojisSelectionFragment : Fragment() {
     }
 
     private fun navigateToBoardSelection() {
+        playViewModel.clearBoardSizeSelection()
         findNavController().navigate(R.id.action_emojis_selection_to_board_selection)
-    }
-
-    private fun getEmojiCategoryCards(): List<EmojiCategoryCard> {
-        val emojiCategoryCards = mutableListOf<EmojiCategoryCard>()
-
-        val categoryTitles = resources.getStringArray(R.array.emoji_category_titles)
-        val categoryTitleColors = resources.getIntArray(R.array.emoji_category_title_color)
-        val categoryDescriptions = resources.getStringArray(R.array.emoji_category_descriptions)
-        val categoryImage = resources.obtainTypedArray(R.array.emoji_category_images)
-
-        EmojiCategory.values().forEachIndexed { index, emojiCategory ->
-            emojiCategoryCards.add(
-                EmojiCategoryCard(
-                    emojiCategory,
-                    categoryTitles[index],
-                    categoryTitleColors[index],
-                    categoryDescriptions[index],
-                    categoryImage.getResourceId(index, R.drawable.emoji_category_example_people_emotions)
-                )
-            )
-        }
-
-        categoryImage.recycle()
-
-        return emojiCategoryCards.toList()
     }
 }

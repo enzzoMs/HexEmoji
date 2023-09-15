@@ -4,6 +4,4 @@
     <item android:state_selected="true"
         android:drawable="@drawable/card_selected_border"/>
 
-    <item android:drawable="@drawable/emoji_category_card_unselected_border"/>
-
 </selector>

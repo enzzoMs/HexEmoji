@@ -12,8 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/navigation_header_logo_vertical_margin"
-        android:layout_marginStart="@dimen/navigation_header_logo_horizontal_margin"
-        android:layout_marginEnd="@dimen/navigation_header_logo_horizontal_margin"
+        android:layout_marginHorizontal="@dimen/navigation_header_logo_horizontal_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

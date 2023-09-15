@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav"
-    app:startDestination="@id/game_modes_fragment">
+    app:startDestination="@id/play_fragment">
 
     <fragment
-        android:id="@+id/game_modes_fragment"
+        android:id="@+id/play_fragment"
         android:name="enzzom.hexemoji.ui.play.GameModesFragment"
-        android:label="@string/page_title_game_modes"
+        android:label="@string/page_title_play"
         tools:layout="@layout/fragment_game_modes" >
         <action
             android:id="@+id/action_game_modes_to_emojis_selection"
@@ -41,12 +41,12 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_emojis_selection_to_game_modes"
-            app:destination="@id/game_modes_fragment"
+            app:destination="@id/play_fragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@id/game_modes_fragment"
+            app:popUpTo="@id/play_fragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment

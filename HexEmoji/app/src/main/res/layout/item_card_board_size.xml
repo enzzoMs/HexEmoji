@@ -5,6 +5,7 @@
     android:id="@+id/board_size_card"
     android:clickable="true"
     android:focusable="true"
+    android:layout_gravity="center_vertical"
     android:layout_margin="@dimen/board_size_card_outer_margin"
     android:layout_width="@dimen/board_size_card_size"
     android:layout_height="@dimen/board_size_card_size">

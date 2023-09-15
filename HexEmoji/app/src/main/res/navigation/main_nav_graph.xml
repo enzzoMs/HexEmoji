@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/initialFragment"
         android:name="enzzom.hexemoji.ui.initial.InitialFragment"
-        android:label="fragment_initial"
+        android:label="@string/page_title_play"
         tools:layout="@layout/fragment_initial" >
         <action
             android:id="@+id/action_initial_screen_to_main_screen"

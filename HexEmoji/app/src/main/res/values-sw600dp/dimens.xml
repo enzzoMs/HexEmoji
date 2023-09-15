@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Play Screens = GameModes, EmojisSelection, BoardSelection -->
+    <dimen name="play_screens_button_start_guideline_percentage">0.7</dimen>
+
+</resources>
