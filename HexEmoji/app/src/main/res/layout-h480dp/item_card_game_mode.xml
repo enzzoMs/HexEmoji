@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -24,7 +23,7 @@
             <View
                 android:id="@+id/emoji_background"
                 android:background="@drawable/game_mode_card_emoji_back_shape"
-                android:backgroundTint="@color/game_mode_card_emoji_back_color_zen"
+                android:backgroundTint="@color/game_mode_background_color_zen"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/game_mode_card_emoji_size"
                 android:layout_marginTop="@dimen/card_inner_margin"
@@ -35,7 +34,7 @@
 
             <!-- Black text color to avoid transparency-->
             <TextView
-                android:id="@+id/emoji"
+                android:id="@+id/game_mode_emoji"
                 android:text="@string/game_mode_card_emoji_lotus"
                 android:textColor="#000000"
                 android:textAlignment="center"
@@ -51,7 +50,7 @@
             <TextView
                 android:id="@+id/game_mode_title"
                 android:text="@string/game_mode_title_zen"
-                android:textColor="@color/game_mode_card_title_text_color_zen"
+                android:textColor="@color/game_mode_primary_color_zen"
                 android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

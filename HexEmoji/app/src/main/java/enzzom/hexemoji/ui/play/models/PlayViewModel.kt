@@ -20,7 +20,6 @@ import enzzom.hexemoji.models.GameModeCard
 
 class PlayViewModel : ViewModel() {
     private var selectedGameMode: GameMode? = null
-    private var gameModeTitle: String = ""
     private var selectedBoardSize: BoardSize? = null
     private val selectedEmojiCategories = mutableSetOf<EmojiCategory>()
 
@@ -56,7 +55,6 @@ class PlayViewModel : ViewModel() {
     }
 
     fun selectGameMode(gameModeCard: GameModeCard) {
-        gameModeTitle = gameModeCard.title
         selectedGameMode = gameModeCard.gameMode
         _hasSelectedGameMode.value = true
     }
@@ -65,7 +63,9 @@ class PlayViewModel : ViewModel() {
 
     fun getSelectedGameMode(): GameMode? = selectedGameMode
 
-    fun getGameModeTitle(): String = gameModeTitle
+    fun getGameModeTitle(resources: Resources): String {
+        return if (selectedGameMode != null) GameMode.getGameModeTitle(selectedGameMode!!, resources) else ""
+    }
 
     fun clearGameModeSelection() {
         selectedGameMode = null

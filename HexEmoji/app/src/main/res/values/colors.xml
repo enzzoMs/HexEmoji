@@ -4,30 +4,44 @@
 
     <!-- General -->
     <color name="primary_color">@color/yellow_white</color>
+    <color name="primary_dark_color">@color/gold_light</color>
     <color name="on_primary_color">@color/orange_brown</color>
     <color name="accent_color">@color/orange_beer</color>
     <color name="background_color">@color/white_anti_flash</color>
     <color name="surface_color">@color/white</color>
     <color name="text_color_primary">@color/gray</color>
-    <color name="icon_tint">@color/orange_brown</color>
-    <color name="status_bar_color">@color/gold_light</color>
     <color name="app_title_first_part_color">@color/gold</color>
     <color name="app_title_last_part_color">@color/yellow_dark</color>
 
     <!-- Buttons -->
     <color name="button_ripple_color">@color/silver</color>
-    <color name="button_primary_gradient_start_color">@color/yellow_orange</color>
-    <color name="button_primary_gradient_end_color">@color/orange_beer</color>
     <color name="button_primary_disabled_back_color">@color/orange_beer_alpha_40</color>
     <color name="button_primary_text_color">@color/white</color>
-    <color name="button_secondary_shape_color">@color/silver_light</color>
-    <color name="button_secondary_text_color">@color/gray_light</color>
+    <color name="button_secondary_shape_color">@color/silver_light_variant</color>
+    <color name="button_secondary_text_color">@color/gray</color>
+
+    <!-- Dialogs -->
+    <color name="dialog_exit_game_buttons_background_color">#EFEFEF</color>
+
+    <!-- Game Modes -->
+    <color name="game_mode_background_color_zen">@color/pink_light</color>
+    <color name="game_mode_background_color_against_clock">@color/yellow_light</color>
+    <color name="game_mode_background_color_limited_moves">@color/blue_light</color>
+    <color name="game_mode_background_color_sequence">@color/purple_light</color>
+    <color name="game_mode_background_color_shuffled">@color/red_dark</color>
+    <color name="game_mode_background_color_flood">@color/green_blue_light</color>
+    <color name="game_mode_background_color_chaos">@color/orange_light</color>
+
+    <color name="game_mode_primary_color_zen">@color/pink</color>
+    <color name="game_mode_primary_color_against_clock">@color/yellow</color>
+    <color name="game_mode_primary_color_limited_moves">@color/blue</color>
+    <color name="game_mode_primary_color_sequence">@color/purple</color>
+    <color name="game_mode_primary_color_shuffled">@color/red</color>
+    <color name="game_mode_primary_color_flood">@color/green_blue</color>
+    <color name="game_mode_primary_color_chaos">@color/orange</color>
 
     <!-- Splash Screen -->
     <color name="screen_splash_background_color">@color/yellow_maximum</color>
-    
-    <!-- Initial Screen -->
-    <color name="screen_initial_background_color">@color/white_ghost</color>
 
     <!-- Main Screen -->
     <color name="navigation_unselected_icon_color">@color/gray</color>
@@ -35,23 +49,6 @@
     <color name="side_navigation_item_color">@color/gray</color>
     <color name="side_navigation_selected_back_color">@color/silver_light</color>
     <color name="page_description_text_color">@color/gray</color>
-
-    <!-- Game Modes Page -->
-    <color name="game_mode_card_emoji_back_color_zen">@color/pink_light</color>
-    <color name="game_mode_card_emoji_back_color_against_clock">@color/yellow_light</color>
-    <color name="game_mode_card_emoji_back_color_limited_moves">@color/blue_light</color>
-    <color name="game_mode_card_emoji_back_color_sequence">@color/purple_light</color>
-    <color name="game_mode_card_emoji_back_color_shuffled">@color/red_dark</color>
-    <color name="game_mode_card_emoji_back_color_flood">@color/green_blue_light</color>
-    <color name="game_mode_card_emoji_back_color_chaos">@color/orange_light</color>
-
-    <color name="game_mode_card_title_text_color_zen">@color/pink</color>
-    <color name="game_mode_card_title_text_color_against_clock">@color/yellow</color>
-    <color name="game_mode_card_title_text_color_limited_moves">@color/blue</color>
-    <color name="game_mode_card_title_text_color_sequence">@color/purple</color>
-    <color name="game_mode_card_title_text_color_shuffled">@color/red</color>
-    <color name="game_mode_card_title_text_color_flood">@color/green_blue</color>
-    <color name="game_mode_card_title_text_color_chaos">@color/orange</color>
 
     <!-- Emojis Selection Page -->
     <color name="emoji_category_card_title_color_people_emotions">@color/orange_brown</color>
@@ -70,9 +67,12 @@
     <color name="board_size_card_text_color">@color/orange_brown_light</color>
     <color name="board_size_card_unselected_border_color">@color/yellow_white</color>
 
+    <!-- Game Screen -->
+    <color name="game_screen_primary_color">@color/white</color>
+    <color name="game_screen_status_bar_color">@color/silver</color>
+
     <!-- Color Palette -->
     <color name="yellow_maximum">#F9BF58</color>
-    <color name="yellow_orange">#FDC966</color>
     <color name="yellow_dark">#FFB000</color>
     <color name="yellow_white">#FFE5AC</color>
     <color name="orange_beer">#C66E00</color>
@@ -85,9 +85,9 @@
     <color name="white_anti_flash">#F2F2F2</color>
     <color name="silver">#B3B3B3</color>
     <color name="silver_light">#E1E1E1</color>
+    <color name="silver_light_variant">#D1D1D1</color>
     <color name="gray">#6E6E6E</color>
     <color name="gray_dark">#5A5A5A</color>
-    <color name="gray_light">#818181</color>
     <color name="gold">#CF8F00</color>
     <color name="gold_light">#E29C00</color>
 

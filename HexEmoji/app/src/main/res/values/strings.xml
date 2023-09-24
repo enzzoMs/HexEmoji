@@ -8,19 +8,34 @@
     <string name="app_subtitle_shortened">Divirta-se combinando emojis!</string>
     <string name="button_continue">Continuar</string>
     <string name="button_play">Jogar</string>
+    <string name="back_button_description">Voltar para página anterior</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_exit_game_message">Deseja mesmo sair? Você pederá todo o seu progresso nessa partida!</string>
+    <string name="dialog_exit_game_button_confirm">Sair</string>
+    <string name="dialog_exit_game_button_cancel">Cancelar</string>
+    <string name="dialog_exit_game_emoji">😥</string>
 
     <!-- Initial Screen -->
     <string name="initial_screen_button_instructions">Instruções</string>
 
+    <!-- Game Screen -->
+    <string name="icon_title_info">Informações</string>
+    <string name="icon_content_description_info">Informações sobre o jogo</string>
+
     <!-- Main Screen -->
-    <string name="page_title_play">Jogar</string>
-    <string name="page_title_statistics">Estatísticas</string>
-    <string name="page_title_emojis">Emojis</string>
+    <string name="page_title_page_play">Jogar</string>
+    <string name="page_title_page_statistics">Estatísticas</string>
+    <string name="page_title_page_emojis">Emojis</string>
     <string name="icon_title_settings">Configurações</string>
     <string name="icon_content_description_settings">Ver configurações</string>
     <string name="icon_content_description_page_play">Navegar para página de modos de jogo</string>
     <string name="icon_content_description_page_statistics">Navegar para página de estatísticas</string>
     <string name="icon_content_description_page_emojis">Navegar para página de emojis</string>
+
+    <!-- Emojis Page -->
+    <string name="emojis_collection_page_description">Confira sua coleção e descubra novos emojis</string>
+    <string name="emojis_challenges_page_description">Desbloqueie novos emojis através de desafios especiais!</string>
 
     <!-- Board Size Selection Page -->
     <string name="page_description_board_selection">Escolha o tamanho do tabuleiro</string>
@@ -123,5 +138,6 @@
         jogando “Contra o Relógio”, “Movimentos Limitados” e “Embaralhado” ao mesmo tempo!
     </string>
     <string name="board_size_template">%1$sx%2$s</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>

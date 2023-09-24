@@ -13,6 +13,7 @@ import enzzom.hexemoji.databinding.FragmentPlayBinding
 import enzzom.hexemoji.models.BoardSize
 import enzzom.hexemoji.models.EmojiCategoryCard
 import enzzom.hexemoji.models.GameMode
+import enzzom.hexemoji.ui.main.MainFragment
 import enzzom.hexemoji.ui.play.adapters.BoardSizeAdapter
 import enzzom.hexemoji.ui.play.adapters.EmojiCategoryAdapter
 import enzzom.hexemoji.ui.play.adapters.GameModeAdapter
@@ -77,6 +78,14 @@ class PlayFragment : Fragment() {
 
             playViewModel.allFieldsSelected.observe(viewLifecycleOwner) {
                 boardSelectionPage.boardSelectionButtonPlay.isEnabled = it
+            }
+
+            val mainFragment = parentFragment?.parentFragment as MainFragment
+
+            boardSelectionPage.boardSelectionButtonPlay.setOnClickListener {
+                mainFragment.navigateToGameScreen(
+                    playViewModel.getSelectedGameMode()!!, playViewModel.getSelectedBoardSize()!!
+                )
             }
         }
 

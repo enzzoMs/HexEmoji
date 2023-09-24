@@ -8,8 +8,8 @@
     tools:context=".ui.main.MainFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        app:menu="@menu/toolbar_menu"
+        android:id="@+id/main_toolbar"
+        app:menu="@menu/main_toolbar_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,17 +18,17 @@
 
     <com.google.android.material.navigationrail.NavigationRailView
         android:id="@+id/nav_rail"
-        app:menu="@menu/navigation_menu"
+        app:menu="@menu/inner_navigation_menu"
         app:headerLayout="@layout/navigation_header"
         app:labelVisibilityMode="unlabeled"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/main_toolbar" />
 
     <ImageView
-        android:id="@+id/toolbar_honeycomb"
+        android:id="@+id/main_toolbar_honeycomb"
         android:src="@drawable/honeycomb_small"
         android:importantForAccessibility="no"
         android:layout_width="wrap_content"
@@ -46,6 +46,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/nav_rail"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/main_toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

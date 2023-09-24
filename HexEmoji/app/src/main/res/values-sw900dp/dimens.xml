@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Initial Screen -->
-    <dimen name="initial_screen_app_title_text_size">@dimen/text_size_huge</dimen>
-    <dimen name="initial_screen_app_subtitle_text_size">@dimen/text_size_large_1</dimen>
-    <dimen name="button_text_size">@dimen/text_size_medium_3</dimen>
-    <dimen name="button_inner_padding">@dimen/spacing_small_2</dimen>
+    <!-- Dialogs -->
+    <dimen name="dialog_exit_game_emoji_size">120dp</dimen>
+
+    <!-- Board Size Selecion Page -->
+    <dimen name="board_size_card_size">120dp</dimen>
+    <dimen name="navigation_drawer_app_title_text_size">40sp</dimen>
+
+    <!-- Main Screen -->
+    <dimen name="navigation_drawer_icon_size">35dp</dimen>
+
+    <!-- General -->
+    <dimen name="text_size_subtitle2">20sp</dimen>
+    <dimen name="text_size_subtitle1">24sp</dimen>
+    <dimen name="text_size_headline6">30sp</dimen>
+    <dimen name="text_size_headline2">90sp</dimen>
 </resources>

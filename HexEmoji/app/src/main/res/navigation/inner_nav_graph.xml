@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/play_fragment"
         android:name="enzzom.hexemoji.ui.play.GameModesFragment"
-        android:label="@string/page_title_play"
+        android:label="@string/page_title_page_play"
         tools:layout="@layout/fragment_game_modes" >
         <action
             android:id="@+id/action_game_modes_to_emojis_selection"
@@ -21,12 +21,12 @@
     <fragment
         android:id="@+id/statistics_fragment"
         android:name="enzzom.hexemoji.ui.statistics.StatisticsFragment"
-        android:label="@string/page_title_statistics"
+        android:label="@string/page_title_page_statistics"
         tools:layout="@layout/fragment_statistics" />
     <fragment
         android:id="@+id/emojis_fragment"
         android:name="enzzom.hexemoji.ui.emojis.EmojisFragment"
-        android:label="@string/page_title_emojis"
+        android:label="@string/page_title_page_emojis"
         tools:layout="@layout/fragment_emojis" />
     <fragment
         android:id="@+id/emojis_selection_fragment"

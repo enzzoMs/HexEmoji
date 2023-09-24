@@ -5,5 +5,5 @@
 
     <!-- Board Size Selection Page -->
     <bool name="board_selection_use_hexagon_board">false</bool>
-    <integer name="board_selection_hexagonal_grid_span">2</integer>
+    <integer name="board_selection_hexagonal_grid_span">3</integer>
 </resources>

@@ -31,13 +31,19 @@ class BoardSelectionFragment : Fragment() {
 
         val mainFragment = parentFragment?.parentFragment as MainFragment
         mainFragment.apply {
-            setToolbarTitle(playViewModel.getGameModeTitle())
+            setToolbarTitle(playViewModel.getGameModeTitle(resources))
             showBackArrow(true)
             showNavigationViews(false)
         }
 
         playViewModel.hasSelectedBoardSize.observe(viewLifecycleOwner) {
             binding?.boardSelectionButtonPlay?.isEnabled = it
+        }
+
+        binding?.boardSelectionButtonPlay?.setOnClickListener {
+            mainFragment.navigateToGameScreen(
+                playViewModel.getSelectedGameMode()!!, playViewModel.getSelectedBoardSize()!!
+            )
         }
 
         return binding?.root

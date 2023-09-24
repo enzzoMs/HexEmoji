@@ -24,7 +24,7 @@
                 android:id="@+id/emoji_background"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@color/game_mode_card_emoji_back_color_zen"
+                android:background="@color/game_mode_background_color_zen"
                 app:layout_constraintBottom_toTopOf="@+id/emoji_area_barrier"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +32,7 @@
 
             <!-- Black text color to avoid transparency-->
             <TextView
-                android:id="@+id/emoji"
+                android:id="@+id/game_mode_emoji"
                 android:layout_width="@dimen/game_mode_card_emoji_size"
                 android:layout_height="@dimen/game_mode_card_emoji_size"
                 android:layout_margin="@dimen/game_mode_card_emoji_margin"
@@ -49,7 +49,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/game_mode_card_emoji_margin"
-                app:layout_constraintTop_toBottomOf="@id/emoji"
+                app:layout_constraintTop_toBottomOf="@id/game_mode_emoji"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -57,7 +57,7 @@
                 android:id="@+id/game_mode_title"
                 android:text="@string/game_mode_title_zen"
                 android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Title"
-                android:textColor="@color/game_mode_card_title_text_color_zen"
+                android:textColor="@color/game_mode_primary_color_zen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/card_inner_margin"

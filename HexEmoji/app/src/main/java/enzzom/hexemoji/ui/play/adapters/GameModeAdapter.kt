@@ -50,7 +50,7 @@ class GameModeAdapter(
                 gameModeTitle.setTextColor(card.titleColor)
                 gameModeDescription?.text = card.description
                 emojiBackground.backgroundTintList = ColorStateList.valueOf(card.emojiBackgroundColor)
-                emoji.text = card.emoji
+                gameModeEmoji.text = card.emoji
             }
         }
     }

@@ -7,19 +7,19 @@
         <item
             android:id="@+id/play_fragment"
             android:icon="@drawable/ic_stadia_controller"
-            android:title="@string/page_title_play"
+            android:title="@string/page_title_page_play"
             android:contentDescription="@string/icon_content_description_page_play" />
 
         <item
             android:id="@+id/statistics_fragment"
             android:icon="@drawable/ic_leaderboard"
-            android:title="@string/page_title_statistics"
+            android:title="@string/page_title_page_statistics"
             android:contentDescription="@string/icon_content_description_page_statistics"/>
 
         <item
             android:id="@+id/emojis_fragment"
             android:icon="@drawable/ic_emoji_face"
-            android:title="@string/page_title_emojis"
+            android:title="@string/page_title_page_emojis"
             android:contentDescription="@string/icon_content_description_page_emojis"/>
     </group>
 </menu>

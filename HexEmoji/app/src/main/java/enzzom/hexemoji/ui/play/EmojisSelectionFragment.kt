@@ -1,16 +1,15 @@
 package enzzom.hexemoji.ui.play
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.FragmentEmojisSelectionBinding
-import enzzom.hexemoji.models.EmojiCategory
 import enzzom.hexemoji.models.EmojiCategoryCard
 import enzzom.hexemoji.ui.main.MainFragment
 import enzzom.hexemoji.ui.play.adapters.EmojiCategoryAdapter
@@ -30,7 +29,7 @@ class EmojisSelectionFragment : Fragment() {
 
         val mainFragment = parentFragment?.parentFragment as MainFragment
         mainFragment.apply {
-            setToolbarTitle(playViewModel.getGameModeTitle())
+            setToolbarTitle(playViewModel.getGameModeTitle(resources))
             showBackArrow(true)
             showNavigationViews(false)
         }
