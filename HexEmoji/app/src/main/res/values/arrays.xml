@@ -100,4 +100,17 @@
         <item>@string/game_mode_card_emoji_spiral_eyes</item>
     </array>
 
+    <!-- Game Tutorial -->
+    <string-array name="game_tutorial_descriptions_zen">
+        <item>@string/game_tutorial_zen_description_part_01</item>
+        <item>@string/game_tutorial_zen_description_part_02</item>
+        <item>@string/game_tutorial_zen_description_part_03</item>
+    </string-array>
+
+    <integer-array name="game_tutorial_images_zen">
+        <item>@drawable/game_tutorial_board_example</item>
+        <item>@drawable/game_tutorial_move_example</item>
+        <item>@drawable/game_tutorial_pair_example</item>
+    </integer-array>
+
 </resources>

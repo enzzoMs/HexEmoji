@@ -9,6 +9,9 @@
     <color name="accent_color">@color/orange_beer</color>
     <color name="background_color">@color/white_anti_flash</color>
     <color name="surface_color">@color/white</color>
+    <color name="surface_variant_dim">@color/gray_bright</color>
+    <color name="on_surface_color">@color/gray</color>
+    <color name="indicator_color">@color/silver</color>
     <color name="text_color_primary">@color/gray</color>
     <color name="app_title_first_part_color">@color/gold</color>
     <color name="app_title_last_part_color">@color/yellow_dark</color>
@@ -19,9 +22,6 @@
     <color name="button_primary_text_color">@color/white</color>
     <color name="button_secondary_shape_color">@color/silver_light_variant</color>
     <color name="button_secondary_text_color">@color/gray</color>
-
-    <!-- Dialogs -->
-    <color name="dialog_exit_game_buttons_background_color">#EFEFEF</color>
 
     <!-- Game Modes -->
     <color name="game_mode_background_color_zen">@color/pink_light</color>
@@ -69,7 +69,7 @@
 
     <!-- Game Screen -->
     <color name="game_screen_primary_color">@color/white</color>
-    <color name="game_screen_status_bar_color">@color/silver</color>
+    <color name="game_screen_status_bar_color">@color/gray</color>
 
     <!-- Color Palette -->
     <color name="yellow_maximum">#F9BF58</color>
@@ -88,6 +88,7 @@
     <color name="silver_light_variant">#D1D1D1</color>
     <color name="gray">#6E6E6E</color>
     <color name="gray_dark">#5A5A5A</color>
+    <color name="gray_bright">#EFEFEF</color>
     <color name="gold">#CF8F00</color>
     <color name="gold_light">#E29C00</color>
 

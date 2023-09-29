@@ -1,8 +1,6 @@
 package enzzom.hexemoji.utils.recyclerview
 
-import android.view.Gravity
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlin.math.tan
@@ -48,7 +46,7 @@ object HexagonalLayout {
 
         if (viewPositionInGrid % distanceBetweenOddRows == 0) {
             // This condition means that the view is at the beginning of an odd row.
-            // In the 'HexagonalSpanSizeLookup' pattern, views at this position have a span size
+            // In the 'HexagonalSpanSizeLookup' pattern views at this position have a span size
             // of 2, resulting in the following layout:
             // x       *   *
             // *   *   *   *

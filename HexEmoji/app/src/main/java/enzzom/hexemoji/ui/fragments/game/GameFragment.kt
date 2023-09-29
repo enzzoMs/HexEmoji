@@ -1,4 +1,4 @@
-package enzzom.hexemoji.ui.game
+package enzzom.hexemoji.ui.fragments.game
 
 import android.app.Dialog
 import android.graphics.Color
@@ -11,29 +11,43 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.DialogExitGameBinding
 import enzzom.hexemoji.databinding.FragmentGameBinding
 import enzzom.hexemoji.models.GameMode
+import enzzom.hexemoji.ui.custom.GameTutorialDataProvider
+import enzzom.hexemoji.ui.custom.GameTutorialView
 
 class GameFragment : Fragment() {
 
     private val args: GameFragmentArgs by navArgs()
+    private var gameTutorialDataProvider: GameTutorialDataProvider? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val newInflater = LayoutInflater.from(ContextThemeWrapper(context, R.style.ThemeOverlay_HexEmoji_GameMode_Zen))
-        val binding = FragmentGameBinding.inflate(newInflater, container, false)
+        val themedInflater = LayoutInflater.from(ContextThemeWrapper(context, getGameModeThemeId(args.gameMode)))
+        val binding = FragmentGameBinding.inflate(themedInflater, container, false)
 
         activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.game_screen_status_bar_color)
 
         binding.gameToolbar.apply {
             title = GameMode.getGameModeTitle(args.gameMode, resources)
             setNavigationOnClickListener { showExitGameDialog() }
+            setOnMenuItemClickListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.game_info -> {
+                        showGameTutorialDialog()
+                        true
+                    }
+                    else -> false
+                }
+            }
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(
@@ -45,7 +59,21 @@ class GameFragment : Fragment() {
             }
         )
 
+        if (savedInstanceState == null) {
+            childFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace(R.id.game_fragment_container, when(args.gameMode) {
+                    GameMode.ZEN -> ZenFragment()
+                    else -> ZenFragment()
+                })
+            }
+        }
+
         return binding.root
+    }
+
+    fun setGameTutorialDataProvider(dataProvider: GameTutorialDataProvider) {
+        gameTutorialDataProvider = dataProvider
     }
 
     private fun showExitGameDialog() {
@@ -68,8 +96,31 @@ class GameFragment : Fragment() {
         }
     }
 
+    private fun showGameTutorialDialog() {
+        if (gameTutorialDataProvider != null) {
+            val gameTutorialView = GameTutorialView(ContextThemeWrapper(context, getGameModeThemeId(args.gameMode)))
+
+            gameTutorialView.setDataProvider(gameTutorialDataProvider!!)
+
+            Dialog(requireContext()).apply {
+                setContentView(gameTutorialView)
+                setContentView(gameTutorialView)
+                window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                show()
+            }
+        } else {
+            view?.let {
+                Snackbar.make(it, R.string.snackbar_no_available_game_tutorial, Snackbar.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     private fun navigateToMainScreen() {
-        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.primary_dark_color)
         findNavController().navigate(R.id.action_game_fragment_to_main_fragment)
+    }
+
+    private fun getGameModeThemeId(gameMode: GameMode): Int = when(gameMode) {
+        GameMode.ZEN -> R.style.ThemeOverlay_HexEmoji_GameMode_Zen
+        else -> R.style.ThemeOverlay_HexEmoji_GameMode_Zen
     }
 }

@@ -1,4 +1,4 @@
-package enzzom.hexemoji.ui.play
+package enzzom.hexemoji.ui.fragments.play
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,11 +13,11 @@ import enzzom.hexemoji.databinding.FragmentPlayBinding
 import enzzom.hexemoji.models.BoardSize
 import enzzom.hexemoji.models.EmojiCategoryCard
 import enzzom.hexemoji.models.GameMode
-import enzzom.hexemoji.ui.main.MainFragment
-import enzzom.hexemoji.ui.play.adapters.BoardSizeAdapter
-import enzzom.hexemoji.ui.play.adapters.EmojiCategoryAdapter
-import enzzom.hexemoji.ui.play.adapters.GameModeAdapter
-import enzzom.hexemoji.ui.play.models.PlayViewModel
+import enzzom.hexemoji.ui.fragments.main.MainFragment
+import enzzom.hexemoji.ui.fragments.play.adapters.BoardSizeAdapter
+import enzzom.hexemoji.ui.fragments.play.adapters.EmojiCategoryAdapter
+import enzzom.hexemoji.ui.fragments.play.adapters.GameModeAdapter
+import enzzom.hexemoji.ui.fragments.play.models.PlayViewModel
 import enzzom.hexemoji.utils.recyclerview.HexagonalSpanSizeLookup
 
 /**

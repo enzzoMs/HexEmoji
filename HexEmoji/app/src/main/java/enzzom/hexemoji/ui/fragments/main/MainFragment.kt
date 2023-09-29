@@ -1,11 +1,11 @@
-package enzzom.hexemoji.ui.main
+package enzzom.hexemoji.ui.fragments.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -13,7 +13,6 @@ import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.FragmentMainBinding
 import enzzom.hexemoji.models.BoardSize
 import enzzom.hexemoji.models.GameMode
-import enzzom.hexemoji.ui.play.models.PlayViewModel
 
 class MainFragment : Fragment() {
 
@@ -25,8 +24,10 @@ class MainFragment : Fragment() {
     ): View? {
         binding = FragmentMainBinding.inflate(inflater, container, false)
 
+        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.primary_dark_color)
+
         val navController = NavHostFragment.findNavController(
-            childFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            childFragmentManager.findFragmentById(R.id.main_nav_host_fragment) as NavHostFragment
         )
 
         // Manually wiring up the toolbar and screen navigation without using the
@@ -48,7 +49,7 @@ class MainFragment : Fragment() {
                 navController.popBackStack()
             }
 
-            mainToolbar.navigationContentDescription = resources.getString(R.string.back_button_description)
+            mainToolbar.navigationContentDescription = resources.getString(R.string.icon_content_description_back)
 
             bottomNav?.setupWithNavController(navController)
             navRail?.setupWithNavController(navController)
@@ -88,8 +89,10 @@ class MainFragment : Fragment() {
     }
 
     fun navigateToGameScreen(selectedGameMode: GameMode, selectedBoardSize: BoardSize) {
-        findNavController().navigate(MainFragmentDirections.actionMainFragmentToGameFragment(
-            selectedGameMode, selectedBoardSize
-        ))
+        findNavController().navigate(
+            MainFragmentDirections.actionMainFragmentToGameFragment(
+                selectedGameMode, selectedBoardSize
+            )
+        )
     }
 }

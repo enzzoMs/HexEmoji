@@ -1,4 +1,4 @@
-package enzzom.hexemoji.ui.play.adapters
+package enzzom.hexemoji.ui.fragments.play.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/game_mode_card"
@@ -23,7 +23,7 @@
             <View
                 android:id="@+id/emoji_background"
                 android:background="@drawable/game_mode_card_emoji_back_shape"
-                android:backgroundTint="@color/game_mode_background_color_zen"
+                tools:backgroundTint="@color/game_mode_background_color_zen"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/game_mode_card_emoji_size"
                 android:layout_marginTop="@dimen/card_inner_margin"
@@ -35,7 +35,7 @@
             <!-- Black text color to avoid transparency-->
             <TextView
                 android:id="@+id/game_mode_emoji"
-                android:text="@string/game_mode_card_emoji_lotus"
+                tools:text="@string/game_mode_card_emoji_lotus"
                 android:textColor="#000000"
                 android:textAlignment="center"
                 app:autoSizeTextType="uniform"
@@ -49,8 +49,8 @@
 
             <TextView
                 android:id="@+id/game_mode_title"
-                android:text="@string/game_mode_title_zen"
-                android:textColor="@color/game_mode_primary_color_zen"
+                tools:text="@string/game_mode_title_zen"
+                tools:textColor="@color/game_mode_primary_color_zen"
                 android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
 
             <TextView
                 android:id="@+id/game_mode_description"
-                android:text="@string/game_mode_description_zen"
+                tools:text="@string/game_mode_description_zen"
                 android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

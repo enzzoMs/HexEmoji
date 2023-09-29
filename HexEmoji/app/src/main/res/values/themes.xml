@@ -6,6 +6,9 @@
         <item name="colorPrimaryDark">@color/primary_dark_color</item>
         <item name="colorAccent">@color/accent_color</item>
         <item name="colorSurface">@color/surface_color</item>
+        <item name="colorSurfaceDim">@color/surface_variant_dim</item>
+        <item name="colorOnSurface">@color/on_surface_color</item>
+        <item name="indicatorColor">@color/indicator_color</item>
         <item name="android:colorBackground">@color/background_color</item>
         <item name="android:textColorPrimary">@color/text_color_primary</item>
         <item name="iconTint">?attr/colorOnPrimary</item>
@@ -145,14 +148,22 @@
     </style>
 
     <!-- Dialogs -->
-    <style name="TextAppearance.HexEmoji.DialogMessage" parent="TextAppearance.HexEmoji.Subtitle1">
+    <style name="TextAppearance.HexEmoji.Dialog.ExitGame" parent="TextAppearance.HexEmoji.Subtitle1">
         <item name="fontFamily">@font/lexend_medium</item>
+    </style>
+
+    <style name="TextAppearance.HexEmoji.Dialog.GameTutorial" parent="TextAppearance.HexEmoji.Subtitle1">
+        <item name="fontFamily">@font/lexend_semibold</item>
     </style>
 
     <!-- Game Mode Screens -->
     <style name="ThemeOverlay.HexEmoji.GameMode.Zen" parent="">
         <item name="colorPrimary">@color/game_screen_primary_color</item>
         <item name="colorOnPrimary">@color/game_mode_primary_color_zen</item>
+        <item name="colorAccent">@color/game_mode_primary_color_zen</item>
+        <item name="colorSurfaceVariant">#FFA0A9</item>
+        <item name="colorOnSurfaceVariant">#FFC5CA</item>
+        <item name="android:colorBackground">@color/game_mode_background_color_zen</item>
     </style>
 
     <!-- Base Text Appearance -->

@@ -1,4 +1,4 @@
-package enzzom.hexemoji.ui.play.adapters
+package enzzom.hexemoji.ui.fragments.play.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -16,7 +16,7 @@ class BoardSizeAdapter(
     private val hexagonViewSizePx: Int = 0
 ): RecyclerView.Adapter<BoardSizeAdapter.BoardSizeHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BoardSizeAdapter.BoardSizeHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BoardSizeHolder {
         val inflater = LayoutInflater.from(parent.context)
 
         return BoardSizeHolder(
@@ -24,7 +24,7 @@ class BoardSizeAdapter(
         )
     }
 
-    override fun onBindViewHolder(holder: BoardSizeAdapter.BoardSizeHolder, position: Int) {
+    override fun onBindViewHolder(holder: BoardSizeHolder, position: Int) {
         if (useHexagonalLayout) {
             HexagonalLayout.setHexagonMargins(
                 view = holder.itemView,

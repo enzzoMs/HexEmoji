@@ -1,4 +1,4 @@
-package enzzom.hexemoji.ui.play
+package enzzom.hexemoji.ui.fragments.play
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.FragmentGameModesBinding
-import enzzom.hexemoji.ui.play.adapters.GameModeAdapter
-import enzzom.hexemoji.ui.play.models.PlayViewModel
+import enzzom.hexemoji.ui.fragments.play.adapters.GameModeAdapter
+import enzzom.hexemoji.ui.fragments.play.models.PlayViewModel
 
 class GameModesFragment : Fragment() {
     private val playViewModel: PlayViewModel by activityViewModels()

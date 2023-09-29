@@ -6,7 +6,7 @@
     android:layout_margin="@dimen/play_screens_outer_margin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.play.EmojisSelectionFragment">
+    tools:context=".ui.fragments.play.EmojisSelectionFragment">
 
     <TextView
         android:id="@+id/emojis_selection_page_description"

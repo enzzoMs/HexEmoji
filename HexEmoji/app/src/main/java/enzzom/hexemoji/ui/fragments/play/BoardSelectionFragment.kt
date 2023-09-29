@@ -1,4 +1,4 @@
-package enzzom.hexemoji.ui.play
+package enzzom.hexemoji.ui.fragments.play
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.FragmentBoardSelectionBinding
 import enzzom.hexemoji.models.BoardSize
-import enzzom.hexemoji.ui.main.MainFragment
-import enzzom.hexemoji.ui.play.adapters.BoardSizeAdapter
-import enzzom.hexemoji.ui.play.models.PlayViewModel
+import enzzom.hexemoji.ui.fragments.main.MainFragment
+import enzzom.hexemoji.ui.fragments.play.adapters.BoardSizeAdapter
+import enzzom.hexemoji.ui.fragments.play.models.PlayViewModel
 import enzzom.hexemoji.utils.recyclerview.HexagonalSpanSizeLookup
 
 class BoardSelectionFragment : Fragment() {

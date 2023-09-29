@@ -6,8 +6,8 @@
     <item
         android:id="@+id/game_info"
         android:icon="@drawable/ic_info"
-        android:title="@string/icon_title_info"
-        android:contentDescription="@string/icon_content_description_info"
+        android:title="@string/icon_title_game_info"
+        android:contentDescription="@string/icon_content_description_game_info"
         app:showAsAction="ifRoom" />
 
 </menu>

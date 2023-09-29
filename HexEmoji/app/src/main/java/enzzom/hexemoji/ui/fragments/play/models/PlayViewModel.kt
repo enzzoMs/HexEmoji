@@ -1,4 +1,4 @@
-package enzzom.hexemoji.ui.play.models
+package enzzom.hexemoji.ui.fragments.play.models
 
 import android.content.res.Resources
 import androidx.lifecycle.LiveData

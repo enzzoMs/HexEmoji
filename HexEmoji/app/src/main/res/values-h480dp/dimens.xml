@@ -7,4 +7,7 @@
     <!-- Play Screens = GameModes, EmojisSelection, BoardSelection -->
     <dimen name="play_screens_button_start_guideline_percentage">0.04</dimen>
 
+    <!-- Dialogs -->
+    <dimen name="game_tutorial_image_height">180dp</dimen>
+
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Dialogs -->
-    <dimen name="dialog_exit_game_emoji_size">120dp</dimen>
+    <dimen name="exit_game_emoji_size">120dp</dimen>
 
     <!-- Board Size Selecion Page -->
     <dimen name="board_size_card_size">120dp</dimen>

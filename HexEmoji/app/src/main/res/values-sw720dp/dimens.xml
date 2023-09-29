@@ -12,4 +12,7 @@
     <dimen name="text_size_subtitle1">18sp</dimen>
     <dimen name="text_size_headline2">70sp</dimen>
 
+    <!-- Dialogs -->
+    <dimen name="game_tutorial_image_height">200dp</dimen>
+
 </resources>

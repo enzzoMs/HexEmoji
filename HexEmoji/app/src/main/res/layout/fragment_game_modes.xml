@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/play_screens_outer_margin"
-    tools:context=".ui.play.GameModesFragment">
+    tools:context=".ui.fragments.play.GameModesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/game_mode_list"

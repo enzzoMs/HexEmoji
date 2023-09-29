@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/initial_fragment"
-        android:name="enzzom.hexemoji.ui.initial.InitialFragment"
+        android:name="enzzom.hexemoji.ui.fragments.initial.InitialFragment"
         android:label="@string/page_title_page_play"
         tools:layout="@layout/fragment_initial" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/main_fragment"
-        android:name="enzzom.hexemoji.ui.main.MainFragment"
+        android:name="enzzom.hexemoji.ui.fragments.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/game_fragment"
-        android:name="enzzom.hexemoji.ui.game.GameFragment"
+        android:name="enzzom.hexemoji.ui.fragments.game.GameFragment"
         tools:layout="@layout/fragment_game" >
         <argument
             android:name="gameMode"

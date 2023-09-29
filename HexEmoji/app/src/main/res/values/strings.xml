@@ -8,7 +8,7 @@
     <string name="app_subtitle_shortened">Divirta-se combinando emojis!</string>
     <string name="button_continue">Continuar</string>
     <string name="button_play">Jogar</string>
-    <string name="back_button_description">Voltar para página anterior</string>
+    <string name="icon_content_description_back">Voltar para página anterior</string>
 
     <!-- Dialogs -->
     <string name="dialog_exit_game_message">Deseja mesmo sair? Você pederá todo o seu progresso nessa partida!</string>
@@ -16,12 +16,24 @@
     <string name="dialog_exit_game_button_cancel">Cancelar</string>
     <string name="dialog_exit_game_emoji">😥</string>
 
+    <string name="dialog_game_tutorial_previous_content_description">Página de tutorial anterior</string>
+    <string name="dialog_game_tutorial_next_content_description">Próxima página de tutorial</string>
+
+    <!-- Game Tutorial -->
+    <string name="game_tutorial_zen_description_part_01">O Modo Zen é um modo relaxante sem limite de tempo ou pontuação.</string>
+    <string name="game_tutorial_zen_description_part_02">Toque em uma carta para revelar o emoji correspondente.</string>
+    <string name="game_tutorial_zen_description_part_03">Vença ao encontrar todos os pares de emojis iguais.</string>
+
+    <!-- Snackbars -->
+    <string name="snackbar_no_available_game_tutorial">Tutorial indisponível para este modo.</string>
+
     <!-- Initial Screen -->
     <string name="initial_screen_button_instructions">Instruções</string>
 
     <!-- Game Screen -->
-    <string name="icon_title_info">Informações</string>
-    <string name="icon_content_description_info">Informações sobre o jogo</string>
+    <string name="icon_title_game_info">Tutorial</string>
+    <string name="icon_content_description_game_info">Tutorial do modo de jogo.</string>
+    <string name="icon_content_description_exit_game">Sair da partida.</string>
 
     <!-- Main Screen -->
     <string name="page_title_page_play">Jogar</string>
@@ -137,7 +149,4 @@
         Prepare-se para um desafio caótico! Supere seus limites e demonstre suas habilidades
         jogando “Contra o Relógio”, “Movimentos Limitados” e “Embaralhado” ao mesmo tempo!
     </string>
-    <string name="board_size_template">%1$sx%2$s</string>
-    <string name="title_activity_main">MainActivity</string>
-
 </resources>

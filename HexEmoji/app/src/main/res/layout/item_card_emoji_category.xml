@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/emoji_category_card"
     style="@style/Widget.HexEmoji.CardView"
     android:clickable="true"
@@ -18,7 +18,7 @@
 
         <ImageView
             android:id="@+id/emoji_category_image"
-            app:srcCompat="@drawable/emoji_category_example_people_emotions"
+            tools:srcCompat="@drawable/emoji_category_example_people_emotions"
             android:contentDescription="@string/emoji_category_image_content_description"
             android:layout_width="@dimen/emoji_category_card_image_size"
             android:layout_height="@dimen/emoji_category_card_image_size"
@@ -30,7 +30,7 @@
 
         <TextView
             android:id="@+id/emoji_category_title"
-            android:text="@string/emoji_category_title_people_emotions"
+            tools:text="@string/emoji_category_title_people_emotions"
             android:textColor="@color/emoji_category_card_title_color_people_emotions"
             android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Title"
             android:layout_width="wrap_content"

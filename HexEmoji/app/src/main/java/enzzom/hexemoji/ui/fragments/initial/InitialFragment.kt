@@ -1,4 +1,4 @@
-package enzzom.hexemoji.ui.initial
+package enzzom.hexemoji.ui.fragments.initial
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

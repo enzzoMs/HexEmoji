@@ -6,19 +6,23 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.game.GameFragment">
+    tools:theme="@style/ThemeOverlay.HexEmoji.GameMode.Zen"
+    tools:context=".ui.fragments.game.GameFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/game_toolbar"
-        app:title="@string/game_mode_title_zen"
         app:menu="@menu/game_toolbar_menu"
         app:navigationIcon="@drawable/ic_close"
+        app:navigationContentDescription="@string/icon_content_description_exit_game"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        tools:title="@string/game_mode_title_zen" />
 
     <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/game_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        tools:layout="@layout/fragment_zen" />
 
 </LinearLayout>

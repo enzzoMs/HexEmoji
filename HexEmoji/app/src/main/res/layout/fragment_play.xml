@@ -6,7 +6,7 @@
     android:baselineAligned="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.play.PlayFragment">
+    tools:context=".ui.fragments.play.PlayFragment">
 
     <include
         android:id="@+id/game_modes_page"

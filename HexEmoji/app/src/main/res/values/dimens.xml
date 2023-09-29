@@ -4,6 +4,7 @@
     <dimen name="button_shape_radius">8dp</dimen>
     <dimen name="button_vertical_inner_padding">0dp</dimen>
     <dimen name="button_horizontal_inner_padding">10dp</dimen>
+    <dimen name="button_icon_size">48dp</dimen>
 
     <!-- Cards (Game mode and emoji category card) -->
     <dimen name="card_corner_radius">8dp</dimen>
@@ -12,11 +13,19 @@
     <dimen name="card_title_vertical_margin">@dimen/spacing_small_2</dimen>
 
     <!-- Dialogs -->
-    <dimen name="dialog_exit_game_card_corner_radius">16dp</dimen>
-    <dimen name="dialog_exit_game_inner_margin">@dimen/spacing_medium_3</dimen>
-    <dimen name="dialog_exit_game_message_top_margin">@dimen/spacing_huge</dimen>
-    <dimen name="dialog_exit_game_buttons_spacing">@dimen/spacing_small_2</dimen>
-    <dimen name="dialog_exit_game_emoji_size">100dp</dimen>
+    <dimen name="dialog_card_corner_radius">16dp</dimen>
+    <dimen name="dialog_inner_margin">@dimen/spacing_medium_3</dimen>
+
+    <dimen name="exit_game_message_top_margin">@dimen/spacing_huge</dimen>
+    <dimen name="exit_game_buttons_spacing">@dimen/spacing_small_2</dimen>
+    <dimen name="exit_game_emoji_size">100dp</dimen>
+
+    <!-- Custom views -->
+    <dimen name="game_tutorial_image_height">140dp</dimen>
+    <dimen name="game_tutorial_image_margin">@dimen/spacing_medium_1</dimen>
+    <dimen name="game_tutorial_buttons_padding">@dimen/spacing_small_1</dimen>
+    <dimen name="game_tutorial_page_indicator_size">12dp</dimen>
+    <dimen name="game_tutorial_page_indicator_margin">@dimen/spacing_small_2</dimen>
 
     <!-- Initial Screen -->
     <dimen name="initial_screen_honeycomb_guideline_percentage">0.22</dimen>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.play.EmojisSelectionFragment">
+    tools:context=".ui.fragments.play.EmojisSelectionFragment">
 
     <TextView
         android:id="@+id/emojis_selection_page_description"

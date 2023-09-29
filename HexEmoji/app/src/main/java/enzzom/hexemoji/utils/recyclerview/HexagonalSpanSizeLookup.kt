@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
  * This class doesn't do much by itself. It creates a pattern where every item at the beginning of
  * odd rows occupies 2 spans instead of one.
  *
- * For example, with a 'spanCount' of 4, the pattern would be :
+ * For example, with a 'spanCount' of 4 the pattern would be :
  * 3 items -> 4 items -> 3 items -> 4 items -> ...
  *
  * To actually implement the hexagonal pattern, the RecyclerView adapter should use the helper method
