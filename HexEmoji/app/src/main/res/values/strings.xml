@@ -21,8 +21,8 @@
 
     <!-- Game Tutorial -->
     <string name="game_tutorial_zen_description_part_01">O Modo Zen é um modo relaxante sem limite de tempo ou pontuação.</string>
-    <string name="game_tutorial_zen_description_part_02">Toque em uma carta para revelar o emoji correspondente.</string>
-    <string name="game_tutorial_zen_description_part_03">Vença ao encontrar todos os pares de emojis iguais.</string>
+    <string name="game_tutorial_zen_description_part_02">Toque em uma carta para revelar o emoji escondido.</string>
+    <string name="game_tutorial_zen_description_part_03">Vença ao encontrar todos os pares de emojis.</string>
 
     <!-- Snackbars -->
     <string name="snackbar_no_available_game_tutorial">Tutorial indisponível para este modo.</string>

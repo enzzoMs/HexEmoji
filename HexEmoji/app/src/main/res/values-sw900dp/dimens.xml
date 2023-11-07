@@ -3,7 +3,10 @@
     <!-- Dialogs -->
     <dimen name="exit_game_emoji_size">120dp</dimen>
 
-    <!-- Board Size Selecion Page -->
+    <!-- Custom Views -->
+    <dimen name="game_board_card_size">120dp</dimen>
+
+    <!-- Board Size Selection Page -->
     <dimen name="board_size_card_size">120dp</dimen>
     <dimen name="navigation_drawer_app_title_text_size">40sp</dimen>
 

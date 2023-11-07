@@ -18,7 +18,7 @@
 
     <dimen name="exit_game_message_top_margin">@dimen/spacing_huge</dimen>
     <dimen name="exit_game_buttons_spacing">@dimen/spacing_small_2</dimen>
-    <dimen name="exit_game_emoji_size">100dp</dimen>
+    <dimen name="exit_game_emoji_size">110dp</dimen>
 
     <!-- Custom views -->
     <dimen name="game_tutorial_image_height">140dp</dimen>
@@ -26,6 +26,9 @@
     <dimen name="game_tutorial_buttons_padding">@dimen/spacing_small_1</dimen>
     <dimen name="game_tutorial_page_indicator_size">12dp</dimen>
     <dimen name="game_tutorial_page_indicator_margin">@dimen/spacing_small_2</dimen>
+
+    <dimen name="game_board_padding">@dimen/spacing_large</dimen>
+    <dimen name="game_board_card_size">100dp</dimen>
 
     <!-- Initial Screen -->
     <dimen name="initial_screen_honeycomb_guideline_percentage">0.22</dimen>
@@ -72,6 +75,7 @@
     <dimen name="spacing_medium_1">16dp</dimen>
     <dimen name="spacing_medium_2">20dp</dimen>
     <dimen name="spacing_medium_3">24dp</dimen>
+    <dimen name="spacing_large">48dp</dimen>
     <dimen name="spacing_huge">64dp</dimen>
 
     <dimen name="text_size_subtitle2">14sp</dimen>

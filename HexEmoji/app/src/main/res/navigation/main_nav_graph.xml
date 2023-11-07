@@ -39,6 +39,9 @@
         <argument
             android:name="boardSize"
             app:argType="enzzom.hexemoji.models.BoardSize" />
+        <argument
+            android:name="selectedEmojiCategories"
+            app:argType="string[]" />
         <action
             android:id="@+id/action_game_fragment_to_main_fragment"
             app:destination="@id/main_fragment"

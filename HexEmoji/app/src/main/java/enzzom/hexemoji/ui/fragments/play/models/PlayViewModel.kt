@@ -14,7 +14,7 @@ import enzzom.hexemoji.models.GameModeCard
 
 /**
  * The [PlayViewModel] class holds and is responsible for managing information related to the chosen
- * game mode, selected emoji categories, and board size within the HexEmoji game. It provides methods
+ * game mode, selected emoji categories and board size within the HexEmoji game. It provides methods
  * for interacting with and managing these selections.
 */
 
@@ -101,6 +101,8 @@ class PlayViewModel : ViewModel() {
         _hasSelectedAnyCategory.value = false
         _hasSelectedAllCategories.value = false
     }
+
+    fun getSelectedEmojiCategories(): List<EmojiCategory> = selectedEmojiCategories.toList()
 
     fun selectBoardSize(boardSize: BoardSize) {
         selectedBoardSize = boardSize

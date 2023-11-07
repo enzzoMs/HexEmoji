@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <HorizontalScrollView
+        android:id="@+id/game_board_horizontal_scroll"
+        android:scrollbars="none"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <!-- Adding a kinda useless vertical scroll view just to make the scaling easier -->
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/game_board_vertical_scroll"
+            android:scrollbars="none"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/game_board"
+                android:nestedScrollingEnabled="false"
+                android:layout_width="wrap_content"
+                android:clipToPadding="false"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/game_board_padding"
+                android:paddingVertical="@dimen/game_board_padding" />
+
+        </androidx.core.widget.NestedScrollView>
+
+    </HorizontalScrollView>
+
+</merge>

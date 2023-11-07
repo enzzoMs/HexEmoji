@@ -15,13 +15,17 @@ import androidx.fragment.app.commit
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.DialogExitGameBinding
 import enzzom.hexemoji.databinding.FragmentGameBinding
+import enzzom.hexemoji.models.BoardSize
+import enzzom.hexemoji.models.EmojiCategory
 import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.ui.custom.GameTutorialDataProvider
 import enzzom.hexemoji.ui.custom.GameTutorialView
 
+@AndroidEntryPoint
 class GameFragment : Fragment() {
 
     private val args: GameFragmentArgs by navArgs()
@@ -39,6 +43,7 @@ class GameFragment : Fragment() {
         binding.gameToolbar.apply {
             title = GameMode.getGameModeTitle(args.gameMode, resources)
             setNavigationOnClickListener { showExitGameDialog() }
+
             setOnMenuItemClickListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.game_info -> {
@@ -104,7 +109,6 @@ class GameFragment : Fragment() {
 
             Dialog(requireContext()).apply {
                 setContentView(gameTutorialView)
-                setContentView(gameTutorialView)
                 window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 show()
             }
@@ -122,5 +126,11 @@ class GameFragment : Fragment() {
     private fun getGameModeThemeId(gameMode: GameMode): Int = when(gameMode) {
         GameMode.ZEN -> R.style.ThemeOverlay_HexEmoji_GameMode_Zen
         else -> R.style.ThemeOverlay_HexEmoji_GameMode_Zen
+    }
+
+    fun getBoardSize(): BoardSize = args.boardSize
+
+    fun getSelectedEmojiCategories(): List<EmojiCategory> {
+        return args.selectedEmojiCategories.map { EmojiCategory.valueOf(it) }
     }
 }
