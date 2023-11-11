@@ -6,4 +6,8 @@
     <!-- Board Size Selection Page -->
     <bool name="board_selection_use_hexagon_board">false</bool>
     <integer name="board_selection_hexagonal_grid_span">3</integer>
+
+    <!-- Game Screen -->
+    <integer name="game_countdown_initial_value">3</integer>
+
 </resources>

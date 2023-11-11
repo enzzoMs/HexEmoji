@@ -81,13 +81,13 @@
     </array>
 
     <array name="game_mode_title_text_color">
-        <item>@color/game_mode_primary_color_zen</item>
-        <item>@color/game_mode_primary_color_against_clock</item>
-        <item>@color/game_mode_primary_color_limited_moves</item>
-        <item>@color/game_mode_primary_color_sequence</item>
-        <item>@color/game_mode_primary_color_shuffled</item>
-        <item>@color/game_mode_primary_color_flood</item>
-        <item>@color/game_mode_primary_color_chaos</item>
+        <item>@color/game_mode_main_color_zen</item>
+        <item>@color/game_mode_main_color_against_clock</item>
+        <item>@color/game_mode_main_color_limited_moves</item>
+        <item>@color/game_mode_main_color_sequence</item>
+        <item>@color/game_mode_main_color_shuffled</item>
+        <item>@color/game_mode_main_color_flood</item>
+        <item>@color/game_mode_main_color_chaos</item>
     </array>
 
     <array name="game_mode_emoji">

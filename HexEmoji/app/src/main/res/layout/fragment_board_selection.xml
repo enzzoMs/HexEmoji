@@ -18,9 +18,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- This FrameLayout serves as a container to center the RecyclerView with 'wrap_content' height
+    <!-- This FrameLayout serves as a container to center the RecyclerView with 'wrap_content' height.
     Without this container, using 'wrap_content' could result in the RecyclerView's layout constraints
-    being exceeded. If a different height setting is used, the grid contents may not be centered
+    being exceeded. If a different height setting is used the grid contents may not be centered
     on the screen as intended -->
     <FrameLayout
         android:layout_width="wrap_content"

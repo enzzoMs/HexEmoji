@@ -21,6 +21,7 @@ class GameViewModel @AssistedInject constructor(
     @Assisted val selectedEmojiCategories: List<EmojiCategory>
 ) : ViewModel() {
 
+    private var executeBoardEntryAnimation: Boolean = true
     private val numberOfEmojiCards = boardSize.getSizeInHexagonalLayout()
     private lateinit var emojis: List<Emoji>
 
@@ -28,6 +29,12 @@ class GameViewModel @AssistedInject constructor(
         viewModelScope.launch {
             emojis = emojiRepository.getRandomUnlockedEmojis(selectedEmojiCategories, numberOfEmojiCards)
         }
+    }
+
+    fun shouldExecuteEntryAnimation(): Boolean = executeBoardEntryAnimation
+
+    fun countdownFinished() {
+        executeBoardEntryAnimation = false
     }
 
     @AssistedFactory

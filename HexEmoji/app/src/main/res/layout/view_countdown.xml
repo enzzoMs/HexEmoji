@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:theme="@style/ThemeOverlay.HexEmoji.GameMode.Zen"
+    tools:layout_width="200dp"
+    tools:layout_height="200dp"
+    tools:layout_gravity="center"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <View
+        android:id="@+id/countdown_back_shape"
+        android:background="@drawable/countdown_shape"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/countdown_progress_indicator"
+        app:indicatorDirectionCircular="counterclockwise"
+        app:indicatorColor="?attr/colorAccent"
+        app:trackColor="?attr/colorOnSurfaceVariant"
+        app:trackThickness="@dimen/countdown_track_thickness"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/countdown_back_shape"
+        app:layout_constraintEnd_toEndOf="@id/countdown_back_shape"
+        app:layout_constraintStart_toStartOf="@id/countdown_back_shape"
+        app:layout_constraintTop_toTopOf="@id/countdown_back_shape"
+        tools:progress="100" />
+
+    <TextView
+        android:id="@+id/countdown_current_value"
+        android:textColor="?attr/colorAccent"
+        app:autoSizeTextType="uniform"
+        android:fontFamily="@font/lexend_medium"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/countdown_bottom_guideline"
+        app:layout_constraintEnd_toEndOf="@id/countdown_end_guideline"
+        app:layout_constraintStart_toStartOf="@id/countdown_start_guideline"
+        app:layout_constraintTop_toTopOf="@id/countdown_top_guideline"
+        tools:text="3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/countdown_top_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/countdown_bottom_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/countdown_start_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/countdown_end_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85" />
+
+</merge>

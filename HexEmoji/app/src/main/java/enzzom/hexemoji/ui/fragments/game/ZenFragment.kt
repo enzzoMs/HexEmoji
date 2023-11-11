@@ -1,9 +1,11 @@
 package enzzom.hexemoji.ui.fragments.game
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,6 +18,8 @@ import enzzom.hexemoji.ui.fragments.game.adapters.GameBoardAdapter
 import enzzom.hexemoji.ui.fragments.game.models.GameViewModel
 import javax.inject.Inject
 
+private const val COUNTDOWN_FADE_ANIMATION_DURATION = 200L
+private const val COUNTDOWN_FADE_ANIMATION_DELAY = 500L
 
 @AndroidEntryPoint
 class ZenFragment : Fragment() {
@@ -41,11 +45,40 @@ class ZenFragment : Fragment() {
 
         setGameTutorial()
 
-        binding.zenGameBoard.setGameBoardAdapter(GameBoardAdapter(
-            gridSpanCount = boardSize.numOfColumns,
-            numberOfEmojiCards = boardSize.getSizeInHexagonalLayout(),
-            emojiCardSizePx = resources.getDimensionPixelSize(R.dimen.game_board_card_size)
-        ))
+        binding.apply {
+            zenGameBoard.enableBoardMovement(!gameViewModel.shouldExecuteEntryAnimation())
+
+            GameBoardAdapter(
+                gridSpanCount = boardSize.numOfColumns,
+                numberOfEmojiCards = boardSize.getSizeInHexagonalLayout(),
+                emojiCardSizePx = resources.getDimensionPixelSize(R.dimen.game_board_card_size),
+                executeBoardEntryAnimation = gameViewModel.shouldExecuteEntryAnimation()
+            ).apply {
+                animationFinished.observe(viewLifecycleOwner) { animationFinished ->
+                    if (gameViewModel.shouldExecuteEntryAnimation() && animationFinished) {
+                        zenCountdown.visibility = View.VISIBLE
+                        zenCountdown.start()
+                    }
+                }
+                zenGameBoard.setGameBoardAdapter(this)
+            }
+
+
+            zenCountdown.countdownFinished.observe(viewLifecycleOwner) { countdownFinished ->
+                if (countdownFinished) {
+                    ObjectAnimator.ofFloat(zenCountdown, "alpha", 0f).apply {
+                        duration = COUNTDOWN_FADE_ANIMATION_DURATION
+                        startDelay = COUNTDOWN_FADE_ANIMATION_DELAY
+                        doOnEnd {
+                            zenCountdown.visibility = View.GONE
+                            zenGameBoard.enableBoardMovement(true)
+                            gameViewModel.countdownFinished()
+                        }
+                        start()
+                    }
+                }
+            }
+        }
 
         return binding.root
     }

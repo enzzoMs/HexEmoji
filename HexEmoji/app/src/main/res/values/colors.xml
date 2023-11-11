@@ -32,13 +32,16 @@
     <color name="game_mode_background_color_flood">@color/green_blue_light</color>
     <color name="game_mode_background_color_chaos">@color/orange_light</color>
 
-    <color name="game_mode_primary_color_zen">@color/pink</color>
-    <color name="game_mode_primary_color_against_clock">@color/yellow</color>
-    <color name="game_mode_primary_color_limited_moves">@color/blue</color>
-    <color name="game_mode_primary_color_sequence">@color/purple</color>
-    <color name="game_mode_primary_color_shuffled">@color/red</color>
-    <color name="game_mode_primary_color_flood">@color/green_blue</color>
-    <color name="game_mode_primary_color_chaos">@color/orange</color>
+    <color name="game_mode_main_color_zen">@color/pink</color>
+    <color name="game_mode_main_color_against_clock">@color/yellow</color>
+    <color name="game_mode_main_color_limited_moves">@color/blue</color>
+    <color name="game_mode_main_color_sequence">@color/purple</color>
+    <color name="game_mode_main_color_shuffled">@color/red</color>
+    <color name="game_mode_main_color_flood">@color/green_blue</color>
+    <color name="game_mode_main_color_chaos">@color/orange</color>
+
+    <color name="game_mode_surface_variant_color_zen">@color/pink_variant</color>
+    <color name="game_mode_on_surface_variant_color_zen">@color/pink_light_variant</color>
 
     <!-- Splash Screen -->
     <color name="screen_splash_background_color">@color/yellow_maximum</color>
@@ -93,7 +96,9 @@
     <color name="gold_light">#E29C00</color>
 
     <color name="pink">#C34F79</color>
+    <color name="pink_variant">#FFA0A9</color>
     <color name="pink_light">#FFD4D7</color>
+    <color name="pink_light_variant">#FFC5CA</color>
     <color name="yellow">#CF8500</color>
     <color name="yellow_light">#FFD282</color>
     <color name="blue">#1A7EE3</color>

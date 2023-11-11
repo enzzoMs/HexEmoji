@@ -30,6 +30,7 @@ class GameBoardView(context: Context, attrs: AttributeSet? = null) : FrameLayout
     private val binding: ViewGameBoardBinding
     private val gestureDetector: GestureDetectorCompat
     private val scaleDetector: ScaleGestureDetector
+    private var boardMovementEnabled: Boolean = true
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -56,8 +57,8 @@ class GameBoardView(context: Context, attrs: AttributeSet? = null) : FrameLayout
                         }
 
                         // Centering the gameBoard
-                        gameBoardVerticalScroll.scrollBy(0, abs(gameBoard.height - root.height) / 2)
-                        gameBoardHorizontalScroll.scrollBy(abs(gameBoard.width - root.width) / 2, 0)
+                        gameBoardVerticalScroll.scrollTo(0, abs(gameBoard.height - root.height) / 2)
+                        gameBoardHorizontalScroll.scrollTo(abs(gameBoard.width - root.width) / 2, 0)
                     }
                     binding.root.viewTreeObserver.removeOnGlobalLayoutListener(this)
                 }
@@ -124,18 +125,26 @@ class GameBoardView(context: Context, attrs: AttributeSet? = null) : FrameLayout
         }
     }
 
+    fun enableBoardMovement(enable: Boolean) {
+        boardMovementEnabled = enable
+    }
+
     override fun onTouchEvent(event: MotionEvent): Boolean {
         performClick()
-        gestureDetector.onTouchEvent(event)
-        scaleDetector.onTouchEvent(event)
+        if (boardMovementEnabled) {
+            gestureDetector.onTouchEvent(event)
+            scaleDetector.onTouchEvent(event)
+        }
         return true
     }
 
     override fun onInterceptTouchEvent(ev: MotionEvent): Boolean = false
 
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
-        gestureDetector.onTouchEvent(ev)
-        scaleDetector.onTouchEvent(ev)
+        if (boardMovementEnabled) {
+            gestureDetector.onTouchEvent(ev)
+            scaleDetector.onTouchEvent(ev)
+        }
         return super.dispatchTouchEvent(ev)
     }
 }

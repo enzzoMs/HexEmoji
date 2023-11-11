@@ -159,10 +159,10 @@
     <!-- Game Mode Screens -->
     <style name="ThemeOverlay.HexEmoji.GameMode.Zen" parent="">
         <item name="colorPrimary">@color/game_screen_primary_color</item>
-        <item name="colorOnPrimary">@color/game_mode_primary_color_zen</item>
-        <item name="colorAccent">@color/game_mode_primary_color_zen</item>
-        <item name="colorSurfaceVariant">#FFA0A9</item>
-        <item name="colorOnSurfaceVariant">#FFC5CA</item>
+        <item name="colorOnPrimary">@color/game_mode_main_color_zen</item>
+        <item name="colorAccent">@color/game_mode_main_color_zen</item>
+        <item name="colorSurfaceVariant">@color/game_mode_surface_variant_color_zen</item>
+        <item name="colorOnSurfaceVariant">@color/game_mode_on_surface_variant_color_zen</item>
         <item name="android:colorBackground">@color/game_mode_background_color_zen</item>
     </style>
 

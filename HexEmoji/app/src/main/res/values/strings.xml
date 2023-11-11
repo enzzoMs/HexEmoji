@@ -16,10 +16,10 @@
     <string name="dialog_exit_game_button_cancel">Cancelar</string>
     <string name="dialog_exit_game_emoji">😥</string>
 
-    <string name="dialog_game_tutorial_previous_content_description">Página de tutorial anterior</string>
-    <string name="dialog_game_tutorial_next_content_description">Próxima página de tutorial</string>
-
     <!-- Game Tutorial -->
+    <string name="game_tutorial_previous_button_content_description">Página de tutorial anterior</string>
+    <string name="game_tutorial_next_button_content_description">Próxima página de tutorial</string>
+
     <string name="game_tutorial_zen_description_part_01">O Modo Zen é um modo relaxante sem limite de tempo ou pontuação.</string>
     <string name="game_tutorial_zen_description_part_02">Toque em uma carta para revelar o emoji escondido.</string>
     <string name="game_tutorial_zen_description_part_03">Vença ao encontrar todos os pares de emojis.</string>
@@ -34,6 +34,8 @@
     <string name="icon_title_game_info">Tutorial</string>
     <string name="icon_content_description_game_info">Tutorial do modo de jogo.</string>
     <string name="icon_content_description_exit_game">Sair da partida.</string>
+
+    <string name="game_countdown_end_text">Já!</string>
 
     <!-- Main Screen -->
     <string name="page_title_page_play">Jogar</string>

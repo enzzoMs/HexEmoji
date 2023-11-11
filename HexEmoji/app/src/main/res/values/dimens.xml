@@ -30,6 +30,8 @@
     <dimen name="game_board_padding">@dimen/spacing_large</dimen>
     <dimen name="game_board_card_size">100dp</dimen>
 
+    <dimen name="countdown_track_thickness">3dp</dimen>
+
     <!-- Initial Screen -->
     <dimen name="initial_screen_honeycomb_guideline_percentage">0.22</dimen>
     <dimen name="initial_screen_app_title_spacing">@dimen/spacing_small_1</dimen>
@@ -66,7 +68,10 @@
     <!-- Board Size Selecion Page -->
     <dimen name="board_size_card_size">100dp</dimen>
     <dimen name="board_size_card_inner_margin">@dimen/spacing_medium_2</dimen>
-    <dimen name="board_size_card_outer_margin">@dimen/spacing_extra_small</dimen>
+    <dimen name="board_size_card_outer_margin">@dimen/spacing_small_1</dimen>
+
+    <!-- Game Screen -->
+    <dimen name="game_countdown_size">120dp</dimen>
 
     <!-- General -->
     <dimen name="spacing_extra_small">4dp</dimen>
