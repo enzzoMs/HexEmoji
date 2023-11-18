@@ -1,5 +1,6 @@
 package enzzom.hexemoji.ui.fragments.play
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.FragmentEmojisSelectionBinding
+import enzzom.hexemoji.models.EmojiCategory
 import enzzom.hexemoji.models.EmojiCategoryCard
 import enzzom.hexemoji.ui.fragments.main.MainFragment
 import enzzom.hexemoji.ui.fragments.play.adapters.EmojiCategoryAdapter
@@ -42,7 +44,7 @@ class EmojisSelectionFragment : Fragment() {
             binding?.allEmojisCheckBox?.isChecked = it
         }
 
-        emojiCategoryCards = playViewModel.getEmojiCategoryCards(resources)
+        emojiCategoryCards = getEmojiCategoryCards(resources)
 
         binding?.apply {
             // Removing the recycler view animations (mainly to prevent blink after 'notifyItemChanged')
@@ -98,5 +100,30 @@ class EmojisSelectionFragment : Fragment() {
     private fun navigateToBoardSelection() {
         playViewModel.clearBoardSizeSelection()
         findNavController().navigate(R.id.action_emojis_selection_to_board_selection)
+    }
+
+    private fun getEmojiCategoryCards(resources: Resources): List<EmojiCategoryCard> {
+        val emojiCategoryCards = mutableListOf<EmojiCategoryCard>()
+
+        val categoryTitles = resources.getStringArray(R.array.emoji_category_titles)
+        val categoryTitleColors = resources.getIntArray(R.array.emoji_category_title_color)
+        val categoryDescriptions = resources.getStringArray(R.array.emoji_category_descriptions)
+        val categoryImage = resources.obtainTypedArray(R.array.emoji_category_images)
+
+        EmojiCategory.values().forEachIndexed { index, emojiCategory ->
+            emojiCategoryCards.add(
+                EmojiCategoryCard(
+                    emojiCategory,
+                    categoryTitles[index],
+                    categoryTitleColors[index],
+                    categoryDescriptions[index],
+                    categoryImage.getResourceId(index, R.drawable.emoji_category_example_people_emotions)
+                )
+            )
+        }
+
+        categoryImage.recycle()
+
+        return emojiCategoryCards.toList()
     }
 }

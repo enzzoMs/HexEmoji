@@ -3,6 +3,10 @@
     <!-- Dialogs -->
     <dimen name="exit_game_emoji_size">120dp</dimen>
 
+    <!-- Cards (Game mode and emoji category card) -->
+    <dimen name="card_inner_margin">@dimen/spacing_medium_2</dimen>
+    <dimen name="card_title_vertical_margin">@dimen/spacing_medium_1</dimen>
+
     <!-- Custom Views -->
     <dimen name="game_board_card_size">120dp</dimen>
 
@@ -13,8 +17,17 @@
     <!-- Main Screen -->
     <dimen name="navigation_drawer_icon_size">35dp</dimen>
 
+    <!-- Game Modes Page -->
+    <dimen name="game_mode_card_emoji_size">130dp</dimen>
+
+    <!-- Emojis Selection Page -->
+    <dimen name="emoji_category_card_image_size">130dp</dimen>
+
+    <!-- Game Screen -->
+    <dimen name="game_countdown_size">130dp</dimen>
+
     <!-- General -->
-    <dimen name="text_size_subtitle2">20sp</dimen>
+    <dimen name="text_size_subtitle2">22sp</dimen>
     <dimen name="text_size_subtitle1">24sp</dimen>
     <dimen name="text_size_headline6">30sp</dimen>
     <dimen name="text_size_headline2">90sp</dimen>

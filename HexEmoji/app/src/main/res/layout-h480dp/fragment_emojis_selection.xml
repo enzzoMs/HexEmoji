@@ -47,6 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginVertical="@dimen/play_screens_contents_margin"
+        android:layout_marginHorizontal="@dimen/play_screens_list_horizontal_margin"
         app:layout_constraintBottom_toTopOf="@id/button_continue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -148,12 +148,12 @@
     </style>
 
     <!-- Dialogs -->
-    <style name="TextAppearance.HexEmoji.Dialog.ExitGame" parent="TextAppearance.HexEmoji.Subtitle1">
-        <item name="fontFamily">@font/lexend_medium</item>
+    <style name="TextAppearance.HexEmoji.Dialog" parent="TextAppearance.HexEmoji.Subtitle1">
+        <item name="fontFamily">@font/lexend_semibold</item>
     </style>
 
-    <style name="TextAppearance.HexEmoji.Dialog.GameTutorial" parent="TextAppearance.HexEmoji.Subtitle1">
-        <item name="fontFamily">@font/lexend_semibold</item>
+    <style name="TextAppearance.HexEmoji.Dialog.ExitGame" parent="TextAppearance.HexEmoji.Subtitle1">
+        <item name="fontFamily">@font/lexend_medium</item>
     </style>
 
     <!-- Game Mode Screens -->

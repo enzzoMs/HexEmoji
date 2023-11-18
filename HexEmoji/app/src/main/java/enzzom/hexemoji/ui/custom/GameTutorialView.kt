@@ -76,12 +76,12 @@ class GameTutorialView(
 
             indicator.setBackgroundResource(R.drawable.page_indicator_shape)
 
-            val indicatorSize = resources.getDimensionPixelSize(R.dimen.game_tutorial_page_indicator_size)
+            val indicatorSize = resources.getDimensionPixelSize(R.dimen.tutorial_page_indicator_size)
 
             val layoutParams = LinearLayout.LayoutParams(indicatorSize, indicatorSize)
 
             layoutParams.marginEnd = if (i < dataProvider.getTotalItems() - 1) {
-                resources.getDimensionPixelSize(R.dimen.game_tutorial_page_indicator_margin)
+                resources.getDimensionPixelSize(R.dimen.tutorial_page_indicator_margin)
             } else {
                 0
             }

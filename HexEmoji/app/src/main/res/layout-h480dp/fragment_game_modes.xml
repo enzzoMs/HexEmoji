@@ -19,10 +19,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/game_mode_list"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        app:spanCount="@integer/game_modes_grid_span"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginVertical="@dimen/play_screens_contents_margin" />
+        android:layout_marginVertical="@dimen/play_screens_contents_margin"
+        android:layout_marginHorizontal="@dimen/play_screens_list_horizontal_margin" />
 
 </LinearLayout>

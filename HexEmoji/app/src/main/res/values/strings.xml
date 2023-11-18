@@ -10,15 +10,21 @@
     <string name="button_play">Jogar</string>
     <string name="icon_content_description_back">Voltar para página anterior</string>
 
-    <!-- Dialogs -->
-    <string name="dialog_exit_game_message">Deseja mesmo sair? Você pederá todo o seu progresso nessa partida!</string>
-    <string name="dialog_exit_game_button_confirm">Sair</string>
-    <string name="dialog_exit_game_button_cancel">Cancelar</string>
-    <string name="dialog_exit_game_emoji">😥</string>
+    <!-- Preferences -->
+    <string name="preferences_file_key" translatable="false">app_preferences</string>
+    <string name="preference_key_show_board_tutorial" translatable="false">preference_show_board_tutorial</string>
 
-    <!-- Game Tutorial -->
-    <string name="game_tutorial_previous_button_content_description">Página de tutorial anterior</string>
-    <string name="game_tutorial_next_button_content_description">Próxima página de tutorial</string>
+    <!-- Dialogs -->
+    <string name="exit_game_message">Deseja mesmo sair? Você pederá todo o seu progresso nessa partida!</string>
+    <string name="exit_game_button_confirm">Sair</string>
+    <string name="exit_game_button_cancel">Cancelar</string>
+    <string name="exit_game_emoji" translatable="false">😥</string>
+
+    <string name="tutorial_previous_button_content_description">Página de tutorial anterior</string>
+    <string name="tutorial_next_button_content_description">Próxima página de tutorial</string>
+
+    <string name="board_tutorial_scaling">Junte os dedos para aumentar o zoom e afaste-os para diminuir.</string>
+    <string name="board_tutorial_panning">Deslize o dedo em qualquer direção para movimentar o tabuleiro.</string>
 
     <string name="game_tutorial_zen_description_part_01">O Modo Zen é um modo relaxante sem limite de tempo ou pontuação.</string>
     <string name="game_tutorial_zen_description_part_02">Toque em uma carta para revelar o emoji escondido.</string>
@@ -108,13 +114,13 @@
     <!-- Game Modes Page -->
     <string name="page_description_play">Explore diferentes modos e desafios!</string>
 
-    <string name="game_mode_card_emoji_lotus">🪷</string>
-    <string name="game_mode_card_emoji_hourglass_done">⌛</string>
-    <string name="game_mode_card_emoji_triangular_ruler">📐</string>
-    <string name="game_mode_card_emoji_brain">🧠</string>
-    <string name="game_mode_card_emoji_dice">🎲</string>
-    <string name="game_mode_card_emoji_recycling">🌊</string>
-    <string name="game_mode_card_emoji_spiral_eyes">😵‍💫</string>
+    <string name="game_mode_card_emoji_lotus" translatable="false">🪷</string>
+    <string name="game_mode_card_emoji_hourglass_done" translatable="false">⌛</string>
+    <string name="game_mode_card_emoji_triangular_ruler" translatable="false">📐</string>
+    <string name="game_mode_card_emoji_brain" translatable="false">🧠</string>
+    <string name="game_mode_card_emoji_dice" translatable="false">🎲</string>
+    <string name="game_mode_card_emoji_recycling" translatable="false">🌊</string>
+    <string name="game_mode_card_emoji_spiral_eyes" translatable="false">😵‍💫</string>
 
     <string name="game_mode_title_zen">Modo Zen</string>
     <string name="game_mode_title_against_clock">Contra o Relógio</string>

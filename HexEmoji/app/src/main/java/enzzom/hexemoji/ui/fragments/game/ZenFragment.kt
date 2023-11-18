@@ -63,17 +63,23 @@ class ZenFragment : Fragment() {
                 zenGameBoard.setGameBoardAdapter(this)
             }
 
-
             zenCountdown.countdownFinished.observe(viewLifecycleOwner) { countdownFinished ->
                 if (countdownFinished) {
                     ObjectAnimator.ofFloat(zenCountdown, "alpha", 0f).apply {
                         duration = COUNTDOWN_FADE_ANIMATION_DURATION
                         startDelay = COUNTDOWN_FADE_ANIMATION_DELAY
+
                         doOnEnd {
                             zenCountdown.visibility = View.GONE
                             zenGameBoard.enableBoardMovement(true)
-                            gameViewModel.countdownFinished()
+                            gameViewModel.boardEntryAnimationFinished()
+
+                            if (zenGameBoard.isBoardLargerThanScreen() && gameViewModel.shouldShowBoardTutorial()) {
+                                (parentFragment as GameFragment).showBoardTutorialDialog()
+                                gameViewModel.boardTutorialFinished()
+                            }
                         }
+
                         start()
                     }
                 }

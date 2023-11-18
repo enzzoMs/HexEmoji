@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Emojis Selection Page -->
-    <integer name="emoji_categories_grid_span">1</integer>
+    <!-- Game Modes Page -->
+    <integer name="game_modes_grid_span">2</integer>
 
-    <!-- Board Size Selection Page -->
-    <integer name="board_selection_hexagonal_grid_span">2</integer>
+    <!-- Emojis Selection Page -->
+    <integer name="emoji_categories_grid_span">3</integer>
 </resources>

@@ -31,6 +31,7 @@ class GameBoardView(context: Context, attrs: AttributeSet? = null) : FrameLayout
     private val gestureDetector: GestureDetectorCompat
     private val scaleDetector: ScaleGestureDetector
     private var boardMovementEnabled: Boolean = true
+    private var boardLargerThanScreen: Boolean = false
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -50,10 +51,14 @@ class GameBoardView(context: Context, attrs: AttributeSet? = null) : FrameLayout
                         // If the gameBoard is smaller than the screen, then there is no need for padding
                         if (gameBoard.width - (gameBoardPadding * 2) < root.width) {
                             gameBoard.setPadding(0, gameBoard.paddingTop, 0, gameBoard.paddingBottom)
+                        } else {
+                            boardLargerThanScreen = true
                         }
 
                         if (gameBoard.height - (gameBoardPadding * 2) < root.height) {
                             gameBoard.setPadding(gameBoard.paddingLeft, 0,gameBoard.paddingRight, 0)
+                        } else {
+                            boardLargerThanScreen = true
                         }
 
                         // Centering the gameBoard
@@ -128,6 +133,8 @@ class GameBoardView(context: Context, attrs: AttributeSet? = null) : FrameLayout
     fun enableBoardMovement(enable: Boolean) {
         boardMovementEnabled = enable
     }
+
+    fun isBoardLargerThanScreen() = boardLargerThanScreen
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         performClick()

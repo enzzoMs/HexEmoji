@@ -22,6 +22,7 @@ import enzzom.hexemoji.databinding.FragmentGameBinding
 import enzzom.hexemoji.models.BoardSize
 import enzzom.hexemoji.models.EmojiCategory
 import enzzom.hexemoji.models.GameMode
+import enzzom.hexemoji.ui.custom.BoardTutorialView
 import enzzom.hexemoji.ui.custom.GameTutorialDataProvider
 import enzzom.hexemoji.ui.custom.GameTutorialView
 
@@ -81,6 +82,22 @@ class GameFragment : Fragment() {
         gameTutorialDataProvider = dataProvider
     }
 
+    fun getBoardSize(): BoardSize = args.boardSize
+
+    fun getSelectedEmojiCategories(): List<EmojiCategory> {
+        return args.selectedEmojiCategories.map { EmojiCategory.valueOf(it) }
+    }
+
+    fun showBoardTutorialDialog() {
+        val boardTutorialView = BoardTutorialView(ContextThemeWrapper(context, getGameModeThemeId(args.gameMode)))
+
+        Dialog(requireContext()).apply {
+            setContentView(boardTutorialView)
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            show()
+        }
+    }
+
     private fun showExitGameDialog() {
         val exitDialogBinding = DialogExitGameBinding.inflate(layoutInflater)
 
@@ -126,11 +143,5 @@ class GameFragment : Fragment() {
     private fun getGameModeThemeId(gameMode: GameMode): Int = when(gameMode) {
         GameMode.ZEN -> R.style.ThemeOverlay_HexEmoji_GameMode_Zen
         else -> R.style.ThemeOverlay_HexEmoji_GameMode_Zen
-    }
-
-    fun getBoardSize(): BoardSize = args.boardSize
-
-    fun getSelectedEmojiCategories(): List<EmojiCategory> {
-        return args.selectedEmojiCategories.map { EmojiCategory.valueOf(it) }
     }
 }

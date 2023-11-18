@@ -3,7 +3,6 @@ package enzzom.hexemoji.utils.recyclerview
 import android.view.View
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.tan
 
 private const val DEFAULT_HEXAGON_MARGIN_PX = 30
@@ -33,16 +32,9 @@ object HexagonalLayout {
         view: View, viewPositionInGrid: Int, spanCount: Int, viewSizePx: Int,
         marginPx: Int = DEFAULT_HEXAGON_MARGIN_PX
     ) {
-        val layoutParams = LinearLayout.LayoutParams(
-           view.layoutParams.width,
-            view.layoutParams.height,
-        )
-
-        layoutParams.apply {
-            width = viewSizePx
-            height = viewSizePx
+        val layoutParams = LinearLayout.LayoutParams(viewSizePx, viewSizePx).also {
             // Reset existing margins
-            setMargins(0, 0, 0, 0)
+            it.setMargins(0, 0, 0, 0)
         }
 
         // In the hexagonal pattern created by 'HexagonalSpanSizeLookup' even rows have a length of

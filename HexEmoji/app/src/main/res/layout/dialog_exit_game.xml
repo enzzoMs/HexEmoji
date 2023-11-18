@@ -20,7 +20,7 @@
 
             <TextView
                 android:id="@+id/exit_game_message"
-                android:text="@string/dialog_exit_game_message"
+                android:text="@string/exit_game_message"
                 android:textAppearance="@style/TextAppearance.HexEmoji.Dialog.ExitGame"
                 android:gravity="center"
                 android:layout_width="0dp"
@@ -33,7 +33,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/exit_game_button_confirm"
-                android:text="@string/dialog_exit_game_button_confirm"
+                android:text="@string/exit_game_button_confirm"
                 style="@style/Widget.HexEmoji.Button.Primary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/exit_game_button_cancel"
-                android:text="@string/dialog_exit_game_button_cancel"
+                android:text="@string/exit_game_button_cancel"
                 style="@style/Widget.HexEmoji.Button.Secondary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
     <!-- Black text color to avoid transparency-->
     <TextView
         android:id="@+id/exit_game_emoji"
-        android:text="@string/dialog_exit_game_emoji"
+        android:text="@string/exit_game_emoji"
         android:textColor="#000000"
         app:autoSizeTextType="uniform"
         android:gravity="center"
