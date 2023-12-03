@@ -134,6 +134,18 @@ class GameBoardView(context: Context, attrs: AttributeSet? = null) : FrameLayout
         boardMovementEnabled = enable
     }
 
+    fun enableCardInteraction(enable: Boolean) {
+        binding.gameBoard.adapter?.let {
+            (it as GameBoardAdapter).enableCardInteraction(enable)
+        }
+    }
+
+    fun getCardViewForPosition(cardPosition: Int): EmojiCardView? {
+        return binding.gameBoard.findViewHolderForAdapterPosition(cardPosition)?.let {
+            (it as GameBoardAdapter.EmojiCardHolder).emojiCardView
+        }
+    }
+
     fun isBoardLargerThanScreen() = boardLargerThanScreen
 
     override fun onTouchEvent(event: MotionEvent): Boolean {

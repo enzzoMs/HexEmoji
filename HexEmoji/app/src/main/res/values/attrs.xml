@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Emoji Card View -->
+    <attr name="state_matched" format="boolean"/>
+
     <declare-styleable name="CountdownView">
         <attr name="initialValue" format="integer"/>
         <attr name="endText" format="string"/>
     </declare-styleable>
-    
+
 </resources>

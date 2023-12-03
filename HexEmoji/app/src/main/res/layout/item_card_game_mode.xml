@@ -2,9 +2,9 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/game_mode_card"
@@ -24,7 +24,7 @@
                 android:id="@+id/emoji_background"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@color/game_mode_background_color_zen"
+                tools:background="@color/game_mode_background_color_zen"
                 app:layout_constraintBottom_toTopOf="@+id/emoji_area_barrier"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

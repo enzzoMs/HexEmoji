@@ -25,7 +25,7 @@
     <TextView
         android:id="@+id/board_size"
         android:text=""
-        android:textAppearance="@style/TextAppearance.HexEmoji.BoardSize"
+        android:textAppearance="@style/TextAppearance.HexEmoji.CardView.BoardSize"
         app:autoSizeTextType="uniform"
         android:gravity="center"
         android:layout_width="0dp"

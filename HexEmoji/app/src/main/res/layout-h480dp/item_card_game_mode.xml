@@ -17,7 +17,6 @@
         android:layout_marginBottom="@dimen/card_outer_margin">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="@drawable/game_mode_card_border"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

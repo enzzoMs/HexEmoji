@@ -30,8 +30,10 @@
     <dimen name="tutorial_page_indicator_size">12dp</dimen>
     <dimen name="tutorial_page_indicator_margin">@dimen/spacing_small_2</dimen>
 
+    <dimen name="emoji_card_size">100dp</dimen>
+    <dimen name="emoji_card_inner_margin">@dimen/spacing_medium_2</dimen>
+
     <dimen name="game_board_padding">@dimen/spacing_large</dimen>
-    <dimen name="game_board_card_size">100dp</dimen>
 
     <dimen name="countdown_track_thickness">3dp</dimen>
 

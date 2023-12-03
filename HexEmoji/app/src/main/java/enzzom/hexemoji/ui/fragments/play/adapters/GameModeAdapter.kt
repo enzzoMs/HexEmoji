@@ -11,7 +11,6 @@ import enzzom.hexemoji.models.GameModeCard
 class GameModeAdapter(
     private val gameModeCards: List<GameModeCard>,
     private val onGameModeClicked: (GameModeCard) -> Unit,
-    private val isGameModeSelected: (GameMode) -> Boolean = { _ -> false}
 ) : RecyclerView.Adapter<GameModeAdapter.GameModeHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameModeHolder {
@@ -37,7 +36,6 @@ class GameModeAdapter(
         init {
             binding.gameModeCard.setOnClickListener {
                 onGameModeClicked(gameModeCard)
-                binding.gameModeCard.isSelected = isGameModeSelected(gameModeCard.gameMode)
             }
         }
 
@@ -45,7 +43,6 @@ class GameModeAdapter(
             gameModeCard = card
 
             binding.apply {
-                gameModeCard.isSelected = isGameModeSelected(card.gameMode)
                 gameModeTitle.text = card.title
                 gameModeTitle.setTextColor(card.titleColor)
                 gameModeDescription?.text = card.description

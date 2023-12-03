@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_width="@dimen/emoji_card_size"
+    android:layout_height="@dimen/emoji_card_size"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <ImageView
+        android:id="@+id/emoji_card_background"
+        android:src="@drawable/emoji_card_back"
+        android:importantForAccessibility="no"
+        android:scaleType="fitXY"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/emoji_card_front"/>
+
+    <TextView
+        android:id="@+id/emoji"
+        android:textAppearance="@style/TextAppearance.HexEmoji.EmojiCard"
+        android:textAlignment="center"
+        android:includeFontPadding="false"
+        app:autoSizeTextType="uniform"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/emoji_card_inner_margin"
+        app:layout_constraintBottom_toBottomOf="@id/emoji_card_background"
+        app:layout_constraintEnd_toEndOf="@id/emoji_card_background"
+        app:layout_constraintStart_toStartOf="@id/emoji_card_background"
+        app:layout_constraintTop_toTopOf="@id/emoji_card_background"
+        tools:text="🐝" />
+
+</merge>

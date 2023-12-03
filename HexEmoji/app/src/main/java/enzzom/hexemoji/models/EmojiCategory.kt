@@ -1,7 +1,7 @@
 package enzzom.hexemoji.models
 
 enum class EmojiCategory {
-    FACES_AND_PEOPLE,
+    PEOPLE_AND_EMOTIONS,
     ANIMALS_AND_NATURE,
     FOOD_AND_DRINK,
     ACTIVITIES,

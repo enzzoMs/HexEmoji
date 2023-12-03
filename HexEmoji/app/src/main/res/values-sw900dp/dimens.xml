@@ -8,7 +8,7 @@
     <dimen name="card_title_vertical_margin">@dimen/spacing_medium_1</dimen>
 
     <!-- Custom Views -->
-    <dimen name="game_board_card_size">120dp</dimen>
+    <dimen name="emoji_card_size">120dp</dimen>
 
     <!-- Board Size Selection Page -->
     <dimen name="board_size_card_size">120dp</dimen>

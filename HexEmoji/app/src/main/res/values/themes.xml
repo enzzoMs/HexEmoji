@@ -135,7 +135,7 @@
         <item name="fontFamily">@font/lexend_medium</item>
     </style>
 
-    <style name="TextAppearance.HexEmoji.BoardSize" parent="TextAppearance.HexEmoji.CardView.Title">
+    <style name="TextAppearance.HexEmoji.CardView.BoardSize" parent="TextAppearance.HexEmoji.CardView.Title">
         <item name="fontFamily">@font/lexend_bold</item>
         <item name="android:textColor">@color/board_size_text_color</item>
     </style>
@@ -154,6 +154,12 @@
 
     <style name="TextAppearance.HexEmoji.Dialog.ExitGame" parent="TextAppearance.HexEmoji.Subtitle1">
         <item name="fontFamily">@font/lexend_medium</item>
+    </style>
+
+    <!-- Custom Views -->
+    <style name="TextAppearance.HexEmoji.EmojiCard" parent="">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/colorAccent</item>
     </style>
 
     <!-- Game Mode Screens -->

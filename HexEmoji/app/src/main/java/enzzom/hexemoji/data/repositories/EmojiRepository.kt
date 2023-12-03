@@ -1,8 +1,8 @@
 package enzzom.hexemoji.data.repositories
 
-import enzzom.hexemoji.data.entities.Emoji
 import enzzom.hexemoji.data.source.EmojiDAO
 import enzzom.hexemoji.models.EmojiCategory
+import enzzom.hexemoji.utils.StringUtils
 import javax.inject.Inject
 
 class EmojiRepository @Inject constructor(
@@ -13,10 +13,10 @@ class EmojiRepository @Inject constructor(
      * Get a list of random unlocked emojis from specified categories. The method tries to make
      * each category have roughly the same size.
      */
-    suspend fun getRandomUnlockedEmojis(categories: List<EmojiCategory>, totalNumberOfEmojis: Int): List<Emoji> {
+    suspend fun getRandomUnlockedEmojis(categories: List<EmojiCategory>, totalNumberOfEmojis: Int): List<String> {
         val numberOfEmojisPerCategory = totalNumberOfEmojis / categories.size
 
-        val emojis = mutableListOf<Emoji>()
+        val emojis = mutableListOf<String>()
 
         categories.forEachIndexed { index, category ->
             emojis.addAll(emojiDAO.getRandomUnlockedEmojis(category, if (index == categories.lastIndex)
@@ -27,6 +27,6 @@ class EmojiRepository @Inject constructor(
             ))
         }
 
-        return emojis.toList()
+        return emojis.map { StringUtils.unescapeString(it) }
     }
 }
