@@ -16,10 +16,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- A non-zero elevation just to make sure that the ImageView will be on top of
+    the FragmentContainerView below -->
     <ImageView
         android:id="@+id/main_toolbar_honeycomb"
         android:src="@drawable/honeycomb_small"
         android:importantForAccessibility="no"
+        android:elevation="1dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"

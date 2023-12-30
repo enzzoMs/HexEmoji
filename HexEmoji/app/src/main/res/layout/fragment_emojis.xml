@@ -1,20 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/main_screens_outer_margin"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.fragments.emojis.EmojisFragment">
 
     <TextView
+        android:text="@string/emoji_collections_sub_page_description"
+        style="@style/TextAppearance.HexEmoji.PageDescription"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="@dimen/main_screens_outer_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/emoji_collection_tabs"
+        app:tabMode="scrollable"
+        android:contentDescription="@string/emoji_collections_tab_description"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/main_screens_contents_margin"
+        android:layout_marginHorizontal="@dimen/main_screens_outer_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Emojis Fragment"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_width="100dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/emoji_collection_info_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/main_screens_contents_margin"
+        tools:layout_height="200dp"/>
+
+</LinearLayout>

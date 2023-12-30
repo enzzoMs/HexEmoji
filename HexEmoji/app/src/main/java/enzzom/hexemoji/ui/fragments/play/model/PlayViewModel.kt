@@ -1,4 +1,4 @@
-package enzzom.hexemoji.ui.fragments.play.models
+package enzzom.hexemoji.ui.fragments.play.model
 
 import android.content.res.Resources
 import androidx.lifecycle.LiveData
@@ -7,14 +7,13 @@ import androidx.lifecycle.ViewModel
 import enzzom.hexemoji.models.BoardSize
 import enzzom.hexemoji.models.EmojiCategory
 import enzzom.hexemoji.models.GameMode
-import enzzom.hexemoji.models.GameModeCard
+import enzzom.hexemoji.models.GameModeDetails
 
 /**
  * The [PlayViewModel] class holds and is responsible for managing information related to the chosen
  * game mode, selected emoji categories and board size within the HexEmoji game. It provides methods
  * for interacting with and managing these selections.
 */
-
 class PlayViewModel : ViewModel() {
     private var selectedGameMode: GameMode? = null
     private var selectedBoardSize: BoardSize? = null
@@ -31,15 +30,15 @@ class PlayViewModel : ViewModel() {
     private val _hasSelectedBoardSize = MutableLiveData(false)
     val hasSelectedBoardSize: LiveData<Boolean> = _hasSelectedBoardSize
 
-    fun selectGameMode(gameModeCard: GameModeCard) {
-        selectedGameMode = gameModeCard.gameMode
+    fun selectGameMode(gameModeDetails: GameModeDetails) {
+        selectedGameMode = gameModeDetails.gameMode
         _hasSelectedGameMode.value = true
     }
 
     fun getSelectedGameMode(): GameMode? = selectedGameMode
 
     fun getGameModeTitle(resources: Resources): String {
-        return if (selectedGameMode != null) GameMode.getGameModeTitle(selectedGameMode!!, resources) else ""
+        return if (selectedGameMode != null) GameMode.getTitle(selectedGameMode!!, resources) else ""
     }
 
     fun clearGameModeSelection() {

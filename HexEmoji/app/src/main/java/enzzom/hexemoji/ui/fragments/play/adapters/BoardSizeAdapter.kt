@@ -14,7 +14,7 @@ class BoardSizeAdapter(
     private val useHexagonalLayout: Boolean,
     private val hexagonalGridSpanCount: Int = 0,
     private val hexagonViewSizePx: Int = 0
-): RecyclerView.Adapter<BoardSizeAdapter.BoardSizeHolder>() {
+) : RecyclerView.Adapter<BoardSizeAdapter.BoardSizeHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BoardSizeHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -41,7 +41,7 @@ class BoardSizeAdapter(
 
     inner class BoardSizeHolder(
          private val binding: ItemCardBoardSizeBinding
-    ): RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var boardSize: BoardSize
 

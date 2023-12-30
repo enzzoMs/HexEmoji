@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import enzzom.hexemoji.databinding.ItemCardEmojiCategoryBinding
 import enzzom.hexemoji.models.EmojiCategory
-import enzzom.hexemoji.models.EmojiCategoryCard
+import enzzom.hexemoji.models.EmojiCategoryDetails
 
 class EmojiCategoryAdapter(
-    private val emojiCategoryCards: List<EmojiCategoryCard>,
+    private val emojiCategoryDetails: List<EmojiCategoryDetails>,
     private val onEmojiCategoryClicked: (EmojiCategory) -> Unit,
     private val isCategorySelected: (EmojiCategory) -> Boolean
 ) : RecyclerView.Adapter<EmojiCategoryAdapter.EmojiCategoryHolder>() {
@@ -22,10 +22,10 @@ class EmojiCategoryAdapter(
     }
 
     override fun onBindViewHolder(holder: EmojiCategoryHolder, position: Int) {
-        holder.bind(emojiCategoryCards[position])
+        holder.bind(emojiCategoryDetails[position])
     }
 
-    override fun getItemCount(): Int = emojiCategoryCards.size
+    override fun getItemCount(): Int = emojiCategoryDetails.size
 
     inner class EmojiCategoryHolder(
         private val binding: ItemCardEmojiCategoryBinding
@@ -40,15 +40,15 @@ class EmojiCategoryAdapter(
             }
         }
 
-        fun bind(categoryCard: EmojiCategoryCard) {
-            category = categoryCard.category
+        fun bind(categoryDetails: EmojiCategoryDetails) {
+            category = categoryDetails.category
 
             binding.apply {
-                emojiCategoryCard.isSelected = isCategorySelected(categoryCard.category)
-                emojiCategoryTitle.text = categoryCard.title
-                emojiCategoryTitle.setTextColor(categoryCard.titleColor)
-                emojiCategoryDescription?.text = categoryCard.description
-                emojiCategoryImage.setImageResource(categoryCard.categoryImageId)
+                emojiCategoryCard.isSelected = isCategorySelected(categoryDetails.category)
+                emojiCategoryTitle.text = categoryDetails.title
+                emojiCategoryTitle.setTextColor(categoryDetails.color)
+                emojiCategoryDescription?.text = categoryDetails.description
+                emojiCategoryImage.setImageResource(categoryDetails.categoryImageId)
             }
         }
     }

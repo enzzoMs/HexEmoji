@@ -6,7 +6,7 @@
     <dimen name="button_horizontal_inner_padding">10dp</dimen>
     <dimen name="button_icon_size">48dp</dimen>
 
-    <!-- Cards (Game mode and emoji category card) -->
+    <!-- Cards (Game mode, emoji category and emoji collection cards) -->
     <dimen name="card_corner_radius">8dp</dimen>
     <dimen name="card_outer_margin">@dimen/spacing_medium_1</dimen>
     <dimen name="card_inner_margin">@dimen/spacing_medium_1</dimen>
@@ -45,19 +45,19 @@
     <dimen name="initial_screen_start_guideline_bias">0.75</dimen>
     <dimen name="initial_screen_end_guideline_bias">0.25</dimen>
     <dimen name="initial_screen_buttons_spacing">@dimen/spacing_medium_2</dimen>
-    
-    <!-- Main Screen -->
+
+    <!-- Main Screens = Play, Statistics and Emojis Page -->
     <dimen name="navigation_rail_icon_size">35dp</dimen>
     <dimen name="navigation_drawer_icon_size">30dp</dimen>
     <dimen name="navigation_drawer_app_title_text_size">35sp</dimen>
     <dimen name="navigation_drawer_app_title_spacing">@dimen/spacing_extra_small</dimen>
     <dimen name="navigation_header_logo_horizontal_margin">@dimen/spacing_small_1</dimen>
     <dimen name="navigation_header_logo_vertical_margin">@dimen/spacing_small_1</dimen>
+    <dimen name="main_screens_outer_margin">@dimen/spacing_medium_1</dimen>
+    <dimen name="main_screens_contents_margin">@dimen/spacing_medium_1</dimen>
     <dimen name="page_description_padding">@dimen/spacing_medium_1</dimen>
 
     <!-- Play Screens = GameModes, EmojisSelection, BoardSelection -->
-    <dimen name="play_screens_outer_margin">@dimen/spacing_medium_1</dimen>
-    <dimen name="play_screens_contents_margin">@dimen/spacing_medium_1</dimen>
     <dimen name="play_screens_list_horizontal_margin">0dp</dimen>
     <dimen name="play_screens_button_start_guideline_percentage">0.7</dimen>
 
@@ -75,6 +75,9 @@
     <dimen name="board_size_card_size">100dp</dimen>
     <dimen name="board_size_card_inner_margin">@dimen/spacing_medium_2</dimen>
     <dimen name="board_size_card_outer_margin">@dimen/spacing_small_1</dimen>
+
+    <!-- Emojis Screen -->
+    <dimen name="emoji_collection_card_icon_size">35dp</dimen>
 
     <!-- Game Screen -->
     <dimen name="game_countdown_size">120dp</dimen>

@@ -15,7 +15,7 @@ import enzzom.hexemoji.databinding.FragmentBoardSelectionBinding
 import enzzom.hexemoji.models.BoardSize
 import enzzom.hexemoji.ui.fragments.main.MainFragment
 import enzzom.hexemoji.ui.fragments.play.adapters.BoardSizeAdapter
-import enzzom.hexemoji.ui.fragments.play.models.PlayViewModel
+import enzzom.hexemoji.ui.fragments.play.model.PlayViewModel
 import enzzom.hexemoji.utils.recyclerview.HexagonalSpanSizeLookup
 
 class BoardSelectionFragment : Fragment() {

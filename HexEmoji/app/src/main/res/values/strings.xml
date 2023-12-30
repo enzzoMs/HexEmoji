@@ -43,7 +43,7 @@
 
     <string name="game_countdown_end_text">Já!</string>
 
-    <!-- Main Screen -->
+    <!-- Main Screens = Play, Statistics and Emojis Page -->
     <string name="page_title_page_play">Jogar</string>
     <string name="page_title_page_statistics">Estatísticas</string>
     <string name="page_title_page_emojis">Emojis</string>
@@ -54,8 +54,10 @@
     <string name="icon_content_description_page_emojis">Navegar para página de emojis</string>
 
     <!-- Emojis Page -->
-    <string name="emojis_collection_page_description">Confira sua coleção e descubra novos emojis</string>
-    <string name="emojis_challenges_page_description">Desbloqueie novos emojis através de desafios especiais!</string>
+    <string name="emoji_collections_sub_page_description">Confira sua coleção e descubra novos emojis</string>
+    <string name="emoji_collections_tab_description">Diferentes categorias de emojis</string>
+    <string name="emoji_collection_unlocked_ratio_template">%1$3d / %2$3d</string>
+    <string name="emoji_challenges_sub_page_description">Desbloqueie novos emojis através de desafios especiais!</string>
 
     <!-- Board Size Selection Page -->
     <string name="page_description_board_selection">Escolha o tamanho do tabuleiro</string>
@@ -64,6 +66,22 @@
     <string name="page_description_emojis_selection">Escolha os emojis que você quer jogar</string>
     <string name="all_emojis_checkbox">Todos os Emojis</string>
 
+    <string name="emoji_category_image_content_description">
+        Imagem com exemplos de emojis que fazem parte desta categoria.
+    </string>
+
+    <!-- Game Modes Page -->
+    <string name="page_description_game_modes">Explore diferentes modos e desafios!</string>
+
+    <string name="game_mode_card_emoji_lotus" translatable="false">🪷</string>
+    <string name="game_mode_card_emoji_hourglass_done" translatable="false">⌛</string>
+    <string name="game_mode_card_emoji_triangular_ruler" translatable="false">📐</string>
+    <string name="game_mode_card_emoji_brain" translatable="false">🧠</string>
+    <string name="game_mode_card_emoji_dice" translatable="false">🎲</string>
+    <string name="game_mode_card_emoji_recycling" translatable="false">🌊</string>
+    <string name="game_mode_card_emoji_spiral_eyes" translatable="false">😵‍💫</string>
+
+    <!-- Emoji Categories -->
     <string name="emoji_category_title_people_emotions">Pessoas e Emoções</string>
     <string name="emoji_category_title_nature">Natureza e Animais</string>
     <string name="emoji_category_title_food">Comida e Bebidas</string>
@@ -74,9 +92,15 @@
     <string name="emoji_category_title_flags">Bandeiras</string>
     <string name="emoji_category_title_numbers_letters">Números e Letras</string>
 
-    <string name="emoji_category_image_content_description">
-        Imagem com exemplos de emojis que fazem parte desta categoria
-    </string>
+    <string name="emoji_category_emoji_icon_people_emotions" translatable="false">😀</string>
+    <string name="emoji_category_emoji_icon_nature" translatable="false">🐾</string>
+    <string name="emoji_category_emoji_icon_food" translatable="false">🍔</string>
+    <string name="emoji_category_emoji_icon_activities" translatable="false">🏈</string>
+    <string name="emoji_category_emoji_icon_places_travel" translatable="false">🏠</string>
+    <string name="emoji_category_emoji_icon_objects" translatable="false">💡</string>
+    <string name="emoji_category_emoji_icon_symbols" translatable="false">❤️</string>
+    <string name="emoji_category_emoji_icon_flags" translatable="false">🚩</string>
+    <string name="emoji_category_emoji_icon_numbers_letters" translatable="false">🇹</string>
 
     <string name="emoji_category_description_people_emotions">
         Pessoas e diferentes expressões faciais, como sorrisos, risadas, tristeza, surpresa,
@@ -111,17 +135,7 @@
         Emojis para os números de 0 a 9 e as 26 letras do alfabeto latino.
     </string>
 
-    <!-- Game Modes Page -->
-    <string name="page_description_play">Explore diferentes modos e desafios!</string>
-
-    <string name="game_mode_card_emoji_lotus" translatable="false">🪷</string>
-    <string name="game_mode_card_emoji_hourglass_done" translatable="false">⌛</string>
-    <string name="game_mode_card_emoji_triangular_ruler" translatable="false">📐</string>
-    <string name="game_mode_card_emoji_brain" translatable="false">🧠</string>
-    <string name="game_mode_card_emoji_dice" translatable="false">🎲</string>
-    <string name="game_mode_card_emoji_recycling" translatable="false">🌊</string>
-    <string name="game_mode_card_emoji_spiral_eyes" translatable="false">😵‍💫</string>
-
+    <!-- Game Modes -->
     <string name="game_mode_title_zen">Modo Zen</string>
     <string name="game_mode_title_against_clock">Contra o Relógio</string>
     <string name="game_mode_title_limited_moves">Movimentos Limitados</string>
@@ -157,4 +171,5 @@
         Prepare-se para um desafio caótico! Supere seus limites e demonstre suas habilidades
         jogando “Contra o Relógio”, “Movimentos Limitados” e “Embaralhado” ao mesmo tempo!
     </string>
+
 </resources>

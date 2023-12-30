@@ -13,7 +13,7 @@ enum class GameMode {
     CHAOS;
 
     companion object {
-        fun getGameModeTitle(gameMode: GameMode, resources: Resources): String {
+        fun getTitle(gameMode: GameMode, resources: Resources): String {
             return when(gameMode) {
                 ZEN -> resources.getString(R.string.game_mode_title_zen)
                 AGAINST_THE_CLOCK -> resources.getString(R.string.game_mode_title_against_clock)

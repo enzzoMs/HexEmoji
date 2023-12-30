@@ -9,6 +9,14 @@ class EmojiRepository @Inject constructor(
     private val emojiDAO: EmojiDAO
 ) {
 
+    suspend fun getEmojiCountForCategories(categories: List<EmojiCategory>): Map<EmojiCategory, Int> {
+        return emojiDAO.getEmojiCountForCategories(categories)
+    }
+
+    suspend fun getUnlockedCountForCategories(categories: List<EmojiCategory>): Map<EmojiCategory, Int> {
+        return emojiDAO.getUnlockedCountForCategories(categories)
+    }
+
     /**
      * Get a list of random unlocked emojis from specified categories. The method tries to make
      * each category have roughly the same size.

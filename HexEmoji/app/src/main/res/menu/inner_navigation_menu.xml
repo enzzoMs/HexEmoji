@@ -18,7 +18,7 @@
 
         <item
             android:id="@+id/emojis_fragment"
-            android:icon="@drawable/ic_emoji_face"
+            android:icon="@drawable/ic_smiley_face_outlined"
             android:title="@string/page_title_page_emojis"
             android:contentDescription="@string/icon_content_description_page_emojis"/>
     </group>

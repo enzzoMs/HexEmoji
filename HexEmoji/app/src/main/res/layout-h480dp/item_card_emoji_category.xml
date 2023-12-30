@@ -32,7 +32,7 @@
         <TextView
             android:id="@+id/emoji_category_title"
             tools:text="@string/emoji_category_title_people_emotions"
-            tools:textColor="@color/emoji_category_card_title_color_people_emotions"
+            tools:textColor="@color/emoji_category_color_people_emotions"
             android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

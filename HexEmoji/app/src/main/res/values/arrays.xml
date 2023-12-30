@@ -13,16 +13,16 @@
         <item>@string/emoji_category_title_numbers_letters</item>
     </string-array>
 
-    <array name="emoji_category_title_color">
-        <item>@color/emoji_category_card_title_color_people_emotions</item>
-        <item>@color/emoji_category_card_title_color_nature</item>
-        <item>@color/emoji_category_card_title_color_food</item>
-        <item>@color/emoji_category_card_title_color_activities</item>
-        <item>@color/emoji_category_card_title_color_places_travel</item>
-        <item>@color/emoji_category_card_title_color_objects</item>
-        <item>@color/emoji_category_card_title_color_symbols</item>
-        <item>@color/emoji_category_card_title_color_flags</item>
-        <item>@color/emoji_category_card_title_color_numbers_letters</item>
+    <array name="emoji_category_color">
+        <item>@color/emoji_category_color_people_emotions</item>
+        <item>@color/emoji_category_color_nature</item>
+        <item>@color/emoji_category_color_food</item>
+        <item>@color/emoji_category_color_activities</item>
+        <item>@color/emoji_category_color_places_travel</item>
+        <item>@color/emoji_category_color_objects</item>
+        <item>@color/emoji_category_color_symbols</item>
+        <item>@color/emoji_category_color_flags</item>
+        <item>@color/emoji_category_color_numbers_letters</item>
     </array>
 
     <string-array name="emoji_category_descriptions">
@@ -37,6 +37,30 @@
         <item>@string/emoji_category_description_numbers_letters</item>
     </string-array>
 
+    <string-array name="emoji_category_emoji_icons">
+        <item>@string/emoji_category_emoji_icon_people_emotions</item>
+        <item>@string/emoji_category_emoji_icon_nature</item>
+        <item>@string/emoji_category_emoji_icon_food</item>
+        <item>@string/emoji_category_emoji_icon_activities</item>
+        <item>@string/emoji_category_emoji_icon_places_travel</item>
+        <item>@string/emoji_category_emoji_icon_objects</item>
+        <item>@string/emoji_category_emoji_icon_symbols</item>
+        <item>@string/emoji_category_emoji_icon_flags</item>
+        <item>@string/emoji_category_emoji_icon_numbers_letters</item>
+    </string-array>
+
+    <integer-array name="emoji_category_icons">
+        <item>@drawable/ic_smiley_face_filled</item>
+        <item>@drawable/ic_animal_paw</item>
+        <item>@drawable/ic_food</item>
+        <item>@drawable/ic_sports_football</item>
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_object</item>
+        <item>@drawable/ic_heart</item>
+        <item>@drawable/ic_flag</item>
+        <item>@drawable/ic_letter_t</item>
+    </integer-array>
+    
     <integer-array name="emoji_category_images">
         <item>@drawable/emoji_category_example_people_emotions</item>
         <item>@drawable/emoji_category_example_nature</item>
@@ -48,18 +72,8 @@
         <item>@drawable/emoji_category_example_flags</item>
         <item>@drawable/emoji_category_example_numbers_letters</item>
     </integer-array>
-
+    
     <!-- Game Modes -->
-    <string-array name="game_mode_titles">
-        <item>@string/game_mode_title_zen</item>
-        <item>@string/game_mode_title_against_clock</item>
-        <item>@string/game_mode_title_limited_moves</item>
-        <item>@string/game_mode_title_sequence</item>
-        <item>@string/game_mode_title_shuffled</item>
-        <item>@string/game_mode_title_flood</item>
-        <item>@string/game_mode_title_chaos</item>
-    </string-array>
-
     <string-array name="game_mode_descriptions">
         <item>@string/game_mode_description_zen</item>
         <item>@string/game_mode_description_against_clock</item>
@@ -80,17 +94,17 @@
         <item>@color/game_mode_background_color_chaos</item>
     </array>
 
-    <array name="game_mode_title_text_color">
-        <item>@color/game_mode_main_color_zen</item>
-        <item>@color/game_mode_main_color_against_clock</item>
-        <item>@color/game_mode_main_color_limited_moves</item>
-        <item>@color/game_mode_main_color_sequence</item>
-        <item>@color/game_mode_main_color_shuffled</item>
-        <item>@color/game_mode_main_color_flood</item>
-        <item>@color/game_mode_main_color_chaos</item>
+    <array name="game_mode_main_color">
+        <item>@color/game_mode_primary_color_zen</item>
+        <item>@color/game_mode_primary_color_against_clock</item>
+        <item>@color/game_mode_primary_color_limited_moves</item>
+        <item>@color/game_mode_primary_color_sequence</item>
+        <item>@color/game_mode_primary_color_shuffled</item>
+        <item>@color/game_mode_primary_color_flood</item>
+        <item>@color/game_mode_primary_color_chaos</item>
     </array>
 
-    <array name="game_mode_emoji">
+    <array name="game_mode_emojis">
         <item>@string/game_mode_card_emoji_lotus</item>
         <item>@string/game_mode_card_emoji_hourglass_done</item>
         <item>@string/game_mode_card_emoji_triangular_ruler</item>

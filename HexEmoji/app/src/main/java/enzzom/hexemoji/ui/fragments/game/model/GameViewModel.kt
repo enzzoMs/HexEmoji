@@ -1,4 +1,4 @@
-package enzzom.hexemoji.ui.fragments.game.models
+package enzzom.hexemoji.ui.fragments.game.model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

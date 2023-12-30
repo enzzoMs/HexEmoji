@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/play_screens_outer_margin"
+    android:layout_margin="@dimen/main_screens_outer_margin"
     tools:context=".ui.fragments.play.GameModesFragment">
 
     <androidx.recyclerview.widget.RecyclerView

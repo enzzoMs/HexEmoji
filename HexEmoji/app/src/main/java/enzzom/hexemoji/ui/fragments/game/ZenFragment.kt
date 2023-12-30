@@ -1,7 +1,6 @@
 package enzzom.hexemoji.ui.fragments.game
 import android.animation.ObjectAnimator
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +14,8 @@ import enzzom.hexemoji.models.BoardSize
 import enzzom.hexemoji.models.EmojiCategory
 import enzzom.hexemoji.ui.custom.GameTutorialDataProvider
 import enzzom.hexemoji.ui.fragments.game.adapters.GameBoardAdapter
-import enzzom.hexemoji.ui.fragments.game.models.GameViewModel
-import enzzom.hexemoji.ui.fragments.game.models.GameViewModel.FlipResult
+import enzzom.hexemoji.ui.fragments.game.model.GameViewModel
+import enzzom.hexemoji.ui.fragments.game.model.GameViewModel.FlipResult
 import javax.inject.Inject
 
 private const val COUNTDOWN_FADE_ANIMATION_DURATION = 200L

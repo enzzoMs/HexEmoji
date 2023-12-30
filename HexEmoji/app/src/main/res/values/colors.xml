@@ -15,6 +15,7 @@
     <color name="text_color_primary">@color/gray</color>
     <color name="app_title_first_part_color">@color/gold</color>
     <color name="app_title_last_part_color">@color/yellow_dark</color>
+    <color name="unselected_icon_color">@color/gray</color>
 
     <!-- Buttons -->
     <color name="button_ripple_color">@color/silver</color>
@@ -22,6 +23,38 @@
     <color name="button_primary_text_color">@color/white</color>
     <color name="button_secondary_shape_color">@color/silver_light_variant</color>
     <color name="button_secondary_text_color">@color/gray</color>
+
+    <!-- Splash Screen -->
+    <color name="screen_splash_background_color">@color/yellow_maximum</color>
+
+    <!-- Main Screens = Play, Statistics and Emojis Page -->
+    <color name="navigation_unselected_text_color">@color/gray</color>
+    <color name="side_navigation_item_color">@color/gray</color>
+    <color name="side_navigation_selected_back_color">@color/silver_light</color>
+    <color name="page_description_text_color">@color/gray</color>
+
+    <!-- Emojis Selection Page -->
+    <color name="emoji_category_card_selected_back_color">@color/orange_beer_alpha_8</color>
+    <color name="emoji_category_card_unselected_border_color">@color/silver_light</color>
+
+    <!-- Board Selection Page -->
+    <color name="board_size_card_text_color">@color/orange_brown_light</color>
+    <color name="board_size_card_unselected_border_color">@color/yellow_white</color>
+
+    <!-- Game Screen -->
+    <color name="game_screen_primary_color">@color/white</color>
+    <color name="game_screen_status_bar_color">@color/gray</color>
+
+    <!-- Emoji Categories -->
+    <color name="emoji_category_color_people_emotions">@color/orange_brown</color>
+    <color name="emoji_category_color_nature">@color/green</color>
+    <color name="emoji_category_color_food">@color/red</color>
+    <color name="emoji_category_color_activities">@color/cyan</color>
+    <color name="emoji_category_color_places_travel">@color/gray_dark</color>
+    <color name="emoji_category_color_objects">@color/gold</color>
+    <color name="emoji_category_color_symbols">@color/pink</color>
+    <color name="emoji_category_color_flags">@color/green_blue</color>
+    <color name="emoji_category_color_numbers_letters">@color/blue</color>
 
     <!-- Game Modes -->
     <color name="game_mode_background_color_zen">@color/pink_light</color>
@@ -32,47 +65,16 @@
     <color name="game_mode_background_color_flood">@color/green_blue_light</color>
     <color name="game_mode_background_color_chaos">@color/orange_light</color>
 
-    <color name="game_mode_main_color_zen">@color/pink</color>
-    <color name="game_mode_main_color_against_clock">@color/yellow</color>
-    <color name="game_mode_main_color_limited_moves">@color/blue</color>
-    <color name="game_mode_main_color_sequence">@color/purple</color>
-    <color name="game_mode_main_color_shuffled">@color/red</color>
-    <color name="game_mode_main_color_flood">@color/green_blue</color>
-    <color name="game_mode_main_color_chaos">@color/orange</color>
+    <color name="game_mode_primary_color_zen">@color/pink</color>
+    <color name="game_mode_primary_color_against_clock">@color/yellow</color>
+    <color name="game_mode_primary_color_limited_moves">@color/blue</color>
+    <color name="game_mode_primary_color_sequence">@color/purple</color>
+    <color name="game_mode_primary_color_shuffled">@color/red</color>
+    <color name="game_mode_primary_color_flood">@color/green_blue</color>
+    <color name="game_mode_primary_color_chaos">@color/orange</color>
 
     <color name="game_mode_surface_variant_color_zen">@color/pink_variant</color>
     <color name="game_mode_on_surface_variant_color_zen">@color/pink_light_variant</color>
-
-    <!-- Splash Screen -->
-    <color name="screen_splash_background_color">@color/yellow_maximum</color>
-
-    <!-- Main Screen -->
-    <color name="navigation_unselected_icon_color">@color/gray</color>
-    <color name="navigation_unselected_text_color">@color/gray</color>
-    <color name="side_navigation_item_color">@color/gray</color>
-    <color name="side_navigation_selected_back_color">@color/silver_light</color>
-    <color name="page_description_text_color">@color/gray</color>
-
-    <!-- Emojis Selection Page -->
-    <color name="emoji_category_card_title_color_people_emotions">@color/orange_brown</color>
-    <color name="emoji_category_card_title_color_nature">@color/green</color>
-    <color name="emoji_category_card_title_color_food">@color/red</color>
-    <color name="emoji_category_card_title_color_activities">@color/cyan</color>
-    <color name="emoji_category_card_title_color_places_travel">@color/gray_dark</color>
-    <color name="emoji_category_card_title_color_objects">@color/gold</color>
-    <color name="emoji_category_card_title_color_symbols">@color/pink</color>
-    <color name="emoji_category_card_title_color_flags">@color/green_blue</color>
-    <color name="emoji_category_card_title_color_numbers_letters">@color/blue</color>
-    <color name="emoji_category_card_selected_back_color">@color/orange_beer_alpha_8</color>
-    <color name="emoji_category_card_unselected_border_color">@color/silver_light</color>
-
-    <!-- Board Selecion Page -->
-    <color name="board_size_card_text_color">@color/orange_brown_light</color>
-    <color name="board_size_card_unselected_border_color">@color/yellow_white</color>
-
-    <!-- Game Screen -->
-    <color name="game_screen_primary_color">@color/white</color>
-    <color name="game_screen_status_bar_color">@color/gray</color>
 
     <!-- Color Palette -->
     <color name="yellow_maximum">#F9BF58</color>
