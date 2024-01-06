@@ -20,22 +20,13 @@ import enzzom.hexemoji.ui.fragments.main.MainFragment
 class EmojisFragment : Fragment() {
 
     private val emojisViewModel: EmojisViewModel by viewModels()
-    private var binding: FragmentEmojisBinding? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentEmojisBinding.inflate(inflater, container, false)
-
-        return binding?.root
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val emojiCategoryDetails = EmojiCategoryDetails.getAll(resources)
+    ): View {
+        val binding = FragmentEmojisBinding.inflate(inflater, container, false)
 
         val emojiCategoryIconsId = mutableListOf<Int>()
 
@@ -46,7 +37,9 @@ class EmojisFragment : Fragment() {
             it.recycle()
         }
 
-        binding?.apply {
+        val emojiCategoryDetails = EmojiCategoryDetails.getAll(resources)
+
+        binding.apply {
             emojiCollectionDetailsList.adapter = CollectionDetailsAdapter(
                 emojiCategoryDetails = emojiCategoryDetails,
                 getEmojiCountForCategory = emojisViewModel::getEmojiCountForCategory,
@@ -68,11 +61,7 @@ class EmojisFragment : Fragment() {
                 }
             }
         }
-    }
 
-    override fun onDestroy() {
-        super.onDestroy()
-
-        binding = null
+        return binding.root
     }
 }

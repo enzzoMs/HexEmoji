@@ -1,10 +1,10 @@
 package enzzom.hexemoji.ui.fragments.initial
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.FragmentInitialBinding
@@ -15,11 +15,10 @@ class InitialFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentInitialBinding.inflate(inflater, container, false)
-
-        binding.initialButtonPlay.setOnClickListener { navigateToMainScreen() }
-
-        return binding.root
+        return FragmentInitialBinding.inflate(inflater, container, false).let {
+            it.initialButtonPlay.setOnClickListener { navigateToMainScreen() }
+            it.root
+        }
     }
 
     private fun navigateToMainScreen() {

@@ -21,13 +21,12 @@ import enzzom.hexemoji.utils.recyclerview.HexagonalSpanSizeLookup
 class BoardSelectionFragment : Fragment() {
 
     private val playViewModel: PlayViewModel by activityViewModels()
-    private var binding: FragmentBoardSelectionBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentBoardSelectionBinding.inflate(inflater, container, false)
+        val binding = FragmentBoardSelectionBinding.inflate(inflater, container, false)
 
         val mainFragment = parentFragment?.parentFragment as MainFragment
         mainFragment.apply {
@@ -37,27 +36,21 @@ class BoardSelectionFragment : Fragment() {
         }
 
         playViewModel.hasSelectedBoardSize.observe(viewLifecycleOwner) {
-            binding?.boardSelectionButtonPlay?.isEnabled = it
+            binding.boardSelectionButtonPlay.isEnabled = it
         }
 
-        binding?.boardSelectionButtonPlay?.setOnClickListener {
+        binding.boardSelectionButtonPlay.setOnClickListener {
             mainFragment.navigateToGameScreen(
                 playViewModel.getSelectedGameMode()!!, playViewModel.getSelectedBoardSize()!!,
                 playViewModel.getSelectedEmojiCategories()
             )
         }
 
-        return binding?.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         val boardSizes = BoardSize.values().toList()
         val useHexagonBoard = resources.getBoolean(R.bool.board_selection_use_hexagon_board)
         val hexagonalGridSpan = resources.getInteger(R.integer.board_selection_hexagonal_grid_span)
 
-        binding?.boardSizeList?.apply {
+        binding.boardSizeList.apply {
             // Removing the recycler view animations (mainly to prevent blink after 'notifyItemChanged')
             itemAnimator = null
             setHasFixedSize(true)
@@ -94,11 +87,7 @@ class BoardSelectionFragment : Fragment() {
                 }
             }
         )
-    }
 
-    override fun onDestroy() {
-        super.onDestroy()
-
-        binding = null
+        return binding.root
     }
 }

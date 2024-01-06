@@ -18,14 +18,13 @@ import enzzom.hexemoji.ui.fragments.play.model.PlayViewModel
 class EmojisSelectionFragment : Fragment() {
 
     private val playViewModel: PlayViewModel by activityViewModels()
-    private var binding: FragmentEmojisSelectionBinding? = null
     private lateinit var emojiCategoryDetails: List<EmojiCategoryDetails>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentEmojisSelectionBinding.inflate(inflater, container, false)
+    ): View {
+        val binding = FragmentEmojisSelectionBinding.inflate(inflater, container, false)
 
         val mainFragment = parentFragment?.parentFragment as MainFragment
         mainFragment.apply {
@@ -35,18 +34,27 @@ class EmojisSelectionFragment : Fragment() {
         }
 
         playViewModel.hasSelectedAnyCategory.observe(viewLifecycleOwner) {
-            binding?.buttonContinue?.isEnabled = it
+            binding.buttonContinue.isEnabled = it
         }
 
         playViewModel.hasSelectedAllCategories.observe(viewLifecycleOwner) {
-            binding?.allEmojisCheckBox?.isChecked = it
+            binding.allEmojisCheckBox.isChecked = it
         }
 
         emojiCategoryDetails = EmojiCategoryDetails.getAll(resources)
 
-        binding?.apply {
-            // Removing the recycler view animations (mainly to prevent blink after 'notifyItemChanged')
-            emojiCategoriesList.itemAnimator = null
+        binding.apply {
+            emojiCategoriesList.apply {
+                // Removing the recycler view animations (mainly to prevent blink after 'notifyItemChanged')
+                itemAnimator = null
+
+                setHasFixedSize(true)
+                adapter = EmojiCategoryAdapter(
+                    emojiCategoryDetails = emojiCategoryDetails,
+                    onEmojiCategoryClicked = { playViewModel.toggleEmojiCategorySelection(it) },
+                    isCategorySelected = { playViewModel.isEmojiCategorySelected(it) }
+                )
+            }
 
             buttonContinue.setOnClickListener { navigateToBoardSelection() }
 
@@ -73,26 +81,7 @@ class EmojisSelectionFragment : Fragment() {
             }
         )
 
-        return binding?.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding?.emojiCategoriesList?.apply {
-            setHasFixedSize(true)
-            adapter = EmojiCategoryAdapter(
-                emojiCategoryDetails = emojiCategoryDetails,
-                onEmojiCategoryClicked = { playViewModel.toggleEmojiCategorySelection(it) },
-                isCategorySelected = { playViewModel.isEmojiCategorySelected(it) }
-            )
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        binding = null
+        return binding.root
     }
 
     private fun navigateToBoardSelection() {

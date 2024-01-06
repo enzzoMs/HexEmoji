@@ -15,13 +15,12 @@ import enzzom.hexemoji.ui.fragments.play.model.PlayViewModel
 
 class GameModesFragment : Fragment() {
     private val playViewModel: PlayViewModel by activityViewModels()
-    private var binding: FragmentGameModesBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentGameModesBinding.inflate(inflater, container, false)
+    ): View {
+        val binding = FragmentGameModesBinding.inflate(inflater, container, false)
 
         playViewModel.apply {
             clearGameModeSelection()
@@ -29,13 +28,7 @@ class GameModesFragment : Fragment() {
             clearBoardSizeSelection()
         }
 
-        return binding?.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding?.gameModeList?.apply {
+        binding.gameModeList.apply {
             setHasFixedSize(true)
             adapter = GameModeAdapter(
                 gameModeDetails = GameModeDetails.getAll(resources),
@@ -45,12 +38,8 @@ class GameModesFragment : Fragment() {
                 }
             )
         }
-    }
 
-    override fun onDestroy() {
-        super.onDestroy()
-
-        binding = null
+        return binding.root
     }
 
     private fun navigateToEmojisSelection() {
