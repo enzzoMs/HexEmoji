@@ -1,5 +1,6 @@
 package enzzom.hexemoji.data.repositories
 
+import enzzom.hexemoji.data.entities.Emoji
 import enzzom.hexemoji.data.source.EmojiDAO
 import enzzom.hexemoji.models.EmojiCategory
 import enzzom.hexemoji.utils.StringUtils
@@ -9,12 +10,12 @@ class EmojiRepository @Inject constructor(
     private val emojiDAO: EmojiDAO
 ) {
 
-    suspend fun getEmojiCountForCategories(categories: List<EmojiCategory>): Map<EmojiCategory, Int> {
-        return emojiDAO.getEmojiCountForCategories(categories)
-    }
-
-    suspend fun getUnlockedCountForCategories(categories: List<EmojiCategory>): Map<EmojiCategory, Int> {
-        return emojiDAO.getUnlockedCountForCategories(categories)
+    suspend fun getAllEmojisByCategory(): Map<EmojiCategory, List<Emoji>> {
+        return emojiDAO.getAllEmojisByCategory().mapValues { mapEntry ->
+            mapEntry.value.map { emoji ->
+                emoji.copy(unicode = StringUtils.unescapeString(emoji.unicode))
+            }
+        }
     }
 
     /**

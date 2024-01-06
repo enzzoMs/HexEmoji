@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/collection_card"
+        app:strokeWidth="@dimen/collection_emoji_card_stroke_width"
+        app:cardCornerRadius="@dimen/collection_emoji_card_radius"
+        app:cardElevation="0dp"
+        android:layout_gravity="center"
+        android:layout_width="@dimen/collection_emoji_card_size"
+        android:layout_height="@dimen/collection_emoji_card_size"
+        android:layout_margin="@dimen/collection_item_margin"
+        tools:strokeColor="#C8AA85">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/collection_card_emoji"
+                android:textAlignment="center"
+                android:includeFontPadding="false"
+                app:autoSizeTextType="uniform"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/collection_emoji_card_inner_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:textColor="#000000"
+                tools:text="🐝"/>
+
+            <ImageView
+                android:id="@+id/collection_card_locked_icon"
+                android:src="@drawable/ic_lock"
+                android:visibility="gone"
+                android:contentDescription="@string/collection_card_locked_content_description"
+                android:padding="@dimen/collection_emoji_card_locked_margin"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/collection_emoji_card_stroke_width"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:tint="@color/emoji_category_color_people_emotions"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

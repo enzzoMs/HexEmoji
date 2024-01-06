@@ -16,23 +16,24 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/emoji_collection_info_title"
+            android:id="@+id/collection_details_title"
             android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/card_inner_margin"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/emoji_collection_info_icon"
-            app:layout_constraintBottom_toBottomOf="@id/emoji_collection_info_icon"
+            app:layout_constraintTop_toTopOf="@id/collection_details_icon"
+            app:layout_constraintBottom_toBottomOf="@id/collection_details_icon"
             tools:text="@string/emoji_category_title_people_emotions"
             tools:textColor="@color/emoji_category_color_people_emotions" />
 
+        <!-- Black text color to avoid transparency on emojis -->
         <TextView
-            android:id="@+id/emoji_collection_info_icon"
+            android:id="@+id/collection_details_icon"
             android:textColor="#000000"
             app:autoSizeTextType="uniform"
-            android:layout_width="@dimen/emoji_collection_card_icon_size"
-            android:layout_height="@dimen/emoji_collection_card_icon_size"
+            android:layout_width="@dimen/collection_details_card_icon_size"
+            android:layout_height="@dimen/collection_details_card_icon_size"
             android:layout_marginVertical="@dimen/card_title_vertical_margin"
             android:layout_marginHorizontal="@dimen/card_inner_margin"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +41,7 @@
             tools:text="@string/emoji_category_emoji_icon_people_emotions"/>
 
         <TextView
-            android:id="@+id/emoji_collection_info_description"
+            android:id="@+id/collection_details_description"
             android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Description"
             android:hyphenationFrequency="full"
             android:layout_width="0dp"
@@ -50,25 +51,24 @@
             android:layout_marginTop="@dimen/card_title_vertical_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emoji_collection_info_icon"
+            app:layout_constraintTop_toBottomOf="@+id/collection_details_icon"
             tools:text="@string/emoji_category_description_people_emotions" />
 
         <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/emoji_collection_info_unlocked_bar"
+            android:id="@+id/collection_details_unlocked_bar"
+            android:contentDescription="@string/collection_unlocked_bar_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:contentDescription=""
-            app:layout_constraintTop_toTopOf="@id/emoji_collection_info_unlocked_ratio"
             android:layout_margin="@dimen/card_inner_margin"
+            app:layout_constraintTop_toTopOf="@id/collection_details_unlocked_ratio"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/emoji_collection_info_unlocked_ratio"
-            app:layout_constraintBottom_toBottomOf="@id/emoji_collection_info_unlocked_ratio"
+            app:layout_constraintEnd_toStartOf="@id/collection_details_unlocked_ratio"
+            app:layout_constraintBottom_toBottomOf="@id/collection_details_unlocked_ratio"
             tools:indicatorColor="@color/emoji_category_color_people_emotions"
             tools:progress="25"/>
 
         <TextView
-            android:id="@+id/emoji_collection_info_unlocked_ratio"
-            android:textColor="?attr/colorAccent"
+            android:id="@+id/collection_details_unlocked_ratio"
             android:fontFamily="@font/lexend_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -77,8 +77,9 @@
             android:layout_marginTop="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emoji_collection_info_description"
-            tools:text="50 / 200"/>
+            app:layout_constraintTop_toBottomOf="@+id/collection_details_description"
+            tools:text="50 / 200"
+            tools:textColor="@color/emoji_category_color_people_emotions" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

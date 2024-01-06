@@ -61,7 +61,7 @@ class EmojisSelectionFragment : Fragment() {
             }
         }
 
-        // Manually configuring the behavior of the back button due to an error that
+        // Manually configuring the behavior of the back button due to an unknown error that
         // caused a synchronization issue between what was shown on the screen and the actual
         // current destination tracked by the NavController.
         requireActivity().onBackPressedDispatcher.addCallback(

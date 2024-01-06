@@ -10,6 +10,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import enzzom.hexemoji.R
+import enzzom.hexemoji.data.entities.Emoji
 import enzzom.hexemoji.databinding.FragmentMainBinding
 import enzzom.hexemoji.models.BoardSize
 import enzzom.hexemoji.models.EmojiCategory
@@ -94,8 +95,16 @@ class MainFragment : Fragment() {
         selectedEmojiCategories: List<EmojiCategory>
     ) {
         findNavController().navigate(
-            MainFragmentDirections.actionMainFragmentToGameFragment(
+            MainFragmentDirections.actionMainScreenToGameScreen(
                 selectedGameMode, selectedBoardSize, selectedEmojiCategories.map { it.name }.toTypedArray()
+            )
+        )
+    }
+
+    fun navigateToCollectionScreen(category: EmojiCategory, categoryEmojis: List<Emoji>) {
+        findNavController().navigate(
+            MainFragmentDirections.actionMainScreenToEmojiCollection(
+                category, categoryEmojis.toTypedArray()
             )
         )
     }

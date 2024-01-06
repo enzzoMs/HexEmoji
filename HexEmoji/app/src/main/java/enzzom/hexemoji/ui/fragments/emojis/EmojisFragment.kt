@@ -12,8 +12,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.FragmentEmojisBinding
 import enzzom.hexemoji.models.EmojiCategoryDetails
-import enzzom.hexemoji.ui.fragments.emojis.adapters.EmojiCollectionInfoAdapter
+import enzzom.hexemoji.ui.fragments.emojis.adapters.CollectionDetailsAdapter
 import enzzom.hexemoji.ui.fragments.emojis.model.EmojisViewModel
+import enzzom.hexemoji.ui.fragments.main.MainFragment
 
 @AndroidEntryPoint
 class EmojisFragment : Fragment() {
@@ -46,19 +47,24 @@ class EmojisFragment : Fragment() {
         }
 
         binding?.apply {
-            emojiCollectionInfoList.adapter = EmojiCollectionInfoAdapter(
+            emojiCollectionDetailsList.adapter = CollectionDetailsAdapter(
                 emojiCategoryDetails = emojiCategoryDetails,
                 getEmojiCountForCategory = emojisViewModel::getEmojiCountForCategory,
-                getUnlockedCountForCategory = emojisViewModel::getUnlockedCountForCategory
+                getUnlockedCountForCategory = emojisViewModel::getUnlockedCountForCategory,
+                onCollectionClicked = { category ->
+                    (parentFragment?.parentFragment as MainFragment).navigateToCollectionScreen(
+                        category, emojisViewModel.getCategoryEmojis(category)
+                    )
+                }
             )
 
-            TabLayoutMediator(emojiCollectionTabs, emojiCollectionInfoList) { tab, position ->
+            TabLayoutMediator(emojiCollectionTabs, emojiCollectionDetailsList) { tab, position ->
                 tab.setIcon(emojiCategoryIconsId[position])
             }.attach()
 
             emojisViewModel.loadingCategoriesInfo.observe(viewLifecycleOwner) { loading ->
                 if (!loading) {
-                    emojiCollectionInfoList.adapter?.notifyDataSetChanged()
+                    emojiCollectionDetailsList.adapter?.notifyDataSetChanged()
                 }
             }
         }

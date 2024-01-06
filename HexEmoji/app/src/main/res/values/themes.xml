@@ -20,11 +20,12 @@
         <item name="bottomNavigationStyle">@style/Widget.HexEmoji.BottomNavigation</item>
         <item name="checkboxStyle">@style/Widget.HexEmoji.CheckBox</item>
         <item name="tabStyle">@style/Widget.HexEmoji.TabLayout</item>
+        <item name="textInputStyle">@style/Widget.HexEmoji.TextInputLayout</item>
     </style>
 
     <!-- Splash Screen -->
-    <style name="Theme.HexEmoji.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/screen_splash_background_color</item>
+    <style name="Theme.HexEmoji.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_screen_background_color</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/app_logo_alternative</item>
         <item name="postSplashScreenTheme">@style/Theme.HexEmoji</item>
     </style>
@@ -112,6 +113,7 @@
 
     <style name="TextAppearance.HexEmoji.AppSubtitle" parent="TextAppearance.HexEmoji.Subtitle1">
         <item name="fontFamily">@font/lexend_bold</item>
+        <item name="android:textColor">@color/app_sub_title_color</item>
     </style>
 
     <!-- Page Description -->
@@ -156,6 +158,12 @@
         <item name="tabIconTint">@color/selectable_icon_color</item>
     </style>
 
+    <!-- Text Field -->
+    <style name="Widget.HexEmoji.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintEnabled">false</item>
+        <item name="startIconTint">@color/unselected_icon_color</item>
+    </style>
+
     <!-- Dialogs -->
     <style name="TextAppearance.HexEmoji.Dialog" parent="TextAppearance.HexEmoji.Subtitle1">
         <item name="fontFamily">@font/lexend_semibold</item>
@@ -171,7 +179,12 @@
         <item name="android:textColor">?attr/colorAccent</item>
     </style>
 
-    <!-- Game Mode Screens -->
+    <!-- Emoji Collection Screen -->
+    <style name="TextAppearance.HexEmoji.Collection.Description" parent="TextAppearance.HexEmoji.Subtitle1">
+        <item name="fontFamily">@font/lexend_semibold</item>
+    </style>
+
+    <!-- Game Screen -->
     <style name="ThemeOverlay.HexEmoji.GameMode.Zen" parent="">
         <item name="colorPrimary">@color/game_screen_primary_color</item>
         <item name="colorOnPrimary">@color/game_mode_primary_color_zen</item>

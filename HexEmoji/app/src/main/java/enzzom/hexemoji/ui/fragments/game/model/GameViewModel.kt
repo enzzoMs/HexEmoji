@@ -31,7 +31,9 @@ class GameViewModel @AssistedInject constructor(
     private var emojiCards: List<EmojiCard>? = null
 
     init {
-        viewModelScope.launch { emojiCards = getGameEmojis().mapIndexed { index, emoji -> EmojiCard(emoji, index) } }
+        viewModelScope.launch {
+            emojiCards = getGameEmojis().mapIndexed { index, emoji -> EmojiCard(emoji, index) }
+        }
     }
 
     fun getEmojiCardForPosition(position: Int): EmojiCard? = if (emojiCards != null) emojiCards!![position] else null

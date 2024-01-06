@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import enzzom.hexemoji.data.entities.Emoji
 import enzzom.hexemoji.data.repositories.EmojiRepository
 import enzzom.hexemoji.models.EmojiCategory
 import kotlinx.coroutines.launch
@@ -21,13 +22,16 @@ class EmojisViewModel @Inject constructor(
     private val _loadingCategoriesInfo = MutableLiveData(true)
     val loadingCategoriesInfo: LiveData<Boolean> = _loadingCategoriesInfo
 
+    private lateinit var allEmojisByCategory: Map<EmojiCategory, List<Emoji>>
     private lateinit var categoriesUnlockedCount: Map<EmojiCategory, Int>
     private lateinit var categoriesEmojiCount: Map<EmojiCategory, Int>
 
     init {
         viewModelScope.launch {
-            categoriesUnlockedCount = emojiRepository.getUnlockedCountForCategories(EmojiCategory.values().asList())
-            categoriesEmojiCount = emojiRepository.getEmojiCountForCategories(EmojiCategory.values().asList())
+            allEmojisByCategory = emojiRepository.getAllEmojisByCategory()
+
+            categoriesEmojiCount = allEmojisByCategory.mapValues { it.value.size }
+            categoriesUnlockedCount = allEmojisByCategory.mapValues { it.value.count { emoji -> emoji.unlocked }  }
 
             _loadingCategoriesInfo.value = false
         }
@@ -39,5 +43,9 @@ class EmojisViewModel @Inject constructor(
 
     fun getEmojiCountForCategory(category: EmojiCategory): Int? {
         return if (_loadingCategoriesInfo.value!!) null else categoriesEmojiCount[category]
+    }
+
+    fun getCategoryEmojis(category: EmojiCategory): List<Emoji> {
+        return allEmojisByCategory[category]!!
     }
 }

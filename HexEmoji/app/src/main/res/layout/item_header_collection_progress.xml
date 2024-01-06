@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/collection_item_margin">
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/collection_progress_unlocked_bar"
+        android:contentDescription="@string/collection_unlocked_bar_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/collection_unlocked_progress_margin"
+        app:layout_constraintTop_toTopOf="@id/collection_progress_unlocked_ratio"
+        app:layout_constraintBottom_toBottomOf="@id/collection_progress_unlocked_ratio"
+        app:layout_constraintEnd_toStartOf="@id/collection_progress_unlocked_ratio"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:indicatorColor="@color/emoji_category_color_people_emotions"
+        tools:progress="25"/>
+
+    <TextView
+        android:id="@+id/collection_progress_unlocked_ratio"
+        android:fontFamily="@font/lexend_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="50 / 200"
+        tools:textColor="@color/emoji_category_color_people_emotions" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

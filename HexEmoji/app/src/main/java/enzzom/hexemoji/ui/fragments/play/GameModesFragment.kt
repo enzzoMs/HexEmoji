@@ -54,6 +54,6 @@ class GameModesFragment : Fragment() {
     }
 
     private fun navigateToEmojisSelection() {
-        findNavController().navigate(R.id.emojis_selection_fragment)
+        findNavController().navigate(R.id.action_game_modes_to_emojis_selection)
     }
 }

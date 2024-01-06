@@ -1,6 +1,7 @@
 package enzzom.hexemoji.utils
 
 object StringUtils {
+
     /**
      * Parses a given text into separate unicode characters.
      */

@@ -1,6 +1,5 @@
 package enzzom.hexemoji.ui.fragments.play.adapters
 
-import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -45,7 +44,7 @@ class GameModeAdapter(
                 gameModeTitle.text = modeDetails.title
                 gameModeTitle.setTextColor(modeDetails.primaryColor)
                 gameModeDescription?.text = modeDetails.description
-                emojiBackground.backgroundTintList = ColorStateList.valueOf(modeDetails.backgroundColor)
+                emojiBackground.setBackgroundColor(modeDetails.backgroundColor)
                 gameModeEmoji.text = modeDetails.emoji
             }
         }

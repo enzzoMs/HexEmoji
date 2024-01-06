@@ -10,6 +10,10 @@
     <bool name="board_selection_use_hexagon_board">false</bool>
     <integer name="board_selection_hexagonal_grid_span">3</integer>
 
+    <!-- Emoji Collection Screen -->
+    <integer name="emoji_collection_grid_span">3</integer>
+    <integer name="emoji_collection_category_color_blend_percentage">55</integer>
+
     <!-- Game Screen -->
     <integer name="game_countdown_initial_value">3</integer>
 

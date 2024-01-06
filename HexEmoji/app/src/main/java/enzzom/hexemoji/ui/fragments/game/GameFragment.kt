@@ -137,7 +137,7 @@ class GameFragment : Fragment() {
     }
 
     private fun navigateToMainScreen() {
-        findNavController().navigate(R.id.action_game_fragment_to_main_fragment)
+        findNavController().navigate(R.id.action_game_screen_to_main_screen)
     }
 
     private fun getGameModeThemeId(gameMode: GameMode): Int = when(gameMode) {

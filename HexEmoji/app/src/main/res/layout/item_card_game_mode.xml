@@ -30,7 +30,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Black text color to avoid transparency-->
+            <!-- Black text color to avoid transparency on emojis -->
             <TextView
                 android:id="@+id/game_mode_emoji"
                 tools:text="@string/game_mode_card_emoji_lotus"

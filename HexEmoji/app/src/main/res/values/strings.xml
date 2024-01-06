@@ -43,6 +43,13 @@
 
     <string name="game_countdown_end_text">Já!</string>
 
+    <!-- Emoji Collection Screen -->
+    <string name="collection_unlocked_bar_description">Progressão de emojis desbloqueados</string>
+    <string name="collection_unlocked_ratio_template">%1$3d / %2$3d</string>
+    <string name="collection_search_field_hint">Pesquisar</string>
+    <string name="collection_card_locked_content_description">Emoji bloqueado</string>
+    <string name="icon_content_description_exit_collection">Sair da coleção</string>
+
     <!-- Main Screens = Play, Statistics and Emojis Page -->
     <string name="page_title_page_play">Jogar</string>
     <string name="page_title_page_statistics">Estatísticas</string>
@@ -54,10 +61,9 @@
     <string name="icon_content_description_page_emojis">Navegar para página de emojis</string>
 
     <!-- Emojis Page -->
-    <string name="emoji_collections_sub_page_description">Confira sua coleção e descubra novos emojis</string>
-    <string name="emoji_collections_tab_description">Diferentes categorias de emojis</string>
-    <string name="emoji_collection_unlocked_ratio_template">%1$3d / %2$3d</string>
-    <string name="emoji_challenges_sub_page_description">Desbloqueie novos emojis através de desafios especiais!</string>
+    <string name="collection_details_sub_page_description">Confira sua coleção e descubra novos emojis</string>
+    <string name="collection_details_tab_description">Diferentes categorias de emojis</string>
+    <string name="challenges_sub_page_description">Desbloqueie novos emojis através de desafios especiais!</string>
 
     <!-- Board Size Selection Page -->
     <string name="page_description_board_selection">Escolha o tamanho do tabuleiro</string>
