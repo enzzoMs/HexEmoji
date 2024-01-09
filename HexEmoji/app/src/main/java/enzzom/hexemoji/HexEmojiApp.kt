@@ -11,8 +11,9 @@ class HexEmojiApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        val emojiConfiguration  = BundledEmojiCompatConfig(this)
-        emojiConfiguration.setReplaceAll(true)
-        EmojiCompat.init(emojiConfiguration)
+        BundledEmojiCompatConfig(this).let {
+            it.setReplaceAll(true)
+            EmojiCompat.init(it)
+        }
     }
 }

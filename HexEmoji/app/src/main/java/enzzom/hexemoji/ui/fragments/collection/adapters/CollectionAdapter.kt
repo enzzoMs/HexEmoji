@@ -10,9 +10,11 @@ import enzzom.hexemoji.R
 import enzzom.hexemoji.data.entities.Emoji
 import enzzom.hexemoji.databinding.ItemCardCollectionEmojiBinding
 import enzzom.hexemoji.databinding.ItemHeaderCollectionProgressBinding
+import enzzom.hexemoji.utils.StringUtils
 
 private const val COLLECTION_PROGRESS_VIEW_TYPE = 0
 private const val COLLECTION_EMOJI_VIEW_TYPE = 1
+private const val HEADER_VIEW_COUNT = 1
 
 class CollectionAdapter(
     private val collectionEmojis: List<Emoji>,
@@ -20,17 +22,23 @@ class CollectionAdapter(
     private val collectionLighterColor: Int
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    companion object {
+        const val COLLECTION_PROGRESS_VIEW_POSITION = 0
+    }
+
     val collectionEmojiCount = collectionEmojis.size
     val collectionUnlockedCount = collectionEmojis.count { emoji -> emoji.unlocked }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
-        return when(viewType) {
-            COLLECTION_PROGRESS_VIEW_TYPE -> CollectionProgressHolder(
+        return if (viewType == COLLECTION_PROGRESS_VIEW_TYPE) {
+            CollectionProgressHolder(
                 ItemHeaderCollectionProgressBinding.inflate(inflater, parent, false)
             )
-            else -> CollectionEmojiHolder(
+        }
+        else {
+            CollectionEmojiHolder(
                 ItemCardCollectionEmojiBinding.inflate(inflater, parent, false)
             )
         }
@@ -40,11 +48,13 @@ class CollectionAdapter(
         if (holder is CollectionProgressHolder) {
             holder.bind()
         } else if (holder is CollectionEmojiHolder) {
-            holder.bind(collectionEmojis[position])
+            holder.bind(collectionEmojis[position - HEADER_VIEW_COUNT])
         }
     }
 
-    override fun getItemCount(): Int = collectionEmojis.size
+    override fun getItemCount(): Int {
+        return collectionEmojis.size + HEADER_VIEW_COUNT
+    }
 
     override fun getItemViewType(position: Int): Int {
         return if (position == COLLECTION_PROGRESS_VIEW_POSITION) COLLECTION_PROGRESS_VIEW_TYPE else COLLECTION_EMOJI_VIEW_TYPE
@@ -80,7 +90,7 @@ class CollectionAdapter(
                 collectionCardEmoji.setTextColor(collectionColor)
 
                 if (emoji.unlocked) {
-                    collectionCardEmoji.text = emoji.unicode
+                    collectionCardEmoji.text = StringUtils.unescapeString(emoji.unicode)
                     collectionCardEmoji.visibility = View.VISIBLE
                     collectionCardLockedIcon.visibility = View.GONE
                 } else {
@@ -91,9 +101,5 @@ class CollectionAdapter(
                 }
             }
         }
-    }
-
-    companion object {
-        const val COLLECTION_PROGRESS_VIEW_POSITION = 0
     }
 }

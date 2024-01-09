@@ -23,6 +23,7 @@
 
             <TextView
                 android:id="@+id/collection_card_emoji"
+                android:textStyle="bold"
                 android:textAlignment="center"
                 android:includeFontPadding="false"
                 app:autoSizeTextType="uniform"

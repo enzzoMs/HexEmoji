@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.FragmentGameModesBinding
 import enzzom.hexemoji.models.GameModeDetails
@@ -24,7 +26,7 @@ class GameModesFragment : Fragment() {
 
         playViewModel.apply {
             clearGameModeSelection()
-            clearEmojiCategoriesSelection()
+            clearCategoriesSelection()
             clearBoardSizeSelection()
         }
 
@@ -35,8 +37,20 @@ class GameModesFragment : Fragment() {
                 onGameModeClicked = { gameModeCard ->
                     playViewModel.selectGameMode(gameModeCard)
                     navigateToEmojisSelection()
-                }
+                },
+                useHeaderViews = layoutManager is GridLayoutManager,
+                pageDescription = resources.getString(R.string.page_description_game_modes)
             )
+            if (layoutManager is GridLayoutManager) {
+                (layoutManager as GridLayoutManager).spanSizeLookup = object : SpanSizeLookup() {
+
+                    override fun getSpanSize(position: Int): Int {
+                        return if (position == GameModeAdapter.PAGE_DESCRIPTION_VIEW_POSITION) {
+                            resources.getInteger(R.integer.game_modes_grid_span)
+                        } else 1
+                    }
+                }
+            }
         }
 
         return binding.root

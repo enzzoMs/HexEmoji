@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Initial Screen -->
-    <dimen name="initial_screen_honeycomb_guideline_percentage">0.14</dimen>
-    <dimen name="initial_screen_bottom_guideline_percentage">0.95</dimen>
+    <dimen name="entry_screen_honeycomb_guideline_percentage">0.14</dimen>
+    <dimen name="entry_screen_bottom_guideline_percentage">0.95</dimen>
 
     <!-- Play Screens = GameModes, EmojisSelection, BoardSelection -->
     <dimen name="play_screens_button_start_guideline_percentage">0.04</dimen>

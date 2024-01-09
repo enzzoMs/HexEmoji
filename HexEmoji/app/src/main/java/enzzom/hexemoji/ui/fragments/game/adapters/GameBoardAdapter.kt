@@ -17,6 +17,7 @@ private const val ENTRY_ANIMATION_BASE_DELAY = 5L
 class GameBoardAdapter(
     private val numberOfEmojiCards: Int,
     private val emojiCardSizePx: Int,
+    private val emojiCardMarginPx: Int = 0,
     private val onEmojiCardClicked: (cardView: EmojiCardView, position: Int) -> Unit,
     private val getEmojiCardForPosition: (Int) -> EmojiCard?,
     private var executeBoardEntryAnimation: Boolean,
@@ -38,7 +39,8 @@ class GameBoardAdapter(
             view = holder.itemView,
             viewPositionInGrid = position,
             spanCount = gridSpanCount,
-            viewSizePx = emojiCardSizePx
+            viewSizePx = emojiCardSizePx,
+            marginPx = emojiCardMarginPx
         )
 
         if (executeBoardEntryAnimation) {

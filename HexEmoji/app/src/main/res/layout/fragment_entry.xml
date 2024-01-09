@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.entry.EntryFragment">
+
+    <ImageView
+        android:id="@+id/honeycomb"
+        android:src="@drawable/honeycomb_big"
+        android:scaleType="fitStart"
+        android:importantForAccessibility="no"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/honeycomb_guideline"
+        app:layout_constraintEnd_toEndOf="@id/entry_screen_start_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/honeycomb_guideline"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="@dimen/entry_screen_honeycomb_guideline_percentage" />
+
+    <Space
+        android:id="@+id/app_title_guideline"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/honeycomb_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/honeycomb"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/app_title_first_part"
+        android:text="@string/app_name_first_part"
+        android:textAppearance="@style/TextAppearance.HexEmoji.AppTitle.FirstPart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/entry_screen_app_title_spacing"
+        app:layout_constraintEnd_toStartOf="@+id/app_title_last_part"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_title_guideline" />
+
+    <TextView
+        android:id="@+id/app_title_last_part"
+        android:text="@string/app_name_last_part"
+        android:textAppearance="@style/TextAppearance.HexEmoji.AppTitle.LastPart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@id/app_title_first_part"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/app_title_first_part" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/app_title_barrier"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="app_title_first_part, app_title_last_part"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/app_subtitle"
+        android:text="@string/app_subtitle"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.HexEmoji.AppSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/entry_screen_app_subtitle_top_margin"
+        app:layout_constraintEnd_toStartOf="@+id/entry_screen_end_guideline"
+        app:layout_constraintStart_toStartOf="@+id/entry_screen_start_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/app_title_barrier" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/entry_screen_button_play"
+        android:text="@string/button_play"
+        style="@style/Widget.HexEmoji.Button.Primary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/entry_screen_buttons_spacing"
+        app:layout_constraintBottom_toTopOf="@+id/button_instructions"
+        app:layout_constraintEnd_toStartOf="@+id/entry_screen_end_guideline"
+        app:layout_constraintStart_toStartOf="@+id/entry_screen_start_guideline" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_instructions"
+        android:text="@string/entry_screen_button_instructions"
+        style="@style/Widget.HexEmoji.Button.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/entry_screen_bottom_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/entry_screen_end_guideline"
+        app:layout_constraintStart_toStartOf="@+id/entry_screen_start_guideline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/entry_screen_bottom_guideline"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="@dimen/entry_screen_bottom_guideline_percentage" />
+
+    <Space
+        android:id="@+id/entry_screen_start_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/app_title_first_part"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="@dimen/entry_screen_start_guideline_bias" />
+
+    <Space
+        android:id="@+id/entry_screen_end_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/app_title_last_part"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="@dimen/entry_screen_end_guideline_bias" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

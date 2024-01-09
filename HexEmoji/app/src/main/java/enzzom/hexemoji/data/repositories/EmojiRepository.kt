@@ -11,11 +11,7 @@ class EmojiRepository @Inject constructor(
 ) {
 
     suspend fun getAllEmojisByCategory(): Map<EmojiCategory, List<Emoji>> {
-        return emojiDAO.getAllEmojisByCategory().mapValues { mapEntry ->
-            mapEntry.value.map { emoji ->
-                emoji.copy(unicode = StringUtils.unescapeString(emoji.unicode))
-            }
-        }
+        return emojiDAO.getAllEmojisByCategory()
     }
 
     /**
@@ -23,17 +19,18 @@ class EmojiRepository @Inject constructor(
      * each category have roughly the same size.
      */
     suspend fun getRandomUnlockedEmojis(categories: List<EmojiCategory>, totalNumberOfEmojis: Int): List<String> {
-        val numberOfEmojisPerCategory = totalNumberOfEmojis / categories.size
+        val numberOfEmojisPerCategory = if (categories.size > totalNumberOfEmojis) 1 else totalNumberOfEmojis / categories.size
 
         val emojis = mutableListOf<String>()
 
-        categories.forEachIndexed { index, category ->
-            emojis.addAll(emojiDAO.getRandomUnlockedEmojis(category, if (index == categories.lastIndex)
+        for (i in 0..categories.size) {
+            emojis.addAll(emojiDAO.getRandomUnlockedEmojis(categories[i], if (i == categories.lastIndex)
                 // If it is the last category, then add any remaining emojis
                 numberOfEmojisPerCategory + (totalNumberOfEmojis % categories.size)
             else
                 numberOfEmojisPerCategory
             ))
+            if (emojis.size >= totalNumberOfEmojis) break
         }
 
         return emojis.map { StringUtils.unescapeString(it) }

@@ -3,22 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/initial_fragment">
+    app:startDestination="@id/entry_fragment">
 
     <fragment
-        android:id="@+id/initial_fragment"
-        android:name="enzzom.hexemoji.ui.fragments.initial.InitialFragment"
-        android:label="@string/page_title_page_play"
-        tools:layout="@layout/fragment_initial" >
+        android:id="@+id/entry_fragment"
+        android:name="enzzom.hexemoji.ui.fragments.entry.EntryFragment"
+        tools:layout="@layout/fragment_entry" >
         <action
-            android:id="@+id/action_initial_screen_to_main_screen"
+            android:id="@+id/action_entry_screen_to_main_screen"
             app:destination="@id/main_fragment" />
     </fragment>
 
     <fragment
         android:id="@+id/main_fragment"
         android:name="enzzom.hexemoji.ui.fragments.main.MainFragment"
-        android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_main_screen_to_game_screen"
@@ -58,7 +56,6 @@
     <fragment
         android:id="@+id/emoji_collection_fragment"
         android:name="enzzom.hexemoji.ui.fragments.collection.EmojiCollection"
-        android:label="fragment_emoji_collection"
         tools:layout="@layout/fragment_emoji_collection" >
         <argument
             android:name="category"

@@ -17,7 +17,7 @@ import enzzom.hexemoji.models.GameModeDetails
 class PlayViewModel : ViewModel() {
     private var selectedGameMode: GameMode? = null
     private var selectedBoardSize: BoardSize? = null
-    private val selectedEmojiCategories = mutableSetOf<EmojiCategory>()
+    private val selectedCategories = mutableSetOf<EmojiCategory>()
 
     private val _hasSelectedGameMode = MutableLiveData(false)
 
@@ -46,37 +46,37 @@ class PlayViewModel : ViewModel() {
         _hasSelectedGameMode.value = false
     }
 
-    fun toggleEmojiCategorySelection(category: EmojiCategory) {
-        if (category in selectedEmojiCategories) {
-            selectedEmojiCategories.remove(category)
+    fun toggleCategorySelection(category: EmojiCategory) {
+        if (category in selectedCategories) {
+            selectedCategories.remove(category)
         } else {
-            selectedEmojiCategories.add(category)
+            selectedCategories.add(category)
         }
 
-        _hasSelectedAnyCategory.value = selectedEmojiCategories.isNotEmpty()
+        _hasSelectedAnyCategory.value = selectedCategories.isNotEmpty()
 
         // 'selectedEmojiCategories' is a set, so when all categories are selected its size should
         // be equal to the size of the enum 'EmojiCategory'
-        _hasSelectedAllCategories.value = selectedEmojiCategories.size == EmojiCategory.values().size
+        _hasSelectedAllCategories.value = selectedCategories.size == EmojiCategory.values().size
     }
 
-    fun isEmojiCategorySelected(category: EmojiCategory): Boolean = selectedEmojiCategories.contains(category)
+    fun isCategorySelected(category: EmojiCategory): Boolean = selectedCategories.contains(category)
 
-    fun selectAllEmojiCategories() {
-        selectedEmojiCategories.addAll(EmojiCategory.values())
+    fun selectAllCategories() {
+        selectedCategories.addAll(EmojiCategory.values())
 
         _hasSelectedAnyCategory.value = true
         _hasSelectedAllCategories.value = true
     }
 
-    fun clearEmojiCategoriesSelection() {
-        selectedEmojiCategories.clear()
+    fun clearCategoriesSelection() {
+        selectedCategories.clear()
 
         _hasSelectedAnyCategory.value = false
         _hasSelectedAllCategories.value = false
     }
 
-    fun getSelectedEmojiCategories(): List<EmojiCategory> = selectedEmojiCategories.toList()
+    fun getSelectedCategories(): List<EmojiCategory> = selectedCategories.toList()
 
     fun selectBoardSize(boardSize: BoardSize) {
         selectedBoardSize = boardSize

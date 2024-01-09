@@ -44,11 +44,9 @@ class EmojisFragment : Fragment() {
                 emojiCategoryDetails = emojiCategoryDetails,
                 getEmojiCountForCategory = emojisViewModel::getEmojiCountForCategory,
                 getUnlockedCountForCategory = emojisViewModel::getUnlockedCountForCategory,
-                onCollectionClicked = { category ->
-                    (parentFragment?.parentFragment as MainFragment).navigateToCollectionScreen(
-                        category, emojisViewModel.getCategoryEmojis(category)
-                    )
-                }
+                onCollectionClicked = { category -> emojisViewModel.getCategoryEmojis(category)?.let {
+                    (parentFragment?.parentFragment as MainFragment).navigateToCollectionScreen(category, it)
+                }}
             )
 
             TabLayoutMediator(emojiCollectionTabs, emojiCollectionDetailsList) { tab, position ->

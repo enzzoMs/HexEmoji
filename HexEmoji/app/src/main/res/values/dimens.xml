@@ -41,13 +41,13 @@
     <dimen name="countdown_track_thickness">3dp</dimen>
 
     <!-- Initial Screen -->
-    <dimen name="initial_screen_honeycomb_guideline_percentage">0.22</dimen>
-    <dimen name="initial_screen_app_title_spacing">@dimen/spacing_small_1</dimen>
-    <dimen name="initial_screen_app_subtitle_top_margin">@dimen/spacing_small_2</dimen>
-    <dimen name="initial_screen_bottom_guideline_percentage">0.90</dimen>
-    <dimen name="initial_screen_start_guideline_bias">0.75</dimen>
-    <dimen name="initial_screen_end_guideline_bias">0.25</dimen>
-    <dimen name="initial_screen_buttons_spacing">@dimen/spacing_medium_2</dimen>
+    <dimen name="entry_screen_honeycomb_guideline_percentage">0.22</dimen>
+    <dimen name="entry_screen_app_title_spacing">@dimen/spacing_small_1</dimen>
+    <dimen name="entry_screen_app_subtitle_top_margin">@dimen/spacing_small_2</dimen>
+    <dimen name="entry_screen_bottom_guideline_percentage">0.90</dimen>
+    <dimen name="entry_screen_start_guideline_bias">0.75</dimen>
+    <dimen name="entry_screen_end_guideline_bias">0.25</dimen>
+    <dimen name="entry_screen_buttons_spacing">@dimen/spacing_medium_2</dimen>
 
     <!-- Main Screens = Play, Statistics and Emojis Page -->
     <dimen name="navigation_rail_icon_size">35dp</dimen>
@@ -99,6 +99,7 @@
 
     <!-- Game Screen -->
     <dimen name="game_countdown_size">120dp</dimen>
+    <dimen name="hexagonal_board_item_margin">16dp</dimen>
 
     <!-- General -->
     <dimen name="spacing_extra_small">4dp</dimen>

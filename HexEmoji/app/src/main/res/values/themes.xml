@@ -173,12 +173,6 @@
         <item name="fontFamily">@font/lexend_medium</item>
     </style>
 
-    <!-- Custom Views -->
-    <style name="TextAppearance.HexEmoji.EmojiCard" parent="">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">?attr/colorAccent</item>
-    </style>
-
     <!-- Emoji Collection Screen -->
     <style name="TextAppearance.HexEmoji.Collection.Description" parent="TextAppearance.HexEmoji.Subtitle1">
         <item name="fontFamily">@font/lexend_semibold</item>

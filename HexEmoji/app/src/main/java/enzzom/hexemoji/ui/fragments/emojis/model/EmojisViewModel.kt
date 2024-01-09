@@ -22,30 +22,25 @@ class EmojisViewModel @Inject constructor(
     private val _loadingCategoriesInfo = MutableLiveData(true)
     val loadingCategoriesInfo: LiveData<Boolean> = _loadingCategoriesInfo
 
-    private lateinit var allEmojisByCategory: Map<EmojiCategory, List<Emoji>>
-    private lateinit var categoriesUnlockedCount: Map<EmojiCategory, Int>
-    private lateinit var categoriesEmojiCount: Map<EmojiCategory, Int>
+    private var allEmojisByCategory: Map<EmojiCategory, List<Emoji>>? = null
+    private var categoriesUnlockedCount: Map<EmojiCategory, Int>? = null
+    private var categoriesEmojiCount: Map<EmojiCategory, Int>? = null
 
     init {
         viewModelScope.launch {
             allEmojisByCategory = emojiRepository.getAllEmojisByCategory()
 
-            categoriesEmojiCount = allEmojisByCategory.mapValues { it.value.size }
-            categoriesUnlockedCount = allEmojisByCategory.mapValues { it.value.count { emoji -> emoji.unlocked }  }
+            categoriesEmojiCount = allEmojisByCategory!!.mapValues { it.value.size }
+            categoriesUnlockedCount = allEmojisByCategory!!.mapValues { it.value.count { emoji -> emoji.unlocked }  }
 
             _loadingCategoriesInfo.value = false
         }
+
     }
 
-    fun getUnlockedCountForCategory(category: EmojiCategory): Int? {
-        return if (_loadingCategoriesInfo.value!!) null else categoriesUnlockedCount[category]
-    }
+    fun getUnlockedCountForCategory(category: EmojiCategory): Int? = categoriesUnlockedCount?.get(category)
 
-    fun getEmojiCountForCategory(category: EmojiCategory): Int? {
-        return if (_loadingCategoriesInfo.value!!) null else categoriesEmojiCount[category]
-    }
+    fun getEmojiCountForCategory(category: EmojiCategory): Int? = categoriesEmojiCount?.get(category)
 
-    fun getCategoryEmojis(category: EmojiCategory): List<Emoji> {
-        return allEmojisByCategory[category]!!
-    }
+    fun getCategoryEmojis(category: EmojiCategory): List<Emoji>? = allEmojisByCategory?.get(category)
 }

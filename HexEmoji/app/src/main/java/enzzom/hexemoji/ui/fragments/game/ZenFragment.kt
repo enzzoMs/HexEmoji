@@ -54,6 +54,7 @@ class ZenFragment : Fragment() {
                 gridSpanCount = boardSize.numOfColumns,
                 numberOfEmojiCards = boardSize.getSizeInHexagonalLayout(),
                 emojiCardSizePx = resources.getDimensionPixelSize(R.dimen.emoji_card_size),
+                emojiCardMarginPx = resources.getDimensionPixelSize(R.dimen.hexagonal_board_item_margin),
                 getEmojiCardForPosition = { gameViewModel.getEmojiCardForPosition(it) },
                 onEmojiCardClicked = { emojiCardView, position ->
                     if (!gameViewModel.isEmojiCardFlipped(position)) {

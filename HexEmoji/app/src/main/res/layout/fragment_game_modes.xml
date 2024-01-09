@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.recyclerview.widget.RecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/game_mode_list"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginVertical="@dimen/main_screens_outer_margin"
-    tools:context=".ui.fragments.play.GameModesFragment">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/game_mode_list"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-</LinearLayout>
+    tools:context=".ui.fragments.play.GameModesFragment" />

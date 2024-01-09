@@ -42,7 +42,7 @@ class BoardSelectionFragment : Fragment() {
         binding.boardSelectionButtonPlay.setOnClickListener {
             mainFragment.navigateToGameScreen(
                 playViewModel.getSelectedGameMode()!!, playViewModel.getSelectedBoardSize()!!,
-                playViewModel.getSelectedEmojiCategories()
+                playViewModel.getSelectedCategories()
             )
         }
 
@@ -64,7 +64,8 @@ class BoardSelectionFragment : Fragment() {
                 isBoardSizeCardSelected = { playViewModel.isBoardSizeSelected(it) },
                 useHexagonalLayout = useHexagonBoard,
                 hexagonalGridSpanCount = hexagonalGridSpan,
-                hexagonViewSizePx = resources.getDimensionPixelSize(R.dimen.board_size_card_size)
+                hexagonViewSizePx = resources.getDimensionPixelSize(R.dimen.board_size_card_size),
+                hexagonMarginPx = resources.getDimensionPixelSize(R.dimen.hexagonal_board_item_margin)
             )
 
             if (useHexagonBoard) {
