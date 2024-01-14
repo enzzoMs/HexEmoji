@@ -8,12 +8,11 @@ object StringUtils {
     fun unescapeString(escapedString: String): String {
         if ("\\u" !in escapedString) return escapedString
 
-        var unescapedString = ""
+        val unicodeTokenPattern = Regex("(?<=\\\\u)[0-9a-fA-F]{4}")
 
-        val unicodeTokenRegex = Regex("(?<=\\\\u)[0-9a-fA-F]{4}")
-        unicodeTokenRegex.findAll(escapedString).forEach {
-            unescapedString += it.value.toInt(16).toChar()
-        }
+        val unescapedString = unicodeTokenPattern.findAll(escapedString).map {
+            it.value.toInt(16).toChar()
+        }.joinToString(separator = "")
 
         return unescapedString
     }

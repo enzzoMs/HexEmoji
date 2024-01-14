@@ -46,6 +46,9 @@
     <color name="game_screen_primary_color">@color/white</color>
     <color name="game_screen_status_bar_color">@color/gray</color>
 
+    <!-- Emojis (Mainly for the "numbers and letters" category because some of them are not emojis, just plain text) -->
+    <color name="emoji_text_color">@color/blue_bright</color>
+
     <!-- Emoji Categories -->
     <color name="emoji_category_color_people_emotions">@color/orange_brown</color>
     <color name="emoji_category_color_nature">@color/green</color>
@@ -105,6 +108,7 @@
     <color name="yellow">#CF8500</color>
     <color name="yellow_light">#FFD282</color>
     <color name="blue">#1A7EE3</color>
+    <color name="blue_bright">#40C0E7</color>
     <color name="blue_light">#80BFFF</color>
     <color name="purple">#814CB5</color>
     <color name="purple_light">#A989C8</color>

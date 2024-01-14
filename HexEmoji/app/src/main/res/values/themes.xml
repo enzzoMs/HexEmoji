@@ -82,12 +82,11 @@
 
     <!-- Buttons -->
     <style name="Widget.HexEmoji.Button" parent="Widget.AppCompat.Button">
-        <item name="android:textSize">@dimen/text_size_subtitle1</item>
         <item name="android:paddingStart">@dimen/button_horizontal_inner_padding</item>
         <item name="android:paddingEnd">@dimen/button_horizontal_inner_padding</item>
         <item name="android:paddingTop">@dimen/button_vertical_inner_padding</item>
         <item name="android:paddingBottom">@dimen/button_vertical_inner_padding</item>
-        <item name="fontFamily">@font/lexend_bold</item>
+        <item name="android:textAppearance">@style/TextAppearance.HexEmoji.Button</item>
     </style>
 
     <style name="Widget.HexEmoji.Button.Primary">
@@ -98,6 +97,11 @@
     <style name="Widget.HexEmoji.Button.Secondary">
         <item name="android:background">@drawable/button_secondary_shape</item>
         <item name="android:textColor">@color/button_secondary_text_color</item>
+    </style>
+
+    <style name="TextAppearance.HexEmoji.Button" parent="TextAppearance.HexEmoji.Subtitle1">
+        <item name="fontFamily">@font/lexend_bold</item>
+        <item name="textAllCaps">true</item>
     </style>
 
     <!-- App Title and Subtitle -->
@@ -129,6 +133,14 @@
         <item name="cardCornerRadius">@dimen/card_corner_radius</item>
         <item name="cardBackgroundColor">?attr/colorSurface</item>
         <item name="android:foreground">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="Widget.HexEmoji.CardView.Emoji" parent="">
+        <item name="android:textColor">@color/emoji_text_color</item>
+        <item name="android:textStyle">bold</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:gravity">center</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="TextAppearance.HexEmoji.CardView.Title" parent="TextAppearance.HexEmoji.Subtitle1">

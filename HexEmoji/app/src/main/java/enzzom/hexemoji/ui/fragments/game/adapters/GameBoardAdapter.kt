@@ -86,16 +86,15 @@ class GameBoardAdapter(
 
         init {
             emojiCardView.setOnClickListener {
-                // The card view data may take some time to load since it will probably be fetched
-                // from the database
+                // The card view data may take some time to load since it will be fetched from the database
                 // If the user clicks on the card view and the data is not initialized yet, then we
                 // try to bind the data again to make sure that the view is is properly populated
                 if (!initializedData) {
                     bind(position)
                 }
 
-                // If the card view data is not ready yet, then we block the click event to avoid
-                // displaying incorrect information or undesired behavior
+                // If the data is not ready yet, then we block the click event to avoid displaying
+                // incorrect information or undesired behavior
                 if (cardInteractionEnabled && initializedData) {
                     onEmojiCardClicked(emojiCardView, position)
                 }

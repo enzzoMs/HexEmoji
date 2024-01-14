@@ -7,8 +7,8 @@
         <shape android:shape="oval">
             <solid android:color="?attr/colorSurfaceDim"/>
             <size
-                android:height="@dimen/button_icon_size"
-                android:width="@dimen/button_icon_size" />
+                android:height="@dimen/button_image_size"
+                android:width="@dimen/button_image_size" />
         </shape>
     </item>
 

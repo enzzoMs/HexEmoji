@@ -116,6 +116,8 @@ class GameFragment : Fragment() {
                 navigateToMainScreen()
             }
         }
+
+
     }
 
     private fun showGameTutorialDialog() {

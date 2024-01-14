@@ -1,5 +1,6 @@
 package enzzom.hexemoji.ui.fragments.collection.adapters
 
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,6 @@ import enzzom.hexemoji.R
 import enzzom.hexemoji.data.entities.Emoji
 import enzzom.hexemoji.databinding.ItemCardCollectionEmojiBinding
 import enzzom.hexemoji.databinding.ItemHeaderCollectionProgressBinding
-import enzzom.hexemoji.utils.StringUtils
 
 private const val COLLECTION_PROGRESS_VIEW_TYPE = 0
 private const val COLLECTION_EMOJI_VIEW_TYPE = 1
@@ -19,7 +19,8 @@ private const val HEADER_VIEW_COUNT = 1
 class CollectionAdapter(
     private val collectionEmojis: List<Emoji>,
     private val collectionColor: Int,
-    private val collectionLighterColor: Int
+    private val collectionLighterColor: Int,
+    private val onUnlockedEmojiClicked: (Emoji) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -84,13 +85,30 @@ class CollectionAdapter(
         private val binding: ItemCardCollectionEmojiBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
+        private lateinit var emoji: Emoji
+
+        init {
+            binding.collectionCardEmoji.setOnClickListener {
+                if (emoji.unlocked) {
+                    onUnlockedEmojiClicked(emoji)
+                }
+            }
+            binding.collectionCardLockedIcon.apply {
+                setOnClickListener {
+                    (drawable as AnimatedVectorDrawable).start()
+                }
+                foreground = null
+            }
+        }
+
         fun bind(emoji: Emoji) {
+            this.emoji = emoji
+
             binding.apply {
                 collectionCard.strokeColor = collectionLighterColor
-                collectionCardEmoji.setTextColor(collectionColor)
 
                 if (emoji.unlocked) {
-                    collectionCardEmoji.text = StringUtils.unescapeString(emoji.unicode)
+                    collectionCardEmoji.text = emoji.emoji
                     collectionCardEmoji.visibility = View.VISIBLE
                     collectionCardLockedIcon.visibility = View.GONE
                 } else {

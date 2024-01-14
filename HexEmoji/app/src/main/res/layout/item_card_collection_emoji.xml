@@ -23,10 +23,7 @@
 
             <TextView
                 android:id="@+id/collection_card_emoji"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:includeFontPadding="false"
-                app:autoSizeTextType="uniform"
+                style="@style/Widget.HexEmoji.CardView.Emoji"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="@dimen/collection_emoji_card_inner_margin"
@@ -34,12 +31,11 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:textColor="#000000"
                 tools:text="🐝"/>
 
             <ImageView
                 android:id="@+id/collection_card_locked_icon"
-                android:src="@drawable/ic_lock"
+                android:src="@drawable/collection_emoji_locked_anim"
                 android:visibility="gone"
                 android:contentDescription="@string/collection_card_locked_content_description"
                 android:padding="@dimen/collection_emoji_card_locked_margin"

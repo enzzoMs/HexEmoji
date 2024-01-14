@@ -24,11 +24,7 @@
 
     <TextView
         android:id="@+id/emoji"
-        android:textStyle="bold"
-        android:textColor="@color/emoji_category_color_numbers_letters"
-        android:textAlignment="center"
-        android:includeFontPadding="false"
-        app:autoSizeTextType="uniform"
+        style="@style/Widget.HexEmoji.CardView.Emoji"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/emoji_card_inner_margin"

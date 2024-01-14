@@ -59,7 +59,7 @@
             <ImageButton
                 android:id="@+id/board_tutorial_button_previous"
                 android:src="@drawable/ic_arrow_back"
-                android:background="@drawable/button_icon_background"
+                android:background="@drawable/button_image_background"
                 app:tint="?attr/colorOnSurface"
                 android:scaleType="fitCenter"
                 android:visibility="gone"
@@ -76,7 +76,7 @@
             <ImageButton
                 android:id="@+id/board_tutorial_button_next"
                 android:src="@drawable/ic_arrow_next"
-                android:background="@drawable/button_icon_background"
+                android:background="@drawable/button_image_background"
                 app:tint="?attr/colorOnSurface"
                 android:scaleType="fitCenter"
                 android:contentDescription="@string/tutorial_next_button_content_description"
