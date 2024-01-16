@@ -13,7 +13,7 @@
 
         <TextView
             android:id="@+id/emoji_details_name"
-            android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Title"
+            android:textAppearance="@style/TextAppearance.HexEmoji.Dialog"
             android:textAlignment="center"
             android:textSize="@dimen/text_size_headline6"
             android:layout_width="0dp"

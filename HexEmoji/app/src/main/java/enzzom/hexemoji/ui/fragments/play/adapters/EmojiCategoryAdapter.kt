@@ -15,7 +15,7 @@ private const val CATEGORY_VIEW_TYPE = 2
 private const val HEADER_VIEW_COUNT = 2
 
 class EmojiCategoryAdapter(
-    private val emojiCategoryDetails: List<EmojiCategoryDetails>,
+    private val categoryDetails: List<EmojiCategoryDetails>,
     private val onCategoryClicked: (EmojiCategory) -> Unit,
     private val isCategorySelected: (EmojiCategory) -> Boolean,
     private val useHeaderViews: Boolean = false,
@@ -24,11 +24,6 @@ class EmojiCategoryAdapter(
     private val isCheckboxChecked: () -> Boolean = { false },
     private val onCheckboxClicked: (checked: Boolean) -> Unit = {}
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    companion object {
-        const val PAGE_DESCRIPTION_VIEW_POSITION = 0
-        const val CHECKBOX_VIEW_POSITION = 1
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -51,13 +46,13 @@ class EmojiCategoryAdapter(
             useHeaderViews && holder is PageDescriptionHolder -> holder.bind(pageDescription)
             useHeaderViews &&  holder is CheckboxHolder -> holder.bind()
             holder is EmojiCategoryHolder -> holder.bind(
-                emojiCategoryDetails[if (useHeaderViews) position - HEADER_VIEW_COUNT else position]
+                categoryDetails[if (useHeaderViews) position - HEADER_VIEW_COUNT else position]
             )
         }
     }
 
     override fun getItemCount(): Int {
-        return emojiCategoryDetails.size + (if (useHeaderViews) HEADER_VIEW_COUNT else 0)
+        return categoryDetails.size + (if (useHeaderViews) HEADER_VIEW_COUNT else 0)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -110,5 +105,10 @@ class EmojiCategoryAdapter(
                 isChecked = isCheckboxChecked()
             }
         }
+    }
+
+    companion object {
+        const val PAGE_DESCRIPTION_VIEW_POSITION = 0
+        const val CHECKBOX_VIEW_POSITION = 1
     }
 }

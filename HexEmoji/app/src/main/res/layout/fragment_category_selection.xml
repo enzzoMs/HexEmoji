@@ -3,19 +3,29 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="@dimen/main_screens_outer_margin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.play.EmojisSelectionFragment">
+    tools:context=".ui.fragments.play.CategorySelectionFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/category_selection_toolbar"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        android:contentDescription="@string/icon_content_description_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/emojis_selection_page_description"
-        android:text="@string/page_description_emojis_selection"
+        android:id="@+id/category_selection_page_description"
+        android:text="@string/page_description_category_selection"
         style="@style/TextAppearance.HexEmoji.PageDescription"
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/screen_outer_margin"
+        app:layout_constraintTop_toBottomOf="@id/category_selection_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -25,8 +35,9 @@
         style="@style/Widget.HexEmoji.CheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/screen_outer_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/emojis_selection_page_description"/>
+        app:layout_constraintTop_toBottomOf="@id/category_selection_page_description"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/emoji_categories_list"
@@ -34,7 +45,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/main_screens_contents_margin"
+        android:layout_marginBottom="@dimen/screen_contents_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/all_emojis_check_box"
@@ -45,9 +56,10 @@
         android:text="@string/button_continue"
         android:enabled="false"
         style="@style/Widget.HexEmoji.Button.Primary"
-        android:layout_gravity="end"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/screen_outer_margin"
+        android:layout_marginBottom="@dimen/screen_outer_margin"
         app:layout_constraintStart_toStartOf="@id/button_continue_guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

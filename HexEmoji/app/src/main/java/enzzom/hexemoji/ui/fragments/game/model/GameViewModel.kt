@@ -12,7 +12,6 @@ import enzzom.hexemoji.models.BoardSize
 import enzzom.hexemoji.models.EmojiCard
 import enzzom.hexemoji.models.EmojiCategory
 import kotlinx.coroutines.launch
-import javax.inject.Named
 
 /**
  * TODO
@@ -22,7 +21,6 @@ class GameViewModel @AssistedInject constructor(
     private val preferencesRepository: PreferencesRepository,
     @Assisted val boardSize: BoardSize,
     @Assisted val selectedEmojiCategories: List<EmojiCategory>,
-    @Named("preference_key_show_board_tutorial") private val preferenceShowBoardTutorial: String
 ) : ViewModel() {
 
     private var currentEmojiPair = Pair<EmojiCard?, EmojiCard?>(null, null)
@@ -72,10 +70,14 @@ class GameViewModel @AssistedInject constructor(
 
     fun isEmojiCardFlipped(position: Int): Boolean = emojiCards?.get(position)?.flipped ?: false
 
-    fun shouldShowBoardTutorial(): Boolean = preferencesRepository.getBoolean(preferenceShowBoardTutorial, true)
+    fun shouldShowBoardTutorial(): Boolean = preferencesRepository.getBoolean(
+        PreferencesRepository.PREFERENCE_KEY_SHOW_BOARD_TUTORIAL, true
+    )
 
     fun boardTutorialFinished() {
-        preferencesRepository.putBoolean(preferenceShowBoardTutorial, false)
+        preferencesRepository.putBoolean(
+            PreferencesRepository.PREFERENCE_KEY_SHOW_BOARD_TUTORIAL, false
+        )
     }
 
     fun shouldExecuteEntryAnimation(): Boolean = executeBoardEntryAnimation

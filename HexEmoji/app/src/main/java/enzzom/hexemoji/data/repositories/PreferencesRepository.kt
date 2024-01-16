@@ -15,4 +15,8 @@ class PreferencesRepository @Inject constructor(
             apply()
         }
     }
+
+    companion object {
+        const val PREFERENCE_KEY_SHOW_BOARD_TUTORIAL = "preference_show_board_tutorial"
+    }
 }

@@ -14,10 +14,6 @@
     <string name="button_play">Jogar</string>
     <string name="icon_content_description_back">Voltar para página anterior</string>
 
-    <!-- Preferences -->
-    <string name="preferences_file_key" translatable="false">app_preferences</string>
-    <string name="preference_key_show_board_tutorial" translatable="false">preference_show_board_tutorial</string>
-
     <!-- Dialogs -->
     <string name="exit_game_message">Deseja mesmo sair? Você pederá todo o seu progresso nessa partida!</string>
     <string name="exit_game_button_confirm">Sair</string>
@@ -56,6 +52,7 @@
     <string name="collection_unlocked_bar_description">Progressão de emojis desbloqueados</string>
     <string name="collection_unlocked_ratio_template">%1$3d / %2$3d</string>
     <string name="collection_search_field_hint">Pesquisar</string>
+    <string name="collection_search_no_results">Nenhum resultado para a pesquisa</string>
     <string name="collection_card_locked_content_description">Emoji bloqueado</string>
     <string name="icon_content_description_exit_collection">Sair da coleção</string>
 
@@ -77,8 +74,8 @@
     <!-- Board Size Selection Page -->
     <string name="page_description_board_selection">Escolha o tamanho do tabuleiro</string>
 
-    <!-- Emojis Selection Page -->
-    <string name="page_description_emojis_selection">Escolha os emojis que você quer jogar</string>
+    <!-- Category Selection Page -->
+    <string name="page_description_category_selection">Escolha os emojis que você quer jogar</string>
     <string name="all_emojis_checkbox">Todos os Emojis</string>
 
     <string name="emoji_category_image_content_description">

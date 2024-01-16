@@ -1,5 +1,6 @@
 package enzzom.hexemoji.ui.fragments.collection.adapters
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.view.LayoutInflater
 import android.view.View
@@ -17,15 +18,11 @@ private const val COLLECTION_EMOJI_VIEW_TYPE = 1
 private const val HEADER_VIEW_COUNT = 1
 
 class CollectionAdapter(
-    private val collectionEmojis: List<Emoji>,
+    private var collectionEmojis: List<Emoji>,
     private val collectionColor: Int,
     private val collectionLighterColor: Int,
     private val onUnlockedEmojiClicked: (Emoji) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    companion object {
-        const val COLLECTION_PROGRESS_VIEW_POSITION = 0
-    }
 
     val collectionEmojiCount = collectionEmojis.size
     val collectionUnlockedCount = collectionEmojis.count { emoji -> emoji.unlocked }
@@ -61,6 +58,12 @@ class CollectionAdapter(
         return if (position == COLLECTION_PROGRESS_VIEW_POSITION) COLLECTION_PROGRESS_VIEW_TYPE else COLLECTION_EMOJI_VIEW_TYPE
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun replaceCollection(newCollection: List<Emoji>) {
+        collectionEmojis = newCollection
+        notifyDataSetChanged()
+    }
+
     inner class CollectionProgressHolder(
         private val binding: ItemHeaderCollectionProgressBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -88,16 +91,12 @@ class CollectionAdapter(
         private lateinit var emoji: Emoji
 
         init {
-            binding.collectionCardEmoji.setOnClickListener {
+            binding.collectionCard.setOnClickListener {
                 if (emoji.unlocked) {
                     onUnlockedEmojiClicked(emoji)
+                } else {
+                    (binding.collectionCardLockedIcon.drawable as AnimatedVectorDrawable).start()
                 }
-            }
-            binding.collectionCardLockedIcon.apply {
-                setOnClickListener {
-                    (drawable as AnimatedVectorDrawable).start()
-                }
-                foreground = null
             }
         }
 
@@ -119,5 +118,9 @@ class CollectionAdapter(
                 }
             }
         }
+    }
+
+    companion object {
+        const val COLLECTION_PROGRESS_VIEW_POSITION = 0
     }
 }

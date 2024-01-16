@@ -8,5 +8,5 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginVertical="@dimen/main_screens_outer_margin"
+    android:layout_marginVertical="@dimen/screen_outer_margin"
     tools:context=".ui.fragments.play.GameModesFragment" />

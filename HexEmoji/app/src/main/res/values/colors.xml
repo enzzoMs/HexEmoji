@@ -19,6 +19,8 @@
     <color name="unselected_icon_color">@color/gray</color>
     <color name="unselected_text_color">@color/gray</color>
 
+    <color name="page_description_text_color">@color/gray</color>
+
     <!-- Buttons -->
     <color name="button_ripple_color">@color/silver</color>
     <color name="button_primary_disabled_back_color">@color/orange_beer_alpha_40</color>
@@ -29,10 +31,9 @@
     <!-- Splash Screen -->
     <color name="splash_screen_background_color">@color/ic_launcher_background</color>
 
-    <!-- Main Screens = Play, Statistics and Emojis Page -->
+    <!-- Main Screens = Game Modes, Statistics and Emojis Page -->
     <color name="side_navigation_item_color">@color/gray</color>
     <color name="side_navigation_selected_back_color">@color/silver_light</color>
-    <color name="page_description_text_color">@color/gray</color>
 
     <!-- Emojis Selection Page -->
     <color name="emoji_category_card_selected_back_color">@color/orange_beer_alpha_8</color>

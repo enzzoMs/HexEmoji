@@ -5,19 +5,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import enzzom.hexemoji.R
-import enzzom.hexemoji.databinding.FragmentEmojisSelectionBinding
+import enzzom.hexemoji.databinding.FragmentCategorySelectionBinding
 import enzzom.hexemoji.models.EmojiCategoryDetails
-import enzzom.hexemoji.ui.fragments.main.MainFragment
+import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.ui.fragments.play.adapters.EmojiCategoryAdapter
 import enzzom.hexemoji.ui.fragments.play.model.PlayViewModel
 
-class EmojisSelectionFragment : Fragment() {
+class CategorySelectionFragment : Fragment() {
 
     private val playViewModel: PlayViewModel by activityViewModels()
 
@@ -26,13 +25,7 @@ class EmojisSelectionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentEmojisSelectionBinding.inflate(inflater, container, false)
-
-        (parentFragment?.parentFragment as MainFragment).apply {
-            setToolbarTitle(playViewModel.getGameModeTitle(resources))
-            showBackArrow(true)
-            showNavigationViews(false)
-        }
+        val binding = FragmentCategorySelectionBinding.inflate(inflater, container, false)
 
         val onCheckBoxClicked = { checked: Boolean ->
             if (checked) {
@@ -51,15 +44,21 @@ class EmojisSelectionFragment : Fragment() {
         }
 
         binding.apply {
+            playViewModel.getSelectedGameMode()?.let {
+                categorySelectionToolbar.title = GameMode.getTitle(it, resources)
+            }
+
+            categorySelectionToolbar.setNavigationOnClickListener { findNavController().popBackStack() }
+
             emojiCategoriesList.apply {
-                // Removing the recycler view animations (mainly to prevent blink after 'notifyItemChanged')
+                // Removing recycler view animations (mainly to prevent blink after 'notifyItemChanged')
                 itemAnimator = null
                 setHasFixedSize(true)
 
                 val useHeaderViews = layoutManager is GridLayoutManager
 
                 adapter = EmojiCategoryAdapter(
-                    emojiCategoryDetails = EmojiCategoryDetails.getAll(resources),
+                    categoryDetails = EmojiCategoryDetails.getAll(resources),
                     onCategoryClicked = {
                         playViewModel.toggleCategorySelection(it)
 
@@ -69,7 +68,7 @@ class EmojisSelectionFragment : Fragment() {
                     },
                     isCategorySelected = { playViewModel.isCategorySelected(it) },
                     useHeaderViews = useHeaderViews,
-                    pageDescription = resources.getString(R.string.page_description_emojis_selection),
+                    pageDescription = resources.getString(R.string.page_description_category_selection),
                     checkboxName = resources.getString(R.string.all_emojis_checkbox),
                     isCheckboxChecked = { playViewModel.hasSelectedAllCategories.value!! },
                     onCheckboxClicked = { onCheckBoxClicked(it) }
@@ -97,23 +96,11 @@ class EmojisSelectionFragment : Fragment() {
             }
         }
 
-        // Manually configuring the behavior of the back button due to an unknown bug that
-        // caused a synchronization issue between what was shown on the screen and the actual
-        // current destination tracked by the NavController.
-        requireActivity().onBackPressedDispatcher.addCallback(
-            viewLifecycleOwner,
-            object: OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    findNavController().navigate(R.id.action_emojis_selection_to_game_modes)
-                }
-            }
-        )
-
         return binding.root
     }
 
     private fun navigateToBoardSelection() {
         playViewModel.clearBoardSizeSelection()
-        findNavController().navigate(R.id.action_emojis_selection_to_board_selection)
+        findNavController().navigate(R.id.action_category_selection_to_board_selection)
     }
 }

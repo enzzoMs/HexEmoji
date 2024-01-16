@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import enzzom.hexemoji.R
+
 class StatisticsFragment : Fragment() {
 
     override fun onCreateView(

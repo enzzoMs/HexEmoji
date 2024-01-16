@@ -1,6 +1,5 @@
 package enzzom.hexemoji.ui.fragments.play.model
 
-import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -30,16 +29,13 @@ class PlayViewModel : ViewModel() {
     private val _hasSelectedBoardSize = MutableLiveData(false)
     val hasSelectedBoardSize: LiveData<Boolean> = _hasSelectedBoardSize
 
+
     fun selectGameMode(gameModeDetails: GameModeDetails) {
         selectedGameMode = gameModeDetails.gameMode
         _hasSelectedGameMode.value = true
     }
 
     fun getSelectedGameMode(): GameMode? = selectedGameMode
-
-    fun getGameModeTitle(resources: Resources): String {
-        return if (selectedGameMode != null) GameMode.getTitle(selectedGameMode!!, resources) else ""
-    }
 
     fun clearGameModeSelection() {
         selectedGameMode = null

@@ -7,44 +7,40 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.play.BoardSelectionFragment">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/board_selection_toolbar"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationContentDescription="@string/icon_content_description_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <TextView
         android:id="@+id/board_selection_page_description"
         android:text="@string/page_description_board_selection"
         style="@style/TextAppearance.HexEmoji.PageDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/main_screens_outer_margin"
+        android:layout_margin="@dimen/screen_outer_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/board_selection_toolbar" />
 
-    <!-- This FrameLayout serves as a container to center the RecyclerView with 'wrap_content' height.
-    Without this container, using 'wrap_content' could result in the RecyclerView's layout constraints
-    being exceeded. If a different height setting is used the grid contents may not be centered
-    on the screen as intended -->
-    <FrameLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/board_size_list"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        android:overScrollMode="never"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/screen_outer_margin"
         app:layout_constraintBottom_toTopOf="@+id/board_selection_button_play"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/board_selection_page_description">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/board_size_list"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="horizontal"
-            android:overScrollMode="never"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/main_screens_outer_margin"
-            app:layout_constraintBottom_toTopOf="@+id/board_selection_button_play"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/board_selection_page_description" />
-
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/board_selection_page_description" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/board_selection_button_play"
@@ -53,8 +49,8 @@
         style="@style/Widget.HexEmoji.Button.Primary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/main_screens_outer_margin"
-        android:layout_marginBottom="@dimen/main_screens_outer_margin"
+        android:layout_marginEnd="@dimen/screen_outer_margin"
+        android:layout_marginBottom="@dimen/screen_outer_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/button_play_guideline"/>

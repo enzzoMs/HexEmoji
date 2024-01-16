@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -13,7 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.FragmentBoardSelectionBinding
 import enzzom.hexemoji.models.BoardSize
-import enzzom.hexemoji.ui.fragments.main.MainFragment
+import enzzom.hexemoji.models.EmojiCategory
+import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.ui.fragments.play.adapters.BoardSizeAdapter
 import enzzom.hexemoji.ui.fragments.play.model.PlayViewModel
 import enzzom.hexemoji.utils.recyclerview.HexagonalSpanSizeLookup
@@ -25,23 +25,23 @@ class BoardSelectionFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentBoardSelectionBinding.inflate(inflater, container, false)
 
-        val mainFragment = parentFragment?.parentFragment as MainFragment
-        mainFragment.apply {
-            setToolbarTitle(playViewModel.getGameModeTitle(resources))
-            showBackArrow(true)
-            showNavigationViews(false)
+        playViewModel.getSelectedGameMode()?.let {
+            binding.boardSelectionToolbar.title = GameMode.getTitle(it, resources)
         }
 
         playViewModel.hasSelectedBoardSize.observe(viewLifecycleOwner) {
             binding.boardSelectionButtonPlay.isEnabled = it
         }
 
+        binding.boardSelectionToolbar.setNavigationOnClickListener { findNavController().popBackStack() }
+
         binding.boardSelectionButtonPlay.setOnClickListener {
-            mainFragment.navigateToGameScreen(
-                playViewModel.getSelectedGameMode()!!, playViewModel.getSelectedBoardSize()!!,
+            navigateToGameScreen(
+                playViewModel.getSelectedGameMode()!!,
+                playViewModel.getSelectedBoardSize()!!,
                 playViewModel.getSelectedCategories()
             )
         }
@@ -54,6 +54,7 @@ class BoardSelectionFragment : Fragment() {
             // Removing the recycler view animations (mainly to prevent blink after 'notifyItemChanged')
             itemAnimator = null
             setHasFixedSize(true)
+
             adapter = BoardSizeAdapter(
                 boardSizes = BoardSize.values().toList(),
                 onBoardSizeCardClicked = { newSelectedBoard ->
@@ -76,19 +77,18 @@ class BoardSelectionFragment : Fragment() {
             }
         }
 
-        // Manually configuring the behavior of the back button due to an unknown error that
-        // caused a synchronization issue between what was shown on the screen and the actual
-        // current destination tracked by the NavController.
-        requireActivity().onBackPressedDispatcher.addCallback(
-            viewLifecycleOwner,
-            object: OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    findNavController().navigate(R.id.action_board_selection_to_emojis_selection)
-                    playViewModel.clearBoardSizeSelection()
-                }
-            }
-        )
 
         return binding.root
+    }
+
+    private fun navigateToGameScreen(
+        selectedGameMode: GameMode, selectedBoardSize: BoardSize,
+        selectedEmojiCategories: List<EmojiCategory>
+    ) {
+        findNavController().navigate(
+            BoardSelectionFragmentDirections.actionBoardSelectionToGameScreen(
+                selectedGameMode, selectedBoardSize, selectedEmojiCategories.map { it.name }.toTypedArray()
+            )
+        )
     }
 }

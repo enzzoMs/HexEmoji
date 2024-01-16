@@ -7,8 +7,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import enzzom.hexemoji.R
-import javax.inject.Named
+
+private const val PREFERENCES_FILE_KEY = "app_preferences"
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -18,13 +18,6 @@ class PreferencesModule {
     fun provideAppPreferences(
         @ApplicationContext applicationContext: Context
     ): SharedPreferences = applicationContext.getSharedPreferences(
-        applicationContext.resources.getString(R.string.preferences_file_key),
-        Context.MODE_PRIVATE
+        PREFERENCES_FILE_KEY, Context.MODE_PRIVATE
     )
-
-    @Provides
-    @Named("preference_key_show_board_tutorial")
-    fun provideBoardTutorialPreferenceKey(
-        @ApplicationContext applicationContext: Context
-    ): String = applicationContext.resources.getString(R.string.preference_key_show_board_tutorial)
 }

@@ -23,7 +23,7 @@ private const val END_ANIMATION_DURATION = 300L
 private const val END_ANIMATION_DELAY = 50L
 private const val END_ANIMATION_SCALE_FACTOR = 1.6f
 
-class CountdownView(context: Context, attrs: AttributeSet? = null) : ConstraintLayout(context, attrs) {
+class CountDownView(context: Context, attrs: AttributeSet? = null) : ConstraintLayout(context, attrs) {
 
     private val binding: ViewCountdownBinding
     private val initialValue: Int

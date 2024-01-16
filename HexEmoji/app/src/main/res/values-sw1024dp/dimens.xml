@@ -3,9 +3,6 @@
     <!-- Dialogs -->
     <dimen name="game_tutorial_image_height">240dp</dimen>
 
-    <!-- Play Screens = GameModes, EmojisSelection, BoardSelection -->
-    <dimen name="play_screens_list_horizontal_margin">@dimen/spacing_medium_1</dimen>
-
     <!-- Board Size Selection Page -->
     <dimen name="board_size_card_size">130dp</dimen>
 

@@ -11,6 +11,7 @@
         app:strokeWidth="@dimen/collection_emoji_card_stroke_width"
         app:cardCornerRadius="@dimen/collection_emoji_card_radius"
         app:cardElevation="0dp"
+        app:rippleColor="@android:color/transparent"
         android:layout_gravity="center"
         android:layout_width="@dimen/collection_emoji_card_size"
         android:layout_height="@dimen/collection_emoji_card_size"

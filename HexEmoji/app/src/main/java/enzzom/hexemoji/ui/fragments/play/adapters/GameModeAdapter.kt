@@ -18,10 +18,6 @@ class GameModeAdapter(
     private val pageDescription: String = ""
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    companion object {
-        const val PAGE_DESCRIPTION_VIEW_POSITION = 0
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
@@ -79,5 +75,9 @@ class GameModeAdapter(
                 gameModeEmoji.text = modeDetails.emoji
             }
         }
+    }
+
+    companion object {
+        const val PAGE_DESCRIPTION_VIEW_POSITION = 0
     }
 }

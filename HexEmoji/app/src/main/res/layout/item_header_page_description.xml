@@ -11,7 +11,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/main_screens_outer_margin"
-        tools:text="@string/page_description_emojis_selection" />
+        android:layout_margin="@dimen/screen_outer_margin"
+        tools:text="@string/page_description_category_selection" />
 
 </FrameLayout>

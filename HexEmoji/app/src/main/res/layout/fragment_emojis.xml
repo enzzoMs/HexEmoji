@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_marginTop="@dimen/main_screens_outer_margin"
+    android:layout_marginTop="@dimen/screen_outer_margin"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".ui.fragments.emojis.EmojisFragment">
@@ -13,7 +13,7 @@
         android:text="@string/collection_details_sub_page_description"
         style="@style/TextAppearance.HexEmoji.PageDescription"
         android:layout_gravity="center_horizontal"
-        android:layout_marginHorizontal="@dimen/main_screens_outer_margin"
+        android:layout_marginHorizontal="@dimen/screen_outer_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -22,8 +22,8 @@
         app:tabMode="scrollable"
         android:contentDescription="@string/collection_details_tab_description"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/main_screens_contents_margin"
-        android:layout_marginHorizontal="@dimen/main_screens_outer_margin"
+        android:layout_marginTop="@dimen/screen_contents_margin"
+        android:layout_marginHorizontal="@dimen/screen_outer_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -33,7 +33,7 @@
         android:id="@+id/emoji_collection_details_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/main_screens_contents_margin"
+        android:layout_marginTop="@dimen/screen_contents_margin"
         tools:layout_height="200dp"/>
 
 </LinearLayout>

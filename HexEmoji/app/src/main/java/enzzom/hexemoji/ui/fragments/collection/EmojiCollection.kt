@@ -9,12 +9,14 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -26,6 +28,8 @@ import enzzom.hexemoji.databinding.DialogEmojiDetailsBinding
 import enzzom.hexemoji.databinding.FragmentEmojiCollectionBinding
 import enzzom.hexemoji.models.EmojiCategoryDetails
 import enzzom.hexemoji.ui.fragments.collection.adapters.CollectionAdapter
+
+private const val DELAY_TO_SEARCH_COLLECTION_MS = 700L
 
 class EmojiCollection : Fragment() {
 
@@ -60,12 +64,47 @@ class EmojiCollection : Fragment() {
                 setNavigationIconTint(categoryDetails.color)
             }
 
+            val categoryEmojis = args.categoryEmojis.toList()
+
+            val countDownToSearchCollection =  object : CountDownTimer(
+                DELAY_TO_SEARCH_COLLECTION_MS, DELAY_TO_SEARCH_COLLECTION_MS
+            ) {
+                override fun onTick(millisUntilFinished: Long) {}
+
+                override fun onFinish() {
+                    val searchFieldText = collectionSearchField.text.toString()
+
+                    val newCollection = if (searchFieldText.isBlank()) {
+                        categoryEmojis
+                    } else {
+                        categoryEmojis.filter { emoji ->
+                            emoji.unlocked && (emoji.emoji == searchFieldText || emoji.getName(resources).contains(
+                                searchFieldText, ignoreCase = true
+                            ))
+                        }
+                    }
+
+                    (collectionEmojiList.adapter as CollectionAdapter).replaceCollection(newCollection)
+
+                    newCollection.isEmpty().let {
+                        collectionSearchNoResults.visibility = if (it) View.VISIBLE else View.INVISIBLE
+                        collectionSearchNoResultsIcon.visibility = if (it) View.VISIBLE else View.INVISIBLE
+                    }
+                }
+            }
+
+            // Wait until the user has stopped typing to search the collection
+            collectionSearchField.doOnTextChanged { _, _, _, _ ->
+                countDownToSearchCollection.cancel()
+                countDownToSearchCollection.start()
+            }
+
             collectionDescription.text = categoryDetails.description
             collectionDescriptionBackground.setBackgroundColor(categoryLighterColor)
 
             collectionEmojiList.apply {
                 adapter = CollectionAdapter(
-                    collectionEmojis = args.categoryEmojis.toList(),
+                    collectionEmojis = categoryEmojis,
                     collectionColor = categoryDetails.color,
                     collectionLighterColor = categoryLighterColor,
                     onUnlockedEmojiClicked = ::showEmojiDetailsDialog
@@ -103,7 +142,7 @@ class EmojiCollection : Fragment() {
             emojiDetailsButtonCopy.iconTint = ColorStateList.valueOf(categoryDetails.color)
 
             emojiDetailsButtonCopy.setOnClickListener {
-                (it.context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager).apply {
+                (context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager).apply {
                     setPrimaryClip(ClipData.newPlainText(
                         "$Emoji \"${emojiName}\"", emoji.emoji
                     ))
