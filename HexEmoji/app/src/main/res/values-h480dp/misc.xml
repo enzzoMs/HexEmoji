@@ -3,4 +3,7 @@
     <!-- Board Size Selection Page -->
     <bool name="board_selection_use_hexagon_board">true</bool>
 
+    <!-- Emoji Collection Screen -->
+    <integer name="emoji_collection_grid_span">3</integer>
+
 </resources>

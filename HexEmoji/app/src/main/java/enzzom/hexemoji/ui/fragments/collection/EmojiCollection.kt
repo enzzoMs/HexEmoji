@@ -99,7 +99,7 @@ class EmojiCollection : Fragment() {
                 countDownToSearchCollection.start()
             }
 
-            collectionDescription.text = categoryDetails.description
+            collectionDescription?.text = categoryDetails.description
             collectionDescriptionBackground.setBackgroundColor(categoryLighterColor)
 
             collectionEmojiList.apply {

@@ -14,6 +14,8 @@
         <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
         <item name="iconTint">?attr/colorOnPrimary</item>
         <item name="navigationIconTint">?attr/colorOnPrimary</item>
+        <item name="android:windowMinWidthMajor">@dimen/window_min_width_major</item>
+
         <item name="toolbarStyle">@style/Widget.HexEmoji.Toolbar</item>
         <item name="navigationViewStyle">@style/Widget.HexEmoji.NavigationView</item>
         <item name="navigationRailStyle">@style/Widget.HexEmoji.NavigationRail</item>

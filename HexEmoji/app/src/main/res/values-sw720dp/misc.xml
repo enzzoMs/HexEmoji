@@ -2,4 +2,7 @@
 <resources>
     <!-- Emojis Selection Page -->
     <integer name="emoji_categories_grid_span">2</integer>
+
+    <!-- Emoji Collection Screen -->
+    <integer name="emoji_collection_grid_span">6</integer>
 </resources>

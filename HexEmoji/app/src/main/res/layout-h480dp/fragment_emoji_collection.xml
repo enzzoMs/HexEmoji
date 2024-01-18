@@ -35,19 +35,33 @@
         app:barrierMargin="@dimen/collection_vertical_margin"
         app:constraint_referenced_ids="collection_search_field_layout" />
 
+    <TextView
+        android:id="@+id/collection_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/collection_horizontal_margin"
+        android:layout_marginTop="@dimen/collection_toolbar_margin"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.HexEmoji.Collection.Description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/collection_toolbar"
+        tools:text="@string/emoji_category_description_people_emotions" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/collection_search_field_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/collection_toolbar_margin"
+        android:layout_marginTop="@dimen/collection_vertical_margin"
         app:layout_constraintEnd_toStartOf="@id/search_field_end_guideline"
         app:layout_constraintStart_toEndOf="@id/search_field_start_guideline"
-        app:layout_constraintTop_toBottomOf="@id/collection_toolbar"
+        app:layout_constraintTop_toBottomOf="@id/collection_description"
         app:startIconDrawable="@drawable/ic_search">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/collection_search_field"
             android:fontFamily="@font/lexend_medium"
+            android:textAppearance="@style/TextAppearance.HexEmoji.Subtitle2"
             android:hint="@string/collection_search_field_hint"
             android:maxLines="1"
             android:saveEnabled="false"
@@ -108,13 +122,11 @@
         app:tint="@color/unselected_icon_color"
         tools:visibility="visible" />
 
-
     <TextView
         android:id="@+id/collection_search_no_results"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="64dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/collection_search_no_results_vertical_margin"
         android:fontFamily="@font/lexend_semibold"
         android:text="@string/collection_search_no_results"
         android:textAlignment="center"

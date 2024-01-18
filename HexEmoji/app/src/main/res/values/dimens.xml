@@ -88,10 +88,12 @@
     <dimen name="collection_toolbar_margin">@dimen/spacing_small_2</dimen>
     <dimen name="collection_vertical_margin">@dimen/spacing_large_1</dimen>
     <dimen name="collection_horizontal_margin">@dimen/spacing_large_1</dimen>
-    <dimen name="collection_description_guideline_margin">@dimen/spacing_huge_1</dimen>
 
-    <dimen name="collection_search_field_horizontal_margin">@dimen/spacing_large_2</dimen>
+    <dimen name="collection_progress_start_guideline_perc">0</dimen>
+    <dimen name="collection_progress_end_guideline_perc">1</dimen>
+
     <dimen name="collection_search_no_results_icon_size">90dp</dimen>
+    <dimen name="collection_search_no_results_vertical_margin">@dimen/spacing_medium_1</dimen>
 
     <dimen name="collection_emoji_card_size">80dp</dimen>
     <dimen name="collection_emoji_card_radius">12dp</dimen>
@@ -110,6 +112,8 @@
     <dimen name="hexagonal_board_item_margin">16dp</dimen>
 
     <!-- General -->
+    <dimen name="window_min_width_major">50%p</dimen>
+
     <dimen name="spacing_extra_small">4dp</dimen>
     <dimen name="spacing_small_1">8dp</dimen>
     <dimen name="spacing_small_2">10dp</dimen>

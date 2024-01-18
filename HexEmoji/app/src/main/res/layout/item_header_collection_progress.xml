@@ -9,25 +9,40 @@
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/collection_progress_unlocked_bar"
-        android:contentDescription="@string/collection_unlocked_bar_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/collection_unlocked_progress_margin"
-        app:layout_constraintTop_toTopOf="@id/collection_progress_unlocked_ratio"
+        android:contentDescription="@string/collection_unlocked_bar_description"
         app:layout_constraintBottom_toBottomOf="@id/collection_progress_unlocked_ratio"
         app:layout_constraintEnd_toStartOf="@id/collection_progress_unlocked_ratio"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/collection_progress_guideline_start"
+        app:layout_constraintTop_toTopOf="@id/collection_progress_unlocked_ratio"
         tools:indicatorColor="@color/emoji_category_color_people_emotions"
-        tools:progress="25"/>
+        tools:progress="25" />
 
     <TextView
         android:id="@+id/collection_progress_unlocked_ratio"
         android:fontFamily="@font/lexend_bold"
+        android:textAppearance="@style/TextAppearance.HexEmoji.Subtitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/collection_progress_guideline_end"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="50 / 200"
         tools:textColor="@color/emoji_category_color_people_emotions" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/collection_progress_guideline_start"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="@dimen/collection_progress_start_guideline_perc" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/collection_progress_guideline_end"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="@dimen/collection_progress_end_guideline_perc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
