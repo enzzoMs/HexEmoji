@@ -42,7 +42,7 @@ class GameFragment : Fragment() {
         activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.game_screen_status_bar_color)
 
         binding.gameToolbar.apply {
-            title = GameMode.getTitle(args.gameMode, resources)
+            title = args.gameMode.getTitle(resources)
             setNavigationOnClickListener { showExitGameDialog() }
 
             setOnMenuItemClickListener { menuItem ->

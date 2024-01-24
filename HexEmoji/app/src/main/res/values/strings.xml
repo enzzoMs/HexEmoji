@@ -13,6 +13,7 @@
     <string name="button_continue">Continuar</string>
     <string name="button_play">Jogar</string>
     <string name="icon_content_description_back">Voltar para página anterior</string>
+    <string name="progress_ratio_template" translatable="false">%1$d / %2$d</string>
 
     <!-- Dialogs -->
     <string name="exit_game_message">Deseja mesmo sair? Você pederá todo o seu progresso nessa partida!</string>
@@ -50,7 +51,6 @@
 
     <!-- Emoji Collection Screen -->
     <string name="collection_unlocked_bar_description">Progressão de emojis desbloqueados</string>
-    <string name="collection_unlocked_ratio_template">%1$3d / %2$3d</string>
     <string name="collection_search_field_hint">Pesquisar</string>
     <string name="collection_search_no_results">Nenhum resultado para a pesquisa</string>
     <string name="collection_card_locked_content_description">Emoji bloqueado</string>
@@ -67,15 +67,17 @@
     <string name="icon_content_description_page_emojis">Navegar para página de emojis</string>
 
     <!-- Emojis Page -->
-    <string name="collection_details_sub_page_description">Confira sua coleção e descubra novos emojis</string>
+    <string name="page_description_emojis">Explore sua coleção e desbloqueie emojis através de desafios especiais!</string>
     <string name="collection_details_tab_description">Diferentes categorias de emojis</string>
-    <string name="challenges_sub_page_description">Desbloqueie novos emojis através de desafios especiais!</string>
+    <string name="challenges_none_available">Nenhum desafio disponível para a categoria</string>
+
+    <string name="challenge_progress_label">Progresso:</string>
 
     <!-- Board Size Selection Page -->
     <string name="page_description_board_selection">Escolha o tamanho do tabuleiro</string>
 
     <!-- Category Selection Page -->
-    <string name="page_description_category_selection">Escolha os emojis que você quer jogar</string>
+    <string name="page_description_category_selection">Escolha com quais emojis você quer jogar</string>
     <string name="all_emojis_checkbox">Todos os Emojis</string>
 
     <string name="emoji_category_image_content_description">
@@ -92,6 +94,18 @@
     <string name="game_mode_card_emoji_dice" translatable="false">🎲</string>
     <string name="game_mode_card_emoji_recycling" translatable="false">🌊</string>
     <string name="game_mode_card_emoji_spiral_eyes" translatable="false">😵‍💫</string>
+
+    <!-- Challenge Templates -->
+    <!-- The description of a challenge can be assembled using the templates below. Some templates
+    can be further combined with additional constraints. -->
+    <!--(\u0020 is the unicode character 'SPACE') -->
+    <!-- TODO: Add examples -->
+
+    <string name="challenge_template_general">Complete %1$d partida(s) %2$sno \"%3$s\"%4$s%5$s%6$s</string>
+    <string name="challenge_template_board_constraint">\u0020em um tabuleiro de tamanho (%1$s)</string>
+    <string name="challenge_template_category_constraint">\u0020usando emojis de \"%1$s\"</string>
+    <string name="challenge_template_hints_constraint">, sem usar dicas.</string>
+    <string name="challenge_template_consecutive_games_constraint">consecutivas\u0020</string>
 
     <!-- Emoji Categories -->
     <string name="emoji_category_title_people_emotions">Pessoas e Emoções</string>

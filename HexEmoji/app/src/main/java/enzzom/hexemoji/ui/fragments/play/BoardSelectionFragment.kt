@@ -29,7 +29,7 @@ class BoardSelectionFragment : Fragment() {
         val binding = FragmentBoardSelectionBinding.inflate(inflater, container, false)
 
         playViewModel.getSelectedGameMode()?.let {
-            binding.boardSelectionToolbar.title = GameMode.getTitle(it, resources)
+            binding.boardSelectionToolbar.title = it.getTitle(resources)
         }
 
         playViewModel.hasSelectedBoardSize.observe(viewLifecycleOwner) {

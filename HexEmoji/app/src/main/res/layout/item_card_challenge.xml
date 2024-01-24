@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.HexEmoji.CardView"
+    android:layout_marginHorizontal="@dimen/card_outer_margin"
+    android:layout_marginTop="@dimen/card_outer_margin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/challenge_emoji_reward_background"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/challenge_reward_end_guideline"
+            tools:background="@color/emoji_category_color_people_emotions" />
+
+        <TextView
+            android:id="@+id/challenge_emoji_reward"
+            style="@style/Widget.HexEmoji.TextView.Emoji"
+            android:background="@drawable/challenge_emoji_reward_background"
+            android:padding="@dimen/challenge_reward_emoji_padding"
+            android:layout_width="@dimen/challenge_reward_emoji_size"
+            android:layout_height="@dimen/challenge_reward_emoji_size"
+            android:layout_margin="@dimen/card_inner_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="🐝"/>
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/challenge_reward_end_guideline"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="challenge_emoji_reward"
+            app:barrierMargin="@dimen/card_inner_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/challenge_description"
+            android:text="Complete 4 partidas no Modo Zen em um tabuleiro pequeno (4x2)."
+            android:textAppearance="@style/TextAppearance.HexEmoji.Subtitle2"
+            android:fontFamily="@font/lexend_medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/card_inner_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/challenge_reward_end_guideline"
+            />
+
+        <TextView
+            android:id="@+id/challenge_progress_label"
+            android:text="@string/challenge_progress_label"
+            android:fontFamily="@font/lexend_bold"
+            android:layout_marginTop="@dimen/challenge_description_vertical_margin"
+            android:layout_marginHorizontal="@dimen/card_inner_margin"
+            android:layout_marginBottom="@dimen/card_inner_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/challenge_reward_end_guideline"
+            app:layout_constraintTop_toBottomOf="@id/challenge_description"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/challenge_progress"
+            android:fontFamily="@font/lexend_bold"
+            android:layout_marginStart="@dimen/challenge_progress_label_horizontal_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/challenge_progress_label"
+            app:layout_constraintBaseline_toBaselineOf="@id/challenge_progress_label"
+            tools:textColor="@color/emoji_category_color_people_emotions"
+            tools:text="1 / 3"/>
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/challenge_completed"
+            android:clickable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/card_inner_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/challenge_progress_label"
+            app:layout_constraintBottom_toBottomOf="@id/challenge_progress_label"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

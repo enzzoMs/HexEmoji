@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.FragmentCategorySelectionBinding
 import enzzom.hexemoji.models.EmojiCategoryDetails
-import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.ui.fragments.play.adapters.EmojiCategoryAdapter
 import enzzom.hexemoji.ui.fragments.play.model.PlayViewModel
 
@@ -45,7 +44,7 @@ class CategorySelectionFragment : Fragment() {
 
         binding.apply {
             playViewModel.getSelectedGameMode()?.let {
-                categorySelectionToolbar.title = GameMode.getTitle(it, resources)
+                categorySelectionToolbar.title = it.getTitle(resources)
             }
 
             categorySelectionToolbar.setNavigationOnClickListener { findNavController().popBackStack() }

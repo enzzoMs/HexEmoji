@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.FragmentEmojisBinding
 import enzzom.hexemoji.models.EmojiCategoryDetails
+import enzzom.hexemoji.ui.fragments.emojis.adapters.ChallengesAdapter
 import enzzom.hexemoji.ui.fragments.emojis.adapters.CollectionDetailsAdapter
 import enzzom.hexemoji.ui.fragments.emojis.model.EmojisViewModel
 import enzzom.hexemoji.ui.fragments.main.MainFragment
@@ -40,8 +42,8 @@ class EmojisFragment : Fragment() {
         val emojiCategoryDetails = EmojiCategoryDetails.getAll(resources)
 
         binding.apply {
-            emojiCollectionDetailsList.adapter = CollectionDetailsAdapter(
-                emojiCategoryDetails = emojiCategoryDetails,
+            collectionDetailsList.adapter = CollectionDetailsAdapter(
+                categoryDetails = emojiCategoryDetails,
                 getEmojiCountForCategory = emojisViewModel::getEmojiCountForCategory,
                 getUnlockedCountForCategory = emojisViewModel::getUnlockedCountForCategory,
                 onCollectionClicked = { category -> emojisViewModel.getCategoryEmojis(category)?.let {
@@ -49,13 +51,45 @@ class EmojisFragment : Fragment() {
                 }}
             )
 
-            TabLayoutMediator(emojiCollectionTabs, emojiCollectionDetailsList) { tab, position ->
+            TabLayoutMediator(collectionTabs, collectionDetailsList) { tab, position ->
                 tab.setIcon(emojiCategoryIconsId[position])
             }.attach()
 
-            emojisViewModel.loadingCategoriesInfo.observe(viewLifecycleOwner) { loading ->
-                if (!loading) {
-                    emojiCollectionDetailsList.adapter?.notifyDataSetChanged()
+            collectionTabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    if (tab != null && challengesLoading.visibility != View.VISIBLE) {
+                        val categoryDetails = emojiCategoryDetails[tab.position]
+
+                        val categoryChallenges = emojisViewModel.getChallengesForCategory(
+                            categoryDetails.category
+                        )
+
+                        if (categoryChallenges != null) {
+                            (challengesList.adapter as ChallengesAdapter).replaceChallenges(
+                                categoryChallenges, categoryDetails.color
+                            )
+                            noChallengesDescription.visibility = View.GONE
+                            noChallengesIcon.visibility = View.GONE
+                        } else {
+                            (challengesList.adapter as ChallengesAdapter).replaceChallenges(
+                                listOf(), 0
+                            )
+                            noChallengesDescription.visibility = View.VISIBLE
+                            noChallengesIcon.visibility = View.VISIBLE
+                        }
+                    }
+                }
+
+                override fun onTabUnselected(tab: TabLayout.Tab?) {}
+                override fun onTabReselected(tab: TabLayout.Tab?) {}
+            })
+
+            challengesList.adapter = ChallengesAdapter()
+
+            emojisViewModel.collectionsLoadingFinished.observe(viewLifecycleOwner) { finished ->
+                if (finished) {
+                    challengesLoading.visibility = View.INVISIBLE
+                    collectionDetailsList.adapter?.notifyDataSetChanged()
                 }
             }
         }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Emoji Collection Screen -->
-    <dimen name="collection_search_no_results_icon_size">120dp</dimen>
+    <dimen name="no_results_icon_size">120dp</dimen>
     <dimen name="collection_emoji_card_size">110dp</dimen>
 </resources>

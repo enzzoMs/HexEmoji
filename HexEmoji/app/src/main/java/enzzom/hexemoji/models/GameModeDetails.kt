@@ -12,19 +12,19 @@ data class GameModeDetails(
     val backgroundColor: Int
 ) {
     companion object {
-        fun getAll(resources: Resources): List<GameModeDetails> {
+        fun getAll(res: Resources): List<GameModeDetails> {
             val gameModeDetails = mutableListOf<GameModeDetails>()
 
-            val gameModeDescriptions = resources.getStringArray(R.array.game_mode_descriptions)
-            val gameModePrimaryColors = resources.getIntArray(R.array.game_mode_main_color)
-            val gameModeBackgroundColors = resources.getIntArray(R.array.game_mode_emoji_back_color)
-            val gameModeEmojis = resources.getStringArray(R.array.game_mode_emojis)
+            val gameModeDescriptions = res.getStringArray(R.array.game_mode_descriptions)
+            val gameModePrimaryColors = res.getIntArray(R.array.game_mode_main_color)
+            val gameModeBackgroundColors = res.getIntArray(R.array.game_mode_emoji_back_color)
+            val gameModeEmojis = res.getStringArray(R.array.game_mode_emojis)
 
             GameMode.values().forEachIndexed { index, gameMode ->
                 gameModeDetails.add(
                     GameModeDetails(
                         gameMode,
-                        GameMode.getTitle(gameMode, resources),
+                        gameMode.getTitle(res),
                         gameModeDescriptions[index],
                         gameModeEmojis[index],
                         gameModePrimaryColors[index],

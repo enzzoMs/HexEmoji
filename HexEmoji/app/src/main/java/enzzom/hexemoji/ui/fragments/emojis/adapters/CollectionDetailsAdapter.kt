@@ -11,7 +11,7 @@ import enzzom.hexemoji.models.EmojiCategory
 import enzzom.hexemoji.models.EmojiCategoryDetails
 
 class CollectionDetailsAdapter(
-    private val emojiCategoryDetails: List<EmojiCategoryDetails>,
+    private val categoryDetails: List<EmojiCategoryDetails>,
     private val getUnlockedCountForCategory: (EmojiCategory) -> Int?,
     private val getEmojiCountForCategory: (EmojiCategory) -> Int?,
     private val onCollectionClicked: (EmojiCategory) -> Unit
@@ -26,10 +26,10 @@ class CollectionDetailsAdapter(
     }
 
     override fun onBindViewHolder(holder: CollectionDetailsHolder, position: Int) {
-        holder.bind(emojiCategoryDetails[position])
+        holder.bind(categoryDetails[position])
     }
 
-    override fun getItemCount(): Int = emojiCategoryDetails.size
+    override fun getItemCount(): Int = categoryDetails.size
 
     inner class CollectionDetailsHolder(
         private val binding: ItemCardCollectionDetailsBinding
@@ -51,14 +51,14 @@ class CollectionDetailsAdapter(
                 if (emojiCount == null || unlockedCount == null) {
                     collectionDetailsUnlockedBar.isIndeterminate = true
                     collectionDetailsUnlockedRatio.text = root.resources.getString(
-                        R.string.collection_unlocked_ratio_template, 0, 0
+                        R.string.progress_ratio_template, 0, 0
                     )
                 } else {
                     collectionDetailsUnlockedBar.isIndeterminate = false
                     collectionDetailsUnlockedBar.progress = ((unlockedCount / emojiCount.toFloat()) * 100).toInt()
 
                     collectionDetailsUnlockedRatio.text = root.resources.getString(
-                        R.string.collection_unlocked_ratio_template, unlockedCount, emojiCount
+                        R.string.progress_ratio_template, unlockedCount, emojiCount
                     )
                 }
 

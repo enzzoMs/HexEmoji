@@ -4,6 +4,8 @@
     <dimen name="screen_outer_margin">@dimen/spacing_medium_1</dimen>
     <dimen name="screen_contents_margin">@dimen/spacing_medium_1</dimen>
     <dimen name="page_description_padding">@dimen/spacing_medium_1</dimen>
+    <dimen name="content_loading_circular_bar_size">60dp</dimen>
+    <dimen name="divider_thickness">4dp</dimen>
 
     <!-- Buttons -->
     <dimen name="button_shape_radius">8dp</dimen>
@@ -45,6 +47,11 @@
 
     <dimen name="countdown_track_thickness">3dp</dimen>
 
+    <!-- No Results Indicators -->
+    <dimen name="no_results_icon_size">90dp</dimen>
+    <dimen name="no_results_description_vertical_margin">@dimen/spacing_medium_1</dimen>
+    <dimen name="no_results_description_horizontal_margin">@dimen/spacing_huge_1</dimen>
+
     <!-- Entry Screen -->
     <dimen name="entry_screen_honeycomb_guideline_percentage">0.22</dimen>
     <dimen name="entry_screen_app_title_spacing">@dimen/spacing_small_1</dimen>
@@ -82,6 +89,12 @@
 
     <!-- Emojis Page -->
     <dimen name="collection_details_card_icon_size">35dp</dimen>
+    <dimen name="challenges_description_vertical_margin">@dimen/spacing_small_2</dimen>
+
+    <dimen name="challenge_reward_emoji_size">50dp</dimen>
+    <dimen name="challenge_reward_emoji_padding">6dp</dimen>
+    <dimen name="challenge_description_vertical_margin">@dimen/spacing_small_2</dimen>
+    <dimen name="challenge_progress_label_horizontal_margin">@dimen/spacing_small_1</dimen>
 
     <!-- Emoji Collection Screen -->
     <dimen name="collection_unlocked_progress_margin">@dimen/spacing_medium_1</dimen>
@@ -91,9 +104,6 @@
 
     <dimen name="collection_progress_start_guideline_perc">0</dimen>
     <dimen name="collection_progress_end_guideline_perc">1</dimen>
-
-    <dimen name="collection_search_no_results_icon_size">90dp</dimen>
-    <dimen name="collection_search_no_results_vertical_margin">@dimen/spacing_medium_1</dimen>
 
     <dimen name="collection_emoji_card_size">80dp</dimen>
     <dimen name="collection_emoji_card_radius">12dp</dimen>

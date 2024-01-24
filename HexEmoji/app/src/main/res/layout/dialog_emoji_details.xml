@@ -28,7 +28,7 @@
 
         <TextView
             android:id="@+id/emoji_details_emoji_text"
-            style="@style/Widget.HexEmoji.CardView.Emoji"
+            style="@style/Widget.HexEmoji.TextView.Emoji"
             android:layout_width="@dimen/emoji_details_emoji_size"
             android:layout_height="@dimen/emoji_details_emoji_size"
             android:layout_marginTop="@dimen/emoji_details_emoji_vertical_margin"

@@ -12,17 +12,15 @@ enum class GameMode {
     FLOOD,
     CHAOS;
 
-    companion object {
-        fun getTitle(gameMode: GameMode, resources: Resources): String {
-            return when(gameMode) {
-                ZEN -> resources.getString(R.string.game_mode_title_zen)
-                AGAINST_THE_CLOCK -> resources.getString(R.string.game_mode_title_against_clock)
-                LIMITED_MOVES -> resources.getString(R.string.game_mode_title_limited_moves)
-                SEQUENCE -> resources.getString(R.string.game_mode_title_sequence)
-                SHUFFLED -> resources.getString(R.string.game_mode_title_shuffled)
-                FLOOD -> resources.getString(R.string.game_mode_title_flood)
-                CHAOS -> resources.getString(R.string.game_mode_title_chaos)
-            }
+    fun getTitle(res: Resources): String {
+        return when(this) {
+            ZEN -> res.getString(R.string.game_mode_title_zen)
+            AGAINST_THE_CLOCK -> res.getString(R.string.game_mode_title_against_clock)
+            LIMITED_MOVES -> res.getString(R.string.game_mode_title_limited_moves)
+            SEQUENCE -> res.getString(R.string.game_mode_title_sequence)
+            SHUFFLED -> res.getString(R.string.game_mode_title_shuffled)
+            FLOOD -> res.getString(R.string.game_mode_title_flood)
+            CHAOS -> res.getString(R.string.game_mode_title_chaos)
         }
     }
 }

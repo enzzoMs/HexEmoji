@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import enzzom.hexemoji.data.AppDatabase
+import enzzom.hexemoji.data.source.ChallengesDAO
 import enzzom.hexemoji.data.source.EmojiDAO
 import javax.inject.Singleton
 
@@ -23,10 +24,14 @@ class DatabaseModule {
         applicationContext,
         AppDatabase::class.java, "AppDatabase"
     ).createFromAsset(
-        "database/emojis_database.db"
+        "database/hexemoji_database.db"
     ).build()
 
     @Singleton
     @Provides
     fun provideEmojiDAO(appDatabase: AppDatabase): EmojiDAO = appDatabase.emojiDAO()
+
+    @Singleton
+    @Provides
+    fun provideChallengesDAO(appDatabase: AppDatabase): ChallengesDAO = appDatabase.challengesDAO()
 }

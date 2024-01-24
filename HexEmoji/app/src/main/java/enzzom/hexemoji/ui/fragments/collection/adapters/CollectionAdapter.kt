@@ -77,7 +77,7 @@ class CollectionAdapter(
                 }
 
                 collectionProgressUnlockedRatio.text = root.resources.getString(
-                    R.string.collection_unlocked_ratio_template, collectionUnlockedCount, collectionEmojiCount
+                    R.string.progress_ratio_template, collectionUnlockedCount, collectionEmojiCount
                 )
                 collectionProgressUnlockedRatio.setTextColor(collectionColor)
             }

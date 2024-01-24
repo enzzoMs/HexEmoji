@@ -130,6 +130,16 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <!-- No Results Indicator -->
+    <style name="Widget.HexEmoji.Icon.NoResults" parent="">
+        <item name="tint">@color/unselected_icon_color</item>
+    </style>
+
+    <style name="TextAppearance.HexEmoji.NoResults" parent="TextAppearance.HexEmoji.Subtitle2">
+        <item name="fontFamily">@font/lexend_semibold</item>
+        <item name="android:textColor">@color/unselected_text_color</item>
+    </style>
+
     <!-- Cards -->
     <style name="Widget.HexEmoji.CardView" parent="Widget.MaterialComponents.CardView">
         <item name="cardCornerRadius">@dimen/card_corner_radius</item>
@@ -137,7 +147,7 @@
         <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
 
-    <style name="Widget.HexEmoji.CardView.Emoji" parent="">
+    <style name="Widget.HexEmoji.TextView.Emoji" parent="">
         <item name="android:textColor">@color/emoji_text_color</item>
         <item name="android:textStyle">bold</item>
         <item name="autoSizeTextType">uniform</item>

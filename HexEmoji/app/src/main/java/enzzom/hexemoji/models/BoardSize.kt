@@ -27,7 +27,7 @@ enum class BoardSize(val numOfColumns: Int, private val numOfRows: Int) {
      *
      * numOfColumns - 1 -> numOfColumns -> numOfColumns - 1 -> numOfColumns -> ...
      *
-     * for the numOfRows, this function adjusts the total to account for this pattern.
+     * for the 'numOfRows'. This function adjusts the total to account for this pattern.
      *
      * @see HexagonalSpanSizeLookup
      */

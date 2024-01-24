@@ -11,7 +11,7 @@
     <dimen name="game_tutorial_image_height">200dp</dimen>
 
     <!-- Emoji Collection Screen -->
-    <dimen name="collection_search_no_results_icon_size">110dp</dimen>
+    <dimen name="no_results_icon_size">110dp</dimen>
     <dimen name="collection_emoji_card_size">95dp</dimen>
 
     <dimen name="collection_progress_start_guideline_perc">0.2</dimen>

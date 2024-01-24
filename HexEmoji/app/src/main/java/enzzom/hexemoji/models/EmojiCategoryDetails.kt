@@ -12,14 +12,14 @@ data class EmojiCategoryDetails(
     val categoryImageId: Int
 ) {
     companion object {
-        fun getAll(resources: Resources): List<EmojiCategoryDetails> {
+        fun getAll(res: Resources): List<EmojiCategoryDetails> {
             val emojiCategoryDetails = mutableListOf<EmojiCategoryDetails>()
 
-            val categoryTitles = resources.getStringArray(R.array.emoji_category_titles)
-            val categoryColors = resources.getIntArray(R.array.emoji_category_color)
-            val categoryDescriptions = resources.getStringArray(R.array.emoji_category_descriptions)
-            val categoryEmojiIcons = resources.getStringArray(R.array.emoji_category_emoji_icons)
-            val categoryImages = resources.obtainTypedArray(R.array.emoji_category_images)
+            val categoryTitles = res.getStringArray(R.array.emoji_category_titles)
+            val categoryColors = res.getIntArray(R.array.emoji_category_color)
+            val categoryDescriptions = res.getStringArray(R.array.emoji_category_descriptions)
+            val categoryEmojiIcons = res.getStringArray(R.array.emoji_category_emoji_icons)
+            val categoryImages = res.obtainTypedArray(R.array.emoji_category_images)
 
             EmojiCategory.values().forEachIndexed { index, emojiCategory ->
                 emojiCategoryDetails.add(

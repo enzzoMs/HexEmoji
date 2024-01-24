@@ -19,6 +19,7 @@
         tools:text="@string/all_emojis_checkbox" />
 
     <com.google.android.material.divider.MaterialDivider
+        app:dividerThickness="@dimen/divider_thickness"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/screen_outer_margin"
