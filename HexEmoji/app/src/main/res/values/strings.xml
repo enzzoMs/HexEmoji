@@ -24,17 +24,23 @@
     <string name="emoji_details_copy_button">Copiar</string>
     <string name="emoji_details_copy_toast_msg">Emoji copiado para a área de transferência</string>
 
+    <string name="refresh_collection_title">Gerar Novos Desafios?</string>
+    <string name="refresh_collection_alert">ATENÇÃO: Todos os desafios dessa categoria serão substituídos por novos.</string>
+    <string name="refresh_collection_button_confirm">Sim</string>
+    <string name="refresh_collection_button_cancel">Não</string>
+    <string name="refresh_collection_error_msg">Erro ao gerar desafios. Tente novamente mais tarde.</string>
+
     <string name="tutorial_previous_button_content_description">Página de tutorial anterior</string>
     <string name="tutorial_next_button_content_description">Próxima página de tutorial</string>
     <string name="board_tutorial_scaling">Junte os dedos para aumentar o zoom e afaste-os para diminuir.</string>
     <string name="board_tutorial_panning">Deslize o dedo em qualquer direção para movimentar o tabuleiro.</string>
 
+    <!-- Game Tutorial -->
+    <string name="no_available_game_tutorial_msg">Tutorial indisponível para este modo.</string>
+
     <string name="game_tutorial_zen_description_part_01">O Modo Zen é um modo relaxante sem limite de tempo ou pontuação.</string>
     <string name="game_tutorial_zen_description_part_02">Toque em uma carta para revelar o emoji escondido.</string>
     <string name="game_tutorial_zen_description_part_03">Vença ao encontrar todos os pares de emojis.</string>
-    
-    <!-- Snackbars -->
-    <string name="snackbar_no_available_game_tutorial">Tutorial indisponível para este modo.</string>
 
     <!-- Emojis -->
     <string name="emoji_name_identifier_prefix" translatable="false">emoji_name</string>
@@ -70,7 +76,8 @@
     <string name="page_description_emojis">Explore sua coleção e desbloqueie emojis através de desafios especiais!</string>
     <string name="collection_details_tab_description">Diferentes categorias de emojis</string>
     <string name="challenges_none_available">Nenhum desafio disponível para a categoria</string>
-
+    <string name="challenges_section_description">Desafios</string>
+    <string name="challenges_refresh_description">Gerar novos desafios</string>
     <string name="challenge_progress_label">Progresso:</string>
 
     <!-- Board Size Selection Page -->

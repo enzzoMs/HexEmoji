@@ -133,7 +133,7 @@ class GameFragment : Fragment() {
             }
         } else {
             view?.let {
-                Snackbar.make(it, R.string.snackbar_no_available_game_tutorial, Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(it, R.string.no_available_game_tutorial_msg, Snackbar.LENGTH_SHORT).show()
             }
         }
     }

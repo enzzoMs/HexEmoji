@@ -1,16 +1,21 @@
 package enzzom.hexemoji.ui.fragments.emojis
 
 import android.annotation.SuppressLint
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import enzzom.hexemoji.R
+import enzzom.hexemoji.databinding.DialogRefreshChallengesBinding
 import enzzom.hexemoji.databinding.FragmentEmojisBinding
 import enzzom.hexemoji.models.EmojiCategoryDetails
 import enzzom.hexemoji.ui.fragments.emojis.adapters.ChallengesAdapter
@@ -39,17 +44,21 @@ class EmojisFragment : Fragment() {
             it.recycle()
         }
 
-        val emojiCategoryDetails = EmojiCategoryDetails.getAll(resources)
+        val allCategoryDetails = EmojiCategoryDetails.getAll(resources)
 
         binding.apply {
             collectionDetailsList.adapter = CollectionDetailsAdapter(
-                categoryDetails = emojiCategoryDetails,
+                categoryDetails = allCategoryDetails,
                 getEmojiCountForCategory = emojisViewModel::getEmojiCountForCategory,
                 getUnlockedCountForCategory = emojisViewModel::getUnlockedCountForCategory,
                 onCollectionClicked = { category -> emojisViewModel.getCategoryEmojis(category)?.let {
                     (parentFragment?.parentFragment as MainFragment).navigateToCollectionScreen(category, it)
                 }}
             )
+
+            val challengesListAdapter = ChallengesAdapter().also {
+                challengesList.adapter = it
+            }
 
             TabLayoutMediator(collectionTabs, collectionDetailsList) { tab, position ->
                 tab.setIcon(emojiCategoryIconsId[position])
@@ -58,24 +67,22 @@ class EmojisFragment : Fragment() {
             collectionTabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     if (tab != null && challengesLoading.visibility != View.VISIBLE) {
-                        val categoryDetails = emojiCategoryDetails[tab.position]
+                        val selectedCategory = allCategoryDetails[tab.position]
 
                         val categoryChallenges = emojisViewModel.getChallengesForCategory(
-                            categoryDetails.category
+                            selectedCategory.category
                         )
 
                         if (categoryChallenges != null) {
-                            (challengesList.adapter as ChallengesAdapter).replaceChallenges(
-                                categoryChallenges, categoryDetails.color
-                            )
+                            challengesListAdapter.replaceChallenges(categoryChallenges, selectedCategory.color)
                             noChallengesDescription.visibility = View.GONE
                             noChallengesIcon.visibility = View.GONE
+                            refreshChallenges.visibility = View.VISIBLE
                         } else {
-                            (challengesList.adapter as ChallengesAdapter).replaceChallenges(
-                                listOf(), 0
-                            )
+                            challengesListAdapter.clearChallenges()
                             noChallengesDescription.visibility = View.VISIBLE
                             noChallengesIcon.visibility = View.VISIBLE
+                            refreshChallenges.visibility = View.INVISIBLE
                         }
                     }
                 }
@@ -84,16 +91,55 @@ class EmojisFragment : Fragment() {
                 override fun onTabReselected(tab: TabLayout.Tab?) {}
             })
 
-            challengesList.adapter = ChallengesAdapter()
+            refreshChallenges.setOnClickListener {
+                val selectedTabPosition = collectionTabs.selectedTabPosition
+
+                if (selectedTabPosition != -1) {
+                    showRefreshChallengesDialog(onConfirmClicked = {
+                        val selectedCategory = allCategoryDetails[selectedTabPosition]
+
+                        if (emojisViewModel.refreshChallenges(selectedCategory.category)) {
+                            emojisViewModel.getChallengesForCategory(selectedCategory.category)?.let {
+                                challengesListAdapter.replaceChallenges(it, selectedCategory.color)
+                            }
+                        } else {
+                            Snackbar.make(it, R.string.refresh_collection_error_msg, Snackbar.LENGTH_SHORT).show()
+                        }
+                    })
+                }
+            }
 
             emojisViewModel.collectionsLoadingFinished.observe(viewLifecycleOwner) { finished ->
                 if (finished) {
-                    challengesLoading.visibility = View.INVISIBLE
+                    challengesLoading.visibility = View.GONE
                     collectionDetailsList.adapter?.notifyDataSetChanged()
+                } else {
+                    challengesLoading.visibility = View.VISIBLE
+                    challengesListAdapter.clearChallenges()
                 }
             }
         }
 
         return binding.root
+    }
+
+    private fun showRefreshChallengesDialog(onConfirmClicked: () -> Unit) {
+        val dialog = Dialog(requireContext())
+
+        val refreshChallengesBinding = DialogRefreshChallengesBinding.inflate(layoutInflater).apply {
+            refreshChallengesButtonCancel.setOnClickListener {
+                dialog.dismiss()
+            }
+            refreshChallengesButtonConfirm.setOnClickListener {
+                dialog.dismiss()
+                onConfirmClicked()
+            }
+        }
+
+        dialog.apply {
+            setContentView(refreshChallengesBinding.root)
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            show()
+        }
     }
 }

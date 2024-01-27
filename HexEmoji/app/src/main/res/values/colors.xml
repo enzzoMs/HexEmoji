@@ -22,11 +22,12 @@
     <color name="page_description_text_color">@color/gray</color>
 
     <!-- Buttons -->
-    <color name="button_ripple_color">@color/silver</color>
+    <color name="button_primary_ripple_color">@color/white_alpha_20</color>
     <color name="button_primary_disabled_back_color">@color/orange_beer_alpha_40</color>
     <color name="button_primary_text_color">@color/white</color>
+    <color name="button_secondary_ripple_color">@color/gray_alpha_25</color>
     <color name="button_secondary_shape_color">@color/silver_light_variant</color>
-    <color name="button_secondary_text_color">@color/gray</color>
+    <color name="button_secondary_text_color">@color/gray_dark</color>
 
     <!-- Splash Screen -->
     <color name="splash_screen_background_color">@color/ic_launcher_background</color>
@@ -91,12 +92,14 @@
     <color name="orange_brown">#8C6000</color>
     <color name="orange_brown_light">#B38012</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_alpha_20">#33FFFFFF</color>
     <color name="white_ghost">#F7F8FB</color>
     <color name="white_anti_flash">#F2F2F2</color>
     <color name="silver">#B3B3B3</color>
     <color name="silver_light">#E1E1E1</color>
-    <color name="silver_light_variant">#D1D1D1</color>
+    <color name="silver_light_variant">#C7C7C7</color>
     <color name="gray">#6E6E6E</color>
+    <color name="gray_alpha_25">#406E6E6E</color>
     <color name="gray_dark">#5A5A5A</color>
     <color name="gray_bright">#EFEFEF</color>
     <color name="gold">#CF8F00</color>

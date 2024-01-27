@@ -12,6 +12,7 @@
     <dimen name="button_vertical_inner_padding">0dp</dimen>
     <dimen name="button_horizontal_inner_padding">10dp</dimen>
     <dimen name="button_image_size">48dp</dimen>
+    <dimen name="icon_button_padding">@dimen/spacing_small_1</dimen>
 
     <!-- TextField -->
     <dimen name="text_field_shape_radius">10dp</dimen>
@@ -25,9 +26,9 @@
     <!-- Dialogs -->
     <dimen name="dialog_card_corner_radius">16dp</dimen>
     <dimen name="dialog_inner_margin">@dimen/spacing_medium_3</dimen>
+    <dimen name="dialog_buttons_spacing">@dimen/spacing_small_2</dimen>
 
     <dimen name="exit_game_message_top_margin">@dimen/spacing_huge_1</dimen>
-    <dimen name="exit_game_buttons_spacing">@dimen/spacing_small_2</dimen>
     <dimen name="exit_game_emoji_size">110dp</dimen>
 
     <!-- Custom views -->
@@ -36,7 +37,6 @@
 
     <dimen name="board_tutorial_image_height">80dp</dimen>
 
-    <dimen name="tutorial_buttons_padding">@dimen/spacing_small_1</dimen>
     <dimen name="tutorial_page_indicator_size">12dp</dimen>
     <dimen name="tutorial_page_indicator_margin">@dimen/spacing_small_2</dimen>
 
@@ -89,10 +89,9 @@
 
     <!-- Emojis Page -->
     <dimen name="collection_details_card_icon_size">35dp</dimen>
-    <dimen name="challenges_description_vertical_margin">@dimen/spacing_small_2</dimen>
-
-    <dimen name="challenge_reward_emoji_size">50dp</dimen>
-    <dimen name="challenge_reward_emoji_padding">6dp</dimen>
+    <dimen name="challenge_reward_emoji_size">60dp</dimen>
+    <dimen name="challenge_reward_emoji_padding">8dp</dimen>
+    <dimen name="challenge_reward_emoji_margin">8dp</dimen>
     <dimen name="challenge_description_vertical_margin">@dimen/spacing_small_2</dimen>
     <dimen name="challenge_progress_label_horizontal_margin">@dimen/spacing_small_1</dimen>
 

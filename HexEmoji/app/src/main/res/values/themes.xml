@@ -24,7 +24,7 @@
         <item name="tabStyle">@style/Widget.HexEmoji.TabLayout</item>
         <item name="textInputStyle">@style/Widget.HexEmoji.TextInputLayout</item>
     </style>
-
+zz
     <!-- Splash Screen -->
     <style name="Theme.HexEmoji.Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/splash_screen_background_color</item>
@@ -106,6 +106,13 @@
         <item name="textAllCaps">true</item>
     </style>
 
+    <style name="Widget.HexEmoji.IconButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:background">@drawable/icon_button_background</item>
+        <item name="android:tint">?attr/colorOnSurface</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:padding">@dimen/icon_button_padding</item>
+    </style>
+
     <!-- App Title and Subtitle -->
     <style name="TextAppearance.HexEmoji.AppTitle.FirstPart" parent="TextAppearance.HexEmoji.Headline2">
         <item name="fontFamily">@font/lexend_bold</item>
@@ -132,12 +139,12 @@
 
     <!-- No Results Indicator -->
     <style name="Widget.HexEmoji.Icon.NoResults" parent="">
-        <item name="tint">@color/unselected_icon_color</item>
+        <item name="tint">?attr/colorOnSurface</item>
     </style>
 
     <style name="TextAppearance.HexEmoji.NoResults" parent="TextAppearance.HexEmoji.Subtitle2">
         <item name="fontFamily">@font/lexend_semibold</item>
-        <item name="android:textColor">@color/unselected_text_color</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
 
     <!-- Cards -->
@@ -191,10 +198,6 @@
     <!-- Dialogs -->
     <style name="TextAppearance.HexEmoji.Dialog" parent="TextAppearance.HexEmoji.Subtitle1">
         <item name="fontFamily">@font/lexend_semibold</item>
-    </style>
-
-    <style name="TextAppearance.HexEmoji.Dialog.ExitGame" parent="TextAppearance.HexEmoji.Subtitle1">
-        <item name="fontFamily">@font/lexend_medium</item>
     </style>
 
     <!-- Emoji Collection Screen -->

@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Widget.HexEmoji.CardView"
-    android:layout_marginHorizontal="@dimen/card_outer_margin"
-    android:layout_marginTop="@dimen/card_outer_margin"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/card_outer_margin"
+    android:layout_marginBottom="@dimen/card_outer_margin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             android:padding="@dimen/challenge_reward_emoji_padding"
             android:layout_width="@dimen/challenge_reward_emoji_size"
             android:layout_height="@dimen/challenge_reward_emoji_size"
-            android:layout_margin="@dimen/card_inner_margin"
+            android:layout_margin="@dimen/challenge_reward_emoji_margin"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -40,22 +40,22 @@
             android:id="@+id/challenge_reward_end_guideline"
             app:barrierDirection="end"
             app:constraint_referenced_ids="challenge_emoji_reward"
-            app:barrierMargin="@dimen/card_inner_margin"
+            app:barrierMargin="@dimen/challenge_reward_emoji_margin"
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
 
         <TextView
             android:id="@+id/challenge_description"
-            android:text="Complete 4 partidas no Modo Zen em um tabuleiro pequeno (4x2)."
             android:textAppearance="@style/TextAppearance.HexEmoji.Subtitle2"
             android:fontFamily="@font/lexend_medium"
+            android:hyphenationFrequency="full"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/card_inner_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/challenge_reward_end_guideline"
-            />
+            tools:text="Complete 4 matches in the Flood game mode on a (4x2) board."/>
 
         <TextView
             android:id="@+id/challenge_progress_label"

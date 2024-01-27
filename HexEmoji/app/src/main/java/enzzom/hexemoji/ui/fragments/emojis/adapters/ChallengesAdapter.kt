@@ -38,6 +38,12 @@ class ChallengesAdapter(
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun clearChallenges() {
+        challenges = listOf()
+        notifyDataSetChanged()
+    }
+
     inner class ChallengeHolder(
         private val binding: ItemCardChallengeBinding
     ) : RecyclerView.ViewHolder(binding.root) {

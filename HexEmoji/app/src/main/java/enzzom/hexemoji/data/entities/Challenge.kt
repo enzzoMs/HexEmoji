@@ -7,7 +7,7 @@ import enzzom.hexemoji.models.EmojiCategory
 import enzzom.hexemoji.utils.StringUtils
 
 abstract class Challenge(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Long,
     @ColumnInfo(name = "total_games") val totalGames: Int,
     @ColumnInfo(name = "completed_games") val completedGames: Int,
     @ColumnInfo(name = "reward_emoji_unicode") val rewardEmojiUnicode: String,

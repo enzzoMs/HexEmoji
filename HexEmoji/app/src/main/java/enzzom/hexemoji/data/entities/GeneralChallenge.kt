@@ -16,7 +16,7 @@ import enzzom.hexemoji.models.GameMode
     )]
 )
 class GeneralChallenge(
-    id: Int,
+    id: Long = 0,
     totalGames: Int,
     completedGames: Int,
     category: EmojiCategory,
