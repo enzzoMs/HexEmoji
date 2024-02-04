@@ -3,7 +3,7 @@
     <!-- Game Modes Page -->
     <integer name="game_modes_grid_span">2</integer>
 
-    <!-- Emojis Selection Page -->
+    <!-- Category Selection Page -->
     <integer name="emoji_categories_grid_span">3</integer>
 
     <!-- Emoji Collection Screen -->

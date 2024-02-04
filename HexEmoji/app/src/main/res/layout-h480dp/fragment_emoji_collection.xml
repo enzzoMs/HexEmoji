@@ -62,7 +62,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/collection_search_field"
             android:fontFamily="@font/lexend_medium"
-            android:textAppearance="@style/TextAppearance.HexEmoji.Subtitle2"
+            android:textAppearance="@style/TextAppearance.HexEmoji.Subtitle1"
             android:hint="@string/collection_search_field_hint"
             android:maxLines="1"
             android:saveEnabled="false"

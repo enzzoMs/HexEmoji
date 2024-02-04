@@ -30,6 +30,12 @@
     <string name="refresh_collection_button_cancel">Não</string>
     <string name="refresh_collection_error_msg">Erro ao gerar desafios. Tente novamente mais tarde.</string>
 
+    <string name="challenge_completed">Desafio Concluído!</string>
+    <string name="challenge_completed_description_template">
+        Parabéns! Você desbloqueou o seguinte emoji para a categoria %1$s:
+    </string>
+    <string name="challenge_completed_finish_button">Entendido</string>
+
     <string name="tutorial_previous_button_content_description">Página de tutorial anterior</string>
     <string name="tutorial_next_button_content_description">Próxima página de tutorial</string>
     <string name="board_tutorial_scaling">Junte os dedos para aumentar o zoom e afaste-os para diminuir.</string>

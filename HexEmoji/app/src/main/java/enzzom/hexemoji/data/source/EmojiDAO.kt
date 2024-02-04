@@ -9,6 +9,9 @@ import enzzom.hexemoji.models.EmojiCategory
 @Dao
 interface EmojiDAO {
 
+    @Query("UPDATE emojis SET unlocked = 1 WHERE unicode = :unicode")
+    suspend fun unlockEmoji(unicode: String)
+
     @MapInfo(keyColumn = "category")
     @Query("SELECT * FROM emojis")
     suspend fun getAllEmojisByCategory(): Map<EmojiCategory, List<Emoji>>

@@ -6,7 +6,7 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/game_mode_card"
         style="@style/Widget.HexEmoji.CardView"
         android:clickable="true"
@@ -68,7 +68,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>
 

@@ -3,12 +3,15 @@
     <!-- Game Modes Page -->
     <integer name="game_modes_grid_span">1</integer>
     
-    <!-- Emojis Selection Page -->
+    <!-- Category Selection Page -->
     <integer name="emoji_categories_grid_span">1</integer>
 
     <!-- Board Size Selection Page -->
     <bool name="board_selection_use_hexagon_board">false</bool>
     <integer name="board_selection_hexagonal_grid_span">3</integer>
+
+    <!-- Emojis Page -->
+    <integer name="challenge_completed_back_color_alpha">35</integer>
 
     <!-- Emoji Collection Screen -->
     <integer name="emoji_collection_grid_span">6</integer>

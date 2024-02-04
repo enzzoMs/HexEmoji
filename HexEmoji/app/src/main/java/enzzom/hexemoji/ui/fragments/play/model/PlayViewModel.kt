@@ -9,8 +9,8 @@ import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.models.GameModeDetails
 
 /**
- * The [PlayViewModel] class holds and is responsible for managing information related to the chosen
- * game mode, selected emoji categories and board size within the HexEmoji game. It provides methods
+ * This class holds and is responsible for managing information related to the chosen game mode,
+ * selected emoji categories and board size within the HexEmoji game. It provides methods
  * for interacting with and managing these selections.
 */
 class PlayViewModel : ViewModel() {

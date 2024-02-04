@@ -10,6 +10,10 @@ class EmojiRepository @Inject constructor(
     private val emojiDAO: EmojiDAO
 ) {
 
+    suspend fun unlockEmoji(unicode: String) {
+        emojiDAO.unlockEmoji(unicode)
+    }
+
     suspend fun getAllEmojisByCategory(): Map<EmojiCategory, List<Emoji>> {
         return emojiDAO.getAllEmojisByCategory()
     }

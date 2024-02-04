@@ -35,8 +35,10 @@
 
     </com.google.android.material.tabs.TabLayout>
 
-    <androidx.viewpager2.widget.ViewPager2
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/collection_details_list"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/screen_contents_margin"

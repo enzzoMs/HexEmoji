@@ -29,7 +29,7 @@
             app:dividerThickness="@dimen/divider_thickness"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/card_inner_margin"
+            android:layout_margin="@dimen/dialog_inner_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/refresh_challenges_title" />

@@ -2,7 +2,6 @@ package enzzom.hexemoji.ui.fragments.emojis.model
 
 import android.os.CountDownTimer
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,13 +19,15 @@ import javax.inject.Inject
 import kotlin.math.min
 import kotlin.random.Random
 
-private const val MIN_LOADING_TIME_MS = 600L
+private const val MIN_LOADING_TIME_MS = 500L
 
 private const val MAX_CHALLENGES_PER_CATEGORY = 5
 private const val MAX_GAMES_PER_CHALLENGE = 6
 
 /**
- * TODO
+ * This class is responsible for managing data related to the categories collections and their
+ * challenges. It provides access to this data and handles operations to load, complete, and create
+ * new challenges when needed.
  */
 @HiltViewModel
 class EmojisViewModel @Inject constructor(
@@ -34,72 +35,139 @@ class EmojisViewModel @Inject constructor(
     private val challengesRepository: ChallengesRepository
 ) : ViewModel() {
 
-    private val _categoriesLoadingFinished = MutableLiveData(false)
-    private val _minLoadingTimeFinished = MutableLiveData(false)
-
-    private val _collectionsLoadingFinished = MediatorLiveData(false).also {
-        it.addSource(_categoriesLoadingFinished) { finished -> it.value = finished && _minLoadingTimeFinished.value!! }
-        it.addSource(_minLoadingTimeFinished) { finished -> it.value = finished && _categoriesLoadingFinished.value!! }
-    }
+    private val _collectionsLoadingFinished = MutableLiveData(false)
     val collectionsLoadingFinished: LiveData<Boolean> = _collectionsLoadingFinished
 
-    private var allEmojisByCategory: Map<EmojiCategory, List<Emoji>>? = null
+    private val _challengesLoading = MutableLiveData(true)
+    val challengesLoading: LiveData<Boolean> = _challengesLoading
+
+    private val _currentChallenges = MutableLiveData<List<Challenge>?>(null)
+    val currentChallenges: LiveData<List<Challenge>?> = _currentChallenges
+
+    private var currentCategory: EmojiCategory? = null
+    private val loadChallengesTimer = object : CountDownTimer(MIN_LOADING_TIME_MS, MIN_LOADING_TIME_MS) {
+        override fun onTick(millisUntilFinished: Long) {}
+
+        override fun onFinish() {
+            _challengesLoading.value = false
+            _currentChallenges.value = allChallengesByCategory?.get(currentCategory).let {
+                if (it.isNullOrEmpty()) null else it
+            }
+        }
+    }
+
+    private var allEmojisByCategory: MutableMap<EmojiCategory, List<Emoji>>? = null
     private var allChallengesByCategory: MutableMap<EmojiCategory, List<Challenge>>? = null
 
-    private var categoriesUnlockedCount: Map<EmojiCategory, Int>? = null
+    private var categoriesUnlockedCount: MutableMap<EmojiCategory, Int>? = null
     private var categoriesEmojiCount: Map<EmojiCategory, Int>? = null
 
     init {
-        initMinimumLoadingTime()
-
         viewModelScope.launch {
             allChallengesByCategory = challengesRepository.getAllChallengesByCategory().toMutableMap()
 
-            allEmojisByCategory = emojiRepository.getAllEmojisByCategory()
+            allEmojisByCategory = emojiRepository.getAllEmojisByCategory().toMutableMap()
 
             categoriesEmojiCount = allEmojisByCategory!!.mapValues { it.value.size }
-            categoriesUnlockedCount = allEmojisByCategory!!.mapValues { it.value.count { emoji -> emoji.unlocked }  }
+            categoriesUnlockedCount = allEmojisByCategory!!.mapValues {
+                it.value.count { emoji -> emoji.unlocked }
+            }.toMutableMap()
 
-            _categoriesLoadingFinished.value = true
+            _collectionsLoadingFinished.value = true
         }
     }
 
     /**
-     * Generates a new set of challenges for a given category, replacing the old ones.
+     * Initiates the loading state, fetches challenges for a given category, and updates 'currentChallenges'
+     * with the result.
+     * @see challengesLoading
+     * @see currentChallenges
+     */
+    fun loadChallengesForCategory(category: EmojiCategory) {
+        _challengesLoading.value = true
+
+        loadChallengesTimer.cancel()
+        currentCategory = category
+        loadChallengesTimer.start()
+    }
+
+    /**
+     * Generates a complete new set of challenges for a given category, replacing ALL the old ones.
      * @return 'True' if the operation was successful, 'False' otherwise.
      */
     fun refreshChallenges(category: EmojiCategory): Boolean {
-        val lockedEmojisForCategory = allEmojisByCategory?.get(category)?.filter { !it.unlocked }
-
-        val newChallenges = generateChallenges(
-            category,
-            min(lockedEmojisForCategory?.size ?: 0, MAX_CHALLENGES_PER_CATEGORY)
-        )
-
-        if (allChallengesByCategory == null || newChallenges == null) {
+        if (allEmojisByCategory == null || allChallengesByCategory == null) {
             return false
         }
 
-        initMinimumLoadingTime()
+        val lockedEmojisForCategory = allEmojisByCategory!![category]!!.filter { !it.unlocked }
+
+        val newChallenges = generateChallenges(
+            category = category,
+            count = min(lockedEmojisForCategory.size, MAX_CHALLENGES_PER_CATEGORY),
+            availableEmojis = lockedEmojisForCategory
+        )
+
+        val oldChallenges = allChallengesByCategory!![category]!!
 
         viewModelScope.launch {
-            _categoriesLoadingFinished.value = false
-
-            val oldChallenges = allChallengesByCategory!![category]!!
-
-            challengesRepository.deleteChallenges(oldChallenges)
-            challengesRepository.insertChallenges(newChallenges)
-
-            // Making a query just to retrieve the items with the autogenerated id
-            allChallengesByCategory!![category] = challengesRepository.getAllChallengerForCategory(category)
-
-            _categoriesLoadingFinished.value = true
+            allChallengesByCategory!![category] = challengesRepository.replaceChallenges(
+                category, oldChallenges, newChallenges
+            )
         }
 
         return true
     }
 
-    fun getChallengesForCategory(category: EmojiCategory): List<Challenge>? = allChallengesByCategory?.get(category)
+    /**
+     * Completes a given challenge, unlocking the rewards and generating a new challenge if necessary.
+     * @return 'True' if the operation was successful, 'False' otherwise.
+     */
+    fun completeChallenge(completedChallenge: Challenge): Boolean {
+        if (allEmojisByCategory == null || allChallengesByCategory == null) {
+            return false
+        }
+
+        categoriesUnlockedCount!!.compute(completedChallenge.category) { _, count -> count!!.plus(1) }
+
+        allEmojisByCategory!!.compute(completedChallenge.category) { _, emojiList ->
+            emojiList!!.map {
+                if (it.unicode == completedChallenge.rewardEmojiUnicode) it.copy(unlocked = true) else it
+            }
+        }
+
+        allChallengesByCategory!!.compute(completedChallenge.category) { _, challenges ->
+            challenges!!.minus(completedChallenge)
+        }
+
+        viewModelScope.launch {
+            emojiRepository.unlockEmoji(completedChallenge.rewardEmojiUnicode)
+
+            val emojisAlreadyInChallenges = allChallengesByCategory!![completedChallenge.category]!!.map {
+                it.rewardEmojiUnicode
+            }
+
+            val availableEmojisForCategory = allEmojisByCategory!![completedChallenge.category]!!.filter {
+                !it.unlocked && !emojisAlreadyInChallenges.contains(it.unicode)
+            }
+
+            val newChallenge = if (availableEmojisForCategory.isNotEmpty()) {
+                generateChallenges(completedChallenge.category, 1, availableEmojisForCategory)
+            } else {
+                null
+            }
+
+            allChallengesByCategory!![completedChallenge.category] = challengesRepository.replaceChallenges(
+                completedChallenge.category, listOf(completedChallenge), newChallenge
+            )
+        }
+
+        return true
+    }
+
+    fun getEmojiByUnicode(unicode: String, category: EmojiCategory): Emoji? {
+        return allEmojisByCategory?.get(category)?.find { it.unicode == unicode }
+    }
 
     fun getUnlockedCountForCategory(category: EmojiCategory): Int? = categoriesUnlockedCount?.get(category)
 
@@ -107,27 +175,11 @@ class EmojisViewModel @Inject constructor(
 
     fun getCategoryEmojis(category: EmojiCategory): List<Emoji>? = allEmojisByCategory?.get(category)
 
-    private fun initMinimumLoadingTime() {
-        _minLoadingTimeFinished.value = false
-
-        object : CountDownTimer(MIN_LOADING_TIME_MS, MIN_LOADING_TIME_MS) {
-            override fun onTick(millisUntilFinished: Long) {}
-
-            override fun onFinish() {
-                _minLoadingTimeFinished.value = true
-            }
-        }.start()
-    }
-
-    private fun generateChallenges(category: EmojiCategory, count: Int): List<Challenge>? {
-        if (allEmojisByCategory == null) {
-            return null
-        }
-
-        val lockedEmojisForCategory = allEmojisByCategory!![category]!!.filter { !it.unlocked }
-
+    private fun generateChallenges(
+        category: EmojiCategory, count: Int, availableEmojis: List<Emoji>
+    ): List<Challenge> {
         val rewardEmojis = generateSequence {
-            lockedEmojisForCategory.random().unicode
+            availableEmojis.random().unicode
         }.distinct()
         .take(count)
         .toList()
@@ -147,3 +199,4 @@ class EmojisViewModel @Inject constructor(
         )}
     }
 }
+

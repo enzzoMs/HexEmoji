@@ -20,7 +20,7 @@
     <!-- Game Modes Page -->
     <dimen name="game_mode_card_emoji_size">130dp</dimen>
 
-    <!-- Emojis Selection Page -->
+    <!-- Category Selection Page -->
     <dimen name="emoji_category_card_image_size">130dp</dimen>
 
     <!-- Game Screen -->

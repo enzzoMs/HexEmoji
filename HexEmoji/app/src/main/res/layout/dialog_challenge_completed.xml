@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/challenge_completed"
+            android:text="@string/challenge_completed"
+            android:textAppearance="@style/TextAppearance.HexEmoji.Dialog"
+            android:fontFamily="@font/lexend_bold"
+            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dialog_inner_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/challenge_completed_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"/>
+
+        <ImageView
+            android:id="@+id/challenge_completed_icon"
+            android:src="@drawable/ic_completed"
+            app:tint="?android:attr/textColorPrimary"
+            android:importantForAccessibility="no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/challenge_completed"
+            app:layout_constraintTop_toTopOf="@id/challenge_completed"
+            app:layout_constraintBottom_toBottomOf="@id/challenge_completed" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/challenge_completed_divider"
+            app:dividerThickness="@dimen/divider_thickness"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dialog_inner_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/challenge_completed" />
+
+        <TextView
+            android:id="@+id/challenge_completed_description"
+            android:textAppearance="@style/TextAppearance.HexEmoji.Dialog"
+            android:textAlignment="center"
+            android:fontFamily="@font/lexend_medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dialog_inner_margin"
+            app:layout_constraintTop_toBottomOf="@id/challenge_completed_divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="@string/challenge_completed_description_template" />
+
+        <TextView
+            android:id="@+id/challenge_reward_emoji_name"
+            android:textAppearance="@style/TextAppearance.HexEmoji.Dialog"
+            android:fontFamily="@font/lexend_bold"
+            android:textAlignment="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dialog_inner_margin"
+            app:layout_constraintTop_toBottomOf="@id/challenge_completed_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Grinning Face"
+            tools:textColor="@color/emoji_category_color_people_emotions" />
+
+        <TextView
+            android:id="@+id/challenge_reward_emoji"
+            style="@style/Widget.HexEmoji.TextView.Emoji"
+            android:layout_width="@dimen/challenge_completed_emoji_size"
+            android:layout_height="@dimen/challenge_completed_emoji_size"
+            android:layout_marginTop="@dimen/dialog_inner_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/challenge_reward_emoji_name"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="😀"/>
+
+        <View
+            android:id="@+id/challenge_completed_button_background"
+            android:background="?attr/colorSurfaceDim"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dialog_inner_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/challenge_reward_emoji" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/challenge_completed_button_confirm"
+            android:text="@string/challenge_completed_finish_button"
+            style="@style/Widget.HexEmoji.Button.Primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dialog_inner_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/challenge_completed_button_background" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

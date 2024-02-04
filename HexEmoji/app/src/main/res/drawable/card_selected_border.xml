@@ -6,7 +6,8 @@
         android:radius="@dimen/card_corner_radius"/>
 
     <solid
-        android:color="@color/emoji_category_card_selected_back_color"/>
+        android:color="@color/emoji_category_card_selected_back_color"
+        android:alpha="0"/>
 
     <stroke
         android:width="@dimen/emoji_category_card_border_width"

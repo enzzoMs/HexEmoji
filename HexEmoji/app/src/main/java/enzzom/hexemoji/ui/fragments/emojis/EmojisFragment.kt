@@ -10,11 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import enzzom.hexemoji.R
+import enzzom.hexemoji.data.entities.Challenge
+import enzzom.hexemoji.databinding.DialogChallengeCompletedBinding
 import enzzom.hexemoji.databinding.DialogRefreshChallengesBinding
 import enzzom.hexemoji.databinding.FragmentEmojisBinding
 import enzzom.hexemoji.models.EmojiCategoryDetails
@@ -27,6 +30,7 @@ import enzzom.hexemoji.ui.fragments.main.MainFragment
 class EmojisFragment : Fragment() {
 
     private val emojisViewModel: EmojisViewModel by viewModels()
+    private var showingDialog: Boolean = false
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
@@ -35,55 +39,86 @@ class EmojisFragment : Fragment() {
     ): View {
         val binding = FragmentEmojisBinding.inflate(inflater, container, false)
 
-        val emojiCategoryIconsId = mutableListOf<Int>()
-
-        resources.obtainTypedArray(R.array.emoji_category_icons).let {
-            for (i in 0..it.length()) {
-                emojiCategoryIconsId.add(it.getResourceId(i, R.drawable.ic_smiley_face_filled))
-            }
-            it.recycle()
-        }
-
         val allCategoryDetails = EmojiCategoryDetails.getAll(resources)
+        var selectedCategoryIndex = 0
 
         binding.apply {
-            collectionDetailsList.adapter = CollectionDetailsAdapter(
-                categoryDetails = allCategoryDetails,
-                getEmojiCountForCategory = emojisViewModel::getEmojiCountForCategory,
-                getUnlockedCountForCategory = emojisViewModel::getUnlockedCountForCategory,
-                onCollectionClicked = { category -> emojisViewModel.getCategoryEmojis(category)?.let {
-                    (parentFragment?.parentFragment as MainFragment).navigateToCollectionScreen(category, it)
-                }}
-            )
-
-            val challengesListAdapter = ChallengesAdapter().also {
+            val challengesListAdapter = ChallengesAdapter(
+                onCompletedChallengeClicked = {
+                    if (!showingDialog) {
+                        val selectedCategory = allCategoryDetails[selectedCategoryIndex]
+                        showChallengeCompletedDialog(
+                            challenge = it,
+                            categoryColor = selectedCategory.color,
+                            onDialogDismissed = {
+                                emojisViewModel.completeChallenge(it)
+                                collectionDetailsList.adapter?.notifyItemChanged(selectedCategoryIndex)
+                                emojisViewModel.loadChallengesForCategory(
+                                    allCategoryDetails[selectedCategoryIndex].category
+                                )
+                            }
+                        )
+                    }
+                }
+            ).also {
                 challengesList.adapter = it
             }
 
-            TabLayoutMediator(collectionTabs, collectionDetailsList) { tab, position ->
-                tab.setIcon(emojiCategoryIconsId[position])
-            }.attach()
+            val snapHelper = PagerSnapHelper().also {
+                it.attachToRecyclerView(collectionDetailsList)
+            }
+
+            collectionDetailsList.apply {
+                // Removing recycler view animations (mainly to prevent blink after 'notifyItemChanged')
+                itemAnimator = null
+                adapter = CollectionDetailsAdapter(
+                    categoryDetails = allCategoryDetails,
+                    getEmojiCountForCategory = emojisViewModel::getEmojiCountForCategory,
+                    getUnlockedCountForCategory = emojisViewModel::getUnlockedCountForCategory,
+                    onCollectionClicked = { category ->
+                        if (!showingDialog) {
+                            emojisViewModel.getCategoryEmojis(category)?.let {
+                                (parentFragment?.parentFragment as MainFragment).navigateToCollectionScreen(category, it)
+                            }
+                        }
+                    }
+                )
+                addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                        val snapPosition = snapHelper.findSnapView(layoutManager)?.let {
+                            layoutManager!!.getPosition(it)
+                        }
+
+                        if (snapPosition != null && snapPosition != selectedCategoryIndex) {
+                            selectedCategoryIndex = snapPosition
+                            collectionTabs.selectTab(collectionTabs.getTabAt(selectedCategoryIndex))
+                        }
+                    }
+                })
+
+            }
+
+            val categoryIcons = resources.obtainTypedArray(R.array.emoji_category_icons)
+
+            for (position in 0 until collectionDetailsList.adapter!!.itemCount) {
+                collectionTabs.newTab().let { tab ->
+                    collectionTabs.addTab(tab)
+                    tab.setIcon(categoryIcons.getResourceId(position, R.drawable.ic_smiley_face_filled))
+                }
+            }
+            categoryIcons.recycle()
 
             collectionTabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
-                    if (tab != null && challengesLoading.visibility != View.VISIBLE) {
-                        val selectedCategory = allCategoryDetails[tab.position]
-
-                        val categoryChallenges = emojisViewModel.getChallengesForCategory(
-                            selectedCategory.category
-                        )
-
-                        if (categoryChallenges != null) {
-                            challengesListAdapter.replaceChallenges(categoryChallenges, selectedCategory.color)
-                            noChallengesDescription.visibility = View.GONE
-                            noChallengesIcon.visibility = View.GONE
-                            refreshChallenges.visibility = View.VISIBLE
-                        } else {
-                            challengesListAdapter.clearChallenges()
-                            noChallengesDescription.visibility = View.VISIBLE
-                            noChallengesIcon.visibility = View.VISIBLE
-                            refreshChallenges.visibility = View.INVISIBLE
+                    if (tab != null) {
+                        if (tab.position != selectedCategoryIndex) {
+                            selectedCategoryIndex = tab.position
+                            collectionDetailsList.scrollToPosition(selectedCategoryIndex)
                         }
+
+                        emojisViewModel.loadChallengesForCategory(
+                            allCategoryDetails[selectedCategoryIndex].category
+                        )
                     }
                 }
 
@@ -92,18 +127,19 @@ class EmojisFragment : Fragment() {
             })
 
             refreshChallenges.setOnClickListener {
-                val selectedTabPosition = collectionTabs.selectedTabPosition
-
-                if (selectedTabPosition != -1) {
+                if (!showingDialog) {
                     showRefreshChallengesDialog(onConfirmClicked = {
-                        val selectedCategory = allCategoryDetails[selectedTabPosition]
+                        val selectedCategory =
+                            allCategoryDetails[selectedCategoryIndex].category
 
-                        if (emojisViewModel.refreshChallenges(selectedCategory.category)) {
-                            emojisViewModel.getChallengesForCategory(selectedCategory.category)?.let {
-                                challengesListAdapter.replaceChallenges(it, selectedCategory.color)
-                            }
+                        if (emojisViewModel.refreshChallenges(selectedCategory)) {
+                            emojisViewModel.loadChallengesForCategory(selectedCategory)
                         } else {
-                            Snackbar.make(it, R.string.refresh_collection_error_msg, Snackbar.LENGTH_SHORT).show()
+                            Snackbar.make(
+                                it,
+                                R.string.refresh_collection_error_msg,
+                                Snackbar.LENGTH_SHORT
+                            ).show()
                         }
                     })
                 }
@@ -111,11 +147,37 @@ class EmojisFragment : Fragment() {
 
             emojisViewModel.collectionsLoadingFinished.observe(viewLifecycleOwner) { finished ->
                 if (finished) {
-                    challengesLoading.visibility = View.GONE
                     collectionDetailsList.adapter?.notifyDataSetChanged()
-                } else {
-                    challengesLoading.visibility = View.VISIBLE
+                    emojisViewModel.loadChallengesForCategory(allCategoryDetails[selectedCategoryIndex].category)
+                }
+            }
+
+            emojisViewModel.challengesLoading.observe(viewLifecycleOwner) { loading ->
+                if (loading) {
                     challengesListAdapter.clearChallenges()
+                    challengesLoading.visibility = View.VISIBLE
+                    noChallengesDescription.visibility = View.INVISIBLE
+                    noChallengesIcon.visibility = View.INVISIBLE
+                    refreshChallenges.visibility = View.INVISIBLE
+                } else {
+                    challengesLoading.visibility = View.INVISIBLE
+                }
+            }
+
+            emojisViewModel.currentChallenges.observe(viewLifecycleOwner) { challenges ->
+                if (challenges == null && emojisViewModel.challengesLoading.value != true) {
+                    noChallengesDescription.visibility = View.VISIBLE
+                    noChallengesIcon.visibility = View.VISIBLE
+                    refreshChallenges.visibility = View.INVISIBLE
+
+                } else if (challenges != null) {
+                    noChallengesDescription.visibility = View.INVISIBLE
+                    noChallengesIcon.visibility = View.INVISIBLE
+                    refreshChallenges.visibility = View.VISIBLE
+
+                    challengesListAdapter.replaceChallenges(
+                        challenges, allCategoryDetails[selectedCategoryIndex].color
+                    )
                 }
             }
         }
@@ -124,6 +186,8 @@ class EmojisFragment : Fragment() {
     }
 
     private fun showRefreshChallengesDialog(onConfirmClicked: () -> Unit) {
+        showingDialog = true
+
         val dialog = Dialog(requireContext())
 
         val refreshChallengesBinding = DialogRefreshChallengesBinding.inflate(layoutInflater).apply {
@@ -137,7 +201,42 @@ class EmojisFragment : Fragment() {
         }
 
         dialog.apply {
+            setOnDismissListener { showingDialog = false }
             setContentView(refreshChallengesBinding.root)
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            show()
+        }
+    }
+
+    private fun showChallengeCompletedDialog(
+        challenge: Challenge, categoryColor: Int, onDialogDismissed: () -> Unit
+    ) {
+        showingDialog = true
+
+        val dialog = Dialog(requireContext())
+
+        val challengeCompletedBinding = DialogChallengeCompletedBinding.inflate(layoutInflater).apply {
+            challengeCompletedDescription.text = resources.getString(
+                R.string.challenge_completed_description_template, challenge.category.getTitle(resources)
+            )
+            challengeRewardEmojiName.setTextColor(categoryColor)
+            challengeRewardEmoji.text = challenge.rewardEmoji
+
+            challengeRewardEmojiName.text = emojisViewModel.getEmojiByUnicode(
+                challenge.rewardEmojiUnicode, challenge.category
+            )?.getName(resources) ?: ""
+
+            challengeCompletedButtonConfirm.setOnClickListener {
+                dialog.dismiss()
+            }
+        }
+
+        dialog.apply {
+            setOnDismissListener {
+                onDialogDismissed()
+                showingDialog = false
+            }
+            setContentView(challengeCompletedBinding.root)
             window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             show()
         }

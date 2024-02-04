@@ -18,6 +18,7 @@
     <color name="app_sub_title_color">@color/gray</color>
     <color name="unselected_icon_color">@color/gray</color>
     <color name="unselected_text_color">@color/gray</color>
+    <color name="warming_color">@color/red_pure</color>
 
     <color name="page_description_text_color">@color/gray</color>
 
@@ -118,6 +119,7 @@
     <color name="purple_light">#A989C8</color>
     <color name="red">#A71C1C</color>
     <color name="red_dark">#972828</color>
+    <color name="red_pure">#FF0000</color>
     <color name="green">#558F15</color>
     <color name="green_blue">#00766E</color>
     <color name="green_blue_light">#639A97</color>
