@@ -31,7 +31,7 @@
     <dimen name="exit_game_message_top_margin">@dimen/spacing_huge_1</dimen>
     <dimen name="exit_game_emoji_size">110dp</dimen>
 
-    <dimen name="challenge_completed_emoji_size">100dp</dimen>
+    <dimen name="challenge_completed_emoji_size">80dp</dimen>
 
     <!-- Custom views -->
     <dimen name="game_tutorial_image_height">140dp</dimen>
@@ -90,8 +90,13 @@
     <dimen name="board_size_card_outer_margin">@dimen/spacing_small_1</dimen>
 
     <!-- Emojis Page -->
+    <dimen name="emojis_start_guideline">0.04</dimen>
+    <dimen name="emojis_end_guideline">0.96</dimen>
+
     <dimen name="collection_details_card_min_height">170dp</dimen>
     <dimen name="collection_details_card_icon_size">35dp</dimen>
+    <dimen name="collection_details_card_circular_indicator_size">70dp</dimen>
+
     <dimen name="challenge_reward_emoji_size">60dp</dimen>
     <dimen name="challenge_reward_emoji_padding">8dp</dimen>
     <dimen name="challenge_reward_emoji_margin">8dp</dimen>
@@ -124,7 +129,7 @@
     <dimen name="hexagonal_board_item_margin">16dp</dimen>
 
     <!-- General -->
-    <dimen name="window_min_width_major">50%p</dimen>
+    <dimen name="window_min_width_major">60%p</dimen>
 
     <dimen name="spacing_extra_small">4dp</dimen>
     <dimen name="spacing_small_1">8dp</dimen>

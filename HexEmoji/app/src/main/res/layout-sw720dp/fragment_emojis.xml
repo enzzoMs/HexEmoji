@@ -7,37 +7,54 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.emojis.EmojisFragment">
 
+    <TextView
+        android:id="@+id/emojis_page_description"
+        android:text="@string/page_description_emojis"
+        style="@style/TextAppearance.HexEmoji.PageDescription"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="@dimen/screen_outer_margin"
+        android:layout_marginTop="@dimen/screen_outer_margin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/emojis_section_guideline"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <View
         android:background="@color/collection_details_section_background"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/screen_contents_margin"
+        app:layout_constraintTop_toBottomOf="@id/emojis_page_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/emojis_section_guideline"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/collection_tabs"
-        app:tabMode="scrollable"
+        app:tabMode="fixed"
         android:contentDescription="@string/collection_details_tab_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/screen_contents_margin"
-        app:layout_constraintEnd_toStartOf="@id/emojis_section_guideline"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/emojis_section_guideline"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/collection_details_list"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:overScrollMode="never"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/screen_contents_margin"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginVertical="@dimen/screen_contents_margin"
+        android:layout_marginTop="@dimen/screen_contents_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/emojis_section_guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/collection_tabs" />
+        app:layout_constraintTop_toBottomOf="@id/emojis_page_description"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/emojis_section_guideline"
@@ -69,7 +86,7 @@
         android:layout_marginTop="6dp"
         android:layout_marginEnd="@dimen/screen_outer_margin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/collection_tabs"
         tools:visibility="visible" />
 
     <com.google.android.material.divider.MaterialDivider
@@ -84,7 +101,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/challenges_list"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="@integer/challenges_grid_span"
         android:orientation="vertical"
         android:clipToPadding="false"
         android:overScrollMode="never"

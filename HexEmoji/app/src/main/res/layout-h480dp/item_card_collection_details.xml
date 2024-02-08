@@ -7,24 +7,24 @@
     android:clickable="true"
     android:focusable="true"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/card_outer_margin"
-    tools:layout_width="300dp"
-    tools:layout_height="200dp">
+    android:layout_marginBottom="@dimen/card_outer_margin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:minHeight="@dimen/collection_details_card_min_height">
 
         <TextView
             android:id="@+id/collection_details_title"
             android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/card_inner_margin"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="@dimen/card_inner_margin"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/collection_details_icon"
+            app:layout_constraintBottom_toBottomOf="@id/collection_details_icon"
             tools:text="@string/emoji_category_title_people_emotions"
             tools:textColor="@color/emoji_category_color_people_emotions" />
 
@@ -37,37 +37,49 @@
             android:layout_height="@dimen/collection_details_card_icon_size"
             android:layout_marginVertical="@dimen/card_title_vertical_margin"
             android:layout_marginHorizontal="@dimen/card_inner_margin"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/emoji_category_emoji_icon_people_emotions"/>
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
+        <TextView
+            android:id="@+id/collection_details_description"
+            android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Description"
+            android:hyphenationFrequency="full"
+            android:minLines="2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/card_inner_margin"
+            android:layout_marginBottom="@dimen/card_inner_margin"
+            android:layout_marginTop="@dimen/card_title_vertical_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/collection_details_icon"
+            tools:text="@string/emoji_category_description_people_emotions" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/collection_details_unlocked_bar"
             android:contentDescription="@string/collection_unlocked_bar_description"
-            app:indicatorSize="@dimen/collection_details_card_circular_indicator_size"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/card_inner_margin"
-            app:layout_constraintTop_toBottomOf="@id/collection_details_title"
+            app:layout_constraintTop_toTopOf="@id/collection_details_unlocked_ratio"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/collection_details_unlocked_ratio"
-            app:layout_constraintVertical_chainStyle="packed"
-            tools:indicatorColor="@color/emoji_category_color_people_emotions"
-            tools:trackColor="#3E8C6000"
+            app:layout_constraintEnd_toStartOf="@id/collection_details_unlocked_ratio"
+            app:layout_constraintBottom_toBottomOf="@id/collection_details_unlocked_ratio"
+            tools:indicatorColor="#8C6000"
             tools:progress="25"/>
 
         <TextView
             android:id="@+id/collection_details_unlocked_ratio"
+            android:textAppearance="@style/TextAppearance.HexEmoji.Subtitle2"
             android:fontFamily="@font/lexend_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/card_inner_margin"
-            android:layout_marginBottom="@dimen/card_inner_margin"
+            android:layout_margin="@dimen/card_inner_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/collection_details_unlocked_bar"
+            app:layout_constraintTop_toBottomOf="@+id/collection_details_description"
+            app:layout_constraintVertical_bias="1.0"
             tools:text="50 / 200"
             tools:textColor="@color/emoji_category_color_people_emotions" />
 

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- General -->
+    <integer name="progress_indicator_track_alpha">65</integer>
+
     <!-- Game Modes Page -->
     <integer name="game_modes_grid_span">1</integer>
     
@@ -12,6 +15,7 @@
 
     <!-- Emojis Page -->
     <integer name="challenge_completed_back_color_alpha">35</integer>
+    <integer name="challenges_grid_span">1</integer>
 
     <!-- Emoji Collection Screen -->
     <integer name="emoji_collection_grid_span">6</integer>

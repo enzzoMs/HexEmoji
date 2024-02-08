@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
@@ -64,8 +65,14 @@ class EmojisFragment : Fragment() {
                 challengesList.adapter = it
             }
 
+            val syncCollectionDetailsWithTabs = (
+                collectionDetailsList.layoutManager as LinearLayoutManager
+            ).orientation == RecyclerView.HORIZONTAL
+
             val snapHelper = PagerSnapHelper().also {
-                it.attachToRecyclerView(collectionDetailsList)
+                if (syncCollectionDetailsWithTabs) {
+                    it.attachToRecyclerView(collectionDetailsList)
+                }
             }
 
             collectionDetailsList.apply {
@@ -83,19 +90,20 @@ class EmojisFragment : Fragment() {
                         }
                     }
                 )
-                addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                        val snapPosition = snapHelper.findSnapView(layoutManager)?.let {
-                            layoutManager!!.getPosition(it)
-                        }
+                if (syncCollectionDetailsWithTabs) {
+                    addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                            val snapPosition = snapHelper.findSnapView(layoutManager)?.let {
+                                layoutManager!!.getPosition(it)
+                            }
 
-                        if (snapPosition != null && snapPosition != selectedCategoryIndex) {
-                            selectedCategoryIndex = snapPosition
-                            collectionTabs.selectTab(collectionTabs.getTabAt(selectedCategoryIndex))
+                            if (snapPosition != null && snapPosition != selectedCategoryIndex) {
+                                selectedCategoryIndex = snapPosition
+                                collectionTabs.selectTab(collectionTabs.getTabAt(selectedCategoryIndex))
+                            }
                         }
-                    }
-                })
-
+                    })
+                }
             }
 
             val categoryIcons = resources.obtainTypedArray(R.array.emoji_category_icons)
@@ -113,7 +121,10 @@ class EmojisFragment : Fragment() {
                     if (tab != null) {
                         if (tab.position != selectedCategoryIndex) {
                             selectedCategoryIndex = tab.position
-                            collectionDetailsList.scrollToPosition(selectedCategoryIndex)
+
+                            if (syncCollectionDetailsWithTabs) {
+                                collectionDetailsList.scrollToPosition(selectedCategoryIndex)
+                            }
                         }
 
                         emojisViewModel.loadChallengesForCategory(
@@ -136,9 +147,7 @@ class EmojisFragment : Fragment() {
                             emojisViewModel.loadChallengesForCategory(selectedCategory)
                         } else {
                             Snackbar.make(
-                                it,
-                                R.string.refresh_collection_error_msg,
-                                Snackbar.LENGTH_SHORT
+                                it, R.string.refresh_collection_error_msg, Snackbar.LENGTH_SHORT
                             ).show()
                         }
                     })
@@ -165,19 +174,21 @@ class EmojisFragment : Fragment() {
             }
 
             emojisViewModel.currentChallenges.observe(viewLifecycleOwner) { challenges ->
-                if (challenges == null && emojisViewModel.challengesLoading.value != true) {
-                    noChallengesDescription.visibility = View.VISIBLE
-                    noChallengesIcon.visibility = View.VISIBLE
-                    refreshChallenges.visibility = View.INVISIBLE
+                if (emojisViewModel.challengesLoading.value != true) {
+                    if (challenges == null) {
+                        noChallengesDescription.visibility = View.VISIBLE
+                        noChallengesIcon.visibility = View.VISIBLE
+                        refreshChallenges.visibility = View.INVISIBLE
 
-                } else if (challenges != null) {
-                    noChallengesDescription.visibility = View.INVISIBLE
-                    noChallengesIcon.visibility = View.INVISIBLE
-                    refreshChallenges.visibility = View.VISIBLE
+                    } else {
+                        noChallengesDescription.visibility = View.INVISIBLE
+                        noChallengesIcon.visibility = View.INVISIBLE
+                        refreshChallenges.visibility = View.VISIBLE
 
-                    challengesListAdapter.replaceChallenges(
-                        challenges, allCategoryDetails[selectedCategoryIndex].color
-                    )
+                        challengesListAdapter.replaceChallenges(
+                            challenges, allCategoryDetails[selectedCategoryIndex].color
+                        )
+                    }
                 }
             }
         }
@@ -226,7 +237,7 @@ class EmojisFragment : Fragment() {
                 challenge.rewardEmojiUnicode, challenge.category
             )?.getName(resources) ?: ""
 
-            challengeCompletedButtonConfirm.setOnClickListener {
+            challengeCompletedButtonConfirm?.setOnClickListener {
                 dialog.dismiss()
             }
         }

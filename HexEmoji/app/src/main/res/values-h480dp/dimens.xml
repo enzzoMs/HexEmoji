@@ -9,5 +9,6 @@
 
     <!-- Dialogs -->
     <dimen name="game_tutorial_image_height">180dp</dimen>
+    <dimen name="challenge_completed_emoji_size">100dp</dimen>
 
 </resources>

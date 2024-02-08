@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Emojis Page -->
+    <integer name="challenges_grid_span">2</integer>
+
     <!-- Emoji Collection Screen -->
     <dimen name="no_results_icon_size">120dp</dimen>
     <dimen name="collection_emoji_card_size">110dp</dimen>

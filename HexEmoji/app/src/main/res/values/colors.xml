@@ -37,7 +37,10 @@
     <color name="side_navigation_item_color">@color/gray</color>
     <color name="side_navigation_selected_back_color">@color/silver_light</color>
 
-    <!-- Emojis Selection Page -->
+    <!-- Emojis Page -->
+    <color name="collection_details_section_background">@color/platinum</color>
+
+    <!-- Category Selection Page -->
     <color name="emoji_category_card_selected_back_color">@color/orange_beer_alpha_8</color>
     <color name="emoji_category_card_unselected_border_color">@color/silver_light</color>
 
@@ -96,6 +99,7 @@
     <color name="white_alpha_20">#33FFFFFF</color>
     <color name="white_ghost">#F7F8FB</color>
     <color name="white_anti_flash">#F2F2F2</color>
+    <color name="platinum">#E7E7E7</color>
     <color name="silver">#B3B3B3</color>
     <color name="silver_light">#E1E1E1</color>
     <color name="silver_light_variant">#C7C7C7</color>

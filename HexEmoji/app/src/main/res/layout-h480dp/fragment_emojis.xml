@@ -7,44 +7,45 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.emojis.EmojisFragment">
 
-    <View
-        android:background="@color/collection_details_section_background"
+    <TextView
+        android:id="@+id/emojis_page_description"
+        android:text="@string/page_description_emojis"
+        style="@style/TextAppearance.HexEmoji.PageDescription"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="@dimen/screen_outer_margin"
+        android:layout_marginTop="@dimen/screen_outer_margin"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/emojis_section_guideline"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/collection_tabs"
         app:tabMode="scrollable"
         android:contentDescription="@string/collection_details_tab_description"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/screen_contents_margin"
-        app:layout_constraintEnd_toStartOf="@id/emojis_section_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_marginHorizontal="@dimen/screen_outer_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/emojis_page_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </com.google.android.material.tabs.TabLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/collection_details_list"
-        android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginVertical="@dimen/screen_contents_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/emojis_section_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/collection_tabs" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/emojis_section_guideline"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.5" />
+        android:layout_marginTop="@dimen/screen_contents_margin"
+        app:layout_constraintTop_toBottomOf="@id/collection_tabs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_height="200dp"/>
 
     <TextView
         android:id="@+id/challenges_description"
@@ -54,9 +55,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/screen_outer_margin"
+        app:layout_constraintTop_toTopOf="@id/refresh_challenges"
         app:layout_constraintBottom_toBottomOf="@id/refresh_challenges"
-        app:layout_constraintStart_toEndOf="@id/emojis_section_guideline"
-        app:layout_constraintTop_toTopOf="@id/refresh_challenges" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <ImageButton
         android:id="@+id/refresh_challenges"
@@ -66,10 +67,9 @@
         android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
         android:layout_marginEnd="@dimen/screen_outer_margin"
+        app:layout_constraintTop_toBottomOf="@id/collection_details_list"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
 
     <com.google.android.material.divider.MaterialDivider
@@ -78,37 +78,37 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/screen_outer_margin"
+        app:layout_constraintTop_toBottomOf="@id/refresh_challenges"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/emojis_section_guideline"
-        app:layout_constraintTop_toBottomOf="@id/refresh_challenges" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/challenges_list"
+        android:overScrollMode="never"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
         android:clipToPadding="false"
-        android:overScrollMode="never"
         android:paddingTop="@dimen/screen_contents_margin"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginHorizontal="@dimen/screen_outer_margin"
+        app:layout_constraintTop_toBottomOf="@id/challenges_description_divider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/emojis_section_guideline"
-        app:layout_constraintTop_toBottomOf="@id/challenges_description_divider" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/challenges_loading"
-        app:indicatorSize="@dimen/content_loading_circular_bar_size"
-        app:indicatorColor="@color/unselected_icon_color"
         android:indeterminate="true"
+        app:indicatorColor="@color/unselected_icon_color"
+        app:indicatorSize="@dimen/content_loading_circular_bar_size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/emojis_section_guideline"
         app:layout_constraintTop_toBottomOf="@id/challenges_description_divider"
-        tools:visibility="invisible" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/no_challenges_icon"
@@ -118,12 +118,12 @@
         android:visibility="gone"
         android:layout_width="@dimen/no_results_icon_size"
         android:layout_height="@dimen/no_results_icon_size"
-        app:layout_constraintBottom_toTopOf="@id/no_challenges_description"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/emojis_section_guideline"
         app:layout_constraintTop_toBottomOf="@id/challenges_description_divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/no_challenges_description"
         app:layout_constraintVertical_chainStyle="packed"
-        tools:visibility="visible" />
+        tools:visibility="visible"/>
 
     <TextView
         android:id="@+id/no_challenges_description"
@@ -135,10 +135,10 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/no_results_description_horizontal_margin"
         android:layout_marginTop="@dimen/no_results_description_vertical_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/emojis_section_guideline"
         app:layout_constraintTop_toBottomOf="@id/no_challenges_icon"
-        tools:visibility="visible" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:visibility="visible"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

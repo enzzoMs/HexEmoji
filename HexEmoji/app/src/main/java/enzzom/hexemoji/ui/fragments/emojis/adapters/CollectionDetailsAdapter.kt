@@ -3,8 +3,9 @@ package enzzom.hexemoji.ui.fragments.emojis.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.graphics.ColorUtils
-import androidx.core.graphics.alpha
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.progressindicator.CircularProgressIndicator
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.ItemCardCollectionDetailsBinding
 import enzzom.hexemoji.models.EmojiCategory
@@ -45,17 +46,23 @@ class CollectionDetailsAdapter(
             collectionCategory = categoryDetails.category
 
             binding.apply {
+                val collectionProgressBar = when (collectionDetailsUnlockedBar) {
+                    is LinearProgressIndicator -> collectionDetailsUnlockedBar
+                    is CircularProgressIndicator -> collectionDetailsUnlockedBar
+                    else -> null
+                }
+
                 val emojiCount = getEmojiCountForCategory(categoryDetails.category)
                 val unlockedCount = getUnlockedCountForCategory(categoryDetails.category)
 
                 if (emojiCount == null || unlockedCount == null) {
-                    collectionDetailsUnlockedBar.isIndeterminate = true
+                    collectionProgressBar?.isIndeterminate = true
                     collectionDetailsUnlockedRatio.text = root.resources.getString(
                         R.string.progress_ratio_template, 0, 0
                     )
                 } else {
-                    collectionDetailsUnlockedBar.isIndeterminate = false
-                    collectionDetailsUnlockedBar.progress = ((unlockedCount / emojiCount.toFloat()) * 100).toInt()
+                    collectionProgressBar?.isIndeterminate = false
+                    collectionProgressBar?.progress = ((unlockedCount / emojiCount.toFloat()) * 100).toInt()
 
                     collectionDetailsUnlockedRatio.text = root.resources.getString(
                         R.string.progress_ratio_template, unlockedCount, emojiCount
@@ -65,12 +72,14 @@ class CollectionDetailsAdapter(
                 collectionDetailsTitle.text = categoryDetails.title
 
                 collectionDetailsTitle.setTextColor(categoryDetails.color)
-                collectionDetailsDescription.text = categoryDetails.description
+                collectionDetailsDescription?.text = categoryDetails.description
                 collectionDetailsIcon.text = categoryDetails.emojiIcon
 
-                collectionDetailsUnlockedBar.apply {
+                collectionProgressBar?.apply {
                     setIndicatorColor(categoryDetails.color)
-                    trackColor = ColorUtils.setAlphaComponent(categoryDetails.color, trackColor.alpha)
+                    trackColor = ColorUtils.setAlphaComponent(
+                        categoryDetails.color, root.resources.getInteger(R.integer.progress_indicator_track_alpha)
+                    )
                 }
 
                 collectionDetailsUnlockedRatio.setTextColor(categoryDetails.color)
