@@ -38,7 +38,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        app:navGraph="@navigation/inner_nav_graph"
+        app:navGraph="@navigation/bottom_nav_graph"
         app:defaultNavHost="true"
         android:layout_width="0dp"
         android:layout_height="0dp"

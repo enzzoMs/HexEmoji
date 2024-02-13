@@ -9,6 +9,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.ViewGameTutorialBinding
 
+/**
+ * A custom view to display game tutorials. This view requires a [GameTutorialDataProvider] to
+ * work properly, which should be set using the [setDataProvider] method.
+ */
 class GameTutorialView(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
@@ -18,17 +22,13 @@ class GameTutorialView(
     private lateinit var dataProvider: GameTutorialDataProvider
 
     init {
-        val inflater = LayoutInflater.from(context)
-
-        binding = ViewGameTutorialBinding.inflate(inflater, this)
-
-        binding.apply {
+        binding = ViewGameTutorialBinding.inflate(LayoutInflater.from(context), this).apply {
             gameTutorialButtonPrevious.setOnClickListener {
                 currentPagePosition--
 
                 updatePageIndicator()
-                updateInstructionImage()
-                updateInstructionDescription()
+                updateTutorialImage()
+                updateTutorialDescription()
 
                 if (currentPagePosition == 0) {
                     gameTutorialButtonPrevious.visibility = View.GONE
@@ -41,8 +41,8 @@ class GameTutorialView(
                 currentPagePosition++
 
                 updatePageIndicator()
-                updateInstructionImage()
-                updateInstructionDescription()
+                updateTutorialImage()
+                updateTutorialDescription()
 
                 if (currentPagePosition >= dataProvider.getTotalItems() - 1) {
                     gameTutorialButtonNext.visibility = View.GONE
@@ -64,42 +64,40 @@ class GameTutorialView(
         }
 
         updatePageIndicator()
-        updateInstructionImage()
-        updateInstructionDescription()
+        updateTutorialImage()
+        updateTutorialDescription()
     }
 
     private fun arrangePageIndicators() {
         binding.gameTutorialPageIndicatorLayout.removeAllViews()
 
-        for (i in 0 until dataProvider.getTotalItems()) {
-            val indicator = View(context)
-
-            indicator.setBackgroundResource(R.drawable.page_indicator_shape)
-
+        for (indicatorPosition in 0 until dataProvider.getTotalItems()) {
             val indicatorSize = resources.getDimensionPixelSize(R.dimen.tutorial_page_indicator_size)
+            val indicatorLayoutParams = LinearLayout.LayoutParams(indicatorSize, indicatorSize)
 
-            val layoutParams = LinearLayout.LayoutParams(indicatorSize, indicatorSize)
-
-            layoutParams.marginEnd = if (i < dataProvider.getTotalItems() - 1) {
+            indicatorLayoutParams.marginEnd = if (indicatorPosition < dataProvider.getTotalItems() - 1) {
                 resources.getDimensionPixelSize(R.dimen.tutorial_page_indicator_margin)
             } else {
                 0
             }
-
-            indicator.layoutParams = layoutParams
+            
+            val indicator = View(context).apply {
+                layoutParams = indicatorLayoutParams
+                setBackgroundResource(R.drawable.page_indicator_shape)
+            }
 
             binding.gameTutorialPageIndicatorLayout.addView(indicator)
         }
     }
 
-    private fun updateInstructionImage() {
-        val imageId = dataProvider.getDrawableId(currentPagePosition)
-        binding.gameTutorialDescriptionImage.setImageResource(imageId)
+    private fun updateTutorialImage() {
+        binding.gameTutorialImage.setImageResource(
+            dataProvider.getDrawableId(currentPagePosition)
+        )
     }
 
-    private fun updateInstructionDescription() {
-        val description = dataProvider.getDescription(currentPagePosition)
-        binding.gameTutorialDescription.text = description
+    private fun updateTutorialDescription() {
+        binding.gameTutorialDescription.text = dataProvider.getDescription(currentPagePosition)
     }
 
     private fun updatePageIndicator() {

@@ -21,8 +21,7 @@ object HexagonalLayout {
      * using [GridLayoutManager] and [HexagonalSpanSizeLookup]. For better results the RecyclerView's
      * width should be set to 'wrap_content'.
      *
-     * It should typically be invoked within the onBindViewHolder()' method of the
-     * RecyclerView's adapter
+     * It is typically invoked within the 'onBindViewHolder()' method of the recyclerView's adapter
      *
      * @param view The view whose margins and position will be adjusted.
      * @param viewSizePx The size of each grid item in pixels. All items are assumed to be

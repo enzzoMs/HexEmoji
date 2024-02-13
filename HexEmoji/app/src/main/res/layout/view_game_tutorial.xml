@@ -20,7 +20,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/game_tutorial_description_image"
+                android:id="@+id/game_tutorial_image"
                 android:importantForAccessibility="no"
                 tools:srcCompat="@drawable/game_tutorial_board_example"
                 android:scaleType="fitCenter"
@@ -41,7 +41,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/game_tutorial_description_image" />
+                app:layout_constraintTop_toBottomOf="@+id/game_tutorial_image" />
 
             <TextView
                 android:id="@+id/game_tutorial_description"

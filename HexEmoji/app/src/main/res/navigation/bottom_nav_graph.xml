@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/play_fragment">
+    app:startDestination="@id/game_mode_fragment">
 
     <fragment
-        android:id="@+id/play_fragment"
+        android:id="@+id/game_mode_fragment"
         android:name="enzzom.hexemoji.ui.fragments.play.GameModesFragment"
         android:label="@string/page_title_page_play"
         tools:layout="@layout/fragment_game_modes" />

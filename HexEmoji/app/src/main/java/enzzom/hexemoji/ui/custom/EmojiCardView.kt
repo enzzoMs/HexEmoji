@@ -16,19 +16,18 @@ private const val CARD_FLIP_ANIMATION_DURATION = 750L
 
 class EmojiCardView(context: Context, attrs: AttributeSet? = null) : ConstraintLayout(context, attrs) {
 
-    private val binding: ViewEmojiCardBinding
+    private val binding = ViewEmojiCardBinding.inflate(LayoutInflater.from(context), this)
+
     var flipped: Boolean = false
         set(value) {
             field = value
 
-            binding.apply {
-                emoji.text = if (value) text else ""
-                emojiCardBackground.setImageResource(if (value)
-                    R.drawable.emoji_card_front
-                else
-                    R.drawable.emoji_card_back
-                )
-            }
+            binding.emoji.text = if (value) emoji else ""
+            binding.emojiCardBackground.setImageResource(if (value)
+                R.drawable.emoji_card_front
+            else
+                R.drawable.emoji_card_back
+            )
         }
 
     var matched: Boolean = false
@@ -40,13 +39,7 @@ class EmojiCardView(context: Context, attrs: AttributeSet? = null) : ConstraintL
             )
         }
 
-    var text: String = ""
-
-    init {
-        val inflater = LayoutInflater.from(context)
-
-        binding = ViewEmojiCardBinding.inflate(inflater, this)
-    }
+    var emoji: String = ""
 
     /**
      * Toggles the flipped state of the card and displays a flip animation.
@@ -84,8 +77,7 @@ class EmojiCardView(context: Context, attrs: AttributeSet? = null) : ConstraintL
                         setImageResource(if (flipped) R.drawable.emoji_card_front else R.drawable.emoji_card_back)
                     }
                 })
-                start()
-            }
+            }.start()
         }
     }
 }

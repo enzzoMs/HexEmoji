@@ -1,5 +1,6 @@
 package enzzom.hexemoji.ui.custom
 
+import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.content.Context
@@ -10,67 +11,43 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.animation.doOnEnd
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.ViewCountdownBinding
 import kotlin.math.round
 
 private const val MAX_PROGRESS = 100
+
 private const val COUNTDOWN_INTERVAL = 200L
 private const val ONE_SECOND_IN_MILLIS = 1000L
+
 private const val END_ANIMATION_DURATION = 300L
 private const val END_ANIMATION_DELAY = 50L
 private const val END_ANIMATION_SCALE_FACTOR = 1.6f
 
+private const val COUNTDOWN_FADE_ANIMATION_DURATION = 200L
+private const val COUNTDOWN_FADE_ANIMATION_DELAY = 500L
+
 class CountDownView(context: Context, attrs: AttributeSet? = null) : ConstraintLayout(context, attrs) {
 
     private val binding: ViewCountdownBinding
+
     private val initialValue: Int
     private val endText: String
 
-    private val _countdownFinished = MutableLiveData(false)
-    val countdownFinished: LiveData<Boolean> = _countdownFinished
+    private val countdownTimer: CountDownTimer
+    private var onFinished: () -> Unit = {}
 
     init {
-        val inflater = LayoutInflater.from(context)
-        binding = ViewCountdownBinding.inflate(inflater, this)
-
         context.theme.obtainStyledAttributes(attrs, R.styleable.CountdownView, 0, 0).apply {
             initialValue = getInt(R.styleable.CountdownView_initialValue, 0)
             endText = getString(R.styleable.CountdownView_endText) ?: ""
         }
 
-        binding.countdownCurrentValue.text = initialValue.toString()
-    }
-
-    private fun reset() {
-        binding.apply {
-            countdownProgressIndicator.progress = MAX_PROGRESS
-            countdownProgressIndicator.visibility = View.VISIBLE
-
-            countdownCurrentValue.scaleX = 1f
-            countdownCurrentValue.scaleY = 1f
-
-            root.scaleX = 1f
-            root.scaleY = 1f
-
-            countdownCurrentValue.text = initialValue.toString()
-            _countdownFinished.value = false
-        }
-    }
-
-    fun start() {
-        reset()
-
-        val countdownProgressAnimator = ObjectAnimator.ofInt(
-            binding.countdownProgressIndicator, "progress", 0
-        ).apply {
-            duration = initialValue * ONE_SECOND_IN_MILLIS
-            interpolator = LinearInterpolator()
+        binding = ViewCountdownBinding.inflate(LayoutInflater.from(context), this).also {
+            it.countdownCurrentValue.text = initialValue.toString()
         }
 
-        object : CountDownTimer(initialValue * ONE_SECOND_IN_MILLIS, COUNTDOWN_INTERVAL) {
+        countdownTimer = object : CountDownTimer(initialValue * ONE_SECOND_IN_MILLIS, COUNTDOWN_INTERVAL) {
             private var secondsLeft = initialValue
 
             override fun onTick(p0: Long) {
@@ -92,33 +69,74 @@ class CountDownView(context: Context, attrs: AttributeSet? = null) : ConstraintL
                         countdownCurrentValue.scaleY = 0f
                     }
 
-                    val endTextAnimator = ObjectAnimator.ofPropertyValuesHolder(
-                        countdownCurrentValue,
-                        PropertyValuesHolder.ofFloat("scaleX", 1f),
-                        PropertyValuesHolder.ofFloat("scaleY", 1f)
-                    ).apply {
+                    AnimatorSet().apply {
+                        playTogether(
+                            ObjectAnimator.ofPropertyValuesHolder(
+                                countdownCurrentValue,
+                                PropertyValuesHolder.ofFloat("scaleX", 1f),
+                                PropertyValuesHolder.ofFloat("scaleY", 1f)
+                            ),
+                            ObjectAnimator.ofPropertyValuesHolder(
+                                root,
+                                PropertyValuesHolder.ofFloat("scaleX", END_ANIMATION_SCALE_FACTOR),
+                                PropertyValuesHolder.ofFloat("scaleY", END_ANIMATION_SCALE_FACTOR)
+                            )
+                        )
                         duration = END_ANIMATION_DURATION
                         startDelay = END_ANIMATION_DELAY
-                    }
 
-                    ObjectAnimator.ofPropertyValuesHolder(
-                        root,
-                        PropertyValuesHolder.ofFloat("scaleX", END_ANIMATION_SCALE_FACTOR),
-                        PropertyValuesHolder.ofFloat("scaleY", END_ANIMATION_SCALE_FACTOR)
-                    ).apply {
-                        duration = END_ANIMATION_DURATION
-                        startDelay = END_ANIMATION_DELAY
-                        start()
-                    }
-
-                    endTextAnimator.doOnEnd {
-                        _countdownFinished.value = true
-                    }
-                    endTextAnimator.start()
+                        doOnEnd {
+                            animateCountdownFadeOut()
+                        }
+                    }.start()
                 }
             }
+        }
+    }
+
+    fun start() {
+        reset()
+
+        ObjectAnimator.ofInt(
+            binding.countdownProgressIndicator, "progress", 0
+        ).apply {
+            duration = initialValue * ONE_SECOND_IN_MILLIS
+            interpolator = LinearInterpolator()
         }.start()
 
-        countdownProgressAnimator.start()
+        countdownTimer.start()
+    }
+
+    fun setOnCountdownFinished(onFinished: () -> Unit) {
+        this.onFinished = onFinished
+    }
+
+    private fun animateCountdownFadeOut() {
+        ObjectAnimator.ofFloat(binding.root, "alpha", 0f).apply {
+            duration = COUNTDOWN_FADE_ANIMATION_DURATION
+            startDelay = COUNTDOWN_FADE_ANIMATION_DELAY
+
+            doOnEnd {
+                binding.root.visibility = View.GONE
+                onFinished()
+            }
+        }.start()
+    }
+
+    private fun reset() {
+        binding.apply {
+            countdownTimer.cancel()
+
+            countdownProgressIndicator.progress = MAX_PROGRESS
+            countdownProgressIndicator.visibility = View.VISIBLE
+
+            countdownCurrentValue.scaleX = 1f
+            countdownCurrentValue.scaleY = 1f
+
+            root.scaleX = 1f
+            root.scaleY = 1f
+
+            countdownCurrentValue.text = initialValue.toString()
+        }
     }
 }

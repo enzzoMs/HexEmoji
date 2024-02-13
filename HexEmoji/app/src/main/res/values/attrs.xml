@@ -3,6 +3,7 @@
     <!-- Emoji Card View -->
     <attr name="state_matched" format="boolean"/>
 
+    <!-- Countdown View -->
     <declare-styleable name="CountdownView">
         <attr name="initialValue" format="integer"/>
         <attr name="endText" format="string"/>

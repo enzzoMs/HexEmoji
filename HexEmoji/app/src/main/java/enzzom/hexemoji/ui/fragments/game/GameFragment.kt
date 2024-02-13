@@ -19,8 +19,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.DialogExitGameBinding
 import enzzom.hexemoji.databinding.FragmentGameBinding
-import enzzom.hexemoji.models.BoardSize
-import enzzom.hexemoji.models.EmojiCategory
 import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.ui.custom.BoardTutorialView
 import enzzom.hexemoji.ui.custom.GameTutorialDataProvider
@@ -36,34 +34,19 @@ class GameFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val themedInflater = LayoutInflater.from(ContextThemeWrapper(context, getGameModeThemeId(args.gameMode)))
-        val binding = FragmentGameBinding.inflate(themedInflater, container, false)
-
-        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.game_screen_status_bar_color)
-
-        binding.gameToolbar.apply {
-            title = args.gameMode.getTitle(resources)
-            setNavigationOnClickListener { showExitGameDialog() }
-
-            setOnMenuItemClickListener { menuItem ->
-                when (menuItem.itemId) {
-                    R.id.game_info -> {
-                        showGameTutorialDialog()
-                        true
+        activity?.apply {
+            window.statusBarColor = ContextCompat.getColor(
+                requireContext(), R.color.game_screen_status_bar_color
+            )
+            onBackPressedDispatcher.addCallback(
+                viewLifecycleOwner,
+                object: OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        showExitGameDialog()
                     }
-                    else -> false
                 }
-            }
+            )
         }
-
-        requireActivity().onBackPressedDispatcher.addCallback(
-            viewLifecycleOwner,
-            object: OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    showExitGameDialog()
-                }
-            }
-        )
 
         if (savedInstanceState == null) {
             childFragmentManager.commit {
@@ -75,17 +58,31 @@ class GameFragment : Fragment() {
             }
         }
 
-        return binding.root
+        FragmentGameBinding.inflate(
+            LayoutInflater.from(ContextThemeWrapper(context, getGameModeThemeId(args.gameMode))),
+            container,
+            false
+        ).let {
+            it.gameToolbar.apply {
+                title = args.gameMode.getTitle(resources)
+                setNavigationOnClickListener { showExitGameDialog() }
+
+                setOnMenuItemClickListener { menuItem ->
+                    when (menuItem.itemId) {
+                        R.id.game_info -> {
+                            showGameTutorialDialog()
+                            true
+                        }
+                        else -> false
+                    }
+                }
+            }
+            return it.root
+        }
     }
 
     fun setGameTutorialDataProvider(dataProvider: GameTutorialDataProvider) {
         gameTutorialDataProvider = dataProvider
-    }
-
-    fun getBoardSize(): BoardSize = args.boardSize
-
-    fun getSelectedEmojiCategories(): List<EmojiCategory> {
-        return args.selectedEmojiCategories.map { EmojiCategory.valueOf(it) }
     }
 
     fun showBoardTutorialDialog() {
@@ -99,25 +96,22 @@ class GameFragment : Fragment() {
     }
 
     private fun showExitGameDialog() {
-        val exitDialogBinding = DialogExitGameBinding.inflate(layoutInflater)
+        val exitGameDialog = Dialog(requireContext())
 
-        val exitGameDialog = Dialog(requireContext()).apply {
-            setContentView(exitDialogBinding.root)
-            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            show()
-        }
-
-        exitDialogBinding.apply {
-            exitGameButtonCancel.setOnClickListener {
+        DialogExitGameBinding.inflate(layoutInflater).let {
+            it.exitGameButtonCancel.setOnClickListener {
                 exitGameDialog.dismiss()
             }
-            exitGameButtonConfirm.setOnClickListener {
+            it.exitGameButtonConfirm.setOnClickListener {
                 exitGameDialog.dismiss()
                 navigateToMainScreen()
             }
+            exitGameDialog.apply {
+                setContentView(it.root)
+                window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                show()
+            }
         }
-
-
     }
 
     private fun showGameTutorialDialog() {
@@ -145,5 +139,10 @@ class GameFragment : Fragment() {
     private fun getGameModeThemeId(gameMode: GameMode): Int = when(gameMode) {
         GameMode.ZEN -> R.style.ThemeOverlay_HexEmoji_GameMode_Zen
         else -> R.style.ThemeOverlay_HexEmoji_GameMode_Zen
+    }
+
+    companion object {
+        const val BOARD_SIZE_ARG_KEY = "boardSize"
+        const val SELECTED_CATEGORIES_ARG_KEY = "selectedCategories"
     }
 }

@@ -64,7 +64,7 @@ class ChallengesAdapter(
 
         init {
             binding.root.setOnClickListener {
-                if (true) {
+                if (challenge.completed) {
                     onCompletedChallengeClicked(challenge)
                 } else if (progressAnimationFinished) {
                     val warmingColor = ContextCompat.getColor(binding.root.context, R.color.warming_color)
