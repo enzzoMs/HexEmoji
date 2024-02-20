@@ -118,13 +118,13 @@ class ChallengesAdapter(
                 challengeCompleted.buttonTintList = ColorStateList.valueOf(categoryColor)
                 challengeCompleted.isChecked = challenge.completed
 
-                if (challenge.completed) {
-                    challengeCard.setCardBackgroundColor(
-                        ColorUtils.setAlphaComponent(categoryColor, root.resources.getInteger(
-                            R.integer.challenge_completed_back_color_alpha
-                        ))
-                    )
-                }
+                challengeCard.setCardBackgroundColor(if (challenge.completed) {
+                    ColorUtils.setAlphaComponent(categoryColor, root.resources.getInteger(
+                        R.integer.challenge_completed_back_color_alpha
+                    ))
+                } else {
+                    ContextCompat.getColor(root.context, R.color.surface_color)
+                })
             }
         }
         private fun getChallengeDescription(challenge: GeneralChallenge, res: Resources): String {
@@ -142,10 +142,6 @@ class ChallengesAdapter(
                 )
             } else ""
 
-            val hintsConstraint = if (challenge.hintsAllowed) {
-                res.getString(R.string.challenge_template_hints_constraint)
-            } else ""
-
             return res.getString(
                 R.string.challenge_template_general,
                 challenge.totalGames,
@@ -154,8 +150,7 @@ class ChallengesAdapter(
                 ) else "",
                 challenge.gameMode.getTitle(res),
                 boardConstraints,
-                categoryConstraints,
-                hintsConstraint
+                categoryConstraints
             )
         }
     }

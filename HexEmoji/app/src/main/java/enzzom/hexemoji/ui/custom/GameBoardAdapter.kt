@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import enzzom.hexemoji.models.EmojiCard
 import enzzom.hexemoji.utils.recyclerview.HexagonalLayout
 
-private const val ENTRY_ANIMATION_DURATION = 1200L
-private const val ENTRY_ANIMATION_BASE_DELAY = 5L
+private const val BOARD_ANIMATION_DURATION = 1200L
+private const val BOARD_ANIMATION_BASE_DELAY = 5L
 
 class GameBoardAdapter(
     private val numberOfEmojiCards: Int,
@@ -25,9 +25,15 @@ class GameBoardAdapter(
 
     private var cardInteractionEnabled: Boolean = true
 
-    private var remainingEntryAnimations: Int = 0
+    private var executeBoardExitAnimation: Boolean = false
+
+    private var remainingAnimations: Int = 0
+
     private val _entryAnimationFinished =  MutableLiveData(!executeBoardEntryAnimation)
     val entryAnimationFinished: LiveData<Boolean> = _entryAnimationFinished
+
+    private val _exitAnimationFinished =  MutableLiveData(true)
+    val exitAnimationFinished: LiveData<Boolean> = _exitAnimationFinished
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmojiCardHolder {
         return EmojiCardHolder(EmojiCardView(parent.context))
@@ -42,28 +48,37 @@ class GameBoardAdapter(
             spanCount = gridSpanCount
         )
 
-        if (executeBoardEntryAnimation) {
-            remainingEntryAnimations++
+        if (executeBoardEntryAnimation || executeBoardExitAnimation) {
+            remainingAnimations++
+
+            val initialScale = if (executeBoardEntryAnimation) 0f else 1f
+            val endScale = if (executeBoardEntryAnimation) 1f else 0f
 
             holder.itemView.apply {
-                scaleX = 0f
-                scaleY = 0f
+                scaleX = initialScale
+                scaleY = initialScale
             }
 
             ObjectAnimator.ofPropertyValuesHolder(
                 holder.itemView,
-                PropertyValuesHolder.ofFloat("scaleX", 1f),
-                PropertyValuesHolder.ofFloat("scaleY", 1f)
+                PropertyValuesHolder.ofFloat("scaleX", endScale),
+                PropertyValuesHolder.ofFloat("scaleY", endScale)
             ).apply {
                 // Creating a cascade effect by adding a delay based on the item's position
-                startDelay = position * ENTRY_ANIMATION_BASE_DELAY
-                duration = ENTRY_ANIMATION_DURATION
+                startDelay = position * BOARD_ANIMATION_BASE_DELAY
+                duration = BOARD_ANIMATION_DURATION
                 doOnEnd {
-                    remainingEntryAnimations--
+                    remainingAnimations--
 
-                    if (remainingEntryAnimations == 0) {
-                        _entryAnimationFinished.value = true
-                        executeBoardEntryAnimation = false
+                    if (remainingAnimations == 0) {
+                        if (executeBoardEntryAnimation) {
+                            _entryAnimationFinished.value = true
+                            executeBoardEntryAnimation = false
+
+                        } else if (executeBoardExitAnimation) {
+                            _exitAnimationFinished.value = true
+                            executeBoardExitAnimation = false
+                        }
                     }
                 }
             }.start()
@@ -76,6 +91,14 @@ class GameBoardAdapter(
 
     fun enableCardInteraction(enable: Boolean) {
         cardInteractionEnabled = enable
+    }
+
+    fun executeBoardExitAnimation() {
+        cardInteractionEnabled = false
+        executeBoardExitAnimation = true
+        _exitAnimationFinished.value = false
+
+        notifyItemRangeChanged(0, itemCount)
     }
 
     inner class EmojiCardHolder(val emojiCardView: EmojiCardView) : RecyclerView.ViewHolder(emojiCardView) {

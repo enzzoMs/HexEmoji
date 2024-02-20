@@ -9,6 +9,18 @@ class ChallengesRepository @Inject constructor(
     private val challengesDAO: ChallengesDAO
 ) {
 
+    suspend fun getAllChallenges(): List<Challenge> {
+        return challengesDAO.getGeneralChallenges()
+    }
+
+    suspend fun getAllChallengesByCategory(): Map<EmojiCategory, List<Challenge>> {
+        return challengesDAO.getAllGeneralChallengesByCategory()
+    }
+
+    suspend fun incrementChallengesCompletion(challenges: List<Challenge>) {
+        challengesDAO.incrementChallengesCompletion(challenges.map { it.id })
+    }
+
     /**
      * Replaces the challenges of a given category with new ones.
      * @return The list of challenges after the replacement
@@ -17,9 +29,5 @@ class ChallengesRepository @Inject constructor(
         category: EmojiCategory, oldChallenges: List<Challenge>, newChallenges: List<Challenge>?
     ): List<Challenge> {
         return challengesDAO.replaceChallenges(category, oldChallenges, newChallenges)
-    }
-
-    suspend fun getAllChallengesByCategory(): Map<EmojiCategory, List<Challenge>> {
-        return challengesDAO.getAllGeneralChallengesByCategory()
     }
 }

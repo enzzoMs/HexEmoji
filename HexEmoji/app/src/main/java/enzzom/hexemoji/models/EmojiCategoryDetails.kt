@@ -21,7 +21,7 @@ data class EmojiCategoryDetails(
             val categoryEmojiIcons = res.getStringArray(R.array.emoji_category_emoji_icons)
             val categoryImages = res.obtainTypedArray(R.array.emoji_category_images)
 
-            EmojiCategory.values().forEachIndexed { index, emojiCategory ->
+            EmojiCategory.entries.forEachIndexed { index, emojiCategory ->
                 emojiCategoryDetails.add(
                     EmojiCategoryDetails(
                         emojiCategory,

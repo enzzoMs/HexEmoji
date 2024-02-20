@@ -17,9 +17,19 @@
 
     <!-- Dialogs -->
     <string name="exit_game_message">Deseja mesmo sair? Você pederá todo o seu progresso nessa partida!</string>
-    <string name="exit_game_button_confirm">Sair</string>
     <string name="exit_game_button_cancel">Cancelar</string>
     <string name="exit_game_emoji" translatable="false">😥</string>
+
+    <string name="game_finished_victory_emoji" translatable="false">🏆</string>
+    <string name="game_finished_victory">Vitória!</string>
+    <string name="game_finished_replay">Repetir</string>
+
+    <string name="challenges_progress">Progresso em desafios:</string>
+    <string name="challenges_progress_template_pending">Pendentes: %1$s</string>
+    <string name="challenges_progress_template_in_progress">Em Progresso: %1$s</string>
+    <string name="challenges_progress_template_completed">Concluídos: %1$s</string>
+
+    <string name="game_message_exit">Sair</string>
 
     <string name="emoji_details_copy_button">Copiar</string>
     <string name="emoji_details_copy_toast_msg">Emoji copiado para a área de transferência</string>
@@ -114,10 +124,9 @@
     <!--(\u0020 is the unicode character 'SPACE') -->
     <!-- TODO: Add examples -->
 
-    <string name="challenge_template_general">Complete %1$d partida(s) %2$sno \"%3$s\"%4$s%5$s%6$s</string>
+    <string name="challenge_template_general">Complete %1$d partida(s) %2$sno \"%3$s\"%4$s%5$s</string>
     <string name="challenge_template_board_constraint">\u0020em um tabuleiro de tamanho (%1$s)</string>
     <string name="challenge_template_category_constraint">\u0020usando emojis de \"%1$s\"</string>
-    <string name="challenge_template_hints_constraint">, sem usar dicas.</string>
     <string name="challenge_template_consecutive_games_constraint">consecutivas\u0020</string>
 
     <!-- Emoji Categories -->

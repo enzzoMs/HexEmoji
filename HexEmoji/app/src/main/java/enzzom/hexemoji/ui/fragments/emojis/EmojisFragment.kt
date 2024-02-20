@@ -2,6 +2,7 @@ package enzzom.hexemoji.ui.fragments.emojis
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -230,8 +231,11 @@ class EmojisFragment : Fragment() {
             challengeCompletedDescription.text = resources.getString(
                 R.string.challenge_completed_description_template, challenge.category.getTitle(resources)
             )
-            challengeRewardEmojiName.setTextColor(categoryColor)
             challengeRewardEmoji.text = challenge.rewardEmoji
+
+            challengeRewardEmojiName.setTextColor(categoryColor)
+            challengeCompletedTitleBackground.setBackgroundColor(categoryColor)
+            challengeCompletedButtonConfirm?.backgroundTintList = ColorStateList.valueOf(categoryColor)
 
             challengeRewardEmojiName.text = emojisViewModel.getEmojiByUnicode(
                 challenge.rewardEmojiUnicode, challenge.category

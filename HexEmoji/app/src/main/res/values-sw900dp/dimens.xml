@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Dialogs -->
-    <dimen name="exit_game_emoji_size">120dp</dimen>
+    <dimen name="game_message_emoji_size">120dp</dimen>
 
     <!-- Cards (Game mode and emoji category card) -->
     <dimen name="card_inner_margin">@dimen/spacing_medium_2</dimen>

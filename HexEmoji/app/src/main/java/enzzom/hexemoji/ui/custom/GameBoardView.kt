@@ -37,6 +37,8 @@ class GameBoardView(context: Context, attrs: AttributeSet? = null) : FrameLayout
 
     init {
         binding = ViewGameBoardBinding.inflate(LayoutInflater.from(context), this).apply {
+            gameBoard.itemAnimator = null
+
             // Disabling extra scroll events because they will be treated solely by the 'gestureDetector'
             gameBoardVerticalScroll.setOnTouchListener { _, _ -> true }
             gameBoardHorizontalScroll.setOnTouchListener { _, _ -> true }

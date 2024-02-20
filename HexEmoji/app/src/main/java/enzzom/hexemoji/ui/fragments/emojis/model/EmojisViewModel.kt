@@ -191,10 +191,9 @@ class EmojisViewModel @Inject constructor(
             completedGames = 0,
             category = category,
             rewardEmojiUnicode = rewardEmojis[index],
-            gameMode = GameMode.values().random(),
-            boardSize = if (constraintChanceRange.random() == 0) BoardSize.values().random() else null,
+            gameMode = GameMode.entries.random(),
+            boardSize = if (constraintChanceRange.random() == 0) BoardSize.entries.random() else null,
             consecutiveGames = constraintChanceRange.random() == 0,
-            hintsAllowed = constraintChanceRange.random() == 0,
             constrainedToCategory = Random.nextBoolean()
         )}
     }

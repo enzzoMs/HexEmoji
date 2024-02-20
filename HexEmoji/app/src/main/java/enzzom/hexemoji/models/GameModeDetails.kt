@@ -20,7 +20,7 @@ data class GameModeDetails(
             val gameModeBackgroundColors = res.getIntArray(R.array.game_mode_emoji_back_color)
             val gameModeEmojis = res.getStringArray(R.array.game_mode_emojis)
 
-            GameMode.values().forEachIndexed { index, gameMode ->
+            GameMode.entries.forEachIndexed { index, gameMode ->
                 gameModeDetails.add(
                     GameModeDetails(
                         gameMode,

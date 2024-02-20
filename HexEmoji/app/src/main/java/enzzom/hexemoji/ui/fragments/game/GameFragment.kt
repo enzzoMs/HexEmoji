@@ -12,28 +12,38 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.DialogExitGameBinding
+import enzzom.hexemoji.databinding.DialogGameFinishedBinding
 import enzzom.hexemoji.databinding.FragmentGameBinding
 import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.ui.custom.BoardTutorialView
 import enzzom.hexemoji.ui.custom.GameTutorialDataProvider
 import enzzom.hexemoji.ui.custom.GameTutorialView
+import enzzom.hexemoji.ui.fragments.game.model.GameViewModel
 
 @AndroidEntryPoint
 class GameFragment : Fragment() {
 
     private val args: GameFragmentArgs by navArgs()
+    private val gameViewModel: GameViewModel by viewModels()
     private var gameTutorialDataProvider: GameTutorialDataProvider? = null
+    private var gameModeThemeId: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        gameModeThemeId = when(args.gameMode) {
+            GameMode.ZEN -> R.style.ThemeOverlay_HexEmoji_GameMode_Zen
+            else -> R.style.ThemeOverlay_HexEmoji_GameMode_Zen
+        }
+
         activity?.apply {
             window.statusBarColor = ContextCompat.getColor(
                 requireContext(), R.color.game_screen_status_bar_color
@@ -58,12 +68,12 @@ class GameFragment : Fragment() {
             }
         }
 
-        FragmentGameBinding.inflate(
-            LayoutInflater.from(ContextThemeWrapper(context, getGameModeThemeId(args.gameMode))),
+        val binding = FragmentGameBinding.inflate(
+            LayoutInflater.from(ContextThemeWrapper(context, gameModeThemeId)),
             container,
             false
-        ).let {
-            it.gameToolbar.apply {
+        ).apply {
+            gameToolbar.apply {
                 title = args.gameMode.getTitle(resources)
                 setNavigationOnClickListener { showExitGameDialog() }
 
@@ -77,8 +87,9 @@ class GameFragment : Fragment() {
                     }
                 }
             }
-            return it.root
         }
+
+        return binding.root
     }
 
     fun setGameTutorialDataProvider(dataProvider: GameTutorialDataProvider) {
@@ -86,12 +97,53 @@ class GameFragment : Fragment() {
     }
 
     fun showBoardTutorialDialog() {
-        val boardTutorialView = BoardTutorialView(ContextThemeWrapper(context, getGameModeThemeId(args.gameMode)))
+        val boardTutorialView = BoardTutorialView(ContextThemeWrapper(context, gameModeThemeId))
 
         Dialog(requireContext()).apply {
             setContentView(boardTutorialView)
             window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             show()
+        }
+    }
+
+    fun showVictoryDialog() {
+        val victoryDialog = Dialog(requireContext())
+
+        DialogGameFinishedBinding.inflate(
+            LayoutInflater.from(ContextThemeWrapper(context, gameModeThemeId))
+        ).let {
+            it.gameFinishedButtonExit.setOnClickListener {
+                victoryDialog.dismiss()
+                navigateToMainScreen()
+            }
+
+            it.challengesProgressPending?.text = resources.getString(
+                R.string.challenges_progress_template_pending,
+                gameViewModel.getPendingChallengesCount().toString()
+            )
+
+            it.challengesProgressInProgress?.text = resources.getString(
+                R.string.challenges_progress_template_in_progress,
+                gameViewModel.getChallengesInProgressCount().toString()
+            )
+
+            it.challengesProgressCompleted?.text = resources.getString(
+                R.string.challenges_progress_template_completed,
+                gameViewModel.getCompletedChallengesCount().toString()
+            )
+
+            it.gameFinishedButtonReplay.setOnClickListener {
+                victoryDialog.dismiss()
+                replayGame()
+            }
+
+            victoryDialog.apply {
+                setContentView(it.root)
+                window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                setCanceledOnTouchOutside(false)
+                setOnCancelListener { navigateToMainScreen() }
+                show()
+            }
         }
     }
 
@@ -116,7 +168,7 @@ class GameFragment : Fragment() {
 
     private fun showGameTutorialDialog() {
         if (gameTutorialDataProvider != null) {
-            val gameTutorialView = GameTutorialView(ContextThemeWrapper(context, getGameModeThemeId(args.gameMode)))
+            val gameTutorialView = GameTutorialView(ContextThemeWrapper(context, gameModeThemeId))
 
             gameTutorialView.setDataProvider(gameTutorialDataProvider!!)
 
@@ -132,17 +184,21 @@ class GameFragment : Fragment() {
         }
     }
 
+    private fun replayGame() {
+        findNavController().navigate(
+            GameFragmentDirections.actionReplayGameScreen(
+                args.gameMode, args.boardSize, args.selectedCategories
+            )
+        )
+    }
+
     private fun navigateToMainScreen() {
         findNavController().navigate(R.id.action_game_screen_to_main_screen)
     }
 
-    private fun getGameModeThemeId(gameMode: GameMode): Int = when(gameMode) {
-        GameMode.ZEN -> R.style.ThemeOverlay_HexEmoji_GameMode_Zen
-        else -> R.style.ThemeOverlay_HexEmoji_GameMode_Zen
-    }
-
     companion object {
         const val BOARD_SIZE_ARG_KEY = "boardSize"
+        const val GAME_MODE_ARG_KEY = "gameMode"
         const val SELECTED_CATEGORIES_ARG_KEY = "selectedCategories"
     }
 }

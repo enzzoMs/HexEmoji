@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import enzzom.hexemoji.R
+import enzzom.hexemoji.models.GameStatus
 import enzzom.hexemoji.ui.custom.CountDownView
 import enzzom.hexemoji.ui.custom.GameBoardAdapter
 import enzzom.hexemoji.ui.custom.GameBoardView
@@ -24,6 +25,7 @@ private const val MATCH_FAILED_CARD_FLIP_DELAY = 150L
 abstract class BaseGameModeFragment : Fragment() {
 
     private val gameViewModel: GameViewModel by viewModels({ requireParentFragment() })
+    private lateinit var gameBoardAdapter: GameBoardAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +39,7 @@ abstract class BaseGameModeFragment : Fragment() {
 
         gameBoardView.enableBoardMovement(!gameViewModel.shouldExecuteEntryAnimation())
 
-        GameBoardAdapter(
+        gameBoardAdapter = GameBoardAdapter(
             executeBoardEntryAnimation = gameViewModel.shouldExecuteEntryAnimation(),
             gridSpanCount = boardSize.numOfColumns,
             numberOfEmojiCards = boardSize.getSizeInHexagonalLayout(),
@@ -64,9 +66,17 @@ abstract class BaseGameModeFragment : Fragment() {
                                 }
                             )
                         } else if (flipResult is FlipResult.MatchSuccessful) {
+                            val remainingCardsCount = gameViewModel.getRemainingCardsCount()
+
                             gameBoardView.apply {
                                 getCardViewForPosition(flipResult.firstCardPosition)?.matchCard()
-                                getCardViewForPosition(flipResult.secondCardPosition)?.matchCard()
+                                getCardViewForPosition(flipResult.secondCardPosition)?.matchCard(
+                                    onAnimationEnd = {
+                                        if (remainingCardsCount == 0) {
+                                            checkGameStatus()
+                                        }
+                                    }
+                                )
                                 enableCardInteraction(true)
                             }
                         }
@@ -74,12 +84,20 @@ abstract class BaseGameModeFragment : Fragment() {
                 }
             }
         ).apply {
-            entryAnimationFinished.observe(viewLifecycleOwner) { animationFinished ->
-                if (gameViewModel.shouldExecuteEntryAnimation() && animationFinished) {
+            entryAnimationFinished.observe(viewLifecycleOwner) { finished ->
+                if (gameViewModel.shouldExecuteEntryAnimation() && finished) {
                     countdownView.visibility = View.VISIBLE
                     countdownView.start()
                 }
             }
+
+            exitAnimationFinished.observe(viewLifecycleOwner) { finished ->
+                if (finished && gameViewModel.getGameStatus() == GameStatus.VICTORY) {
+                    gameBoardView.visibility = View.INVISIBLE
+                    (parentFragment as GameFragment).showVictoryDialog()
+                }
+            }
+
             enableCardInteraction(!gameViewModel.shouldExecuteEntryAnimation())
             gameBoardView.setGameBoardAdapter(this)
         }
@@ -99,6 +117,15 @@ abstract class BaseGameModeFragment : Fragment() {
         }
 
         return layoutRoot
+    }
+
+    private fun checkGameStatus() {
+        when (gameViewModel.getGameStatus()) {
+            GameStatus.VICTORY -> {
+                gameBoardAdapter.executeBoardExitAnimation()
+            }
+            else -> Unit
+        }
     }
 
     protected abstract fun getTutorialDataProvider(): GameTutorialDataProvider

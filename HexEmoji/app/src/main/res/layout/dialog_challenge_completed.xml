@@ -11,12 +11,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <View
+            android:id="@+id/challenge_completed_title_background"
+            android:background="?attr/colorAccent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/challenge_completed_guideline"/>
+
         <TextView
             android:id="@+id/challenge_completed"
             android:text="@string/challenge_completed"
             android:textAppearance="@style/TextAppearance.HexEmoji.Dialog"
             android:fontFamily="@font/lexend_bold"
             android:textAlignment="center"
+            android:textColor="?attr/colorSurface"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dialog_inner_margin"
@@ -28,7 +39,7 @@
         <ImageView
             android:id="@+id/challenge_completed_icon"
             android:src="@drawable/ic_completed"
-            app:tint="?android:attr/textColorPrimary"
+            app:tint="?attr/colorSurface"
             android:importantForAccessibility="no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,15 +48,13 @@
             app:layout_constraintTop_toTopOf="@id/challenge_completed"
             app:layout_constraintBottom_toBottomOf="@id/challenge_completed" />
 
-        <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/challenge_completed_divider"
-            app:dividerThickness="@dimen/divider_thickness"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dialog_inner_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/challenge_completed" />
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/challenge_completed_guideline"
+            app:constraint_referenced_ids="challenge_completed, challenge_completed_icon"
+            app:barrierMargin="@dimen/dialog_inner_margin"
+            app:barrierDirection="bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/challenge_completed_description"
@@ -55,7 +64,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dialog_inner_margin"
-            app:layout_constraintTop_toBottomOf="@id/challenge_completed_divider"
+            app:layout_constraintTop_toBottomOf="@id/challenge_completed_guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="@string/challenge_completed_description_template" />

@@ -28,8 +28,10 @@
     <dimen name="dialog_inner_margin">@dimen/spacing_medium_3</dimen>
     <dimen name="dialog_buttons_spacing">@dimen/spacing_small_2</dimen>
 
-    <dimen name="exit_game_message_top_margin">@dimen/spacing_huge_1</dimen>
-    <dimen name="exit_game_emoji_size">110dp</dimen>
+    <dimen name="game_message_top_margin">@dimen/spacing_huge_1</dimen>
+    <dimen name="game_message_emoji_size">110dp</dimen>
+
+    <dimen name="game_finished_message_text_size">30sp</dimen>
 
     <dimen name="challenge_completed_emoji_size">80dp</dimen>
 

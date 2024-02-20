@@ -12,17 +12,19 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/exit_game_background_guideline">
+        app:layout_constraintTop_toBottomOf="@id/game_finished_background_guideline">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/exit_game_message"
-                android:text="@string/exit_game_message"
+                android:id="@+id/game_finished_message"
+                android:text="@string/game_finished_victory"
+                android:textColor="?attr/colorAccent"
+                android:textSize="@dimen/game_finished_message_text_size"
                 android:textAppearance="@style/TextAppearance.HexEmoji.Dialog"
-                android:fontFamily="@font/lexend_medium"
+                android:fontFamily="@font/lexend_bold"
                 android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -33,41 +35,43 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
-                android:id="@+id/exit_game_buttons_background"
+                android:id="@+id/game_finished_buttons_background"
                 android:background="?attr/colorSurfaceDim"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="@dimen/dialog_inner_margin"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/exit_game_message" />
+                app:layout_constraintTop_toBottomOf="@+id/game_finished_message" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/exit_game_button_confirm"
+                android:id="@+id/game_finished_button_exit"
                 android:text="@string/game_message_exit"
                 style="@style/Widget.HexEmoji.Button.Primary"
+                android:backgroundTint="?attr/colorAccent"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dialog_inner_margin"
                 android:layout_marginVertical="@dimen/dialog_inner_margin"
+                android:layout_marginStart="@dimen/dialog_inner_margin"
                 android:layout_marginEnd="@dimen/dialog_buttons_spacing"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/exit_game_button_cancel"
+                app:layout_constraintEnd_toStartOf="@id/game_finished_button_replay"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/exit_game_buttons_background" />
+                app:layout_constraintTop_toTopOf="@+id/game_finished_buttons_background"
+                app:layout_constraintHorizontal_chainStyle="packed"/>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/exit_game_button_cancel"
-                android:text="@string/exit_game_button_cancel"
+                android:id="@+id/game_finished_button_replay"
+                android:text="@string/game_finished_replay"
                 style="@style/Widget.HexEmoji.Button.Secondary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dialog_buttons_spacing"
                 android:layout_marginVertical="@dimen/dialog_inner_margin"
                 android:layout_marginEnd="@dimen/dialog_inner_margin"
+                android:layout_marginStart="@dimen/dialog_buttons_spacing"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/exit_game_button_confirm"
-                app:layout_constraintTop_toTopOf="@+id/exit_game_buttons_background" />
+                app:layout_constraintStart_toEndOf="@id/game_finished_button_exit"
+                app:layout_constraintTop_toTopOf="@+id/game_finished_buttons_background" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -75,8 +79,8 @@
 
     <!-- Black text color to avoid transparency on the emoji-->
     <TextView
-        android:id="@+id/exit_game_emoji"
-        android:text="@string/exit_game_emoji"
+        android:id="@+id/game_finished_emoji"
+        android:text="@string/game_finished_victory_emoji"
         android:textColor="#000000"
         app:autoSizeTextType="uniform"
         android:gravity="center"
@@ -87,12 +91,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Space
-        android:id="@+id/exit_game_background_guideline"
+        android:id="@+id/game_finished_background_guideline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/exit_game_emoji"
+        app:layout_constraintBottom_toBottomOf="@id/game_finished_emoji"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/exit_game_emoji" />
+        app:layout_constraintTop_toTopOf="@id/game_finished_emoji" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

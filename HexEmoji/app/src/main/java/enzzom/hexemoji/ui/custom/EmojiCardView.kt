@@ -66,7 +66,7 @@ class EmojiCardView(context: Context, attrs: AttributeSet? = null) : ConstraintL
      * Changes the 'matched' status of the card to 'true' and initiates an animated sequence to visually
      * indicate that the card has been successfully matched.
      */
-    fun matchCard() {
+    fun matchCard(onAnimationEnd: () -> Unit = {}) {
         binding.emojiCardBackground.apply {
             setImageResource(R.drawable.emoji_card_match_anim)
 
@@ -75,6 +75,7 @@ class EmojiCardView(context: Context, attrs: AttributeSet? = null) : ConstraintL
                     override fun onAnimationEnd(drawable: Drawable?) {
                         matched =  true
                         setImageResource(if (flipped) R.drawable.emoji_card_front else R.drawable.emoji_card_back)
+                        onAnimationEnd()
                     }
                 })
             }.start()

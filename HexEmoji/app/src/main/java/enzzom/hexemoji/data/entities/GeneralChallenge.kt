@@ -24,6 +24,5 @@ class GeneralChallenge(
     @ColumnInfo(name = "game_mode") val gameMode: GameMode,
     @ColumnInfo(name = "board_size") val boardSize: BoardSize?,
     @ColumnInfo(name = "consecutive_games") val consecutiveGames: Boolean,
-    @ColumnInfo(name = "hints_allowed") val hintsAllowed: Boolean,
     @ColumnInfo(name = "constrained_to_category") val constrainedToCategory: Boolean
 ) : Challenge(id, totalGames, completedGames, rewardEmojiUnicode, category)
