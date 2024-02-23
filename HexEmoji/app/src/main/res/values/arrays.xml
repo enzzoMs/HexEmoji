@@ -121,10 +121,21 @@
         <item>@string/game_tutorial_zen_description_part_03</item>
     </string-array>
 
+    <string-array name="game_tutorial_descriptions_against_the_clock">
+        <item>@string/game_tutorial_against_clock__description_part_01</item>
+        <item>@string/game_tutorial_against_clock_description_part_02</item>
+    </string-array>
+
     <integer-array name="game_tutorial_images_zen">
         <item>@drawable/game_tutorial_board_example</item>
         <item>@drawable/game_tutorial_move_example</item>
         <item>@drawable/game_tutorial_pair_example</item>
+    </integer-array>
+
+    <integer-array name="game_tutorial_images_against_the_clock">
+        <item>@drawable/game_tutorial_board_example</item>
+        <item>@drawable/game_tutorial_move_example_timed</item>
+        <item>@drawable/game_tutorial_pair_example_timed</item>
     </integer-array>
 
 </resources>

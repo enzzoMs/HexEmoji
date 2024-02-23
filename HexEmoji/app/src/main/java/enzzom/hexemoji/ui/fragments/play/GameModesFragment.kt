@@ -16,6 +16,7 @@ import enzzom.hexemoji.ui.fragments.play.adapters.GameModeAdapter
 import enzzom.hexemoji.ui.fragments.play.model.PlayViewModel
 
 class GameModesFragment : Fragment() {
+
     private val playViewModel: PlayViewModel by activityViewModels()
 
     override fun onCreateView(

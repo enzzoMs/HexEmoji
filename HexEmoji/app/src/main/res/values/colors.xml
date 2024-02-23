@@ -84,7 +84,10 @@
     <color name="game_mode_background_color_chaos">@color/orange_light</color>
 
     <color name="game_mode_surface_variant_color_zen">@color/pink_variant</color>
+    <color name="game_mode_surface_variant_color_against_the_clock">@color/yellow_maximum</color>
+
     <color name="game_mode_on_surface_variant_color_zen">@color/pink_light_variant</color>
+    <color name="game_mode_on_surface_variant_color_against_the_clock">@color/yellow_white</color>
 
     <!-- Color Palette -->
     <color name="yellow_maximum">#F9BF58</color>

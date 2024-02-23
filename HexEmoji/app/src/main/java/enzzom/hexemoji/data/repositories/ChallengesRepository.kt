@@ -21,6 +21,10 @@ class ChallengesRepository @Inject constructor(
         challengesDAO.incrementChallengesCompletion(challenges.map { it.id })
     }
 
+    suspend fun resetChallengesCompletion(challenges: List<Challenge>) {
+        challengesDAO.resetChallengesCompletion(challenges.map { it.id })
+    }
+
     /**
      * Replaces the challenges of a given category with new ones.
      * @return The list of challenges after the replacement

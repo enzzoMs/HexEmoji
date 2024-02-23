@@ -2,6 +2,7 @@
 <resources>
     <!-- Dialogs -->
     <dimen name="game_tutorial_image_height">240dp</dimen>
+    <dimen name="game_paused_size">180dp</dimen>
 
     <!-- Board Size Selection Page -->
     <dimen name="board_size_card_size">130dp</dimen>

@@ -20,16 +20,18 @@
     <string name="exit_game_button_cancel">Cancelar</string>
     <string name="exit_game_emoji" translatable="false">😥</string>
 
-    <string name="game_finished_victory_emoji" translatable="false">🏆</string>
-    <string name="game_finished_victory">Vitória!</string>
-    <string name="game_finished_replay">Repetir</string>
+    <string name="game_ended_victory_emoji" translatable="false">🏆</string>
+    <string name="game_ended_victory">Vitória!</string>
+    <string name="game_ended_defeat">Derrota</string>
+    <string name="game_ended_defeat_emoji" translatable="false">😔</string>
+    <string name="game_ended_replay">Repetir</string>
+    <string name="game_paused_description">Jogo pausado</string>
+    <string name="game_message_exit">Sair</string>
 
     <string name="challenges_progress">Progresso em desafios:</string>
     <string name="challenges_progress_template_pending">Pendentes: %1$s</string>
     <string name="challenges_progress_template_in_progress">Em Progresso: %1$s</string>
     <string name="challenges_progress_template_completed">Concluídos: %1$s</string>
-
-    <string name="game_message_exit">Sair</string>
 
     <string name="emoji_details_copy_button">Copiar</string>
     <string name="emoji_details_copy_toast_msg">Emoji copiado para a área de transferência</string>
@@ -58,6 +60,9 @@
     <string name="game_tutorial_zen_description_part_02">Toque em uma carta para revelar o emoji escondido.</string>
     <string name="game_tutorial_zen_description_part_03">Vença ao encontrar todos os pares de emojis.</string>
 
+    <string name="game_tutorial_against_clock__description_part_01">Em Contra o Relógio você tem um limite de tempo para terminar a partida.</string>
+    <string name="game_tutorial_against_clock_description_part_02">Encontre todos os pares de cartas antes do tempo acabar.</string>
+
     <!-- Emojis -->
     <string name="emoji_name_identifier_prefix" translatable="false">emoji_name</string>
 
@@ -70,6 +75,7 @@
     <string name="icon_content_description_exit_game">Sair da partida.</string>
 
     <string name="game_countdown_end_text">Já!</string>
+    <string name="game_timer_template" translatable="false">%1$d : %2$02d</string>
 
     <!-- Emoji Collection Screen -->
     <string name="collection_unlocked_bar_description">Progressão de emojis desbloqueados</string>

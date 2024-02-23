@@ -35,7 +35,7 @@ class CountDownView(context: Context, attrs: AttributeSet? = null) : ConstraintL
     private val endText: String
 
     private val countdownTimer: CountDownTimer
-    private var onFinished: () -> Unit = {}
+    private var onFinished: MutableList<() -> Unit> = mutableListOf()
 
     init {
         context.theme.obtainStyledAttributes(attrs, R.styleable.CountdownView, 0, 0).apply {
@@ -107,8 +107,8 @@ class CountDownView(context: Context, attrs: AttributeSet? = null) : ConstraintL
         countdownTimer.start()
     }
 
-    fun setOnCountdownFinished(onFinished: () -> Unit) {
-        this.onFinished = onFinished
+    fun addOnCountdownFinished(onFinished: () -> Unit) {
+        this.onFinished.add(onFinished)
     }
 
     private fun animateCountdownFadeOut() {
@@ -118,7 +118,7 @@ class CountDownView(context: Context, attrs: AttributeSet? = null) : ConstraintL
 
             doOnEnd {
                 binding.root.visibility = View.GONE
-                onFinished()
+                onFinished.forEach { it() }
             }
         }.start()
     }

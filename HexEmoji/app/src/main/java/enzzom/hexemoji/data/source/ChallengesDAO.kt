@@ -17,6 +17,9 @@ interface ChallengesDAO {
     @Query("UPDATE general_challenges SET completed_games = completed_games + 1 WHERE id IN (:challengesId)")
     suspend fun incrementChallengesCompletion(challengesId: List<Long>)
 
+    @Query("UPDATE general_challenges SET completed_games = 0 WHERE id IN (:challengesId)")
+    suspend fun resetChallengesCompletion(challengesId: List<Long>)
+
     @Query("SELECT * FROM general_challenges")
     suspend fun getGeneralChallenges(): List<GeneralChallenge>
 

@@ -11,7 +11,7 @@
 
     <View
         android:id="@+id/countdown_back_shape"
-        android:background="@drawable/countdown_shape"
+        android:background="@drawable/circle_shape"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
