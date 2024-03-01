@@ -127,13 +127,15 @@
     <!-- Challenge Templates -->
     <!-- The description of a challenge can be assembled using the templates below. Some templates
     can be further combined with additional constraints. -->
-    <!--(\u0020 is the unicode character 'SPACE') -->
+    <!--(\u0020 is the unicode character 'BLANK SPACE') -->
     <!-- TODO: Add examples -->
 
     <string name="challenge_template_general">Complete %1$d partida(s) %2$sno \"%3$s\"%4$s%5$s</string>
     <string name="challenge_template_board_constraint">\u0020em um tabuleiro de tamanho (%1$s)</string>
     <string name="challenge_template_category_constraint">\u0020usando emojis de \"%1$s\"</string>
     <string name="challenge_template_consecutive_games_constraint">consecutivas\u0020</string>
+
+    <string name="challenge_template_timed">Complete %1$d partida(s) no \"%2$s\" em menos de %3$d segundos.</string>
 
     <!-- Emoji Categories -->
     <string name="emoji_category_title_people_emotions">Pessoas e Emoções</string>

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import enzzom.hexemoji.R
 import enzzom.hexemoji.data.entities.Challenge
 import enzzom.hexemoji.data.entities.GeneralChallenge
+import enzzom.hexemoji.data.entities.TimedChallenge
 import enzzom.hexemoji.databinding.ItemCardChallengeBinding
 
 private const val PROGRESS_ANIM_DURATION_MS = 350L
@@ -109,6 +110,7 @@ class ChallengesAdapter(
                 challengeEmojiReward.text = challenge.rewardEmoji
                 challengeDescription.text = when (challenge) {
                     is GeneralChallenge -> getChallengeDescription(challenge, root.resources)
+                    is TimedChallenge -> getChallengeDescription(challenge, root.resources)
                     else -> ""
                 }
                 challengeProgress.setTextColor(categoryColor)
@@ -151,6 +153,13 @@ class ChallengesAdapter(
                 challenge.gameMode.getTitle(res),
                 boardConstraints,
                 categoryConstraints
+            )
+        }
+
+        private fun getChallengeDescription(challenge: TimedChallenge, res: Resources): String {
+            return res.getString(
+                R.string.challenge_template_timed,
+                challenge.totalGames, challenge.gameMode.getTitle(res), challenge.timeLimitInSeconds
             )
         }
     }

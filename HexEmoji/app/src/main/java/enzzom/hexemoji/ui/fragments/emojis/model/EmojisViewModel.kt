@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import enzzom.hexemoji.data.entities.Challenge
 import enzzom.hexemoji.data.entities.Emoji
 import enzzom.hexemoji.data.entities.GeneralChallenge
+import enzzom.hexemoji.data.entities.TimedChallenge
 import enzzom.hexemoji.data.repositories.ChallengesRepository
 import enzzom.hexemoji.data.repositories.EmojiRepository
 import enzzom.hexemoji.models.BoardSize
@@ -22,7 +23,9 @@ import kotlin.random.Random
 private const val MIN_LOADING_TIME_MS = 500L
 
 private const val MAX_CHALLENGES_PER_CATEGORY = 5
-private const val MAX_GAMES_PER_CHALLENGE = 6
+private const val MAX_GAMES_PER_CHALLENGE = 5
+
+private const val NUM_OF_CHALLENGE_TYPES = 2
 
 /**
  * This class is responsible for managing data related to the categories collections and their
@@ -185,17 +188,30 @@ class EmojisViewModel @Inject constructor(
         .toList()
 
         val constraintChanceRange = 0..6
+        val timedChallengeRange = 20..80 step 10
 
-        return List(count) { index -> GeneralChallenge(
-            totalGames = (1..MAX_GAMES_PER_CHALLENGE).random(),
-            completedGames = 0,
-            category = category,
-            rewardEmojiUnicode = rewardEmojis[index],
-            gameMode = GameMode.entries.random(),
-            boardSize = if (constraintChanceRange.random() == 0) BoardSize.entries.random() else null,
-            consecutiveGames = constraintChanceRange.random() == 0,
-            constrainedToCategory = Random.nextBoolean()
-        )}
+        return List(count) { index ->
+            when (Random.nextInt(NUM_OF_CHALLENGE_TYPES)) {
+                0 -> TimedChallenge(
+                    totalGames = (1..MAX_GAMES_PER_CHALLENGE).random(),
+                    completedGames = 0,
+                    category = category,
+                    rewardEmojiUnicode = rewardEmojis[index],
+                    gameMode = if (Random.nextInt(3) == 0) GameMode.AGAINST_THE_CLOCK else GameMode.CHAOS,
+                    timeLimitInSeconds = timedChallengeRange.shuffled().first()
+                )
+                else -> GeneralChallenge(
+                    totalGames = (1..MAX_GAMES_PER_CHALLENGE).random(),
+                    completedGames = 0,
+                    category = category,
+                    rewardEmojiUnicode = rewardEmojis[index],
+                    gameMode = GameMode.entries.random(),
+                    boardSize = if (constraintChanceRange.random() == 0) BoardSize.entries.random() else null,
+                    consecutiveGames = constraintChanceRange.random() == 0,
+                    constrainedToCategory = Random.nextBoolean()
+                )
+            }
+        }
     }
 }
 

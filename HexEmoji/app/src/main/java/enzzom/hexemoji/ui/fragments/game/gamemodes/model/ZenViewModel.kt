@@ -2,6 +2,8 @@ package enzzom.hexemoji.ui.fragments.game.gamemodes.model
 
 import androidx.lifecycle.SavedStateHandle
 import dagger.hilt.android.lifecycle.HiltViewModel
+import enzzom.hexemoji.data.entities.Challenge
+import enzzom.hexemoji.data.entities.GeneralChallenge
 import enzzom.hexemoji.data.repositories.ChallengesRepository
 import enzzom.hexemoji.data.repositories.EmojiRepository
 import enzzom.hexemoji.data.repositories.PreferencesRepository
@@ -25,4 +27,16 @@ class ZenViewModel @Inject constructor(
     savedStateHandle.get<Array<String>>(BaseGameModeFragment.SELECTED_CATEGORIES_ARG_KEY)!!.map {
         EmojiCategory.valueOf(it)
     }
-)
+) {
+
+    override fun shouldUpdateChallengeOnVictory(challenge: Challenge): Boolean {
+        return when (challenge) {
+            is GeneralChallenge -> !challenge.completed &&
+                challenge.gameMode == gameMode &&
+                (challenge.boardSize == null || challenge.boardSize == boardSize) &&
+                ((challenge.constrainedToCategory && challenge.category in selectedCategories)
+                    || !challenge.constrainedToCategory)
+            else -> false
+        }
+    }
+}

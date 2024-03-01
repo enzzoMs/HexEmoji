@@ -10,24 +10,24 @@ class ChallengesRepository @Inject constructor(
 ) {
 
     suspend fun getAllChallenges(): List<Challenge> {
-        return challengesDAO.getGeneralChallenges()
+        return challengesDAO.getAllChallenges()
     }
 
     suspend fun getAllChallengesByCategory(): Map<EmojiCategory, List<Challenge>> {
-        return challengesDAO.getAllGeneralChallengesByCategory()
+        return challengesDAO.getAllChallengesByCategory()
     }
 
     suspend fun incrementChallengesCompletion(challenges: List<Challenge>) {
-        challengesDAO.incrementChallengesCompletion(challenges.map { it.id })
+        challengesDAO.incrementChallengesCompletion(challenges)
     }
 
     suspend fun resetChallengesCompletion(challenges: List<Challenge>) {
-        challengesDAO.resetChallengesCompletion(challenges.map { it.id })
+        challengesDAO.resetChallengesCompletion(challenges)
     }
 
     /**
      * Replaces the challenges of a given category with new ones.
-     * @return The list of challenges after the replacement
+     * @return The complete list of challenges after the replacement
      */
     suspend fun replaceChallenges(
         category: EmojiCategory, oldChallenges: List<Challenge>, newChallenges: List<Challenge>?

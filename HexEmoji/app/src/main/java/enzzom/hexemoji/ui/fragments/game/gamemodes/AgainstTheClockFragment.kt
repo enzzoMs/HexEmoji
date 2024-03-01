@@ -68,14 +68,14 @@ class AgainstTheClockFragment : BaseGameModeFragment() {
                 }
             }
 
-            if (remainingSeconds == 0L) {
-                checkGameCompletion()
-            }
-
             val gameStatus = gameViewModel.getGameStatus()
 
             if (gameStatus == GameStatus.VICTORY || gameStatus == GameStatus.DEFEAT) {
                 gameViewModel.pauseTimer()
+
+                if (remainingSeconds == 0L) {
+                    executeBoardExitAnimation()
+                }
             }
         }
 

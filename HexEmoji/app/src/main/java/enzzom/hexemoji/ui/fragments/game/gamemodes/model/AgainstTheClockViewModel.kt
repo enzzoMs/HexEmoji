@@ -5,10 +5,25 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import dagger.hilt.android.lifecycle.HiltViewModel
+import enzzom.hexemoji.data.entities.Challenge
+import enzzom.hexemoji.data.entities.GeneralChallenge
+import enzzom.hexemoji.data.entities.TimedChallenge
 import enzzom.hexemoji.data.repositories.ChallengesRepository
 import enzzom.hexemoji.data.repositories.EmojiRepository
 import enzzom.hexemoji.data.repositories.PreferencesRepository
 import enzzom.hexemoji.models.BoardSize
+import enzzom.hexemoji.models.BoardSize.BOARD_2_BY_4
+import enzzom.hexemoji.models.BoardSize.BOARD_3_BY_4
+import enzzom.hexemoji.models.BoardSize.BOARD_4_BY_4
+import enzzom.hexemoji.models.BoardSize.BOARD_4_BY_7
+import enzzom.hexemoji.models.BoardSize.BOARD_4_BY_8
+import enzzom.hexemoji.models.BoardSize.BOARD_5_BY_8
+import enzzom.hexemoji.models.BoardSize.BOARD_6_BY_8
+import enzzom.hexemoji.models.BoardSize.BOARD_7_BY_9
+import enzzom.hexemoji.models.BoardSize.BOARD_8_BY_7
+import enzzom.hexemoji.models.BoardSize.BOARD_8_BY_8
+import enzzom.hexemoji.models.BoardSize.BOARD_9_BY_8
+import enzzom.hexemoji.models.BoardSize.BOARD_9_BY_9
 import enzzom.hexemoji.models.EmojiCategory
 import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.models.GameStatus
@@ -18,9 +33,6 @@ import javax.inject.Inject
 import kotlin.math.floor
 
 private const val ONE_SECOND_IN_MILLIS = 1000L
-
-private const val MILLIS_PER_CARD = 2000
-private const val TIMER_SCALE_FACTOR = 1.5f
 
 @HiltViewModel
 class AgainstTheClockViewModel @Inject constructor(
@@ -47,11 +59,16 @@ class AgainstTheClockViewModel @Inject constructor(
     private var timerPaused: Boolean = false
 
     init {
-        val boardSize = BoardSize.valueOf(savedStateHandle.get<String>(BaseGameModeFragment.BOARD_SIZE_ARG_KEY)!!)
+        val startTimeSeconds = when (boardSize) {
+            BOARD_2_BY_4 -> 1;    BOARD_3_BY_4 -> 30;   BOARD_4_BY_4 -> 45
+            BOARD_4_BY_7 -> 90;   BOARD_4_BY_8 -> 100;  BOARD_5_BY_8 -> 160
+            BOARD_7_BY_9 -> 290;  BOARD_8_BY_7 -> 270;  BOARD_8_BY_8 -> 320
+            BOARD_6_BY_8 -> 210;  BOARD_9_BY_8 -> 420;  BOARD_9_BY_9 -> 460
+        }
 
-        startTimeMs = (boardSize.getSizeInHexagonalLayout() * MILLIS_PER_CARD * TIMER_SCALE_FACTOR).toLong()
+        startTimeMs = startTimeSeconds * ONE_SECOND_IN_MILLIS
         remainingTimeMs = startTimeMs
-        _remainingSeconds.value = startTimeMs / ONE_SECOND_IN_MILLIS
+        _remainingSeconds.value = startTimeSeconds.toLong()
     }
 
     fun startTimer() {
@@ -72,6 +89,20 @@ class AgainstTheClockViewModel @Inject constructor(
     }
 
     fun isTimerPaused(): Boolean = timerPaused
+
+    override fun shouldUpdateChallengeOnVictory(challenge: Challenge): Boolean {
+        return when (challenge) {
+            is GeneralChallenge -> !challenge.completed &&
+                challenge.gameMode == gameMode &&
+                (challenge.boardSize == null || challenge.boardSize == boardSize) &&
+                ((challenge.constrainedToCategory && challenge.category in selectedCategories)
+                    || !challenge.constrainedToCategory)
+            is TimedChallenge -> !challenge.completed &&
+                challenge.gameMode == gameMode &&
+                (startTimeMs - remainingTimeMs) / ONE_SECOND_IN_MILLIS <= challenge.timeLimitInSeconds
+            else -> false
+        }
+    }
 
     private fun getTimer(millisInFuture: Long): CountDownTimer = object : CountDownTimer(millisInFuture, ONE_SECOND_IN_MILLIS) {
         override fun onTick(millisUntilFinished: Long) {

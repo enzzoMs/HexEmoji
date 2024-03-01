@@ -21,9 +21,9 @@ abstract class BaseGameViewModel(
     private val emojiRepository: EmojiRepository,
     private val preferencesRepository: PreferencesRepository,
     private val challengesRepository: ChallengesRepository,
-    private val boardSize: BoardSize,
-    private val gameMode: GameMode,
-    private val selectedCategories: List<EmojiCategory>
+    protected val boardSize: BoardSize,
+    protected val gameMode: GameMode,
+    protected val selectedCategories: List<EmojiCategory>
 ) : ViewModel() {
 
     private var gameStatus: GameStatus = GameStatus.STARTING
@@ -89,7 +89,7 @@ abstract class BaseGameViewModel(
 
     fun getGameStatus(): GameStatus = gameStatus
 
-    fun getBoardSize(): BoardSize = boardSize
+    fun getGameBoardSize(): BoardSize = boardSize
 
     fun getPendingChallengesCount(): Int = allChallenges.count { !it.completed }
 
@@ -126,36 +126,25 @@ abstract class BaseGameViewModel(
         }
     }
 
+    protected abstract fun shouldUpdateChallengeOnVictory(challenge: Challenge): Boolean
+
     private fun updateChallengesProgress() {
-        if (gameStatus == GameStatus.VICTORY) {
-            val completedChallenges = allChallenges.filter { challenge ->
-                when (challenge) {
-                    is GeneralChallenge ->
-                        !challenge.completed &&
-                                challenge.gameMode == gameMode &&
-                                (challenge.boardSize == null || challenge.boardSize == boardSize) &&
-                                ((challenge.constrainedToCategory && challenge.category in selectedCategories)
-                                        || !challenge.constrainedToCategory)
-                    else -> false
-                }
+        viewModelScope.launch {
+            if (gameStatus == GameStatus.VICTORY) {
+                challengesRepository.incrementChallengesCompletion(
+                    allChallenges.filter(::shouldUpdateChallengeOnVictory)
+                )
+
+            } else if (gameStatus == GameStatus.DEFEAT) {
+                challengesRepository.resetChallengesCompletion(allChallenges.filter {
+                    it is GeneralChallenge && it.consecutiveGames &&
+                    !it.completed && it.gameMode == gameMode &&
+                    (it.boardSize == null || it.boardSize == boardSize) &&
+                    ((it.constrainedToCategory && it.category in selectedCategories) || !it.constrainedToCategory)
+                })
             }
 
-            viewModelScope.launch {
-                challengesRepository.incrementChallengesCompletion(completedChallenges)
-            }
-
-        } else if (gameStatus == GameStatus.DEFEAT) {
-            val failedChallenges = allChallenges.filter { challenge ->
-                if (challenge is GeneralChallenge) {
-                    challenge.consecutiveGames
-                } else {
-                    false
-                }
-            }
-
-            viewModelScope.launch {
-                challengesRepository.resetChallengesCompletion(failedChallenges)
-            }
+            allChallenges = challengesRepository.getAllChallenges()
         }
     }
 

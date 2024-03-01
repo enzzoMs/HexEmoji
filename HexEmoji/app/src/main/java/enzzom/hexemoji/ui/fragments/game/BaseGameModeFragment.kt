@@ -1,5 +1,7 @@
 package enzzom.hexemoji.ui.fragments.game
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -8,6 +10,7 @@ import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +27,7 @@ import enzzom.hexemoji.ui.custom.GameTutorialDataProvider
 import enzzom.hexemoji.ui.fragments.game.BaseGameViewModel.FlipResult
 
 private const val MATCH_FAILED_CARD_FLIP_DELAY = 150L
+private const val BOARD_EXIT_ANIMATION_DURATION = 1200L
 
 /**
  * TODO
@@ -32,7 +36,7 @@ private const val MATCH_FAILED_CARD_FLIP_DELAY = 150L
 abstract class BaseGameModeFragment : Fragment() {
 
     protected abstract val gameViewModel: BaseGameViewModel
-    private lateinit var gameBoardAdapter: GameBoardAdapter
+    private lateinit var gameBoard: GameBoardView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,11 +46,21 @@ abstract class BaseGameModeFragment : Fragment() {
         (parentFragment as GameFragment).setGameTutorialDataProvider(getTutorialDataProvider())
 
         val (layoutRoot, gameBoardView, countdownView) = initializeViews(inflater, container)
-        val boardSize = gameViewModel.getBoardSize()
+        gameBoard = gameBoardView
+
+        val gameStatus = gameViewModel.getGameStatus()
+
+        if (gameStatus == GameStatus.VICTORY || gameStatus == GameStatus.DEFEAT) {
+            gameBoardView.visibility = View.INVISIBLE
+            gameBoardView.enableCardInteraction(false)
+            showEndgameDialog()
+        }
 
         gameBoardView.enableBoardMovement(!gameViewModel.shouldExecuteEntryAnimation())
 
-        gameBoardAdapter = GameBoardAdapter(
+        val boardSize = gameViewModel.getGameBoardSize()
+
+        GameBoardAdapter(
             executeBoardEntryAnimation = gameViewModel.shouldExecuteEntryAnimation(),
             gridSpanCount = boardSize.numOfColumns,
             numberOfEmojiCards = boardSize.getSizeInHexagonalLayout(),
@@ -79,8 +93,13 @@ abstract class BaseGameModeFragment : Fragment() {
                                 getCardViewForPosition(flipResult.firstCardPosition)?.matchCard()
                                 getCardViewForPosition(flipResult.secondCardPosition)?.matchCard(
                                     onAnimationEnd = {
-                                        if (remainingCardsCount == 0) {
-                                            checkGameCompletion()
+                                        val status = gameViewModel.getGameStatus()
+
+                                        if ((status == GameStatus.VICTORY ||
+                                            status == GameStatus.DEFEAT) &&
+                                            remainingCardsCount == 0) {
+
+                                            executeBoardExitAnimation()
                                         }
                                     }
                                 )
@@ -95,15 +114,6 @@ abstract class BaseGameModeFragment : Fragment() {
                 if (gameViewModel.shouldExecuteEntryAnimation() && finished) {
                     countdownView.visibility = View.VISIBLE
                     countdownView.start()
-                }
-            }
-
-            exitAnimationFinished.observe(viewLifecycleOwner) { finished ->
-                val status = gameViewModel.getGameStatus()
-
-                if (finished && (status == GameStatus.VICTORY || status == GameStatus.DEFEAT)) {
-                    gameBoardView.visibility = View.INVISIBLE
-                    showEndgameDialog()
                 }
             }
 
@@ -128,12 +138,20 @@ abstract class BaseGameModeFragment : Fragment() {
         return layoutRoot
     }
 
-    protected fun checkGameCompletion() {
-        val status = gameViewModel.getGameStatus()
-
-        if (status == GameStatus.VICTORY || status == GameStatus.DEFEAT) {
-            gameBoardAdapter.executeBoardExitAnimation()
+    protected fun executeBoardExitAnimation() {
+        gameBoard.apply {
+            enableCardInteraction(false)
+            enableBoardMovement(false)
         }
+
+        ObjectAnimator.ofPropertyValuesHolder(
+            gameBoard,
+            PropertyValuesHolder.ofFloat("scaleX", 0f),
+            PropertyValuesHolder.ofFloat("scaleY", 0f)
+        ).apply {
+            duration = BOARD_EXIT_ANIMATION_DURATION
+            doOnEnd { showEndgameDialog() }
+        }.start()
     }
 
     private fun showBoardTutorialDialog() {
