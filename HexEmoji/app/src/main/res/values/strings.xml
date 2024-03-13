@@ -94,6 +94,9 @@
     <string name="icon_content_description_page_statistics">Navegar para página de estatísticas</string>
     <string name="icon_content_description_page_emojis">Navegar para página de emojis</string>
 
+    <!-- Statistics Page -->
+    <string name="weekly_victories_chart_title">Vitórias Semanais</string>
+
     <!-- Emojis Page -->
     <string name="page_description_emojis">Explore sua coleção e desbloqueie emojis através de desafios especiais!</string>
     <string name="collection_details_tab_description">Diferentes categorias de emojis</string>

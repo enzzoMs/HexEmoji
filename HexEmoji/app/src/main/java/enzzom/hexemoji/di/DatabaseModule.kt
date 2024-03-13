@@ -10,6 +10,7 @@ import dagger.hilt.components.SingletonComponent
 import enzzom.hexemoji.data.AppDatabase
 import enzzom.hexemoji.data.source.ChallengesDAO
 import enzzom.hexemoji.data.source.EmojiDAO
+import enzzom.hexemoji.data.source.StatisticsDAO
 import javax.inject.Singleton
 
 @Module
@@ -30,6 +31,10 @@ class DatabaseModule {
     @Singleton
     @Provides
     fun provideEmojiDAO(appDatabase: AppDatabase): EmojiDAO = appDatabase.emojiDAO()
+
+    @Singleton
+    @Provides
+    fun provideStatisticsDAO(appDatabase: AppDatabase): StatisticsDAO = appDatabase.statisticsDAO()
 
     @Singleton
     @Provides

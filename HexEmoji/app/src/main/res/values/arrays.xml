@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Statistics Page -->
+    <string-array name="week_days_abbreviation">
+        <item>D</item>
+        <item>S</item>
+        <item>T</item>
+        <item>Q</item>
+        <item>Q</item>
+        <item>S</item>
+        <item>S</item>
+    </string-array>
+
     <!-- Emoji Categories -->
     <string-array name="emoji_category_titles">
         <item>@string/emoji_category_title_people_emotions</item>

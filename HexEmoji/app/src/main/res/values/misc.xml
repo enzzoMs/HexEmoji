@@ -3,6 +3,9 @@
     <!-- General -->
     <integer name="progress_indicator_track_alpha">65</integer>
 
+    <!-- Custom Views -->
+    <integer name="bar_chart_bar_background_alpha">35</integer>
+
     <!-- Game Modes Page -->
     <integer name="game_modes_grid_span">1</integer>
     

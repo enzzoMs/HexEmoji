@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:layout_width="match_parent"
+    tools:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        app:cardElevation="0dp"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_height="300dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/chart_title"
+                android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/bar_chart_outer_margin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Bar Chart"/>
+
+            <TextView
+                android:id="@+id/chart_data_description"
+                android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/bar_chart_outer_margin"
+                app:layout_constraintTop_toTopOf="@id/chart_title"
+                app:layout_constraintBottom_toBottomOf="@id/chart_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Data Description"/>
+
+            <LinearLayout
+                android:id="@+id/bars_values_layout"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/bar_chart_outer_margin"
+                android:layout_marginTop="@dimen/bar_chart_outer_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/chart_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:layout_height="20dp"/>
+
+            <LinearLayout
+                android:id="@+id/bars_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_marginVertical="@dimen/bar_chart_chart_margin"
+                app:layout_constraintTop_toBottomOf="@id/bars_values_layout"
+                app:layout_constraintBottom_toTopOf="@id/bars_labels_divider"
+                app:layout_constraintStart_toStartOf="@id/bars_labels_layout"
+                app:layout_constraintEnd_toEndOf="@id/bars_labels_layout"
+                tools:layout_height="150dp"/>
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/chart_loading"
+                android:visibility="invisible"
+                app:indicatorSize="@dimen/content_loading_circular_bar_size"
+                app:indicatorColor="@color/unselected_icon_color"
+                android:indeterminate="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/chart_title"
+                app:layout_constraintEnd_toEndOf="@id/bars_layout"
+                app:layout_constraintStart_toStartOf="@id/bars_layout"
+                app:layout_constraintBottom_toBottomOf="@id/bars_layout"
+                tools:visibility="invisible" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/bars_labels_divider"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/divider_thickness"
+                android:layout_marginBottom="@dimen/bar_chart_chart_margin"
+                app:layout_constraintBottom_toTopOf="@id/bars_labels_layout"
+                app:layout_constraintStart_toStartOf="@id/bars_labels_layout"
+                app:layout_constraintEnd_toEndOf="@id/bars_layout"/>
+
+            <LinearLayout
+                android:id="@+id/bars_labels_layout"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/bar_chart_outer_margin"
+                android:layout_marginBottom="@dimen/bar_chart_outer_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:layout_height="20dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</merge>

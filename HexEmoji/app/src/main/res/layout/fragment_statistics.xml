@@ -7,14 +7,37 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.statistics.StatisticsFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Statistics Fragment"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/chart_background_guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <enzzom.hexemoji.ui.custom.BarChartView
+        android:id="@+id/victories_statistics_chart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/victories_chart_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/chart_guideline"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/chart_guideline"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <Space
+        android:id="@+id/chart_background_guideline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/victories_statistics_chart"
+        app:layout_constraintBottom_toBottomOf="@id/victories_statistics_chart"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

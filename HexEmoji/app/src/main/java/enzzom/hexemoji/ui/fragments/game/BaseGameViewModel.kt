@@ -3,16 +3,20 @@ package enzzom.hexemoji.ui.fragments.game
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import enzzom.hexemoji.data.entities.Challenge
+import enzzom.hexemoji.data.entities.GameStatistic
 import enzzom.hexemoji.data.entities.GeneralChallenge
 import enzzom.hexemoji.data.repositories.ChallengesRepository
 import enzzom.hexemoji.data.repositories.EmojiRepository
 import enzzom.hexemoji.data.repositories.PreferencesRepository
+import enzzom.hexemoji.data.repositories.StatisticsRepository
 import enzzom.hexemoji.models.BoardSize
 import enzzom.hexemoji.models.EmojiCard
 import enzzom.hexemoji.models.EmojiCategory
 import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.models.GameStatus
+import enzzom.hexemoji.models.WeekDay
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
 
 /**
  * TODO
@@ -21,6 +25,7 @@ abstract class BaseGameViewModel(
     private val emojiRepository: EmojiRepository,
     private val preferencesRepository: PreferencesRepository,
     private val challengesRepository: ChallengesRepository,
+    private val statisticsRepository: StatisticsRepository,
     protected val boardSize: BoardSize,
     protected val gameMode: GameMode,
     protected val selectedCategories: List<EmojiCategory>
@@ -123,6 +128,7 @@ abstract class BaseGameViewModel(
 
         if (status == GameStatus.VICTORY || status == GameStatus.DEFEAT) {
             updateChallengesProgress()
+            updateGameStatistics()
         }
     }
 
@@ -145,6 +151,22 @@ abstract class BaseGameViewModel(
             }
 
             allChallenges = challengesRepository.getAllChallenges()
+        }
+    }
+
+    private fun updateGameStatistics() {
+        val currentDate = LocalDateTime.now()
+
+        viewModelScope.launch {
+            statisticsRepository.insertGameStatistic(
+                GameStatistic(
+                    victory = gameStatus == GameStatus.VICTORY,
+                    weekDay = WeekDay.valueOf(currentDate.dayOfWeek.name),
+                    day = currentDate.dayOfMonth,
+                    month = currentDate.monthValue,
+                    gameMode = gameMode
+                )
+            )
         }
     }
 

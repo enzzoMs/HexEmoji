@@ -7,6 +7,7 @@ import enzzom.hexemoji.data.entities.GeneralChallenge
 import enzzom.hexemoji.data.repositories.ChallengesRepository
 import enzzom.hexemoji.data.repositories.EmojiRepository
 import enzzom.hexemoji.data.repositories.PreferencesRepository
+import enzzom.hexemoji.data.repositories.StatisticsRepository
 import enzzom.hexemoji.models.BoardSize
 import enzzom.hexemoji.models.EmojiCategory
 import enzzom.hexemoji.models.GameMode
@@ -19,9 +20,10 @@ class ZenViewModel @Inject constructor(
     emojiRepository: EmojiRepository,
     preferencesRepository: PreferencesRepository,
     challengesRepository: ChallengesRepository,
+    statisticsRepository: StatisticsRepository,
     savedStateHandle: SavedStateHandle
 ) : BaseGameViewModel(
-    emojiRepository, preferencesRepository, challengesRepository,
+    emojiRepository, preferencesRepository, challengesRepository, statisticsRepository,
     BoardSize.valueOf(savedStateHandle.get<String>(BaseGameModeFragment.BOARD_SIZE_ARG_KEY)!!),
     GameMode.valueOf(savedStateHandle.get<String>(BaseGameModeFragment.GAME_MODE_ARG_KEY)!!),
     savedStateHandle.get<Array<String>>(BaseGameModeFragment.SELECTED_CATEGORIES_ARG_KEY)!!.map {
