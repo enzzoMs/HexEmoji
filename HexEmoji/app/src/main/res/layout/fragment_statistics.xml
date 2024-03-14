@@ -40,4 +40,63 @@
         app:layout_constraintTop_toTopOf="@id/victories_statistics_chart"
         app:layout_constraintBottom_toBottomOf="@id/victories_statistics_chart"/>
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/daily_emoji_card"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/screen_outer_margin"
+        app:layout_constraintTop_toBottomOf="@id/chart_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/daily_emoji_divider"
+                app:dividerColor="?attr/colorPrimary"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/divider_thickness"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/daily_emoji"
+                style="@style/Widget.HexEmoji.TextView.Emoji"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="@dimen/card_inner_margin"
+                android:layout_margin="@dimen/card_inner_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/daily_emoji_divider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/daily_emoji_message"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                tools:text="🐝"/>
+
+            <TextView
+                android:id="@+id/daily_emoji_message"
+                android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Description"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/card_inner_margin"
+                android:layout_marginEnd="@dimen/card_inner_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/daily_emoji_divider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/daily_emoji"
+                tools:text="Tap to unlock your daily emoji!"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -96,7 +96,9 @@
 
     <!-- Statistics Page -->
     <string name="weekly_victories_chart_title">Vitórias Semanais</string>
-
+    <string name="daily_emoji_message">Toque para desbloquear o seu emoji diário!</string>
+    <string name="daily_emoji_message_already_unlocked">Emoji diário desboqueado. Volte amanhã!</string>
+    
     <!-- Emojis Page -->
     <string name="page_description_emojis">Explore sua coleção e desbloqueie emojis através de desafios especiais!</string>
     <string name="collection_details_tab_description">Diferentes categorias de emojis</string>

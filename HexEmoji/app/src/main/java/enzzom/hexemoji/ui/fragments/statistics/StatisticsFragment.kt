@@ -1,9 +1,13 @@
 package enzzom.hexemoji.ui.fragments.statistics
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.LinearInterpolator
+import androidx.core.animation.doOnEnd
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -12,6 +16,9 @@ import enzzom.hexemoji.databinding.FragmentStatisticsBinding
 import enzzom.hexemoji.models.WeekDay
 import enzzom.hexemoji.ui.custom.BarChartDataProvider
 import enzzom.hexemoji.ui.fragments.statistics.model.StatisticsViewModel
+import enzzom.hexemoji.utils.StringUtils
+
+private const val DAILY_EMOJI_ANIM_DURATION_MS = 450L
 
 @AndroidEntryPoint
 class StatisticsFragment : Fragment() {
@@ -49,6 +56,43 @@ class StatisticsFragment : Fragment() {
                     return statisticsViewModel.getVictoriesInWeekDay(WeekDay.entries[position]) ?: 0
                 }
             })
+
+            statisticsViewModel.dailyEmojiReward.let { emojiUnicode ->
+                if (emojiUnicode == null) {
+                    dailyEmojiCard.visibility = View.GONE
+
+                } else if (statisticsViewModel.dailyEmojiUnlocked()) {
+                    dailyEmojiCard.isClickable = false
+                    dailyEmoji.visibility = View.GONE
+                    dailyEmojiMessage.text = resources.getString(R.string.daily_emoji_message_already_unlocked)
+
+                } else {
+                    dailyEmoji.text = StringUtils.unescapeString(emojiUnicode)
+                    dailyEmojiMessage.text = resources.getString(R.string.daily_emoji_message)
+                }
+            }
+
+            dailyEmojiCard.setOnClickListener {
+                statisticsViewModel.unlockDailyEmoji()
+
+                dailyEmojiCard.isClickable = false
+
+                ObjectAnimator.ofArgb(
+                    dailyEmojiDivider,
+                    "dividerColor",
+                    ContextCompat.getColor(requireContext(), R.color.primary_color),
+                    ContextCompat.getColor(requireContext(), R.color.accent_color),
+                    ContextCompat.getColor(requireContext(), R.color.primary_color)
+                ).apply {
+                    duration = DAILY_EMOJI_ANIM_DURATION_MS
+                    interpolator = LinearInterpolator()
+
+                    doOnEnd {
+                        dailyEmoji.visibility = View.GONE
+                        dailyEmojiMessage.text = resources.getString(R.string.daily_emoji_message_already_unlocked)
+                    }
+                }.start()
+            }
         }
 
         return binding.root

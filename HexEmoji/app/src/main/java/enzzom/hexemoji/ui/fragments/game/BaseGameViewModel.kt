@@ -15,6 +15,7 @@ import enzzom.hexemoji.models.EmojiCategory
 import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.models.GameStatus
 import enzzom.hexemoji.models.WeekDay
+import enzzom.hexemoji.utils.StringUtils
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 
@@ -45,7 +46,9 @@ abstract class BaseGameViewModel(
 
             val gameEmojis = emojiRepository.getRandomUnlockedEmojis(
                 selectedCategories, numberOfEmojiCards / 2
-            ).toMutableList().apply {
+            ).map {
+                StringUtils.unescapeString(it)
+            }.toMutableList().apply {
                 // Duplicating the emojis to make pairs
                 addAll(this)
                 shuffle()
