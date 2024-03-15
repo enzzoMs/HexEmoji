@@ -15,7 +15,6 @@ import enzzom.hexemoji.models.EmojiCategory
 import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.models.GameStatus
 import enzzom.hexemoji.models.WeekDay
-import enzzom.hexemoji.utils.StringUtils
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 
@@ -40,15 +39,15 @@ abstract class BaseGameViewModel(
     private var emojiCards: List<EmojiCard>? = null
     private var lastFlippedCard: EmojiCard? = null
 
+    private var numOfPairsFound = 0
+
     init {
         viewModelScope.launch {
             val numberOfEmojiCards = boardSize.getSizeInHexagonalLayout()
 
             val gameEmojis = emojiRepository.getRandomUnlockedEmojis(
                 selectedCategories, numberOfEmojiCards / 2
-            ).map {
-                StringUtils.unescapeString(it)
-            }.toMutableList().apply {
+            ).toMutableList().apply {
                 // Duplicating the emojis to make pairs
                 addAll(this)
                 shuffle()
@@ -73,11 +72,12 @@ abstract class BaseGameViewModel(
             FlipResult.NoMatch
 
         } else if (lastFlippedCard!!.emoji == emojiCard.emoji) {
-            FlipResult.MatchSuccessful(lastFlippedCard!!.positionInBoard, emojiCard.positionInBoard)
-                .also {
+            FlipResult.MatchSuccessful(lastFlippedCard!!.positionInBoard, emojiCard.positionInBoard).also {
                 lastFlippedCard!!.matched = true
                 emojiCard.matched = true
                 lastFlippedCard = null
+
+                numOfPairsFound++
 
                 if (emojiCards!!.none { !it.matched } && getGameStatus() == GameStatus.IN_PROGRESS) {
                     setGameStatus(GameStatus.VICTORY)
@@ -164,10 +164,12 @@ abstract class BaseGameViewModel(
             statisticsRepository.insertGameStatistic(
                 GameStatistic(
                     victory = gameStatus == GameStatus.VICTORY,
+                    numOfPairsFound = numOfPairsFound,
+                    gameMode = gameMode,
+                    boardSize = boardSize,
                     weekDay = WeekDay.valueOf(currentDate.dayOfWeek.name),
                     day = currentDate.dayOfMonth,
-                    month = currentDate.monthValue,
-                    gameMode = gameMode
+                    month = currentDate.monthValue
                 )
             )
         }

@@ -16,6 +16,9 @@
     <bool name="board_selection_use_hexagon_board">false</bool>
     <integer name="board_selection_hexagonal_grid_span">3</integer>
 
+    <!-- Statistics Page -->
+    <integer name="statistics_game_modes_grid_span">2</integer>
+
     <!-- Emojis Page -->
     <integer name="challenge_completed_back_color_alpha">35</integer>
     <integer name="challenges_grid_span">1</integer>

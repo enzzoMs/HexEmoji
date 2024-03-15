@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.HexEmoji.CardView"
+    app:cardElevation="0dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/card_outer_margin"
+    android:layout_marginBottom="@dimen/card_outer_margin">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/game_mode_statistic_title"
+            android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Title"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/card_inner_margin"
+            android:layout_marginTop="@dimen/card_inner_margin"
+            android:layout_marginBottom="@dimen/spacing_extra_small"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/game_mode_statistic_value"
+            tools:text="Victories"/>
+
+        <TextView
+            android:id="@+id/game_mode_statistic_value"
+            android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Title"
+            android:textSize="@dimen/game_statistic_text_size"
+            android:textColor="?attr/colorAccent"
+            android:includeFontPadding="false"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/card_inner_margin"
+            android:layout_marginBottom="@dimen/card_inner_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="1"
+            tools:text="75%"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

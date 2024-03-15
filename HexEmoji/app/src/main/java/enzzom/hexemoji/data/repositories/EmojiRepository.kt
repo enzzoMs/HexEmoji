@@ -3,6 +3,7 @@ package enzzom.hexemoji.data.repositories
 import enzzom.hexemoji.data.entities.Emoji
 import enzzom.hexemoji.data.source.EmojiDAO
 import enzzom.hexemoji.models.EmojiCategory
+import enzzom.hexemoji.utils.StringUtils
 import javax.inject.Inject
 
 class EmojiRepository @Inject constructor(
@@ -10,11 +11,15 @@ class EmojiRepository @Inject constructor(
 ) {
 
     suspend fun unlockEmoji(unicode: String) {
-        emojiDAO.unlockEmoji(unicode.lowercase())
+        emojiDAO.unlockEmoji(unicode)
     }
 
     suspend fun getAllEmojisByCategory(): Map<EmojiCategory, List<Emoji>> {
         return emojiDAO.getAllEmojisByCategory()
+    }
+
+    suspend fun getAllLockedEmojis(): List<Emoji> {
+        return emojiDAO.getAllLockedEmojis()
     }
 
     /**
@@ -24,18 +29,18 @@ class EmojiRepository @Inject constructor(
     suspend fun getRandomUnlockedEmojis(categories: List<EmojiCategory>, totalNumberOfEmojis: Int): List<String> {
         val numberOfEmojisPerCategory = if (categories.size > totalNumberOfEmojis) 1 else totalNumberOfEmojis / categories.size
 
-        val emojisUnicode = mutableListOf<String>()
+        val emojis = mutableListOf<String>()
 
         for (i in 0..categories.size) {
-            emojisUnicode.addAll(emojiDAO.getRandomUnlockedEmojis(categories[i], if (i == categories.lastIndex)
+            emojis.addAll(emojiDAO.getRandomUnlockedEmojis(categories[i], if (i == categories.lastIndex)
                 // If it is the last category, then add any remaining emojis
                 numberOfEmojisPerCategory + (totalNumberOfEmojis % categories.size)
             else
                 numberOfEmojisPerCategory
             ))
-            if (emojisUnicode.size >= totalNumberOfEmojis) break
+            if (emojis.size >= totalNumberOfEmojis) break
         }
 
-        return emojisUnicode
+        return emojis.map { StringUtils.unescapeString(it) }
     }
 }

@@ -155,6 +155,12 @@
         <item name="android:background">@android:color/transparent</item>
         <item name="tabIndicatorColor">?attr/colorAccent</item>
         <item name="tabIconTint">@color/selectable_icon_color</item>
+        <item name="tabTextColor">@color/selectable_text_color</item>
+        <item name="tabTextAppearance">@style/TextAppearance.HexEmoji.TabLayout</item>
+    </style>
+    
+    <style name="TextAppearance.HexEmoji.TabLayout" parent="TextAppearance.HexEmoji.Subtitle2">
+        <item name="fontFamily">@font/lexend_bold</item>
     </style>
 
     <!-- Text Field -->

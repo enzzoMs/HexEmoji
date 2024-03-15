@@ -99,6 +99,7 @@
 
     <!-- Statistics Page -->
     <dimen name="victories_chart_margin">@dimen/spacing_medium_3</dimen>
+    <dimen name="game_statistic_text_size">32sp</dimen>
 
     <!-- Emojis Page -->
     <dimen name="emojis_start_guideline">0.04</dimen>

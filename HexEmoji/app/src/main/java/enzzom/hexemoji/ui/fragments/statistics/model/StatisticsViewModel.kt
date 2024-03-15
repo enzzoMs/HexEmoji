@@ -11,7 +11,8 @@ import enzzom.hexemoji.data.entities.GameStatistic
 import enzzom.hexemoji.data.repositories.EmojiRepository
 import enzzom.hexemoji.data.repositories.PreferencesRepository
 import enzzom.hexemoji.data.repositories.StatisticsRepository
-import enzzom.hexemoji.models.EmojiCategory
+import enzzom.hexemoji.models.BoardSize
+import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.models.WeekDay
 import kotlinx.coroutines.launch
 import java.time.DayOfWeek
@@ -21,6 +22,7 @@ import java.util.Locale
 import javax.inject.Inject
 
 private const val MIN_LOADING_TIME_MS = 800L
+private const val BEE_EMOJI_UNICODE = "\\uD83D\\uDC1D"
 
 @HiltViewModel
 class StatisticsViewModel @Inject constructor(
@@ -32,12 +34,13 @@ class StatisticsViewModel @Inject constructor(
     private val _statisticsLoading = MutableLiveData(true)
     val statisticsLoading: LiveData<Boolean> = _statisticsLoading
 
-    private var gameStatisticsInCurrentWeek: List<GameStatistic>? = null
-
-    val dailyEmojiReward: String?
+    var dailyEmojiReward: String?
     private var dailyEmojiUnlocked: Boolean
 
     val currentWeekDate: String
+
+    private var allGameStatistics: List<GameStatistic>? = null
+    private var gameStatisticsInCurrentWeek: List<GameStatistic>? = null
 
     init {
         val previousEmojiDay = preferencesRepository.getInt(
@@ -47,7 +50,7 @@ class StatisticsViewModel @Inject constructor(
         dailyEmojiUnlocked = previousEmojiDay != -1 && previousEmojiDay == LocalDateTime.now().dayOfMonth
 
         preferencesRepository.getString(
-            PreferencesRepository.PREFERENCE_KEY_NEXT_DAILY_EMOJI, "\\uD83D\\uDC1D"
+            PreferencesRepository.PREFERENCE_KEY_NEXT_DAILY_EMOJI, BEE_EMOJI_UNICODE
         ).let {
             dailyEmojiReward = if (it.isNullOrBlank()) null else it
         }
@@ -74,12 +77,12 @@ class StatisticsViewModel @Inject constructor(
         )
 
         viewModelScope.launch {
-            // Delete old records from the database
-            statisticsRepository.deleteStatisticsBeforeDate(
-                weekStartDate.dayOfMonth, weekStartDate.monthValue
-            )
+            allGameStatistics = statisticsRepository.getAllGameStatistics()
 
-            gameStatisticsInCurrentWeek = statisticsRepository.getAllGameStatistics()
+            gameStatisticsInCurrentWeek = allGameStatistics!!.filter {
+                it.day >= weekStartDate.dayOfMonth && it.month >= weekStartDate.monthValue
+            }
+
             dataLoadingFinished = true
 
             if (minLoadingTimeFinished) {
@@ -90,14 +93,16 @@ class StatisticsViewModel @Inject constructor(
 
     fun unlockDailyEmoji() {
         viewModelScope.launch {
-            dailyEmojiReward?.let {
+            dailyEmojiReward?.let { dailyEmoji ->
                 dailyEmojiUnlocked = true
 
-                emojiRepository.unlockEmoji(it)
+                emojiRepository.unlockEmoji(dailyEmoji)
 
-                val nextEmoji = emojiRepository.getRandomUnlockedEmojis(
-                    EmojiCategory.entries, 1
-                ).getOrElse(0) { "" }
+                val nextEmoji = emojiRepository.getAllLockedEmojis().shuffled().find {
+                    it.unicode != dailyEmoji
+                }?.unicode ?: ""
+
+                dailyEmojiReward = nextEmoji
 
                 preferencesRepository.putString(
                     PreferencesRepository.PREFERENCE_KEY_NEXT_DAILY_EMOJI, nextEmoji
@@ -112,6 +117,70 @@ class StatisticsViewModel @Inject constructor(
     }
 
     fun dailyEmojiUnlocked(): Boolean = dailyEmojiUnlocked
+
+    fun getGameModeTotalGames(gameMode: GameMode): Int? {
+        return if (allGameStatistics.isNullOrEmpty()) {
+            0
+        } else {
+            allGameStatistics?.count {
+                it.gameMode == gameMode
+            }
+        }
+    }
+
+    fun getGameModeVictoryPercentage(gameMode: GameMode): Float? {
+        return if (allGameStatistics == null) {
+            null
+        } else {
+            val totalGames = getGameModeTotalGames(gameMode)!!
+
+            if (totalGames == 0) 0f else allGameStatistics!!.count {
+                it.victory && it.gameMode == gameMode
+            } / getGameModeTotalGames(gameMode)!!.toFloat()
+        }
+    }
+
+    fun getGeneralVictoryPercentage(): Float? {
+        return if (allGameStatistics == null) {
+            null
+        } else {
+            return allGameStatistics!!.count {
+                it.victory
+            } / allGameStatistics!!.size.toFloat()
+        }
+    }
+
+    fun getGameModePairsFound(gameMode: GameMode): Int? = allGameStatistics?.filter {
+        it.gameMode == gameMode
+    }?.fold(0) { sum, statistic ->
+        sum + statistic.numOfPairsFound
+    }
+
+    fun getGameModeFavoriteBoard(gameMode: GameMode): BoardSize? {
+        allGameStatistics?.filter { it.gameMode == gameMode }.let { gameModeStatistics ->
+            return if (gameModeStatistics.isNullOrEmpty()) {
+                null
+            } else {
+                gameModeStatistics.groupingBy {
+                    it.boardSize
+                }.eachCount().maxBy {
+                    it.value
+                }.key
+            }
+        }
+    }
+
+    fun getGeneralFavoriteBoard(): BoardSize? {
+        return if (allGameStatistics.isNullOrEmpty()) {
+            null
+        } else {
+            allGameStatistics?.groupingBy {
+                it.boardSize
+            }?.eachCount()?.maxBy {
+                it.value
+            }?.key
+        }
+    }
 
     fun getVictoriesCurrentInWeek(): Int? = gameStatisticsInCurrentWeek?.count { it.victory }
 

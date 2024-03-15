@@ -10,11 +10,15 @@ import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.Tab
 import dagger.hilt.android.AndroidEntryPoint
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.FragmentStatisticsBinding
+import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.models.WeekDay
 import enzzom.hexemoji.ui.custom.BarChartDataProvider
+import enzzom.hexemoji.ui.fragments.statistics.adapters.GameModeStatisticsAdapter
 import enzzom.hexemoji.ui.fragments.statistics.model.StatisticsViewModel
 import enzzom.hexemoji.utils.StringUtils
 
@@ -36,11 +40,25 @@ class StatisticsFragment : Fragment() {
 
             statisticsViewModel.statisticsLoading.observe(viewLifecycleOwner) { loading ->
                 victoriesStatisticsChart.setLoading(loading)
+
+                if (!loading) {
+                    gameModeStatisticsLoading.visibility = View.INVISIBLE
+
+                    val selectedIndex = statisticsGameModeTabs.selectedTabPosition
+
+                    (gameModeStatisticsList.adapter as GameModeStatisticsAdapter).replaceStatistics(
+                        if (selectedIndex == 0) {
+                            getAllStatisticsWithValues()
+                        } else {
+                            getStatisticsWithValues(GameMode.entries[selectedIndex - 1])
+                        }
+                    )
+                }
             }
 
             victoriesStatisticsChart.setDataProvider(object : BarChartDataProvider {
 
-                override val chartTitle: String =  resources.getString(
+                override val chartTitle: String = resources.getString(
                     R.string.weekly_victories_chart_title
                 )
 
@@ -93,8 +111,78 @@ class StatisticsFragment : Fragment() {
                     }
                 }.start()
             }
+
+            statisticsGameModeTabs.addTab(
+                statisticsGameModeTabs.newTab().apply {
+                    text = resources.getString(R.string.statistics_game_modes_all)
+                }
+            )
+
+            GameMode.entries.forEach { gameMode ->
+                statisticsGameModeTabs.newTab().let { tab ->
+                    tab.text = gameMode.getTitle(resources)
+                    statisticsGameModeTabs.addTab(tab)
+                }
+            }
+
+            statisticsGameModeTabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: Tab?) {
+                    if (tab != null && statisticsViewModel.statisticsLoading.value == false) {
+                        val selectedIndex = tab.position
+
+                        (gameModeStatisticsList.adapter as GameModeStatisticsAdapter).replaceStatistics(
+                            if (selectedIndex == 0) {
+                                getAllStatisticsWithValues()
+                            } else {
+                                getStatisticsWithValues(GameMode.entries[selectedIndex - 1])
+                            }
+                        )
+                    }
+                }
+
+                override fun onTabUnselected(tab: Tab?) {}
+                override fun onTabReselected(tab: Tab?) {}
+            })
+
+            gameModeStatisticsList.adapter = GameModeStatisticsAdapter()
         }
 
         return binding.root
+    }
+
+    private fun getStatisticsWithValues(gameMode: GameMode): Map<String, String> {
+        return mapOf(
+            resources.getString(R.string.game_mode_statistic_total_games)
+                    to statisticsViewModel.getGameModeTotalGames(gameMode).toString(),
+
+            resources.getString(R.string.game_mode_statistic_victory_percentage)
+                to (statisticsViewModel.getGameModeVictoryPercentage(gameMode)?.times(100)?.toInt()).toString() + "%",
+
+            resources.getString(R.string.game_mode_statistic_pairs_found)
+                    to statisticsViewModel.getGameModePairsFound(gameMode).toString(),
+
+            resources.getString(R.string.game_mode_statistic_favorite_board)
+                    to (statisticsViewModel.getGameModeFavoriteBoard(gameMode)?.getLabel() ?: "--").toString()
+        )
+    }
+
+    private fun getAllStatisticsWithValues(): Map<String, String> {
+        return mapOf(
+            resources.getString(R.string.game_mode_statistic_total_games)
+                    to GameMode.entries.fold(0) { sum, gameMode ->
+                        sum + (statisticsViewModel.getGameModeTotalGames(gameMode) ?: 0)
+                    }.toString(),
+
+            resources.getString(R.string.game_mode_statistic_victory_percentage)
+                    to (statisticsViewModel.getGeneralVictoryPercentage()?.times(100)?.toInt()).toString() + "%",
+
+            resources.getString(R.string.game_mode_statistic_pairs_found)
+                    to GameMode.entries.fold(0) { sum, gameMode ->
+                        sum + (statisticsViewModel.getGameModePairsFound(gameMode) ?: 0)
+                    }.toString(),
+
+            resources.getString(R.string.game_mode_statistic_favorite_board)
+                    to (statisticsViewModel.getGeneralFavoriteBoard()?.getLabel() ?: "--").toString()
+        )
     }
 }

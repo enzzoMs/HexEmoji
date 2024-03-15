@@ -12,10 +12,6 @@ class StatisticsRepository @Inject constructor(
         statisticsDAO.insertGameStatistic(gameStatistic)
     }
 
-    suspend fun deleteStatisticsBeforeDate(day: Int, month: Int) {
-        statisticsDAO.deleteStatisticsBeforeDate(day, month)
-    }
-
     suspend fun getAllGameStatistics(): List<GameStatistic> {
         return statisticsDAO.getAllGameStatistics()
     }

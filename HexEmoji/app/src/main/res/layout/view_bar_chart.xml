@@ -76,8 +76,7 @@
                 app:layout_constraintTop_toBottomOf="@id/chart_title"
                 app:layout_constraintEnd_toEndOf="@id/bars_layout"
                 app:layout_constraintStart_toStartOf="@id/bars_layout"
-                app:layout_constraintBottom_toBottomOf="@id/bars_layout"
-                tools:visibility="invisible" />
+                app:layout_constraintBottom_toBottomOf="@id/bars_layout" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/bars_labels_divider"
