@@ -7,6 +7,9 @@
     <!-- Play Screens = GameModes, CategorySelection, BoardSelection -->
     <dimen name="play_screens_button_start_guideline_percentage">0.04</dimen>
 
+    <!-- Statistics Page -->
+    <dimen name="victories_chart_margin">@dimen/spacing_small_1</dimen>
+
     <!-- Dialogs -->
     <dimen name="game_tutorial_image_height">180dp</dimen>
     <dimen name="challenge_completed_emoji_size">100dp</dimen>

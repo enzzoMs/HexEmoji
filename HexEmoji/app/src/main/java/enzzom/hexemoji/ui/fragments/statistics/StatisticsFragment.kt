@@ -42,8 +42,6 @@ class StatisticsFragment : Fragment() {
                 victoriesStatisticsChart.setLoading(loading)
 
                 if (!loading) {
-                    gameModeStatisticsLoading.visibility = View.INVISIBLE
-
                     val selectedIndex = statisticsGameModeTabs.selectedTabPosition
 
                     (gameModeStatisticsList.adapter as GameModeStatisticsAdapter).replaceStatistics(
@@ -53,6 +51,24 @@ class StatisticsFragment : Fragment() {
                             getStatisticsWithValues(GameMode.entries[selectedIndex - 1])
                         }
                     )
+
+                    dailyEmojiLoading.visibility = View.GONE
+                    dailyEmoji.visibility = View.VISIBLE
+
+                    statisticsViewModel.dailyEmojiReward.let { emojiUnicode ->
+                        if (emojiUnicode == null) {
+                            dailyEmojiCard.visibility = View.GONE
+
+                        } else if (statisticsViewModel.dailyEmojiUnlocked()) {
+                            dailyEmoji.visibility = View.GONE
+                            dailyEmojiMessage.text = resources.getString(R.string.daily_emoji_message_already_unlocked)
+
+                        } else {
+                            dailyEmoji.text = StringUtils.unescapeString(emojiUnicode)
+                            dailyEmojiMessage.text = resources.getString(R.string.daily_emoji_message)
+                            dailyEmojiCard.isClickable = true
+                        }
+                    }
                 }
             }
 
@@ -75,25 +91,8 @@ class StatisticsFragment : Fragment() {
                 }
             })
 
-            statisticsViewModel.dailyEmojiReward.let { emojiUnicode ->
-                if (emojiUnicode == null) {
-                    dailyEmojiCard.visibility = View.GONE
-
-                } else if (statisticsViewModel.dailyEmojiUnlocked()) {
-                    dailyEmojiCard.isClickable = false
-                    dailyEmoji.visibility = View.GONE
-                    dailyEmojiMessage.text = resources.getString(R.string.daily_emoji_message_already_unlocked)
-
-                } else {
-                    dailyEmoji.text = StringUtils.unescapeString(emojiUnicode)
-                    dailyEmojiMessage.text = resources.getString(R.string.daily_emoji_message)
-                }
-            }
-
             dailyEmojiCard.setOnClickListener {
                 statisticsViewModel.unlockDailyEmoji()
-
-                dailyEmojiCard.isClickable = false
 
                 ObjectAnimator.ofArgb(
                     dailyEmojiDivider,
@@ -111,6 +110,8 @@ class StatisticsFragment : Fragment() {
                     }
                 }.start()
             }
+
+            dailyEmojiCard.isClickable = false
 
             statisticsGameModeTabs.addTab(
                 statisticsGameModeTabs.newTab().apply {

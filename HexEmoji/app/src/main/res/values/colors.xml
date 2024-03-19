@@ -37,6 +37,9 @@
     <color name="side_navigation_item_color">@color/gray</color>
     <color name="side_navigation_selected_back_color">@color/silver_light</color>
 
+    <!-- Statistics Page -->
+    <color name="statistics_chart_section_background">@color/platinum</color>
+
     <!-- Emojis Page -->
     <color name="collection_details_section_background">@color/platinum</color>
 

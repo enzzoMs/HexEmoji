@@ -7,31 +7,54 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.statistics.StatisticsFragment">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/statistics_start_guideline"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintGuide_percent="@dimen/statistics_start_guideline"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/statistics_end_guideline"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintGuide_percent="@dimen/statistics_end_guideline"/>
+
     <View
-        android:background="@color/statistics_chart_section_background"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/statistics_section_guideline"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:background="?attr/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/chart_background_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <enzzom.hexemoji.ui.custom.BarChartView
         android:id="@+id/victories_statistics_chart"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="@dimen/victories_chart_margin"
-        app:layout_constraintEnd_toEndOf="@id/statistics_section_guideline"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="@dimen/victories_chart_margin"
+        android:layout_marginTop="@dimen/victories_chart_margin"
+        android:layout_marginBottom="@dimen/spacing_medium_3"
+        app:layout_constraintEnd_toStartOf="@id/statistics_end_guideline"
+        app:layout_constraintStart_toEndOf="@id/statistics_start_guideline"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@id/chart_guideline"/>
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/statistics_section_guideline"
-        android:orientation="vertical"
+        android:id="@+id/chart_guideline"
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_percent="0.5" />
+
+    <Space
+        android:id="@+id/chart_background_guideline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/victories_statistics_chart"
+        app:layout_constraintBottom_toBottomOf="@id/victories_statistics_chart"/>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/daily_emoji_card"
@@ -41,10 +64,10 @@
         style="@style/Widget.HexEmoji.CardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/screen_outer_margin"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/statistics_section_guideline"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constrainedWidth="true"
+        app:layout_constraintStart_toStartOf="@id/statistics_start_guideline"
+        app:layout_constraintEnd_toEndOf="@id/statistics_end_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/chart_guideline">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:orientation="horizontal"
@@ -63,16 +86,18 @@
             <TextView
                 android:id="@+id/daily_emoji"
                 style="@style/Widget.HexEmoji.TextView.Emoji"
+                android:visibility="invisible"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_marginEnd="@dimen/card_inner_margin"
-                android:layout_margin="@dimen/card_inner_margin"
+                android:layout_marginStart="@dimen/card_inner_margin"
+                android:layout_marginVertical="@dimen/card_inner_margin"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/daily_emoji_divider"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/daily_emoji_message"
                 app:layout_constraintHorizontal_chainStyle="packed"
-                tools:text="🐝"/>
+                tools:text="🐝"
+                tools:visibility="visible"/>
 
             <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:id="@+id/daily_emoji_loading"
@@ -93,8 +118,7 @@
                 android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/card_inner_margin"
-                android:layout_marginEnd="@dimen/card_inner_margin"
+                android:layout_margin="@dimen/card_inner_margin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/daily_emoji_divider"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -111,9 +135,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/screen_contents_margin"
-        android:layout_marginHorizontal="@dimen/screen_outer_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/statistics_section_guideline"
+        app:layout_constraintEnd_toStartOf="@id/statistics_end_guideline"
+        app:layout_constraintStart_toEndOf="@id/statistics_start_guideline"
         app:layout_constraintTop_toBottomOf="@id/daily_emoji_card"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -126,10 +149,9 @@
         android:paddingTop="@dimen/screen_contents_margin"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="@dimen/screen_outer_margin"
         app:layout_constraintTop_toBottomOf="@id/statistics_game_mode_tabs"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/statistics_section_guideline"
+        app:layout_constraintEnd_toStartOf="@id/statistics_end_guideline"
+        app:layout_constraintStart_toEndOf="@id/statistics_start_guideline"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_card_game_mode_statistic"/>
 

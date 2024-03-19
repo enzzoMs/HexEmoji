@@ -34,8 +34,8 @@ class StatisticsViewModel @Inject constructor(
     private val _statisticsLoading = MutableLiveData(true)
     val statisticsLoading: LiveData<Boolean> = _statisticsLoading
 
-    var dailyEmojiReward: String?
-    private var dailyEmojiUnlocked: Boolean
+    var dailyEmojiReward: String? = null
+    private var dailyEmojiUnlocked = false
 
     val currentWeekDate: String
 
@@ -43,18 +43,6 @@ class StatisticsViewModel @Inject constructor(
     private var gameStatisticsInCurrentWeek: List<GameStatistic>? = null
 
     init {
-        val previousEmojiDay = preferencesRepository.getInt(
-            PreferencesRepository.PREFERENCE_KEY_PREVIOUS_DAILY_EMOJI_DAY, -1
-        )
-
-        dailyEmojiUnlocked = previousEmojiDay != -1 && previousEmojiDay == LocalDateTime.now().dayOfMonth
-
-        preferencesRepository.getString(
-            PreferencesRepository.PREFERENCE_KEY_NEXT_DAILY_EMOJI, BEE_EMOJI_UNICODE
-        ).let {
-            dailyEmojiReward = if (it.isNullOrBlank()) null else it
-        }
-
         currentWeekDate = getWeekDate()
 
         var minLoadingTimeFinished = false
@@ -77,6 +65,18 @@ class StatisticsViewModel @Inject constructor(
         )
 
         viewModelScope.launch {
+            val previousEmojiDay = preferencesRepository.getInt(
+                PreferencesRepository.PREFERENCE_KEY_PREVIOUS_DAILY_EMOJI_DAY, -1
+            )
+
+            dailyEmojiUnlocked = previousEmojiDay != -1 && previousEmojiDay == LocalDateTime.now().dayOfMonth
+
+            preferencesRepository.getString(
+                PreferencesRepository.PREFERENCE_KEY_NEXT_DAILY_EMOJI, BEE_EMOJI_UNICODE
+            ).let {
+                dailyEmojiReward = if (it.isNullOrBlank()) null else it
+            }
+
             allGameStatistics = statisticsRepository.getAllGameStatistics()
 
             gameStatisticsInCurrentWeek = allGameStatistics!!.filter {

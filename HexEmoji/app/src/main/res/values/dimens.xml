@@ -98,8 +98,11 @@
     <dimen name="board_size_card_outer_margin">@dimen/spacing_small_1</dimen>
 
     <!-- Statistics Page -->
+    <dimen name="statistics_start_guideline">0.04</dimen>
+    <dimen name="statistics_end_guideline">0.96</dimen>
     <dimen name="victories_chart_margin">@dimen/spacing_medium_3</dimen>
     <dimen name="game_statistic_text_size">32sp</dimen>
+    <dimen name="daily_emoji_size">35dp</dimen>
 
     <!-- Emojis Page -->
     <dimen name="emojis_start_guideline">0.04</dimen>
