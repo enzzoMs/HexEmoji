@@ -9,6 +9,9 @@
     <!-- Custom Views -->
     <dimen name="bar_chart_bar_horizontal_margin">@dimen/spacing_large_1</dimen>
 
+    <dimen name="showcase_outer_margin">@dimen/spacing_huge_1</dimen>
+    <dimen name="showcase_image_padding">@dimen/spacing_huge_1</dimen>
+
     <!-- Main Screen -->
     <dimen name="navigation_header_logo_horizontal_margin">@dimen/spacing_medium_1</dimen>
     <dimen name="navigation_header_logo_vertical_margin">@dimen/spacing_medium_2</dimen>

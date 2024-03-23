@@ -21,8 +21,8 @@ import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.DialogExitGameBinding
 import enzzom.hexemoji.databinding.FragmentGameBinding
 import enzzom.hexemoji.models.GameMode
-import enzzom.hexemoji.ui.custom.GameTutorialDataProvider
 import enzzom.hexemoji.ui.custom.GameTutorialView
+import enzzom.hexemoji.ui.custom.PagedViewDataProvider
 import enzzom.hexemoji.ui.fragments.game.gamemodes.AgainstTheClockFragment
 import enzzom.hexemoji.ui.fragments.game.gamemodes.ZenFragment
 
@@ -30,7 +30,7 @@ import enzzom.hexemoji.ui.fragments.game.gamemodes.ZenFragment
 class GameFragment : Fragment() {
 
     private val args: GameFragmentArgs by navArgs()
-    private var gameTutorialDataProvider: GameTutorialDataProvider? = null
+    private var gameTutorialDataProvider: PagedViewDataProvider? = null
     private var gameModeThemeId: Int = 0
 
     override fun onCreateView(
@@ -100,7 +100,7 @@ class GameFragment : Fragment() {
         return binding.root
     }
 
-    fun setGameTutorialDataProvider(dataProvider: GameTutorialDataProvider) {
+    fun setGameTutorialDataProvider(dataProvider: PagedViewDataProvider) {
         gameTutorialDataProvider = dataProvider
     }
 

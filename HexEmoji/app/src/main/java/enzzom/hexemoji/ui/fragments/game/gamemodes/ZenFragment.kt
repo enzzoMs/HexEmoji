@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.FragmentZenBinding
-import enzzom.hexemoji.ui.custom.GameTutorialDataProvider
+import enzzom.hexemoji.ui.custom.PagedViewDataProvider
 import enzzom.hexemoji.ui.fragments.game.BaseGameModeFragment
 import enzzom.hexemoji.ui.fragments.game.gamemodes.model.ZenViewModel
 
@@ -27,7 +27,7 @@ class ZenFragment : BaseGameModeFragment() {
 
     override fun getGameModeThemeId(): Int = R.style.ThemeOverlay_HexEmoji_GameMode_Zen
 
-    override fun getTutorialDataProvider(): GameTutorialDataProvider {
+    override fun getTutorialDataProvider(): PagedViewDataProvider {
         val tutorialDescriptions = resources.getStringArray(R.array.game_tutorial_descriptions_zen)
 
         val imagesTypedArray = resources.obtainTypedArray(R.array.game_tutorial_images_zen)
@@ -38,7 +38,9 @@ class ZenFragment : BaseGameModeFragment() {
 
         imagesTypedArray.recycle()
 
-        return object : GameTutorialDataProvider {
+        return object : PagedViewDataProvider {
+            override fun getTitle(position: Int): String? = null
+
             override fun getDescription(position: Int): String {
                 return tutorialDescriptions[position]
             }

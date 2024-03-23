@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
@@ -12,6 +13,15 @@
         <action
             android:id="@+id/action_entry_screen_to_main_screen"
             app:destination="@id/main_fragment" />
+        <action
+            android:id="@+id/action_entry_screen_to_instructions"
+            app:destination="@id/instructions_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/instructions_fragment"
+        android:name="enzzom.hexemoji.ui.fragments.entry.InstructionsFragment"
+        tools:layout="@layout/fragment_instructions">
     </fragment>
 
     <fragment

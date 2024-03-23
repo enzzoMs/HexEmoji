@@ -23,7 +23,7 @@ import enzzom.hexemoji.ui.custom.BoardTutorialView
 import enzzom.hexemoji.ui.custom.CountDownView
 import enzzom.hexemoji.ui.custom.GameBoardAdapter
 import enzzom.hexemoji.ui.custom.GameBoardView
-import enzzom.hexemoji.ui.custom.GameTutorialDataProvider
+import enzzom.hexemoji.ui.custom.PagedViewDataProvider
 import enzzom.hexemoji.ui.fragments.game.BaseGameViewModel.FlipResult
 
 private const val MATCH_FAILED_CARD_FLIP_DELAY = 150L
@@ -239,7 +239,7 @@ abstract class BaseGameModeFragment : Fragment() {
 
     protected abstract fun getGameModeThemeId(): Int
 
-    protected abstract fun getTutorialDataProvider(): GameTutorialDataProvider
+    protected abstract fun getTutorialDataProvider(): PagedViewDataProvider
 
     data class GameViews(
         val layoutRoot: View,

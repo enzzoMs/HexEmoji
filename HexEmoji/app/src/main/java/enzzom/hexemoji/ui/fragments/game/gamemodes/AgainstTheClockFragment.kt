@@ -13,7 +13,7 @@ import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.DialogGamePausedBinding
 import enzzom.hexemoji.databinding.FragmentAgainstTheClockBinding
 import enzzom.hexemoji.models.GameStatus
-import enzzom.hexemoji.ui.custom.GameTutorialDataProvider
+import enzzom.hexemoji.ui.custom.PagedViewDataProvider
 import enzzom.hexemoji.ui.fragments.game.BaseGameModeFragment
 import enzzom.hexemoji.ui.fragments.game.gamemodes.model.AgainstTheClockViewModel
 
@@ -91,7 +91,7 @@ class AgainstTheClockFragment : BaseGameModeFragment() {
     override fun getGameModeThemeId(): Int = R.style.ThemeOverlay_HexEmoji_GameMode_AgainstTheClock
 
 
-    override fun getTutorialDataProvider(): GameTutorialDataProvider {
+    override fun getTutorialDataProvider(): PagedViewDataProvider {
         val tutorialDescriptions = resources.getStringArray(R.array.game_tutorial_descriptions_against_the_clock)
 
         val imagesTypedArray = resources.obtainTypedArray(R.array.game_tutorial_images_against_the_clock)
@@ -102,7 +102,9 @@ class AgainstTheClockFragment : BaseGameModeFragment() {
 
         imagesTypedArray.recycle()
 
-        return object : GameTutorialDataProvider {
+        return object : PagedViewDataProvider {
+            override fun getTitle(position: Int): String? = null
+
             override fun getDescription(position: Int): String {
                 return tutorialDescriptions.getOrElse(position) { tutorialDescriptions.last() }
             }

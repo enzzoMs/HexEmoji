@@ -33,6 +33,9 @@
     <!-- Splash Screen -->
     <color name="splash_screen_background_color">@color/ic_launcher_background</color>
 
+    <!-- Instructions Screen -->
+    <color name="instructions_screen_status_bar_color">@color/gray</color>
+
     <!-- Main Screens = Game Modes, Statistics and Emojis Page -->
     <color name="side_navigation_item_color">@color/gray</color>
     <color name="side_navigation_selected_back_color">@color/silver_light</color>

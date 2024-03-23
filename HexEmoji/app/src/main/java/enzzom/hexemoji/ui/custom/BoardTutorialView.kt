@@ -95,7 +95,7 @@ class BoardTutorialView(context: Context, attrs: AttributeSet? = null) : Constra
             val layoutParams = LinearLayout.LayoutParams(indicatorSize, indicatorSize)
 
             layoutParams.marginEnd = if (i < NUM_OF_TUTORIAL_PAGES - 1) {
-                resources.getDimensionPixelSize(R.dimen.tutorial_page_indicator_margin)
+                resources.getDimensionPixelSize(R.dimen.page_indicator_margin)
             } else {
                 0
             }

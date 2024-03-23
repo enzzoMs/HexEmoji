@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <ImageView
+        android:id="@+id/showcase_image"
+        android:importantForAccessibility="no"
+        android:padding="@dimen/showcase_image_padding"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/showcase_outer_margin"
+        app:layout_constraintEnd_toStartOf="@id/showcase_image_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:src="@drawable/app_showcase_play"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/showcase_image_guideline"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <View
+        android:background="?attr/colorSurface"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/showcase_image_guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/showcase_title"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_headline6"
+        android:fontFamily="@font/lexend_bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/showcase_outer_margin"
+        android:layout_marginVertical="@dimen/showcase_contents_margin"
+        app:layout_constraintBottom_toTopOf="@id/showcase_description"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/showcase_image_guideline"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="@string/app_showcase_title_play"/>
+
+    <TextView
+        android:id="@+id/showcase_description"
+        android:fontFamily="@font/lexend_medium"
+        android:textSize="@dimen/text_size_subtitle1"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/showcase_outer_margin"
+        android:layout_marginVertical="@dimen/showcase_contents_margin"
+        app:layout_constraintTop_toBottomOf="@id/showcase_title"
+        app:layout_constraintBottom_toTopOf="@id/showcase_button_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/showcase_image_guideline"
+        tools:text="@string/app_showcase_descriptions_play"/>
+
+    <ImageButton
+        android:id="@+id/showcase_button_back"
+        android:src="@drawable/ic_arrow_back"
+        android:contentDescription="@string/button_content_description_previous_page"
+        style="@style/Widget.HexEmoji.IconButton"
+        android:backgroundTint="?attr/colorSurface"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/showcase_outer_margin"
+        app:layout_constraintTop_toTopOf="@id/showcase_button_next"
+        app:layout_constraintStart_toEndOf="@id/showcase_image_guideline"
+        tools:visibility="visible" />
+
+    <ImageButton
+        android:id="@+id/showcase_button_next"
+        android:src="@drawable/ic_arrow_next"
+        android:contentDescription="@string/button_content_description_next_button"
+        style="@style/Widget.HexEmoji.IconButton"
+        android:backgroundTint="?attr/colorSurface"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/showcase_outer_margin"
+        app:layout_constraintTop_toBottomOf="@id/showcase_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/showcase_page_indicator_layout"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/showcase_button_next"
+        app:layout_constraintBottom_toBottomOf="@id/showcase_button_next"
+        app:layout_constraintStart_toEndOf="@id/showcase_image_guideline"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</merge>

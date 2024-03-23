@@ -38,13 +38,14 @@
     <dimen name="challenge_completed_emoji_size">80dp</dimen>
 
     <!-- Custom views -->
+    <dimen name="page_indicator_margin">@dimen/spacing_small_2</dimen>
+
     <dimen name="game_tutorial_image_height">140dp</dimen>
     <dimen name="game_tutorial_image_margin">@dimen/spacing_medium_1</dimen>
 
     <dimen name="board_tutorial_image_height">80dp</dimen>
 
     <dimen name="tutorial_page_indicator_size">12dp</dimen>
-    <dimen name="tutorial_page_indicator_margin">@dimen/spacing_small_2</dimen>
 
     <dimen name="emoji_card_size">100dp</dimen>
     <dimen name="emoji_card_inner_margin">@dimen/spacing_medium_2</dimen>
@@ -56,6 +57,10 @@
     <dimen name="bar_chart_outer_margin">@dimen/spacing_medium_2</dimen>
     <dimen name="bar_chart_chart_margin">@dimen/spacing_small_1</dimen>
     <dimen name="bar_chart_bar_horizontal_margin">@dimen/spacing_small_2</dimen>
+
+    <dimen name="showcase_outer_margin">@dimen/spacing_medium_3</dimen>
+    <dimen name="showcase_contents_margin">@dimen/spacing_large_1</dimen>
+    <dimen name="showcase_image_padding">@dimen/spacing_large_2</dimen>
 
     <!-- No Results Indicators -->
     <dimen name="no_results_icon_size">90dp</dimen>

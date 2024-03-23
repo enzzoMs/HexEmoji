@@ -32,7 +32,7 @@ private const val CLIP_DRAWABLE_LEVEL_FACTOR = 10_000
  */
 class BarChartView(context: Context, attrs: AttributeSet? = null) : ConstraintLayout(context, attrs) {
 
-    private val binding: ViewBarChartBinding = ViewBarChartBinding.inflate(LayoutInflater.from(context), this)
+    private val binding = ViewBarChartBinding.inflate(LayoutInflater.from(context), this)
     private var chartDataProvider: BarChartDataProvider? = null
 
     private var loading = false

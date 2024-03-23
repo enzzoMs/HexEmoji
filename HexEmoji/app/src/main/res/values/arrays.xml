@@ -149,4 +149,11 @@
         <item>@drawable/game_tutorial_pair_example_timed</item>
     </integer-array>
 
+    <!-- App Showcase -->
+    <integer-array name="app_showcase_images">
+        <item>@drawable/app_showcase_play</item>
+        <item>@drawable/app_showcase_statistics</item>
+        <item>@drawable/app_showcase_emojis</item>
+    </integer-array>
+
 </resources>
