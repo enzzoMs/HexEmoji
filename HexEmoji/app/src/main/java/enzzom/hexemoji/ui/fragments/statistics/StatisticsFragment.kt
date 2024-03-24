@@ -18,6 +18,7 @@ import enzzom.hexemoji.databinding.FragmentStatisticsBinding
 import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.models.WeekDay
 import enzzom.hexemoji.ui.custom.BarChartDataProvider
+import enzzom.hexemoji.ui.fragments.main.MainFragment
 import enzzom.hexemoji.ui.fragments.statistics.adapters.GameModeStatisticsAdapter
 import enzzom.hexemoji.ui.fragments.statistics.model.StatisticsViewModel
 import enzzom.hexemoji.utils.StringUtils
@@ -33,6 +34,10 @@ class StatisticsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        (parentFragment?.parentFragment as MainFragment).setToolbarTitle(
+            resources.getString(R.string.page_title_page_statistics)
+        )
+
         val binding = FragmentStatisticsBinding.inflate(inflater, container, false)
 
         binding.apply {
@@ -84,7 +89,7 @@ class StatisticsFragment : Fragment() {
                     R.array.week_days_abbreviation
                 ).toList()
 
-                override fun getMaxValue(): Int = statisticsViewModel.getVictoriesCurrentInWeek() ?: 0
+                override fun getMaxValue(): Int = statisticsViewModel.getVictoriesInCurrentWeek() ?: 0
 
                 override fun getBarValueForPosition(position: Int): Int {
                     return statisticsViewModel.getVictoriesInWeekDay(WeekDay.entries[position]) ?: 0

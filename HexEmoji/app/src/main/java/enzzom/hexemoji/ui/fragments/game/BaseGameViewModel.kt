@@ -18,6 +18,8 @@ import enzzom.hexemoji.models.WeekDay
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 
+private const val MIN_GAMES_UNTIL_REVIEW = 4
+
 /**
  * TODO
  */
@@ -32,7 +34,9 @@ abstract class BaseGameViewModel(
 ) : ViewModel() {
 
     private var gameStatus: GameStatus = GameStatus.STARTING
-    private var executeEntryAnimation: Boolean = true
+
+    private var executeEntryAnimation = true
+    private var showAppReviewDialog = false
 
     private var allChallenges: List<Challenge> = listOf()
 
@@ -56,6 +60,8 @@ abstract class BaseGameViewModel(
             emojiCards = gameEmojis.mapIndexed { index, emoji -> EmojiCard(emoji, index) }
 
             allChallenges = challengesRepository.getAllChallenges()
+
+            showAppReviewDialog = statisticsRepository.countAllGameStatistics() == MIN_GAMES_UNTIL_REVIEW
         }
     }
 
@@ -108,6 +114,8 @@ abstract class BaseGameViewModel(
     fun getCardForPosition(position: Int): EmojiCard? = emojiCards?.get(position)
 
     fun isCardFlipped(position: Int): Boolean = emojiCards?.get(position)?.flipped ?: false
+
+    fun shouldShowAppReview(): Boolean = showAppReviewDialog
 
     fun shouldExecuteEntryAnimation(): Boolean = executeEntryAnimation
 

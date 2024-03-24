@@ -23,6 +23,10 @@ class GameModesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        (parentFragment?.parentFragment as MainFragment).setToolbarTitle(
+            resources.getString(R.string.page_title_page_play)
+        )
+
         val binding = FragmentGameModesBinding.inflate(inflater, container, false)
 
         playViewModel.clearGameModeSelection()

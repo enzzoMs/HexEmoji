@@ -11,8 +11,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.animation.doOnEnd
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.play.core.review.ReviewManagerFactory
 import dagger.hilt.android.AndroidEntryPoint
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.DialogGameEndedBinding
@@ -37,6 +39,7 @@ abstract class BaseGameModeFragment : Fragment() {
 
     protected abstract val gameViewModel: BaseGameViewModel
     private lateinit var gameBoard: GameBoardView
+    private lateinit var entryCountdownTimer: CountDownView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +50,7 @@ abstract class BaseGameModeFragment : Fragment() {
 
         val (layoutRoot, gameBoardView, countdownView) = initializeViews(inflater, container)
         gameBoard = gameBoardView
+        entryCountdownTimer = countdownView
 
         val gameStatus = gameViewModel.getGameStatus()
 
@@ -122,20 +126,27 @@ abstract class BaseGameModeFragment : Fragment() {
         }
 
         countdownView.addOnCountdownFinished {
-            gameViewModel.entryAnimationFinished()
+            if (!countdownView.isVisible) {
+                gameViewModel.entryAnimationFinished()
 
-            gameBoardView.apply {
-                enableBoardMovement(true)
-                enableCardInteraction(true)
-            }
+                gameBoardView.apply {
+                    enableBoardMovement(true)
+                    enableCardInteraction(true)
+                }
 
-            if (gameBoardView.isBoardLargerThanViewport() && gameViewModel.shouldShowBoardTutorial()) {
-                showBoardTutorialDialog()
-                gameViewModel.boardTutorialShown()
+                if (gameBoardView.isBoardLargerThanViewport() && gameViewModel.shouldShowBoardTutorial()) {
+                    showBoardTutorialDialog()
+                    gameViewModel.boardTutorialShown()
+                }
             }
         }
 
         return layoutRoot
+    }
+
+    override fun onPause() {
+        entryCountdownTimer.reset()
+        super.onPause()
     }
 
     protected fun executeBoardExitAnimation() {
@@ -150,7 +161,13 @@ abstract class BaseGameModeFragment : Fragment() {
             PropertyValuesHolder.ofFloat("scaleY", 0f)
         ).apply {
             duration = BOARD_EXIT_ANIMATION_DURATION
-            doOnEnd { showEndgameDialog() }
+            doOnEnd {
+                showEndgameDialog()
+
+                if (gameViewModel.shouldShowAppReview()) {
+                    showAppReviewDialog()
+                }
+            }
         }.start()
     }
 
@@ -161,6 +178,16 @@ abstract class BaseGameModeFragment : Fragment() {
             setContentView(boardTutorialView)
             window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             show()
+        }
+    }
+
+    private fun showAppReviewDialog() {
+        val reviewManager = ReviewManagerFactory.create(requireContext())
+
+        reviewManager.requestReviewFlow().addOnCompleteListener { task ->
+            if (task.isSuccessful && isAdded) {
+               reviewManager.launchReviewFlow(requireActivity(), task.result)
+            }
         }
     }
 
@@ -225,13 +252,15 @@ abstract class BaseGameModeFragment : Fragment() {
 
     private fun replayGame() {
         arguments?.let {
-            findNavController().navigate(
-                GameFragmentDirections.actionReplayGameScreen(
-                    GameMode.valueOf(it.getString(GAME_MODE_ARG_KEY)!!),
-                    BoardSize.valueOf(it.getString(BOARD_SIZE_ARG_KEY)!!),
-                    it.getStringArray(SELECTED_CATEGORIES_ARG_KEY)!!
+            if (isAdded) {
+                findNavController().navigate(
+                    GameFragmentDirections.actionReplayGameScreen(
+                        GameMode.valueOf(it.getString(GAME_MODE_ARG_KEY)!!),
+                        BoardSize.valueOf(it.getString(BOARD_SIZE_ARG_KEY)!!),
+                        it.getStringArray(SELECTED_CATEGORIES_ARG_KEY)!!
+                    )
                 )
-            )
+            }
         }
     }
 

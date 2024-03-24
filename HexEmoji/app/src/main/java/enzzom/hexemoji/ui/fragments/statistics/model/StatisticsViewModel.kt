@@ -182,7 +182,7 @@ class StatisticsViewModel @Inject constructor(
         }
     }
 
-    fun getVictoriesCurrentInWeek(): Int? = gameStatisticsInCurrentWeek?.count { it.victory }
+    fun getVictoriesInCurrentWeek(): Int? = gameStatisticsInCurrentWeek?.count { it.victory }
 
     fun getVictoriesInWeekDay(weekDay: WeekDay): Int? = gameStatisticsInCurrentWeek?.count {
         it.weekDay == weekDay && it.victory

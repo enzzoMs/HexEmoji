@@ -17,4 +17,7 @@ interface StatisticsDAO {
 
     @Query("SELECT * FROM game_statistics")
     suspend fun getAllGameStatistics(): List<GameStatistic>
+
+    @Query("SELECT COUNT() FROM game_statistics")
+    suspend fun countAllGameStatistics(): Int
 }

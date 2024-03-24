@@ -62,7 +62,7 @@ class AgainstTheClockViewModel @Inject constructor(
 
     init {
         val startTimeSeconds = when (boardSize) {
-            BOARD_2_BY_4 -> 1;    BOARD_3_BY_4 -> 30;   BOARD_4_BY_4 -> 45
+            BOARD_2_BY_4 -> 15;    BOARD_3_BY_4 -> 30;   BOARD_4_BY_4 -> 45
             BOARD_4_BY_7 -> 90;   BOARD_4_BY_8 -> 100;  BOARD_5_BY_8 -> 160
             BOARD_7_BY_9 -> 290;  BOARD_8_BY_7 -> 270;  BOARD_8_BY_8 -> 320
             BOARD_6_BY_8 -> 210;  BOARD_9_BY_8 -> 420;  BOARD_9_BY_9 -> 460

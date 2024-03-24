@@ -17,10 +17,6 @@ class ChallengesRepository @Inject constructor(
         return challengesDAO.getAllChallengesByCategory()
     }
 
-    suspend fun deleteChallenges(challenges: List<Challenge>) {
-        challengesDAO.deleteChallenges(challenges)
-    }
-
     suspend fun incrementChallengesCompletion(challenges: List<Challenge>) {
         challengesDAO.incrementChallengesCompletion(challenges)
     }

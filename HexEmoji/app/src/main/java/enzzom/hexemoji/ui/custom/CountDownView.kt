@@ -107,6 +107,23 @@ class CountDownView(context: Context, attrs: AttributeSet? = null) : ConstraintL
         countdownTimer.start()
     }
 
+    fun reset() {
+        countdownTimer.cancel()
+
+        binding.apply {
+            countdownProgressIndicator.progress = MAX_PROGRESS
+            countdownProgressIndicator.visibility = View.VISIBLE
+
+            countdownCurrentValue.scaleX = 1f
+            countdownCurrentValue.scaleY = 1f
+
+            root.scaleX = 1f
+            root.scaleY = 1f
+
+            countdownCurrentValue.text = initialValue.toString()
+        }
+    }
+
     fun addOnCountdownFinished(onFinished: () -> Unit) {
         this.onFinished.add(onFinished)
     }
@@ -121,22 +138,5 @@ class CountDownView(context: Context, attrs: AttributeSet? = null) : ConstraintL
                 onFinished.forEach { it() }
             }
         }.start()
-    }
-
-    private fun reset() {
-        binding.apply {
-            countdownTimer.cancel()
-
-            countdownProgressIndicator.progress = MAX_PROGRESS
-            countdownProgressIndicator.visibility = View.VISIBLE
-
-            countdownCurrentValue.scaleX = 1f
-            countdownCurrentValue.scaleY = 1f
-
-            root.scaleX = 1f
-            root.scaleY = 1f
-
-            countdownCurrentValue.text = initialValue.toString()
-        }
     }
 }

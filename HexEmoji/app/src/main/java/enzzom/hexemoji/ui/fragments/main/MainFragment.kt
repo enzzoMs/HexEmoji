@@ -39,10 +39,6 @@ class MainFragment : Fragment() {
             binding.mainToolbar.title = it
         }
 
-        navController.addOnDestinationChangedListener { _, navDestination, _ ->
-            _toolbarTitle.value = navDestination.label as String
-        }
-
         binding.apply {
             bottomNav?.setupWithNavController(navController)
             navRail?.setupWithNavController(navController)
@@ -50,6 +46,10 @@ class MainFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    fun setToolbarTitle(title: String) {
+        _toolbarTitle.value = title
     }
 
     fun navigateToCategorySelection() {

@@ -39,6 +39,10 @@ class EmojisFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        (parentFragment?.parentFragment as MainFragment).setToolbarTitle(
+            resources.getString(R.string.page_title_page_emojis)
+        )
+
         val binding = FragmentEmojisBinding.inflate(inflater, container, false)
 
         val allCategoryDetails = EmojiCategoryDetails.getAll(resources)

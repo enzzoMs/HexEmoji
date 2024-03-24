@@ -30,6 +30,12 @@
         app:layout_constraintTop_toBottomOf="@id/category_selection_toolbar"
         app:layout_constraintBottom_toTopOf="@id/button_continue_back_guideline"/>
 
+    <com.google.android.material.divider.MaterialDivider
+        app:dividerColor="@color/emoji_category_card_unselected_border_color"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_thickness"
+        app:layout_constraintBottom_toTopOf="@id/button_continue_back_guideline"/>
+
     <View
         android:background="?attr/colorSurface"
         android:layout_width="0dp"

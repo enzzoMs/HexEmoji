@@ -15,4 +15,8 @@ class StatisticsRepository @Inject constructor(
     suspend fun getAllGameStatistics(): List<GameStatistic> {
         return statisticsDAO.getAllGameStatistics()
     }
+
+    suspend fun countAllGameStatistics(): Int {
+        return statisticsDAO.countAllGameStatistics()
+    }
 }
