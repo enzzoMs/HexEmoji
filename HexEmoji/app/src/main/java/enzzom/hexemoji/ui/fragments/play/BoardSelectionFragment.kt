@@ -46,7 +46,7 @@ class BoardSelectionFragment : Fragment() {
             )
         }
 
-        val boardSizes = BoardSize.values().toList()
+        val boardSizes = BoardSize.entries
         val useHexagonBoard = resources.getBoolean(R.bool.board_selection_use_hexagon_board)
         val hexagonalGridSpan = resources.getInteger(R.integer.board_selection_hexagonal_grid_span)
 
@@ -56,7 +56,7 @@ class BoardSelectionFragment : Fragment() {
             setHasFixedSize(true)
 
             adapter = BoardSizeAdapter(
-                boardSizes = BoardSize.values().toList(),
+                boardSizes = BoardSize.entries,
                 onBoardSizeCardClicked = { newSelectedBoard ->
                     val previousSelectedBoardIndex = boardSizes.indexOf(playViewModel.getSelectedBoardSize())
                     playViewModel.selectBoardSize(newSelectedBoard)

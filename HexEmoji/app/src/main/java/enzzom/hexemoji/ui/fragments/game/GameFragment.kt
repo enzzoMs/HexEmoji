@@ -24,6 +24,7 @@ import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.ui.custom.GameTutorialView
 import enzzom.hexemoji.ui.custom.PagedViewDataProvider
 import enzzom.hexemoji.ui.fragments.game.gamemodes.AgainstTheClockFragment
+import enzzom.hexemoji.ui.fragments.game.gamemodes.LimitedMovesFragment
 import enzzom.hexemoji.ui.fragments.game.gamemodes.ZenFragment
 
 @AndroidEntryPoint
@@ -40,6 +41,7 @@ class GameFragment : Fragment() {
         gameModeThemeId = when(args.gameMode) {
             GameMode.ZEN -> R.style.ThemeOverlay_HexEmoji_GameMode_Zen
             GameMode.AGAINST_THE_CLOCK -> R.style.ThemeOverlay_HexEmoji_GameMode_AgainstTheClock
+            GameMode.LIMITED_MOVES -> R.style.ThemeOverlay_HexEmoji_GameMode_LimitedMoves
             else -> R.style.ThemeOverlay_HexEmoji_GameMode_Zen
         }
 
@@ -69,6 +71,7 @@ class GameFragment : Fragment() {
                 replace(R.id.game_fragment_container, when(args.gameMode) {
                     GameMode.ZEN -> ZenFragment()
                     GameMode.AGAINST_THE_CLOCK -> AgainstTheClockFragment()
+                    GameMode.LIMITED_MOVES -> LimitedMovesFragment()
                     else -> ZenFragment()
                 }.also {
                     it.arguments = argsBundle

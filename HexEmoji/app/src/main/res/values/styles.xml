@@ -179,25 +179,6 @@
         <item name="fontFamily">@font/lexend_semibold</item>
     </style>
 
-    <!-- Game Screen -->
-    <style name="ThemeOverlay.HexEmoji.GameMode.Zen" parent="">
-        <item name="colorPrimary">@color/game_screen_primary_color</item>
-        <item name="colorOnPrimary">@color/game_mode_primary_color_zen</item>
-        <item name="colorAccent">@color/game_mode_primary_color_zen</item>
-        <item name="colorSurfaceVariant">@color/game_mode_surface_variant_color_zen</item>
-        <item name="colorOnSurfaceVariant">@color/game_mode_on_surface_variant_color_zen</item>
-        <item name="android:colorBackground">@color/game_mode_background_color_zen</item>
-    </style>
-
-    <style name="ThemeOverlay.HexEmoji.GameMode.AgainstTheClock" parent="">
-        <item name="colorPrimary">@color/game_screen_primary_color</item>
-        <item name="colorOnPrimary">@color/game_mode_primary_color_against_clock</item>
-        <item name="colorAccent">@color/game_mode_primary_color_against_clock</item>
-        <item name="colorSurfaceVariant">@color/game_mode_surface_variant_color_against_the_clock</item>
-        <item name="colorOnSurfaceVariant">@color/game_mode_on_surface_variant_color_against_the_clock</item>
-        <item name="android:colorBackground">@color/game_mode_background_color_against_clock</item>
-    </style>
-
     <!-- Base Text Appearance -->
     <style name="TextAppearance.HexEmoji.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
         <item name="android:textSize">@dimen/text_size_headline2</item>

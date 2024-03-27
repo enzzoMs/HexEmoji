@@ -147,6 +147,10 @@
     <!-- Game Screen -->
     <dimen name="game_countdown_size">120dp</dimen>
     <dimen name="game_timer_min_width">150dp</dimen>
+    <dimen name="game_moves_text_size">30sp</dimen>
+    <dimen name="game_moves_track_thickness">4dp</dimen>
+    <dimen name="game_moves_card_margin">@dimen/spacing_small_2</dimen>
+    <dimen name="game_moves_card_min_width">80dp</dimen>
     <dimen name="hexagonal_board_item_margin">16dp</dimen>
 
     <!-- General -->

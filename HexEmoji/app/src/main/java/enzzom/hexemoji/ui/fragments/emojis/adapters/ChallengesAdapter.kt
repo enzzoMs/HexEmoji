@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import enzzom.hexemoji.R
 import enzzom.hexemoji.data.entities.Challenge
 import enzzom.hexemoji.data.entities.GeneralChallenge
+import enzzom.hexemoji.data.entities.LimitedMovesChallenge
 import enzzom.hexemoji.data.entities.TimedChallenge
 import enzzom.hexemoji.databinding.ItemCardChallengeBinding
 
@@ -68,36 +69,7 @@ class ChallengesAdapter(
                 if (challenge.completed) {
                     onCompletedChallengeClicked(challenge)
                 } else if (progressAnimationFinished) {
-                    val warmingColor = ContextCompat.getColor(binding.root.context, R.color.warming_color)
-                    val previousLabelColor = binding.challengeProgressLabel.currentTextColor
-
-                    AnimatorSet().apply {
-                        playTogether(
-                            ObjectAnimator.ofFloat(binding.challengeProgress, "alpha", 1f, 0f).also {
-                                it.repeatCount = PROGRESS_ANIM_REPEAT_COUNT
-                            },
-                            ObjectAnimator.ofFloat(binding.challengeProgressLabel, "alpha", 1f, 0f).also {
-                                it.repeatCount = PROGRESS_ANIM_REPEAT_COUNT
-                            },
-                        )
-                        duration = PROGRESS_ANIM_DURATION_MS
-                        doOnStart {
-                            binding.apply {
-                                challengeProgress.setTextColor(warmingColor)
-                                challengeProgressLabel.setTextColor(warmingColor)
-                                progressAnimationFinished = false
-                            }
-                        }
-                        doOnEnd {
-                            binding.apply {
-                                challengeProgress.setTextColor(categoryColor)
-                                challengeProgressLabel.setTextColor(previousLabelColor)
-                                challengeProgress.alpha = 1f
-                                challengeProgressLabel.alpha = 1f
-                                progressAnimationFinished = true
-                            }
-                        }
-                    }.start()
+                    executeProgressAnimation()
                 }
             }
         }
@@ -111,6 +83,7 @@ class ChallengesAdapter(
                 challengeDescription.text = when (challenge) {
                     is GeneralChallenge -> getChallengeDescription(challenge, root.resources)
                     is TimedChallenge -> getChallengeDescription(challenge, root.resources)
+                    is LimitedMovesChallenge -> getChallengeDescription(challenge, root.resources)
                     else -> ""
                 }
                 challengeProgress.setTextColor(categoryColor)
@@ -161,6 +134,46 @@ class ChallengesAdapter(
                 R.string.challenge_template_timed,
                 challenge.totalGames, challenge.gameMode.getTitle(res), challenge.timeLimitInSeconds
             )
+        }
+
+        private fun getChallengeDescription(challenge: LimitedMovesChallenge, res: Resources): String {
+            return res.getString(
+                R.string.challenge_template_limited_moves,
+                challenge.totalGames, challenge.gameMode.getTitle(res), challenge.moveLimit
+            )
+        }
+
+        private fun executeProgressAnimation() {
+            val warmingColor = ContextCompat.getColor(binding.root.context, R.color.warning_color)
+            val previousLabelColor = binding.challengeProgressLabel.currentTextColor
+
+            AnimatorSet().apply {
+                playTogether(
+                    ObjectAnimator.ofFloat(binding.challengeProgress, "alpha", 1f, 0f).also {
+                        it.repeatCount = PROGRESS_ANIM_REPEAT_COUNT
+                    },
+                    ObjectAnimator.ofFloat(binding.challengeProgressLabel, "alpha", 1f, 0f).also {
+                        it.repeatCount = PROGRESS_ANIM_REPEAT_COUNT
+                    },
+                )
+                duration = PROGRESS_ANIM_DURATION_MS
+                doOnStart {
+                    binding.apply {
+                        challengeProgress.setTextColor(warmingColor)
+                        challengeProgressLabel.setTextColor(warmingColor)
+                        progressAnimationFinished = false
+                    }
+                }
+                doOnEnd {
+                    binding.apply {
+                        challengeProgress.setTextColor(categoryColor)
+                        challengeProgressLabel.setTextColor(previousLabelColor)
+                        challengeProgress.alpha = 1f
+                        challengeProgressLabel.alpha = 1f
+                        progressAnimationFinished = true
+                    }
+                }
+            }.start()
         }
     }
 }

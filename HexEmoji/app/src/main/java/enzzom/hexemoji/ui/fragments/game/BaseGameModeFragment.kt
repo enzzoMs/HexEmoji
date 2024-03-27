@@ -23,6 +23,7 @@ import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.models.GameStatus
 import enzzom.hexemoji.ui.custom.BoardTutorialView
 import enzzom.hexemoji.ui.custom.CountDownView
+import enzzom.hexemoji.ui.custom.EmojiCardView
 import enzzom.hexemoji.ui.custom.GameBoardAdapter
 import enzzom.hexemoji.ui.custom.GameBoardView
 import enzzom.hexemoji.ui.custom.PagedViewDataProvider
@@ -38,8 +39,10 @@ private const val BOARD_EXIT_ANIMATION_DURATION = 1200L
 abstract class BaseGameModeFragment : Fragment() {
 
     protected abstract val gameViewModel: BaseGameViewModel
+    private lateinit var endgameDialog: Dialog
     private lateinit var gameBoard: GameBoardView
     private lateinit var entryCountdownTimer: CountDownView
+    private var timerPaused = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,6 +54,7 @@ abstract class BaseGameModeFragment : Fragment() {
         val (layoutRoot, gameBoardView, countdownView) = initializeViews(inflater, container)
         gameBoard = gameBoardView
         entryCountdownTimer = countdownView
+        endgameDialog = Dialog(requireContext())
 
         val gameStatus = gameViewModel.getGameStatus()
 
@@ -71,48 +75,7 @@ abstract class BaseGameModeFragment : Fragment() {
             emojiCardSizePx = resources.getDimensionPixelSize(R.dimen.emoji_card_size),
             emojiCardMarginPx = resources.getDimensionPixelSize(R.dimen.hexagonal_board_item_margin),
             getEmojiCardForPosition = { gameViewModel.getCardForPosition(it) },
-            onEmojiCardClicked = { cardView, cardPosition ->
-                if (!gameViewModel.isCardFlipped(cardPosition)) {
-                    val flipResult = gameViewModel.flipCard(cardPosition)
-
-                    if (flipResult !is FlipResult.NoMatch) {
-                        gameBoardView.enableCardInteraction(false)
-                    }
-
-                    cardView.flipCard(onAnimationEnd = {
-                        if (flipResult is FlipResult.MatchFailed) {
-                            gameBoardView.getCardViewForPosition(flipResult.firstCardPosition)?.flipCard(
-                                animStartDelay = MATCH_FAILED_CARD_FLIP_DELAY
-                            )
-                            gameBoardView.getCardViewForPosition(flipResult.secondCardPosition)?.flipCard(
-                                animStartDelay = MATCH_FAILED_CARD_FLIP_DELAY,
-                                onAnimationEnd = {
-                                    gameBoardView.enableCardInteraction(true)
-                                }
-                            )
-                        } else if (flipResult is FlipResult.MatchSuccessful) {
-                            val remainingCardsCount = gameViewModel.getRemainingCardsCount()
-
-                            gameBoardView.apply {
-                                getCardViewForPosition(flipResult.firstCardPosition)?.matchCard()
-                                getCardViewForPosition(flipResult.secondCardPosition)?.matchCard(
-                                    onAnimationEnd = {
-                                        val status = gameViewModel.getGameStatus()
-
-                                        if ((status == GameStatus.VICTORY ||
-                                            status == GameStatus.DEFEAT) &&
-                                            remainingCardsCount == 0) {
-
-                                            executeBoardExitAnimation()
-                                        }
-                                    }
-                                )
-                                enableCardInteraction(true)
-                            }
-                        }
-                    })
-                }
-            }
+            onEmojiCardClicked = ::onEmojiCardClicked
         ).apply {
             entryAnimationFinished.observe(viewLifecycleOwner) { finished ->
                 if (gameViewModel.shouldExecuteEntryAnimation() && finished) {
@@ -146,7 +109,15 @@ abstract class BaseGameModeFragment : Fragment() {
 
     override fun onPause() {
         entryCountdownTimer.reset()
+        timerPaused = true
         super.onPause()
+    }
+
+    override fun onResume() {
+        if (timerPaused) {
+            entryCountdownTimer.start()
+        }
+        super.onResume()
     }
 
     protected fun executeBoardExitAnimation() {
@@ -171,6 +142,48 @@ abstract class BaseGameModeFragment : Fragment() {
         }.start()
     }
 
+   private fun onEmojiCardClicked(cardView: EmojiCardView, cardPosition: Int) {
+       if (!gameViewModel.isCardFlipped(cardPosition)) {
+           val flipResult = gameViewModel.flipCard(cardPosition)
+
+           if (flipResult !is FlipResult.NoMatch) {
+               gameBoard.enableCardInteraction(false)
+           }
+
+           cardView.flipCard(onAnimationEnd = {
+               if (flipResult is FlipResult.MatchFailed) {
+                   gameBoard.getCardViewForPosition(flipResult.firstCardPosition)?.flipCard(
+                       animStartDelay = MATCH_FAILED_CARD_FLIP_DELAY
+                   )
+                   gameBoard.getCardViewForPosition(flipResult.secondCardPosition)?.flipCard(
+                       animStartDelay = MATCH_FAILED_CARD_FLIP_DELAY,
+                       onAnimationEnd = {
+                           gameBoard.enableCardInteraction(true)
+                       }
+                   )
+               } else if (flipResult is FlipResult.MatchSuccessful) {
+                   val remainingCardsCount = gameViewModel.getRemainingCardsCount()
+
+                   gameBoard.apply {
+                       getCardViewForPosition(flipResult.firstCardPosition)?.matchCard()
+                       getCardViewForPosition(flipResult.secondCardPosition)?.matchCard(
+                           onAnimationEnd = {
+                               val status = gameViewModel.getGameStatus()
+
+                               if ((status == GameStatus.VICTORY || status == GameStatus.DEFEAT) &&
+                                   remainingCardsCount == 0) {
+
+                                   executeBoardExitAnimation()
+                               }
+                           }
+                       )
+                       enableCardInteraction(true)
+                   }
+               }
+           })
+       }
+   }
+
     private fun showBoardTutorialDialog() {
         val boardTutorialView = BoardTutorialView(ContextThemeWrapper(context, getGameModeThemeId()))
 
@@ -192,8 +205,6 @@ abstract class BaseGameModeFragment : Fragment() {
     }
 
     private fun showEndgameDialog() {
-        val endgameDialog = Dialog(requireContext())
-
         DialogGameEndedBinding.inflate(
             LayoutInflater.from(ContextThemeWrapper(context, getGameModeThemeId()))
         ).let {
@@ -246,6 +257,34 @@ abstract class BaseGameModeFragment : Fragment() {
         }
     }
 
+    private fun getTutorialDataProvider(): PagedViewDataProvider {
+        val tutorialDescriptions = resources.getStringArray(getTutorialDescriptionsArrayId())
+
+        val imagesTypedArray = resources.obtainTypedArray(getTutorialImagesArrayId())
+
+        val tutorialImagesId = List(imagesTypedArray.length()) { index ->
+            imagesTypedArray.getResourceId(index, R.drawable.game_tutorial_board_example)
+        }
+
+        imagesTypedArray.recycle()
+
+        return object : PagedViewDataProvider {
+            override fun getTitle(position: Int): String? = null
+
+            override fun getDescription(position: Int): String {
+                return tutorialDescriptions[position]
+            }
+
+            override fun getDrawableId(position: Int): Int {
+                return tutorialImagesId.getOrElse(position) { tutorialImagesId.last() }
+            }
+
+            override fun getTotalItems(): Int {
+                return tutorialDescriptions.size
+            }
+        }
+    }
+
     private fun navigateToMainScreen() {
         findNavController().navigate(R.id.action_game_screen_to_main_screen)
     }
@@ -268,7 +307,9 @@ abstract class BaseGameModeFragment : Fragment() {
 
     protected abstract fun getGameModeThemeId(): Int
 
-    protected abstract fun getTutorialDataProvider(): PagedViewDataProvider
+    protected abstract fun getTutorialDescriptionsArrayId(): Int
+
+    protected abstract fun getTutorialImagesArrayId(): Int
 
     data class GameViews(
         val layoutRoot: View,

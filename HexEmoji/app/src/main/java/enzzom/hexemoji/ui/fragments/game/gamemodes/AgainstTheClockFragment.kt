@@ -18,7 +18,7 @@ import enzzom.hexemoji.ui.fragments.game.BaseGameModeFragment
 import enzzom.hexemoji.ui.fragments.game.gamemodes.model.AgainstTheClockViewModel
 
 private const val ONE_MINUTE_IN_SECONDS = 60
-private const val TIMER_WARMING_POINT_IN_SECONDS = 30
+private const val TIMER_WARNING_POINT_IN_SECONDS = 30
 
 @AndroidEntryPoint
 class AgainstTheClockFragment : BaseGameModeFragment() {
@@ -61,10 +61,10 @@ class AgainstTheClockFragment : BaseGameModeFragment() {
                 remainingSeconds % ONE_MINUTE_IN_SECONDS
             )
 
-            if (remainingSeconds <= TIMER_WARMING_POINT_IN_SECONDS) {
+            if (remainingSeconds <= TIMER_WARNING_POINT_IN_SECONDS) {
                 binding.againstTheClockTimer.apply {
-                    setTextColor(ContextCompat.getColor(requireContext(), R.color.warming_color))
-                    setIconTintResource(R.color.warming_color)
+                    setTextColor(ContextCompat.getColor(requireContext(), R.color.warning_color))
+                    setIconTintResource(R.color.warning_color)
                 }
             }
 
@@ -90,34 +90,9 @@ class AgainstTheClockFragment : BaseGameModeFragment() {
 
     override fun getGameModeThemeId(): Int = R.style.ThemeOverlay_HexEmoji_GameMode_AgainstTheClock
 
+    override fun getTutorialDescriptionsArrayId(): Int = R.array.game_tutorial_descriptions_against_the_clock
 
-    override fun getTutorialDataProvider(): PagedViewDataProvider {
-        val tutorialDescriptions = resources.getStringArray(R.array.game_tutorial_descriptions_against_the_clock)
-
-        val imagesTypedArray = resources.obtainTypedArray(R.array.game_tutorial_images_against_the_clock)
-
-        val tutorialImagesId = List(imagesTypedArray.length()) { index ->
-            imagesTypedArray.getResourceId(index, R.drawable.game_tutorial_board_example)
-        }
-
-        imagesTypedArray.recycle()
-
-        return object : PagedViewDataProvider {
-            override fun getTitle(position: Int): String? = null
-
-            override fun getDescription(position: Int): String {
-                return tutorialDescriptions.getOrElse(position) { tutorialDescriptions.last() }
-            }
-
-            override fun getDrawableId(position: Int): Int {
-                return tutorialImagesId[position]
-            }
-
-            override fun getTotalItems(): Int {
-                return tutorialImagesId.size
-            }
-        }
-    }
+    override fun getTutorialImagesArrayId(): Int = R.array.game_tutorial_images_against_the_clock
 
     private fun showGamePausedDialog() {
         val gamePausedDialog = Dialog(requireContext())

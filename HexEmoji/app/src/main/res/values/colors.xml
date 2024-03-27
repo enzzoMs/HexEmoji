@@ -18,7 +18,7 @@
     <color name="app_sub_title_color">@color/gray</color>
     <color name="unselected_icon_color">@color/gray</color>
     <color name="unselected_text_color">@color/gray</color>
-    <color name="warming_color">@color/red_pure</color>
+    <color name="warning_color">@color/red_pure</color>
 
     <color name="page_description_text_color">@color/gray</color>
 
@@ -91,9 +91,11 @@
 
     <color name="game_mode_surface_variant_color_zen">@color/pink_variant</color>
     <color name="game_mode_surface_variant_color_against_the_clock">@color/yellow_maximum</color>
+    <color name="game_mode_surface_variant_color_limited_moves">@color/blue_variant</color>
 
     <color name="game_mode_on_surface_variant_color_zen">@color/pink_light_variant</color>
     <color name="game_mode_on_surface_variant_color_against_the_clock">@color/yellow_white</color>
+    <color name="game_mode_on_surface_variant_color_limited_moves">@color/blue_light_variant</color>
 
     <!-- Color Palette -->
     <color name="yellow_maximum">#F9BF58</color>
@@ -126,8 +128,10 @@
     <color name="yellow">#CF8500</color>
     <color name="yellow_light">#FFD282</color>
     <color name="blue">#1A7EE3</color>
+    <color name="blue_variant">#5CADFF</color>
     <color name="blue_bright">#40C0E7</color>
     <color name="blue_light">#80BFFF</color>
+    <color name="blue_light_variant">#BADCFF</color>
     <color name="purple">#814CB5</color>
     <color name="purple_light">#A989C8</color>
     <color name="red">#A71C1C</color>

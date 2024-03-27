@@ -32,4 +32,35 @@
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
         <item name="postSplashScreenTheme">@style/Theme.HexEmoji</item>
     </style>
+
+    <!-- Game Screen -->
+    <style name="ThemeOverlay.HexEmoji.GameMode.Zen" parent="">
+        <item name="colorPrimary">@color/game_screen_primary_color</item>
+        <item name="colorOnPrimary">@color/game_mode_primary_color_zen</item>
+        <item name="colorAccent">@color/game_mode_primary_color_zen</item>
+        <item name="colorSurfaceVariant">@color/game_mode_surface_variant_color_zen</item>
+        <item name="colorOnSurfaceVariant">@color/game_mode_on_surface_variant_color_zen</item>
+        <item name="android:colorBackground">@color/game_mode_background_color_zen</item>
+    </style>
+
+    <style name="ThemeOverlay.HexEmoji.GameMode.AgainstTheClock" parent="">
+        <item name="colorPrimary">@color/game_screen_primary_color</item>
+        <item name="colorOnPrimary">@color/game_mode_primary_color_against_clock</item>
+        <item name="colorAccent">@color/game_mode_primary_color_against_clock</item>
+        <item name="colorSurfaceVariant">@color/game_mode_surface_variant_color_against_the_clock</item>
+        <item name="colorOnSurfaceVariant">@color/game_mode_on_surface_variant_color_against_the_clock</item>
+        <item name="android:colorBackground">@color/game_mode_background_color_against_clock</item>
+    </style>
+
+    <style name="ThemeOverlay.HexEmoji.GameMode.LimitedMoves" parent="">
+        <item name="colorPrimary">@color/game_screen_primary_color</item>
+        <item name="colorOnPrimary">@color/game_mode_primary_color_limited_moves</item>
+        <item name="colorAccent">@color/game_mode_primary_color_limited_moves</item>
+
+        <item name="colorSurfaceVariant">@color/game_mode_surface_variant_color_limited_moves</item>
+        <item name="colorOnSurfaceVariant">@color/game_mode_on_surface_variant_color_limited_moves</item>
+
+        <item name="android:colorBackground">@color/game_mode_background_color_limited_moves</item>
+    </style>
+
 </resources>

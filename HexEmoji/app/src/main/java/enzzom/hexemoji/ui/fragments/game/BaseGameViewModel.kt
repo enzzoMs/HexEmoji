@@ -65,7 +65,10 @@ abstract class BaseGameViewModel(
         }
     }
 
-    fun flipCard(cardPosition: Int): FlipResult {
+    /**
+     * TODO
+     */
+    open fun flipCard(cardPosition: Int): FlipResult {
         val emojiCard = getCardForPosition(cardPosition)
 
         emojiCard?.flipped = true

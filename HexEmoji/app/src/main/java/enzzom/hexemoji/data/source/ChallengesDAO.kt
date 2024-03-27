@@ -8,6 +8,7 @@ import androidx.room.Query
 import androidx.room.Transaction
 import enzzom.hexemoji.data.entities.Challenge
 import enzzom.hexemoji.data.entities.GeneralChallenge
+import enzzom.hexemoji.data.entities.LimitedMovesChallenge
 import enzzom.hexemoji.data.entities.TimedChallenge
 import enzzom.hexemoji.models.EmojiCategory
 
@@ -18,6 +19,7 @@ interface ChallengesDAO {
     suspend fun insertChallenges(challenges: List<Challenge>) {
         insertGeneralChallenges(challenges.filterIsInstance<GeneralChallenge>())
         insertTimedChallenges(challenges.filterIsInstance<TimedChallenge>())
+        insertLimitedMovesChallenges(challenges.filterIsInstance<LimitedMovesChallenge>())
     }
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -26,10 +28,14 @@ interface ChallengesDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTimedChallenges(challenges: List<TimedChallenge>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertLimitedMovesChallenges(challenges: List<LimitedMovesChallenge>)
+
     @Transaction
     suspend fun deleteChallenges(challenges: List<Challenge>) {
         deleteGeneralChallenges(challenges.filterIsInstance<GeneralChallenge>())
         deleteTimedChallenges(challenges.filterIsInstance<TimedChallenge>())
+        deleteLimitedMovesChallenges(challenges.filterIsInstance<LimitedMovesChallenge>())
     }
 
     @Delete
@@ -38,9 +44,12 @@ interface ChallengesDAO {
     @Delete
     suspend fun deleteTimedChallenges(challenges: List<TimedChallenge>)
 
+    @Delete
+    suspend fun deleteLimitedMovesChallenges(challenges: List<LimitedMovesChallenge>)
+
     @Transaction
     suspend fun getAllChallenges(): List<Challenge> {
-        return getAllGeneralChallenges() + getAllTimedChallenges()
+        return getAllGeneralChallenges() + getAllTimedChallenges() + getAllLimitedMovesChallenges()
     }
 
     @Transaction
@@ -63,10 +72,14 @@ interface ChallengesDAO {
     @Query("SELECT * FROM timed_challenges")
     suspend fun getAllTimedChallenges(): List<TimedChallenge>
 
+    @Query("SELECT * FROM limited_moves_challenges")
+    suspend fun getAllLimitedMovesChallenges(): List<LimitedMovesChallenge>
+
     @Transaction
     suspend fun incrementChallengesCompletion(challenges: List<Challenge>) {
         incrementGeneralChallengesCompletion(challenges.filterIsInstance<GeneralChallenge>().map { it.id })
         incrementTimedChallengesCompletion(challenges.filterIsInstance<TimedChallenge>().map { it.id })
+        incrementLimitedMovesChallengesCompletion(challenges.filterIsInstance<LimitedMovesChallenge>().map { it.id })
     }
 
     @Query("UPDATE general_challenges SET completed_games = completed_games + 1 WHERE id IN (:challengesId)")
@@ -75,10 +88,14 @@ interface ChallengesDAO {
     @Query("UPDATE timed_challenges SET completed_games = completed_games + 1 WHERE id IN (:challengesId)")
     suspend fun incrementTimedChallengesCompletion(challengesId: List<Long>)
 
+    @Query("UPDATE limited_moves_challenges SET completed_games = completed_games + 1 WHERE id IN (:challengesId)")
+    suspend fun incrementLimitedMovesChallengesCompletion(challengesId: List<Long>)
+
     @Transaction
     suspend fun resetChallengesCompletion(challenges: List<Challenge>) {
         resetGeneralChallengesCompletion(challenges.filterIsInstance<GeneralChallenge>().map { it.id })
         resetTimedChallengesCompletion(challenges.filterIsInstance<TimedChallenge>().map { it.id })
+        resetLimitedMovesChallengesCompletion(challenges.filterIsInstance<LimitedMovesChallenge>().map { it.id })
     }
 
     @Query("UPDATE general_challenges SET completed_games = 0 WHERE id IN (:challengesId)")
@@ -86,6 +103,9 @@ interface ChallengesDAO {
 
     @Query("UPDATE timed_challenges SET completed_games = 0 WHERE id IN (:challengesId)")
     suspend fun resetTimedChallengesCompletion(challengesId: List<Long>)
+
+    @Query("UPDATE limited_moves_challenges SET completed_games = 0 WHERE id IN (:challengesId)")
+    suspend fun resetLimitedMovesChallengesCompletion(challengesId: List<Long>)
 
     @Transaction
     suspend fun replaceChallenges(
