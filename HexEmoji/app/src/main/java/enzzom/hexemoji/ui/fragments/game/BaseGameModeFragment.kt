@@ -29,7 +29,6 @@ import enzzom.hexemoji.ui.custom.GameBoardView
 import enzzom.hexemoji.ui.custom.PagedViewDataProvider
 import enzzom.hexemoji.ui.fragments.game.BaseGameViewModel.FlipResult
 
-private const val MATCH_FAILED_CARD_FLIP_DELAY = 150L
 private const val BOARD_EXIT_ANIMATION_DURATION = 1200L
 
 /**
@@ -42,6 +41,7 @@ abstract class BaseGameModeFragment : Fragment() {
     private lateinit var endgameDialog: Dialog
     private lateinit var gameBoard: GameBoardView
     private lateinit var entryCountdownTimer: CountDownView
+
     private var timerPaused = false
 
     override fun onCreateView(
@@ -153,10 +153,10 @@ abstract class BaseGameModeFragment : Fragment() {
            cardView.flipCard(onAnimationEnd = {
                if (flipResult is FlipResult.MatchFailed) {
                    gameBoard.getCardViewForPosition(flipResult.firstCardPosition)?.flipCard(
-                       animStartDelay = MATCH_FAILED_CARD_FLIP_DELAY
+                       animStartDelay = CARD_FLIP_DELAY
                    )
                    gameBoard.getCardViewForPosition(flipResult.secondCardPosition)?.flipCard(
-                       animStartDelay = MATCH_FAILED_CARD_FLIP_DELAY,
+                       animStartDelay = CARD_FLIP_DELAY,
                        onAnimationEnd = {
                            gameBoard.enableCardInteraction(true)
                        }
@@ -286,7 +286,9 @@ abstract class BaseGameModeFragment : Fragment() {
     }
 
     private fun navigateToMainScreen() {
-        findNavController().navigate(R.id.action_game_screen_to_main_screen)
+        if (isAdded) {
+            findNavController().navigate(R.id.action_game_screen_to_main_screen)
+        }
     }
 
     private fun replayGame() {
@@ -321,5 +323,6 @@ abstract class BaseGameModeFragment : Fragment() {
         const val BOARD_SIZE_ARG_KEY = "boardSize"
         const val GAME_MODE_ARG_KEY = "gameMode"
         const val SELECTED_CATEGORIES_ARG_KEY = "selectedCategories"
+        const val CARD_FLIP_DELAY = 150L
     }
 }

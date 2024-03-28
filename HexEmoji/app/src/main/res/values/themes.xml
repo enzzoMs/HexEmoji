@@ -56,11 +56,18 @@
         <item name="colorPrimary">@color/game_screen_primary_color</item>
         <item name="colorOnPrimary">@color/game_mode_primary_color_limited_moves</item>
         <item name="colorAccent">@color/game_mode_primary_color_limited_moves</item>
-
         <item name="colorSurfaceVariant">@color/game_mode_surface_variant_color_limited_moves</item>
         <item name="colorOnSurfaceVariant">@color/game_mode_on_surface_variant_color_limited_moves</item>
-
         <item name="android:colorBackground">@color/game_mode_background_color_limited_moves</item>
+    </style>
+
+    <style name="ThemeOverlay.HexEmoji.GameMode.Sequence" parent="">
+        <item name="colorPrimary">@color/game_screen_primary_color</item>
+        <item name="colorOnPrimary">@color/game_mode_primary_color_sequence</item>
+        <item name="colorAccent">@color/game_mode_primary_color_sequence</item>
+        <item name="colorSurfaceVariant">@color/game_mode_surface_variant_color_sequence</item>
+        <item name="colorOnSurfaceVariant">@color/game_mode_on_surface_variant_color_sequence</item>
+        <item name="android:colorBackground">@color/game_mode_background_color_sequence</item>
     </style>
 
 </resources>

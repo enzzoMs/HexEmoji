@@ -61,11 +61,26 @@
     <string name="game_tutorial_zen_description_part_02">Toque em uma carta para revelar o emoji escondido.</string>
     <string name="game_tutorial_zen_description_part_03">Vença ao encontrar todos os pares de emojis.</string>
 
-    <string name="game_tutorial_against_clock__description_part_01">Em Contra o Relógio você tem um limite de tempo para terminar a partida.</string>
-    <string name="game_tutorial_against_clock_description_part_02">Encontre todos os pares de cartas antes do tempo acabar.</string>
+    <string name="game_tutorial_against_clock__description_part_01">
+        Em Contra o Relógio você tem um limite de tempo para terminar a partida.
+    </string>
+    <string name="game_tutorial_against_clock_description_part_02">
+        Encontre todos os pares de cartas antes do tempo acabar.
+    </string>
 
-    <string name="game_tutorial_limited_moves_description_part_01">Em Movimentos Limitados você tem um número limite de movimentos para terminar a partida.</string>
-    <string name="game_tutorial_limited_moves_description_part_02">Encontre todos os pares de cartas antes dos movimentos acabarem.</string>
+    <string name="game_tutorial_limited_moves_description_part_01">
+        Em Movimentos Limitados você tem um número limite de movimentos para terminar a partida.
+    </string>
+    <string name="game_tutorial_limited_moves_description_part_02">
+        Encontre todos os pares de cartas antes dos movimentos acabarem.
+    </string>
+
+    <string name="game_tutorial_sequence_description_part_01">
+        No modo Sequência a sua missão é encontrar pares de emojis em sequência, sem errar.
+    </string>
+    <string name="game_tutorial_sequence_description_part_02">
+        Caso você cometa algum erro terá que começar uma nova sequência do zero.
+    </string>
 
     <!-- App Instructions -->
     <string name="app_showcase_title_play">Prepare-se para um desafio de memória!</string>
@@ -249,7 +264,8 @@
         Pense com cuidado!
     </string>
     <string name="game_mode_description_sequence">
-        Teste sua memória e agilidade! Repita as sequências de emojis na ordem correta para vencer!
+        Teste sua memória: encontre pares de emoji em sequência para vencer. Mas cuidado! Qualquer deslize
+        e você terá que começar do zero!
     </string>
     <string name="game_mode_description_shuffled">
         Os emojis são embaralhados a todo momento. Seja rápido e encontre os pares antes deles

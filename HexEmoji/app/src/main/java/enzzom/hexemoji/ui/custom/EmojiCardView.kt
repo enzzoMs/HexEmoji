@@ -12,8 +12,6 @@ import androidx.core.animation.doOnEnd
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.ViewEmojiCardBinding
 
-private const val CARD_FLIP_ANIMATION_DURATION = 750L
-
 class EmojiCardView(context: Context, attrs: AttributeSet? = null) : ConstraintLayout(context, attrs) {
 
     private val binding = ViewEmojiCardBinding.inflate(LayoutInflater.from(context), this)
@@ -80,5 +78,9 @@ class EmojiCardView(context: Context, attrs: AttributeSet? = null) : ConstraintL
                 })
             }.start()
         }
+    }
+
+    companion object {
+        const val CARD_FLIP_ANIMATION_DURATION = 750L
     }
 }

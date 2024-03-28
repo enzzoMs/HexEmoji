@@ -29,16 +29,4 @@ class ZenViewModel @Inject constructor(
     savedStateHandle.get<Array<String>>(BaseGameModeFragment.SELECTED_CATEGORIES_ARG_KEY)!!.map {
         EmojiCategory.valueOf(it)
     }
-) {
-
-    override fun shouldUpdateChallengeOnVictory(challenge: Challenge): Boolean {
-        return when (challenge) {
-            is GeneralChallenge -> !challenge.completed &&
-                challenge.gameMode == gameMode &&
-                (challenge.boardSize == null || challenge.boardSize == boardSize) &&
-                ((challenge.constrainedToCategory && challenge.category in selectedCategories)
-                    || !challenge.constrainedToCategory)
-            else -> false
-        }
-    }
-}
+)

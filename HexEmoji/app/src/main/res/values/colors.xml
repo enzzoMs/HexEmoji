@@ -92,10 +92,12 @@
     <color name="game_mode_surface_variant_color_zen">@color/pink_variant</color>
     <color name="game_mode_surface_variant_color_against_the_clock">@color/yellow_maximum</color>
     <color name="game_mode_surface_variant_color_limited_moves">@color/blue_variant</color>
+    <color name="game_mode_surface_variant_color_sequence">@color/purple_variant</color>
 
     <color name="game_mode_on_surface_variant_color_zen">@color/pink_light_variant</color>
     <color name="game_mode_on_surface_variant_color_against_the_clock">@color/yellow_white</color>
     <color name="game_mode_on_surface_variant_color_limited_moves">@color/blue_light_variant</color>
+    <color name="game_mode_on_surface_variant_color_sequence">@color/purple_light_variant</color>
 
     <!-- Color Palette -->
     <color name="yellow_maximum">#F9BF58</color>
@@ -133,7 +135,9 @@
     <color name="blue_light">#80BFFF</color>
     <color name="blue_light_variant">#BADCFF</color>
     <color name="purple">#814CB5</color>
+    <color name="purple_variant">#BE94E5</color>
     <color name="purple_light">#A989C8</color>
+    <color name="purple_light_variant">#D9B4FF</color>
     <color name="red">#A71C1C</color>
     <color name="red_dark">#972828</color>
     <color name="red_pure">#FF0000</color>

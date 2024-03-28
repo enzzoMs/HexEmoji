@@ -2,7 +2,6 @@ package enzzom.hexemoji.ui.fragments.game.gamemodes
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.IdRes
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.fragment.app.viewModels
@@ -10,7 +9,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.FragmentLimitedMovesBinding
 import enzzom.hexemoji.models.GameStatus
-import enzzom.hexemoji.ui.custom.PagedViewDataProvider
 import enzzom.hexemoji.ui.fragments.game.BaseGameModeFragment
 import enzzom.hexemoji.ui.fragments.game.gamemodes.model.LimitedMovesViewModel
 
@@ -28,7 +26,9 @@ class LimitedMovesFragment : BaseGameModeFragment() {
 
         binding.apply {
             gameViewModel.remainingMoves.observe(viewLifecycleOwner) { remainingMoves ->
-                limitedMovesRemainingMoves.text = String.format("%02d", remainingMoves)
+                limitedMovesRemainingMoves.text = String.format(
+                    "%0${gameViewModel.initialMoves.toString().length}d", remainingMoves
+                )
                 limitedMovesProgressIndicator.progress = (
                     (remainingMoves / gameViewModel.initialMoves.toFloat()) * 100
                 ).toInt()

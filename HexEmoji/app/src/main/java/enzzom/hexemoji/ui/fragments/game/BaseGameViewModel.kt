@@ -40,7 +40,7 @@ abstract class BaseGameViewModel(
 
     private var allChallenges: List<Challenge> = listOf()
 
-    private var emojiCards: List<EmojiCard>? = null
+    protected var emojiCards: List<EmojiCard>? = null
     private var lastFlippedCard: EmojiCard? = null
 
     private var numOfPairsFound = 0
@@ -137,6 +137,21 @@ abstract class BaseGameViewModel(
         )
     }
 
+    /**
+     * TODO
+     */
+    open fun shouldUpdateChallengeOnVictory(challenge: Challenge): Boolean {
+        return when (challenge) {
+            is GeneralChallenge -> !challenge.completed &&
+                challenge.gameMode == gameMode &&
+                (challenge.boardSize == null || challenge.boardSize == boardSize) &&
+                ((challenge.constrainedToCategory && challenge.category in selectedCategories)
+                    || !challenge.constrainedToCategory)
+            else -> false
+        }
+    }
+
+
     protected fun setGameStatus(status: GameStatus) {
         gameStatus = status
 
@@ -145,8 +160,6 @@ abstract class BaseGameViewModel(
             updateGameStatistics()
         }
     }
-
-    protected abstract fun shouldUpdateChallengeOnVictory(challenge: Challenge): Boolean
 
     private fun updateChallengesProgress() {
         viewModelScope.launch {
