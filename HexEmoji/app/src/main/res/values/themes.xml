@@ -70,4 +70,13 @@
         <item name="android:colorBackground">@color/game_mode_background_color_sequence</item>
     </style>
 
+    <style name="ThemeOverlay.HexEmoji.GameMode.Shuffled" parent="">
+        <item name="colorPrimary">@color/game_screen_primary_color</item>
+        <item name="colorOnPrimary">@color/game_mode_primary_color_shuffled</item>
+        <item name="colorAccent">@color/game_mode_primary_color_shuffled</item>
+        <item name="colorSurfaceVariant">@color/game_mode_surface_variant_color_shuffled</item>
+        <item name="colorOnSurfaceVariant">@color/game_mode_on_surface_variant_color_shuffled</item>
+        <item name="android:colorBackground">@color/game_mode_background_color_shuffled</item>
+    </style>
+
 </resources>

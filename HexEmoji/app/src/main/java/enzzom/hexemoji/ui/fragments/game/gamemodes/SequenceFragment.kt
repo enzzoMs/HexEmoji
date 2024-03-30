@@ -31,13 +31,7 @@ class SequenceFragment : BaseGameModeFragment() {
 
                 if (pairsFound == 0) {
                     resetCardState(gameViewModel.getMatchedCardPositions())
-
-                } else if (
-                    pairsFound == gameViewModel.sequencePairsGoal &&
-                    gameViewModel.getRemainingCardsCount() != 0
-                ) (
-                    executeBoardExitAnimation()
-                )
+                }
             }
         }
 

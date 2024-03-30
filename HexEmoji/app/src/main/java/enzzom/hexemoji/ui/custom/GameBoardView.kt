@@ -118,6 +118,14 @@ class GameBoardView(context: Context, attrs: AttributeSet? = null) : FrameLayout
         })
     }
 
+    fun rebindCardEmoji(vararg cardPositions: Int) {
+        cardPositions.forEach { cardPosition ->
+            binding.gameBoard.findViewHolderForAdapterPosition(cardPosition)?.let {
+                (it as GameBoardAdapter.EmojiCardHolder).rebindCardEmoji(cardPosition)
+            }
+        }
+    }
+
     fun isBoardLargerThanViewport() = boardLargerThanViewport
 
     fun getCardViewForPosition(cardPosition: Int): EmojiCardView? {

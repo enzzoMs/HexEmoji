@@ -1,7 +1,6 @@
 package enzzom.hexemoji.ui.fragments.game
 
 import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -15,7 +14,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.play.core.review.ReviewManagerFactory
-import dagger.hilt.android.AndroidEntryPoint
 import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.DialogGameEndedBinding
 import enzzom.hexemoji.models.BoardSize
@@ -29,12 +27,11 @@ import enzzom.hexemoji.ui.custom.GameBoardView
 import enzzom.hexemoji.ui.custom.PagedViewDataProvider
 import enzzom.hexemoji.ui.fragments.game.BaseGameViewModel.FlipResult
 
-private const val BOARD_EXIT_ANIMATION_DURATION = 1200L
+private const val BOARD_EXIT_ANIMATION_DURATION = 400L
 
 /**
  * TODO
  */
-@AndroidEntryPoint
 abstract class BaseGameModeFragment : Fragment() {
 
     protected abstract val gameViewModel: BaseGameViewModel
@@ -126,11 +123,7 @@ abstract class BaseGameModeFragment : Fragment() {
             enableBoardMovement(false)
         }
 
-        ObjectAnimator.ofPropertyValuesHolder(
-            gameBoard,
-            PropertyValuesHolder.ofFloat("scaleX", 0f),
-            PropertyValuesHolder.ofFloat("scaleY", 0f)
-        ).apply {
+        ObjectAnimator.ofFloat(gameBoard, "alpha", 0f).apply {
             duration = BOARD_EXIT_ANIMATION_DURATION
             doOnEnd {
                 showEndgameDialog()

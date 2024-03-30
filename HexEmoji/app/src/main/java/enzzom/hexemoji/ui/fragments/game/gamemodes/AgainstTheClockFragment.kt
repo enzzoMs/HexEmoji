@@ -13,7 +13,6 @@ import enzzom.hexemoji.R
 import enzzom.hexemoji.databinding.DialogGamePausedBinding
 import enzzom.hexemoji.databinding.FragmentAgainstTheClockBinding
 import enzzom.hexemoji.models.GameStatus
-import enzzom.hexemoji.ui.custom.PagedViewDataProvider
 import enzzom.hexemoji.ui.fragments.game.BaseGameModeFragment
 import enzzom.hexemoji.ui.fragments.game.gamemodes.model.AgainstTheClockViewModel
 
@@ -26,19 +25,18 @@ class AgainstTheClockFragment : BaseGameModeFragment() {
     override val gameViewModel: AgainstTheClockViewModel by viewModels()
 
     override fun onPause() {
-        super.onPause()
-
         gameViewModel.pauseTimer()
+
+        super.onPause()
     }
 
     override fun onResume() {
-        super.onResume()
-
         if (gameViewModel.isTimerPaused() && gameViewModel.getGameStatus() == GameStatus.IN_PROGRESS) {
             showGamePausedDialog()
         }
-    }
 
+        super.onResume()
+    }
 
     override fun initializeViews(inflater: LayoutInflater, container: ViewGroup?): GameViews {
         val binding = FragmentAgainstTheClockBinding.inflate(inflater, container, false)

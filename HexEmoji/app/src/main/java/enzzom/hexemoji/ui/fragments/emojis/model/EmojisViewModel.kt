@@ -189,11 +189,13 @@ class EmojisViewModel @Inject constructor(
         .toList()
 
         val constraintChanceRange = 0..6
-        val timedChallengeRange = 20..80 step 10
-        val limitedMovesChallengeRange = 20..80 step 10
+        val timedChallengeRange = 10..50 step 10
+        val limitedMovesChallengeRange = 10..50 step 10
+
+        val challengesChangeRange = 0..4
 
         return List(count) { index ->
-            when (Random.nextInt(NUM_OF_CHALLENGE_TYPES)) {
+            when (challengesChangeRange.random()) {
                 0 -> TimedChallenge(
                     totalGames = (1..MAX_GAMES_PER_CHALLENGE).random(),
                     completedGames = 0,

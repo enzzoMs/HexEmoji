@@ -113,5 +113,9 @@ class GameBoardAdapter(
                 }
             }
         }
+
+        fun rebindCardEmoji(position: Int) {
+            emojiCardView.emoji = getEmojiCardForPosition(position)!!.emoji
+        }
     }
 }

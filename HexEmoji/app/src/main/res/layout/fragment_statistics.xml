@@ -63,8 +63,8 @@
             <TextView
                 android:id="@+id/daily_emoji"
                 style="@style/Widget.HexEmoji.TextView.Emoji"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="@dimen/daily_emoji_size"
+                android:layout_height="@dimen/daily_emoji_size"
                 android:layout_marginEnd="@dimen/card_inner_margin"
                 android:layout_margin="@dimen/card_inner_margin"
                 app:layout_constraintStart_toStartOf="parent"

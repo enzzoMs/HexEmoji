@@ -5,63 +5,58 @@
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="?android:attr/colorBackground"
-    android:theme="@style/ThemeOverlay.HexEmoji.GameMode.LimitedMoves"
+    android:theme="@style/ThemeOverlay.HexEmoji.GameMode.Shuffled"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/shuffled_indicator_card"
         style="@style/Widget.HexEmoji.CardView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        app:strokeColor="?attr/colorSurface"
+        app:strokeWidth="@dimen/game_mode_card_shuffled_border_thickness"
         android:layout_marginTop="@dimen/screen_outer_margin"
+        android:layout_width="@dimen/game_mode_card_shuffled_min_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minWidth="@dimen/game_mode_card_min_width">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/limited_moves_remaining_moves"
-                android:textColor="?attr/colorAccent"
-                android:textSize="@dimen/game_mode_card_text_size"
-                android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Title"
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/game_moves_card_margin"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:text="72" />
+            <ImageView
+                android:src="@drawable/ic_shuffle"
+                android:importantForAccessibility="no"
+                app:tint="?attr/colorAccent"
+                android:layout_width="@dimen/game_mode_card_shuffled_icon_size"
+                android:layout_height="@dimen/game_mode_card_shuffled_icon_size"
+                android:layout_margin="@dimen/card_inner_margin"/>
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:id="@+id/limited_moves_progress_indicator"
+                android:id="@+id/shuffle_countdown_indicator"
                 app:indicatorColor="?attr/colorAccent"
                 app:trackColor="?attr/colorOnSurfaceVariant"
-                app:trackThickness="@dimen/game_moves_track_thickness"
+                app:trackThickness="@dimen/game_shuffle_track_thickness"
+                android:layout_marginEnd="@dimen/card_inner_margin"
+                android:layout_gravity="center"
+                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/game_moves_card_margin"
-                app:layout_constraintTop_toBottomOf="@id/limited_moves_remaining_moves"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:progress="60" />
+                tools:progress="60"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
     <enzzom.hexemoji.ui.custom.GameBoardView
-        android:id="@+id/limited_moves_game_board"
+        android:id="@+id/shuffled_game_board"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
     <enzzom.hexemoji.ui.custom.CountDownView
-        android:id="@+id/limited_moves_countdown"
+        android:id="@+id/shuffled_start_countdown"
         custom:initialValue="@integer/game_countdown_initial_value"
         custom:endText="@string/game_countdown_end_text"
         android:visibility="invisible"

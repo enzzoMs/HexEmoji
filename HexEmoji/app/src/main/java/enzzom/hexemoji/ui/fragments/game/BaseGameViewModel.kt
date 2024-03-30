@@ -40,7 +40,7 @@ abstract class BaseGameViewModel(
 
     private var allChallenges: List<Challenge> = listOf()
 
-    protected var emojiCards: List<EmojiCard>? = null
+    protected var emojiCards: MutableList<EmojiCard>? = null
     private var lastFlippedCard: EmojiCard? = null
 
     private var numOfPairsFound = 0
@@ -57,7 +57,7 @@ abstract class BaseGameViewModel(
                 shuffle()
             }
 
-            emojiCards = gameEmojis.mapIndexed { index, emoji -> EmojiCard(emoji, index) }
+            emojiCards = gameEmojis.mapIndexed { index, emoji -> EmojiCard(emoji, index) }.toMutableList()
 
             allChallenges = challengesRepository.getAllChallenges()
 
@@ -102,7 +102,10 @@ abstract class BaseGameViewModel(
         }
     }
 
-    fun getRemainingCardsCount(): Int = emojiCards!!.count { !it.matched }
+    /**
+     * TODO
+     */
+    open fun getRemainingCardsCount(): Int = emojiCards!!.count { !it.matched }
 
     fun getGameStatus(): GameStatus = gameStatus
 
