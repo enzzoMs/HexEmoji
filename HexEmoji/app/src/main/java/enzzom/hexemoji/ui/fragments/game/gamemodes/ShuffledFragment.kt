@@ -83,10 +83,7 @@ class ShuffledFragment : BaseGameModeFragment() {
 
     override fun getGameModeThemeId(): Int = R.style.ThemeOverlay_HexEmoji_GameMode_Shuffled
 
-    /**
-     * TODO
-     */
-    override fun getTutorialDescriptionsArrayId(): Int = R.array.game_tutorial_descriptions_zen
+    override fun getTutorialDescriptionsArrayId(): Int = R.array.game_tutorial_descriptions_shuffled
 
-    override fun getTutorialImagesArrayId(): Int = R.array.game_tutorial_images_zen
+    override fun getTutorialImagesArrayId(): Int = R.array.game_tutorial_images_shuffled
 }

@@ -82,6 +82,13 @@
         Caso você cometa algum erro terá que começar uma nova sequência do zero.
     </string>
 
+    <string name="game_tutorial_shuffled_description_part_01">
+        No modo Embaralhado você deve ser rápido para vencer.
+    </string>
+    <string name="game_tutorial_shuffled_description_part_02">
+        Quando o tempo acabar, duas cartas aleatórias serão embaralhadas. Não perca tempo!
+    </string>
+
     <!-- App Instructions -->
     <string name="app_showcase_title_play">Prepare-se para um desafio de memória!</string>
     <string name="app_showcase_title_statistics">Acompanhe o seu progresso</string>
@@ -168,7 +175,6 @@
     <string name="game_mode_card_emoji_triangular_ruler" translatable="false">📐</string>
     <string name="game_mode_card_emoji_brain" translatable="false">🧠</string>
     <string name="game_mode_card_emoji_dice" translatable="false">🎲</string>
-    <string name="game_mode_card_emoji_recycling" translatable="false">🌊</string>
     <string name="game_mode_card_emoji_spiral_eyes" translatable="false">😵‍💫</string>
 
     <!-- Challenge Templates -->
@@ -248,7 +254,6 @@
     <string name="game_mode_title_limited_moves">Movimentos Limitados</string>
     <string name="game_mode_title_sequence">Sequência</string>
     <string name="game_mode_title_shuffled">Embaralhado</string>
-    <string name="game_mode_title_flood">Inundação</string>
     <string name="game_mode_title_chaos">Caos Total!</string>
 
     <string name="game_mode_description_zen">
@@ -270,10 +275,6 @@
     <string name="game_mode_description_shuffled">
         Os emojis são embaralhados a todo momento. Seja rápido e encontre os pares antes deles
         mudarem de lugar!
-    </string>
-    <string name="game_mode_description_flow">
-        Combine os emojis rapidamente para evitar o caos! Eles vão aparecer sem parar, e você
-        deve formar os pares para liberar espaço no tabuleiro e evitar que ele fique lotado.
     </string>
     <string name="game_mode_description_chaos">
         Prepare-se para um desafio caótico! Supere seus limites e demonstre suas habilidades

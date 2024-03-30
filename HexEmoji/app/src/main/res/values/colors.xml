@@ -78,7 +78,6 @@
     <color name="game_mode_primary_color_limited_moves">@color/blue</color>
     <color name="game_mode_primary_color_sequence">@color/purple</color>
     <color name="game_mode_primary_color_shuffled">@color/red</color>
-    <color name="game_mode_primary_color_flood">@color/green_blue</color>
     <color name="game_mode_primary_color_chaos">@color/orange</color>
 
     <color name="game_mode_background_color_zen">@color/pink_light</color>
@@ -86,7 +85,6 @@
     <color name="game_mode_background_color_limited_moves">@color/blue_light</color>
     <color name="game_mode_background_color_sequence">@color/purple_light</color>
     <color name="game_mode_background_color_shuffled">@color/red_variant</color>
-    <color name="game_mode_background_color_flood">@color/green_blue_light</color>
     <color name="game_mode_background_color_chaos">@color/orange_light</color>
 
     <color name="game_mode_surface_variant_color_zen">@color/pink_variant</color>
@@ -147,7 +145,6 @@
     <color name="red_pure">#FF0000</color>
     <color name="green">#558F15</color>
     <color name="green_blue">#00766E</color>
-    <color name="green_blue_light">#639A97</color>
     <color name="orange">#CF8500</color>
     <color name="orange_light">#FFA553</color>
     <color name="cyan">#126A86</color>

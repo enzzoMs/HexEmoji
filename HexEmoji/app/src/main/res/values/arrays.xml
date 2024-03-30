@@ -91,7 +91,6 @@
         <item>@string/game_mode_description_limited_moves</item>
         <item>@string/game_mode_description_sequence</item>
         <item>@string/game_mode_description_shuffled</item>
-        <item>@string/game_mode_description_flow</item>
         <item>@string/game_mode_description_chaos</item>
     </string-array>
 
@@ -101,7 +100,6 @@
         <item>@color/game_mode_background_color_limited_moves</item>
         <item>@color/game_mode_background_color_sequence</item>
         <item>@color/game_mode_background_color_shuffled</item>
-        <item>@color/game_mode_background_color_flood</item>
         <item>@color/game_mode_background_color_chaos</item>
     </array>
 
@@ -111,7 +109,6 @@
         <item>@color/game_mode_primary_color_limited_moves</item>
         <item>@color/game_mode_primary_color_sequence</item>
         <item>@color/game_mode_primary_color_shuffled</item>
-        <item>@color/game_mode_primary_color_flood</item>
         <item>@color/game_mode_primary_color_chaos</item>
     </array>
 
@@ -121,7 +118,6 @@
         <item>@string/game_mode_card_emoji_triangular_ruler</item>
         <item>@string/game_mode_card_emoji_brain</item>
         <item>@string/game_mode_card_emoji_dice</item>
-        <item>@string/game_mode_card_emoji_recycling</item>
         <item>@string/game_mode_card_emoji_spiral_eyes</item>
     </array>
 
@@ -147,6 +143,11 @@
         <item>@string/game_tutorial_sequence_description_part_02</item>
     </string-array>
 
+    <string-array name="game_tutorial_descriptions_shuffled">
+        <item>@string/game_tutorial_shuffled_description_part_01</item>
+        <item>@string/game_tutorial_shuffled_description_part_02</item>
+    </string-array>
+
     <integer-array name="game_tutorial_images_zen">
         <item>@drawable/game_tutorial_board_example</item>
         <item>@drawable/game_tutorial_move_example</item>
@@ -166,6 +167,11 @@
     <integer-array name="game_tutorial_images_sequence">
         <item>@drawable/game_tutorial_board_example</item>
         <item>@drawable/game_tutorial_sequence</item>
+    </integer-array>
+
+    <integer-array name="game_tutorial_images_shuffled">
+        <item>@drawable/game_tutorial_board_example</item>
+        <item>@drawable/game_tutorial_shuffled</item>
     </integer-array>
 
     <!-- App Showcase -->

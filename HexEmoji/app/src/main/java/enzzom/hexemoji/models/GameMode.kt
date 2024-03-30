@@ -9,7 +9,6 @@ enum class GameMode {
     LIMITED_MOVES,
     SEQUENCE,
     SHUFFLED,
-    FLOOD,
     CHAOS;
 
     fun getTitle(res: Resources): String {
@@ -19,7 +18,6 @@ enum class GameMode {
             LIMITED_MOVES -> res.getString(R.string.game_mode_title_limited_moves)
             SEQUENCE -> res.getString(R.string.game_mode_title_sequence)
             SHUFFLED -> res.getString(R.string.game_mode_title_shuffled)
-            FLOOD -> res.getString(R.string.game_mode_title_flood)
             CHAOS -> res.getString(R.string.game_mode_title_chaos)
         }
     }
