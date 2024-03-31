@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?android:attr/colorBackground"
+    android:theme="@style/ThemeOverlay.HexEmoji.GameMode.Chaos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/chaos_header_end_guideline"
+        app:layout_constraintStart_toEndOf="@id/chaos_header_start_guideline"
+        android:layout_marginTop="@dimen/screen_outer_margin">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/chaos_timer"
+            android:textSize="@dimen/text_size_headline6"
+            android:textAppearance="@style/TextAppearance.HexEmoji.Button"
+            android:textColor="?attr/colorAccent"
+            app:icon="@drawable/ic_clock"
+            app:iconTint="?attr/colorAccent"
+            app:iconGravity="textTop"
+            app:cornerRadius="@dimen/button_shape_radius"
+            android:backgroundTint="?attr/colorSurface"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minWidth="@dimen/game_timer_min_width"
+            android:layout_marginEnd="@dimen/screen_contents_margin"
+            tools:text="5 : 00" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/chaos_moves_card"
+            style="@style/Widget.HexEmoji.CardView"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="@dimen/game_mode_header_card_min_width">
+
+                <TextView
+                    android:id="@+id/chaos_remaining_moves"
+                    android:textColor="?attr/colorAccent"
+                    android:textSize="@dimen/game_mode_header_card_text_size"
+                    android:textAppearance="@style/TextAppearance.HexEmoji.CardView.Title"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/game_moves_card_margin"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="72" />
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/chaos_moves_progress_indicator"
+                    app:indicatorColor="?attr/colorAccent"
+                    app:trackColor="?attr/colorOnSurfaceVariant"
+                    app:trackThickness="@dimen/game_header_card_track_thickness"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/game_moves_card_margin"
+                    app:layout_constraintTop_toBottomOf="@id/chaos_remaining_moves"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:progress="60" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/chaos_shuffle_indicator_card"
+            style="@style/Widget.HexEmoji.CardView"
+            app:strokeColor="?attr/colorSurface"
+            app:strokeWidth="@dimen/game_mode_card_shuffled_border_thickness"
+            android:layout_marginStart="@dimen/screen_contents_margin"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/ic_shuffle"
+                    android:importantForAccessibility="no"
+                    app:tint="?attr/colorAccent"
+                    android:layout_gravity="center"
+                    android:layout_width="@dimen/game_mode_card_shuffled_icon_size"
+                    android:layout_height="@dimen/game_mode_card_shuffled_icon_size"
+                    android:layout_margin="@dimen/card_inner_margin"/>
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/chaos_shuffle_countdown_indicator"
+                    app:indicatorColor="?attr/colorAccent"
+                    app:trackColor="?attr/colorOnSurfaceVariant"
+                    app:trackThickness="@dimen/game_header_card_track_thickness"
+                    android:layout_marginBottom="@dimen/card_inner_margin"
+                    android:layout_marginHorizontal="@dimen/card_inner_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:progress="60"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/chaos_header_start_guideline"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="@dimen/chaos_header_start_guideline"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/chaos_header_end_guideline"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="@dimen/chaos_header_end_guideline"/>
+
+    <enzzom.hexemoji.ui.custom.GameBoardView
+        android:id="@+id/chaos_game_board"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <enzzom.hexemoji.ui.custom.CountDownView
+        android:id="@+id/chaos_countdown"
+        custom:initialValue="@integer/game_countdown_initial_value"
+        custom:endText="@string/game_countdown_end_text"
+        android:visibility="invisible"
+        android:layout_gravity="center"
+        android:layout_width="@dimen/game_countdown_size"
+        android:layout_height="@dimen/game_countdown_size"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

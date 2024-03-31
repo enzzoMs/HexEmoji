@@ -30,7 +30,8 @@ import enzzom.hexemoji.ui.fragments.game.BaseGameViewModel.FlipResult
 private const val BOARD_EXIT_ANIMATION_DURATION = 400L
 
 /**
- * TODO
+ * Abstract base class for game mode fragments. It implements the basic functionality needed to manage
+ * the game board, handle user interaction, and display endgame dialogs.
  */
 abstract class BaseGameModeFragment : Fragment() {
 
@@ -144,6 +145,8 @@ abstract class BaseGameModeFragment : Fragment() {
            }
 
            cardView.flipCard(onAnimationEnd = {
+               val showBoardExitAnimation = gameViewModel.shouldExecuteExitAnimation()
+
                if (flipResult is FlipResult.MatchFailed) {
                    gameBoard.getCardViewForPosition(flipResult.firstCardPosition)?.flipCard(
                        animStartDelay = CARD_FLIP_DELAY
@@ -151,12 +154,18 @@ abstract class BaseGameModeFragment : Fragment() {
                    gameBoard.getCardViewForPosition(flipResult.secondCardPosition)?.flipCard(
                        animStartDelay = CARD_FLIP_DELAY,
                        onAnimationEnd = {
-                           gameBoard.enableCardInteraction(true)
+                           val status = gameViewModel.getGameStatus()
+
+                           if ((status == GameStatus.VICTORY || status == GameStatus.DEFEAT) &&
+                               showBoardExitAnimation) {
+
+                               executeBoardExitAnimation()
+                           } else {
+                               gameBoard.enableCardInteraction(true)
+                           }
                        }
                    )
                } else if (flipResult is FlipResult.MatchSuccessful) {
-                   val remainingCardsCount = gameViewModel.getRemainingCardsCount()
-
                    gameBoard.apply {
                        getCardViewForPosition(flipResult.firstCardPosition)?.matchCard()
                        getCardViewForPosition(flipResult.secondCardPosition)?.matchCard(
@@ -164,7 +173,7 @@ abstract class BaseGameModeFragment : Fragment() {
                                val status = gameViewModel.getGameStatus()
 
                                if ((status == GameStatus.VICTORY || status == GameStatus.DEFEAT) &&
-                                   remainingCardsCount == 0) {
+                                   showBoardExitAnimation) {
 
                                    executeBoardExitAnimation()
                                }

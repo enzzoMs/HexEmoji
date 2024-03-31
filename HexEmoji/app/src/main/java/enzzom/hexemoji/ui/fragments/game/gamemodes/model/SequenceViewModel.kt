@@ -76,5 +76,5 @@ class SequenceViewModel @Inject constructor(
 
     fun getMatchedCardPositions(): List<Int> = matchedCardPositions
 
-    override fun getRemainingCardsCount(): Int = sequencePairsGoal - _pairsFound.value!!
+    override fun shouldExecuteExitAnimation(): Boolean = (sequencePairsGoal - _pairsFound.value!!) == 0
 }

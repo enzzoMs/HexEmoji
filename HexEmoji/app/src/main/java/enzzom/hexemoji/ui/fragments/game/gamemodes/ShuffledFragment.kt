@@ -15,6 +15,7 @@ import enzzom.hexemoji.ui.fragments.game.BaseGameModeFragment
 import enzzom.hexemoji.ui.fragments.game.gamemodes.model.ShuffledViewModel
 
 private const val SHUFFLE_INDICATOR_ANIM_DURATION_MS = 400L
+
 @AndroidEntryPoint
 class ShuffledFragment : BaseGameModeFragment() {
 

@@ -44,10 +44,6 @@ class LimitedMovesFragment : BaseGameModeFragment() {
 
                     showingWarning = true
                 }
-
-                if (remainingMoves == 0 && gameViewModel.getGameStatus() == GameStatus.DEFEAT) {
-                    executeBoardExitAnimation()
-                }
             }
         }
 

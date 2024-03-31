@@ -148,6 +148,11 @@
         <item>@string/game_tutorial_shuffled_description_part_02</item>
     </string-array>
 
+    <string-array name="game_tutorial_descriptions_chaos">
+        <item>@string/game_tutorial_chaos_description_part_01</item>
+        <item>@string/game_tutorial_chaos_description_part_02</item>
+    </string-array>
+
     <integer-array name="game_tutorial_images_zen">
         <item>@drawable/game_tutorial_board_example</item>
         <item>@drawable/game_tutorial_move_example</item>
@@ -172,6 +177,11 @@
     <integer-array name="game_tutorial_images_shuffled">
         <item>@drawable/game_tutorial_board_example</item>
         <item>@drawable/game_tutorial_shuffled</item>
+    </integer-array>
+
+    <integer-array name="game_tutorial_images_chaos">
+        <item>@drawable/game_tutorial_board_example</item>
+        <item>@drawable/game_tutorial_chaos</item>
     </integer-array>
 
     <!-- App Showcase -->

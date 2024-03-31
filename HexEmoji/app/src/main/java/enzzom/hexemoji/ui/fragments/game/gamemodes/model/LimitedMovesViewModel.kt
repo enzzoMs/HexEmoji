@@ -7,7 +7,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import enzzom.hexemoji.data.entities.Challenge
 import enzzom.hexemoji.data.entities.GeneralChallenge
 import enzzom.hexemoji.data.entities.LimitedMovesChallenge
-import enzzom.hexemoji.data.entities.TimedChallenge
 import enzzom.hexemoji.data.repositories.ChallengesRepository
 import enzzom.hexemoji.data.repositories.EmojiRepository
 import enzzom.hexemoji.data.repositories.PreferencesRepository
@@ -70,5 +69,9 @@ class LimitedMovesViewModel @Inject constructor(
                 (initialMoves - _remainingMoves.value!!) <= challenge.moveLimit
             else -> false
         }
+    }
+
+    override fun shouldExecuteExitAnimation(): Boolean {
+        return _remainingMoves.value!! == 0 || emojiCards!!.count { !it.matched } == 0
     }
 }

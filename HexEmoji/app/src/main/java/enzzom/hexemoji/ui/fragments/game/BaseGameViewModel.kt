@@ -21,7 +21,9 @@ import java.time.LocalDateTime
 private const val MIN_GAMES_UNTIL_REVIEW = 4
 
 /**
- * TODO
+ * Base ViewModel for managing game-related logic and data.
+ * This class provides the basic set of methods needed to handle game functionality, including
+ * card interaction, updating game status, managing challenges, and updating game statistics.
  */
 abstract class BaseGameViewModel(
     private val emojiRepository: EmojiRepository,
@@ -66,7 +68,8 @@ abstract class BaseGameViewModel(
     }
 
     /**
-     * TODO
+     * Flips the card at the specified position and determines the result of the flip.
+     * Can be overridden in subclasses if additional operations are needed before or after flipping the card.
      */
     open fun flipCard(cardPosition: Int): FlipResult {
         val emojiCard = getCardForPosition(cardPosition)
@@ -102,11 +105,6 @@ abstract class BaseGameViewModel(
         }
     }
 
-    /**
-     * TODO
-     */
-    open fun getRemainingCardsCount(): Int = emojiCards!!.count { !it.matched }
-
     fun getGameStatus(): GameStatus = gameStatus
 
     fun getGameBoardSize(): BoardSize = boardSize
@@ -129,6 +127,13 @@ abstract class BaseGameViewModel(
         PreferencesRepository.PREFERENCE_KEY_SHOW_BOARD_TUTORIAL, true
     )
 
+    /**
+     * Returns whether the exit animation should be executed. In general, this decision is tied
+     * to the winning conditions of the game mode. The default implementation returns
+     * 'True' only when all cards have benn successfully matched.
+     */
+    open fun shouldExecuteExitAnimation(): Boolean = emojiCards!!.count { !it.matched } == 0
+
     fun entryAnimationFinished() {
         executeEntryAnimation = false
         gameStatus = GameStatus.IN_PROGRESS
@@ -141,7 +146,8 @@ abstract class BaseGameViewModel(
     }
 
     /**
-     * TODO
+     * Determines whether a challenge should be updated upon victory in the game. It can be customized
+     * if the game mode has exclusive challenges.
      */
     open fun shouldUpdateChallengeOnVictory(challenge: Challenge): Boolean {
         return when (challenge) {

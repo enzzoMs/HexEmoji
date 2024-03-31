@@ -3,4 +3,8 @@
     <!-- Play Screens = GameModes, CategorySelection, BoardSelection -->
     <dimen name="play_screens_button_start_guideline_percentage">0.65</dimen>
 
+    <!-- Game Screen -->
+    <dimen name="chaos_header_start_guideline">0.2</dimen>
+    <dimen name="chaos_header_end_guideline">0.8</dimen>
+
 </resources>

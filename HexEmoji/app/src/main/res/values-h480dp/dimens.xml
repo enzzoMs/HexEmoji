@@ -10,6 +10,10 @@
     <!-- Statistics Page -->
     <dimen name="victories_chart_margin">@dimen/spacing_small_1</dimen>
 
+    <!-- Game Screen -->
+    <dimen name="chaos_header_start_guideline">0.04</dimen>
+    <dimen name="chaos_header_end_guideline">0.96</dimen>
+
     <!-- Dialogs -->
     <dimen name="game_tutorial_image_height">180dp</dimen>
     <dimen name="challenge_completed_emoji_size">100dp</dimen>

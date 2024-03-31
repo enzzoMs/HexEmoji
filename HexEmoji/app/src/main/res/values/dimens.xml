@@ -148,17 +148,19 @@
     <dimen name="game_countdown_size">120dp</dimen>
 
     <dimen name="game_timer_min_width">150dp</dimen>
-    <dimen name="game_moves_track_thickness">4dp</dimen>
-    <dimen name="game_shuffle_track_thickness">5dp</dimen>
+    <dimen name="game_header_card_track_thickness">5dp</dimen>
 
-    <dimen name="game_mode_card_text_size">30sp</dimen>
-    <dimen name="game_mode_card_min_width">110dp</dimen>
+    <dimen name="game_mode_header_card_text_size">30sp</dimen>
+    <dimen name="game_mode_header_card_min_width">110dp</dimen>
     <dimen name="game_mode_card_shuffled_min_width">200dp</dimen>
     <dimen name="game_mode_card_shuffled_icon_size">30dp</dimen>
     <dimen name="game_mode_card_shuffled_border_thickness">6dp</dimen>
     <dimen name="game_moves_card_margin">@dimen/spacing_small_2</dimen>
 
     <dimen name="hexagonal_board_item_margin">16dp</dimen>
+
+    <dimen name="chaos_header_start_guideline">0.2</dimen>
+    <dimen name="chaos_header_end_guideline">0.8</dimen>
 
     <!-- General -->
     <dimen name="window_min_width_major">60%p</dimen>

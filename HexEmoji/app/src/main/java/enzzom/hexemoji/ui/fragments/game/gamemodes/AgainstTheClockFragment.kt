@@ -25,13 +25,13 @@ class AgainstTheClockFragment : BaseGameModeFragment() {
     override val gameViewModel: AgainstTheClockViewModel by viewModels()
 
     override fun onPause() {
-        gameViewModel.pauseTimer()
+        gameViewModel.countdownManager.pauseTimer()
 
         super.onPause()
     }
 
     override fun onResume() {
-        if (gameViewModel.isTimerPaused() && gameViewModel.getGameStatus() == GameStatus.IN_PROGRESS) {
+        if (gameViewModel.countdownManager.isTimerPaused() && gameViewModel.getGameStatus() == GameStatus.IN_PROGRESS) {
             showGamePausedDialog()
         }
 
@@ -42,17 +42,17 @@ class AgainstTheClockFragment : BaseGameModeFragment() {
         val binding = FragmentAgainstTheClockBinding.inflate(inflater, container, false)
 
         binding.apply {
-            againstTheClockCountdown.addOnCountdownFinished { gameViewModel.startTimer() }
+            againstTheClockCountdown.addOnCountdownFinished { gameViewModel.countdownManager.startTimer() }
 
             againstTheClockTimer.setOnClickListener {
                 if (gameViewModel.getGameStatus() == GameStatus.IN_PROGRESS) {
-                    gameViewModel.pauseTimer()
+                    gameViewModel.countdownManager.pauseTimer()
                     showGamePausedDialog()
                 }
             }
         }
 
-        gameViewModel.remainingSeconds.observe(viewLifecycleOwner) { remainingSeconds ->
+        gameViewModel.countdownManager.remainingSeconds.observe(viewLifecycleOwner) { remainingSeconds ->
             binding.againstTheClockTimer.text = resources.getString(
                 R.string.game_timer_template,
                 remainingSeconds / ONE_MINUTE_IN_SECONDS,
@@ -69,7 +69,7 @@ class AgainstTheClockFragment : BaseGameModeFragment() {
             val gameStatus = gameViewModel.getGameStatus()
 
             if (gameStatus == GameStatus.VICTORY || gameStatus == GameStatus.DEFEAT) {
-                gameViewModel.pauseTimer()
+                gameViewModel.countdownManager.pauseTimer()
 
                 if (remainingSeconds == 0L) {
                     executeBoardExitAnimation()
@@ -103,7 +103,7 @@ class AgainstTheClockFragment : BaseGameModeFragment() {
             gamePausedDialog.apply {
                 setContentView(it.root)
                 window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                setOnDismissListener { gameViewModel.resumeTimer() }
+                setOnDismissListener { gameViewModel.countdownManager.resumeTimer() }
             }.show()
         }
     }

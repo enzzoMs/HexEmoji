@@ -38,7 +38,7 @@
                 android:id="@+id/shuffle_countdown_indicator"
                 app:indicatorColor="?attr/colorAccent"
                 app:trackColor="?attr/colorOnSurfaceVariant"
-                app:trackThickness="@dimen/game_shuffle_track_thickness"
+                app:trackThickness="@dimen/game_header_card_track_thickness"
                 android:layout_marginEnd="@dimen/card_inner_margin"
                 android:layout_gravity="center"
                 android:layout_weight="1"

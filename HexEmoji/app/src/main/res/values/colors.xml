@@ -85,19 +85,21 @@
     <color name="game_mode_background_color_limited_moves">@color/blue_light</color>
     <color name="game_mode_background_color_sequence">@color/purple_light</color>
     <color name="game_mode_background_color_shuffled">@color/red_variant</color>
-    <color name="game_mode_background_color_chaos">@color/orange_light</color>
+    <color name="game_mode_background_color_chaos">@color/orange_variant</color>
 
     <color name="game_mode_surface_variant_color_zen">@color/pink_variant</color>
     <color name="game_mode_surface_variant_color_against_the_clock">@color/yellow_maximum</color>
     <color name="game_mode_surface_variant_color_limited_moves">@color/blue_variant</color>
     <color name="game_mode_surface_variant_color_sequence">@color/purple_variant</color>
     <color name="game_mode_surface_variant_color_shuffled">@color/red_light</color>
+    <color name="game_mode_surface_variant_color_chaos">@color/orange_light</color>
 
     <color name="game_mode_on_surface_variant_color_zen">@color/pink_light_variant</color>
     <color name="game_mode_on_surface_variant_color_against_the_clock">@color/yellow_white</color>
     <color name="game_mode_on_surface_variant_color_limited_moves">@color/blue_light_variant</color>
     <color name="game_mode_on_surface_variant_color_sequence">@color/purple_light_variant</color>
     <color name="game_mode_on_surface_variant_color_shuffled">@color/red_light_variant</color>
+    <color name="game_mode_on_surface_variant_color_chaos">@color/orange_light_variant</color>
 
     <!-- Color Palette -->
     <color name="yellow_maximum">#F9BF58</color>
@@ -145,8 +147,10 @@
     <color name="red_pure">#FF0000</color>
     <color name="green">#558F15</color>
     <color name="green_blue">#00766E</color>
-    <color name="orange">#CF8500</color>
-    <color name="orange_light">#FFA553</color>
+    <color name="orange">#BB7800</color>
+    <color name="orange_variant">#D39862</color>
+    <color name="orange_light">#F5BA84</color>
+    <color name="orange_light_variant">#FFDFC1</color>
     <color name="cyan">#126A86</color>
 
 </resources>

@@ -89,6 +89,14 @@
         Quando o tempo acabar, duas cartas aleatórias serão embaralhadas. Não perca tempo!
     </string>
 
+    <string name="game_tutorial_chaos_description_part_01">
+        O Modo Chaos Total é o desafio supremo de habilidade!
+    </string>
+    <string name="game_tutorial_chaos_description_part_02">
+        Nese modo você tem um limite de tempo, limite de movimentos e o tabuleiro será embaralhado
+        constantemente.
+    </string>
+
     <!-- App Instructions -->
     <string name="app_showcase_title_play">Prepare-se para um desafio de memória!</string>
     <string name="app_showcase_title_statistics">Acompanhe o seu progresso</string>

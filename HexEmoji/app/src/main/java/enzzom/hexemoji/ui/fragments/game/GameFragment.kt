@@ -24,6 +24,7 @@ import enzzom.hexemoji.models.GameMode
 import enzzom.hexemoji.ui.custom.GameTutorialView
 import enzzom.hexemoji.ui.custom.PagedViewDataProvider
 import enzzom.hexemoji.ui.fragments.game.gamemodes.AgainstTheClockFragment
+import enzzom.hexemoji.ui.fragments.game.gamemodes.ChaosFragment
 import enzzom.hexemoji.ui.fragments.game.gamemodes.LimitedMovesFragment
 import enzzom.hexemoji.ui.fragments.game.gamemodes.SequenceFragment
 import enzzom.hexemoji.ui.fragments.game.gamemodes.ShuffledFragment
@@ -46,7 +47,7 @@ class GameFragment : Fragment() {
             GameMode.LIMITED_MOVES -> R.style.ThemeOverlay_HexEmoji_GameMode_LimitedMoves
             GameMode.SEQUENCE -> R.style.ThemeOverlay_HexEmoji_GameMode_Sequence
             GameMode.SHUFFLED -> R.style.ThemeOverlay_HexEmoji_GameMode_Shuffled
-            else -> R.style.ThemeOverlay_HexEmoji_GameMode_Zen
+            GameMode.CHAOS -> R.style.ThemeOverlay_HexEmoji_GameMode_Chaos
         }
 
         activity?.apply {
@@ -78,7 +79,7 @@ class GameFragment : Fragment() {
                     GameMode.LIMITED_MOVES -> LimitedMovesFragment()
                     GameMode.SEQUENCE -> SequenceFragment()
                     GameMode.SHUFFLED -> ShuffledFragment()
-                    else -> ZenFragment()
+                    GameMode.CHAOS -> ChaosFragment()
                 }.also {
                     it.arguments = argsBundle
                 })
