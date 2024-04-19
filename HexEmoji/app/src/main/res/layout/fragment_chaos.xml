@@ -136,12 +136,12 @@
         android:layout_height="wrap_content"
         app:layout_constraintGuide_percent="@dimen/chaos_header_end_guideline"/>
 
-    <enzzom.hexemoji.ui.custom.GameBoardView
+    <sarueh.hexemoji.ui.custom.GameBoardView
         android:id="@+id/chaos_game_board"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <enzzom.hexemoji.ui.custom.CountDownView
+    <sarueh.hexemoji.ui.custom.CountDownView
         android:id="@+id/chaos_countdown"
         custom:initialValue="@integer/game_countdown_initial_value"
         custom:endText="@string/game_countdown_end_text"

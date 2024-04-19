@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/category_selection_toolbar"
         app:navigationIcon="@drawable/ic_arrow_back"
-        android:contentDescription="@string/icon_content_description_back"
+        app:navigationContentDescription="@string/icon_content_description_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"

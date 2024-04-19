@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <enzzom.hexemoji.ui.custom.ShowcaseView
+    <sarueh.hexemoji.ui.custom.ShowcaseView
         android:id="@+id/instructions_showcase"
         android:layout_weight="1"
         android:layout_width="match_parent"

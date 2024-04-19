@@ -24,6 +24,7 @@
         <item name="checkboxStyle">@style/Widget.HexEmoji.CheckBox</item>
         <item name="tabStyle">@style/Widget.HexEmoji.TabLayout</item>
         <item name="textInputStyle">@style/Widget.HexEmoji.TextInputLayout</item>
+        <item name="textAppearanceLargePopupMenu">@style/TextAppearance.HexEmoji.Popup</item>
     </style>
 
     <!-- Splash Screen Theme -->

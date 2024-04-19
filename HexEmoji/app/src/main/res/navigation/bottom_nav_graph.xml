@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/game_mode_fragment"
-        android:name="enzzom.hexemoji.ui.fragments.play.GameModesFragment"
+        android:name="sarueh.hexemoji.ui.fragments.play.GameModesFragment"
         android:label="@string/page_title_page_play"
         tools:layout="@layout/fragment_game_modes" />
     <fragment
         android:id="@+id/statistics_fragment"
-        android:name="enzzom.hexemoji.ui.fragments.statistics.StatisticsFragment"
+        android:name="sarueh.hexemoji.ui.fragments.statistics.StatisticsFragment"
         android:label="@string/page_title_page_statistics"
         tools:layout="@layout/fragment_statistics" />
     <fragment
         android:id="@+id/emojis_fragment"
-        android:name="enzzom.hexemoji.ui.fragments.emojis.EmojisFragment"
+        android:name="sarueh.hexemoji.ui.fragments.emojis.EmojisFragment"
         android:label="@string/page_title_page_emojis"
         tools:layout="@layout/fragment_emojis" />
 </navigation>

@@ -8,17 +8,23 @@ plugins {
 }
 
 android {
-    namespace = "enzzom.hexemoji"
+    namespace = "sarueh.hexemoji"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "enzzom.hexemoji"
+        applicationId = "sarueh.hexemoji"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
+        versionCode = 21
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
     }
 
     buildTypes {
@@ -54,7 +60,12 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("androidx.emoji2:emoji2-bundled:1.4.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+
     implementation("com.google.android.play:review-ktx:2.0.1")
+
+    // Billing
+    val billingVersion = "6.2.0"
+    implementation("com.android.billingclient:billing:$billingVersion")
 
     // Navigation
     val navVersion = "2.7.0"

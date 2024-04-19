@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/entry_fragment"
-        android:name="enzzom.hexemoji.ui.fragments.entry.EntryFragment"
+        android:name="sarueh.hexemoji.ui.fragments.entry.EntryFragment"
         tools:layout="@layout/fragment_entry" >
         <action
             android:id="@+id/action_entry_screen_to_main_screen"
@@ -20,13 +20,13 @@
 
     <fragment
         android:id="@+id/instructions_fragment"
-        android:name="enzzom.hexemoji.ui.fragments.entry.InstructionsFragment"
+        android:name="sarueh.hexemoji.ui.fragments.entry.InstructionsFragment"
         tools:layout="@layout/fragment_instructions">
     </fragment>
 
     <fragment
         android:id="@+id/main_fragment"
-        android:name="enzzom.hexemoji.ui.fragments.main.MainFragment"
+        android:name="sarueh.hexemoji.ui.fragments.main.MainFragment"
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_main_screen_to_emoji_collection"
@@ -38,14 +38,14 @@
 
     <fragment
         android:id="@+id/game_fragment"
-        android:name="enzzom.hexemoji.ui.fragments.game.GameFragment"
+        android:name="sarueh.hexemoji.ui.fragments.game.GameFragment"
         tools:layout="@layout/fragment_game" >
         <argument
             android:name="gameMode"
-            app:argType="enzzom.hexemoji.models.GameMode" />
+            app:argType="sarueh.hexemoji.models.GameMode" />
         <argument
             android:name="boardSize"
-            app:argType="enzzom.hexemoji.models.BoardSize" />
+            app:argType="sarueh.hexemoji.models.BoardSize" />
         <argument
             android:name="selectedCategories"
             app:argType="string[]" />
@@ -61,19 +61,19 @@
 
     <fragment
         android:id="@+id/emoji_collection_fragment"
-        android:name="enzzom.hexemoji.ui.fragments.collection.EmojiCollection"
+        android:name="sarueh.hexemoji.ui.fragments.collection.EmojiCollection"
         tools:layout="@layout/fragment_emoji_collection" >
         <argument
             android:name="category"
-            app:argType="enzzom.hexemoji.models.EmojiCategory" />
+            app:argType="sarueh.hexemoji.models.EmojiCategory" />
         <argument
             android:name="categoryEmojis"
-            app:argType="enzzom.hexemoji.data.entities.Emoji[]" />
+            app:argType="sarueh.hexemoji.data.entities.Emoji[]" />
     </fragment>
 
     <fragment
         android:id="@+id/category_selection_fragment"
-        android:name="enzzom.hexemoji.ui.fragments.play.CategorySelectionFragment"
+        android:name="sarueh.hexemoji.ui.fragments.play.CategorySelectionFragment"
         tools:layout="@layout/fragment_category_selection" >
         <action
             android:id="@+id/action_category_selection_to_board_selection"
@@ -82,7 +82,7 @@
 
     <fragment
         android:id="@+id/board_selection_fragment"
-        android:name="enzzom.hexemoji.ui.fragments.play.BoardSelectionFragment"
+        android:name="sarueh.hexemoji.ui.fragments.play.BoardSelectionFragment"
         tools:layout="@layout/fragment_board_selection" >
         <action
             android:id="@+id/action_board_selection_to_game_screen"

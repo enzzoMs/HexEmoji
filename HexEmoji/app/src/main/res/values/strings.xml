@@ -1,182 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation" >
+<resources>
 
     <!-- General -->
-    <string name="app_name_complete">HexEmoji</string>
-    <string name="app_logo_content_description">Logo do aplicativo</string>
-    <string name="app_name_first_part">Hex</string>
-    <string name="app_name_last_part">Emoji</string>
-    <string name="app_subtitle">Desafie sua memória e divirta-se combinando emojis!</string>
-    <string name="app_subtitle_shortened">Divirta-se combinando emojis!</string>
-    <string name="button_continue">Continuar</string>
-    <string name="button_play">Jogar</string>
-    <string name="icon_content_description_back">Voltar para página anterior</string>
-    <string name="icon_content_description_close">Fechar página</string>
-    <string name="button_content_description_previous_page">Página anterior</string>
-    <string name="button_content_description_next_button">Próxima página</string>
+    <string name="app_privacy_policy_link" translatable="false">
+        https://github.com/enzzoMs/HexEmoji/blob/main/PRIVACY_POLICY.md
+    </string>
+
+    <string name="app_name_complete" translatable="false">HexEmoji</string>
+    <string name="app_name_first_part" translatable="false">Hex</string>
+    <string name="app_name_last_part" translatable="false">Emoji</string>
+    <string name="app_subtitle">Challenge your memory and have fun matching emojis!</string>
+    <string name="app_logo_content_description">Application logo</string>
+    <string name="button_continue">Continue</string>
+    <string name="button_play">Play</string>
+    <string name="icon_content_description_back">Go back to the previous page</string>
+    <string name="icon_content_description_close">Close page</string>
+    <string name="button_content_description_previous_page">Previous page</string>
+    <string name="button_content_description_next_button">Next page</string>
     <string name="progress_ratio_template" translatable="false">%1$d / %2$d</string>
+    <string name="app_action_fail_toast_msg">Error completing action. Please try again later.</string>
+    <string name="app_connection_fail_toast_msg">Unable to connect to Google Play.</string>
 
     <!-- Dialogs -->
-    <string name="exit_game_message">Deseja mesmo sair? Você pederá todo o seu progresso nessa partida!</string>
-    <string name="exit_game_button_cancel">Cancelar</string>
+    <string name="exit_game_message">Do you really want to leave? You will lose all your progress in this game!</string>
+    <string name="exit_game_button_cancel">Cancel</string>
     <string name="exit_game_emoji" translatable="false">😥</string>
 
     <string name="game_ended_victory_emoji" translatable="false">🏆</string>
-    <string name="game_ended_victory">Vitória!</string>
-    <string name="game_ended_defeat">Derrota</string>
+    <string name="game_ended_victory">Victory!</string>
+    <string name="game_ended_defeat">Defeat</string>
     <string name="game_ended_defeat_emoji" translatable="false">😔</string>
-    <string name="game_ended_replay">Repetir</string>
-    <string name="game_paused_description">Jogo pausado</string>
-    <string name="game_message_exit">Sair</string>
+    <string name="game_ended_replay">Replay</string>
+    <string name="game_paused_description">Game paused</string>
+    <string name="game_message_exit">Exit</string>
 
-    <string name="challenges_progress">Progresso em desafios:</string>
-    <string name="challenges_progress_template_pending">Pendentes: %1$s</string>
-    <string name="challenges_progress_template_in_progress">Em Progresso: %1$s</string>
-    <string name="challenges_progress_template_completed">Concluídos: %1$s</string>
+    <string name="challenges_progress">Challenge progress:</string>
+    <string name="challenges_progress_template_pending">Pending: %1$s</string>
+    <string name="challenges_progress_template_in_progress">In Progress: %1$s</string>
+    <string name="challenges_progress_template_completed">Completed: %1$s</string>
 
-    <string name="emoji_details_copy_button">Copiar</string>
-    <string name="emoji_details_copy_toast_msg">Emoji copiado para a área de transferência</string>
+    <string name="emoji_details_copy_button">Copy</string>
+    <string name="emoji_details_copy_toast_msg">Emoji copied to clipboard</string>
 
-    <string name="refresh_collection_title">Gerar Novos Desafios?</string>
-    <string name="refresh_collection_alert">ATENÇÃO: Todos os desafios dessa categoria serão substituídos por novos.</string>
-    <string name="refresh_collection_button_confirm">Sim</string>
-    <string name="refresh_collection_button_cancel">Não</string>
-    <string name="refresh_collection_error_msg">Erro ao gerar desafios. Tente novamente mais tarde.</string>
+    <string name="refresh_collection_title">Generate New Challenges?</string>
+    <string name="refresh_collection_alert">WARNING: All challenges in this category will be replaced with new ones.</string>
+    <string name="refresh_collection_button_confirm">Yes</string>
+    <string name="refresh_collection_button_cancel">No</string>
+    <string name="refresh_collection_error_msg">Error generating challenges. Please try again later.</string>
 
-    <string name="challenge_completed">Desafio Concluído!</string>
+    <string name="challenge_completed">Challenge Completed!</string>
     <string name="challenge_completed_description_template">
-        Parabéns! Você desbloqueou o seguinte emoji para a categoria %1$s:
+        Congratulations! You\'ve unlocked the following emoji for the %1$s category:
     </string>
-    <string name="challenge_completed_finish_button">Entendido</string>
+    <string name="challenge_completed_finish_button">Understood</string>
 
-    <string name="board_tutorial_scaling">Junte os dedos para aumentar o zoom e afaste-os para diminuir.</string>
-    <string name="board_tutorial_panning">Deslize o dedo em qualquer direção para movimentar o tabuleiro.</string>
+    <string name="board_tutorial_scaling">Pinch your fingers to zoom in and spread them apart to zoom out.</string>
+    <string name="board_tutorial_panning">Swipe your finger in any direction to move the board.</string>
 
     <!-- Game Tutorial -->
-    <string name="no_available_game_tutorial_msg">Tutorial indisponível para este modo.</string>
+    <string name="no_available_game_tutorial_msg">Tutorial unavailable for this mode.</string>
 
-    <string name="game_tutorial_zen_description_part_01">O Modo Zen é um modo relaxante sem limite de tempo ou pontuação.</string>
-    <string name="game_tutorial_zen_description_part_02">Toque em uma carta para revelar o emoji escondido.</string>
-    <string name="game_tutorial_zen_description_part_03">Vença ao encontrar todos os pares de emojis.</string>
+    <string name="game_tutorial_zen_description_part_01">Zen Mode is a relaxing mode with no time limit or scoring.</string>
+    <string name="game_tutorial_zen_description_part_02">Tap a card to reveal the hidden emoji.</string>
+    <string name="game_tutorial_zen_description_part_03">Win by finding all pairs of emojis.</string>
 
     <string name="game_tutorial_against_clock__description_part_01">
-        Em Contra o Relógio você tem um limite de tempo para terminar a partida.
+        In Against the Clock you have a time limit to finish the game.
     </string>
     <string name="game_tutorial_against_clock_description_part_02">
-        Encontre todos os pares de cartas antes do tempo acabar.
+        Find all pairs of cards before time runs out.
     </string>
 
     <string name="game_tutorial_limited_moves_description_part_01">
-        Em Movimentos Limitados você tem um número limite de movimentos para terminar a partida.
+        In Limited Moves you have a limited number of moves to finish the game.
     </string>
     <string name="game_tutorial_limited_moves_description_part_02">
-        Encontre todos os pares de cartas antes dos movimentos acabarem.
+        Find all pairs of cards before you run out of moves.
     </string>
 
     <string name="game_tutorial_sequence_description_part_01">
-        No modo Sequência a sua missão é encontrar pares de emojis em sequência, sem errar.
+        In Sequence mode your mission is to find pairs of emojis in sequence, without making any mistakes.
     </string>
     <string name="game_tutorial_sequence_description_part_02">
-        Caso você cometa algum erro terá que começar uma nova sequência do zero.
+        If you make a mistake you\'ll have to start a new sequence from scratch.
     </string>
 
     <string name="game_tutorial_shuffled_description_part_01">
-        No modo Embaralhado você deve ser rápido para vencer.
+        In Shuffled mode you need to be quick to win.
     </string>
     <string name="game_tutorial_shuffled_description_part_02">
         Quando o tempo acabar, duas cartas aleatórias serão embaralhadas. Não perca tempo!
     </string>
 
     <string name="game_tutorial_chaos_description_part_01">
-        O Modo Chaos Total é o desafio supremo de habilidade!
+        Total Chaos Mode is the ultimate skill challenge!
     </string>
     <string name="game_tutorial_chaos_description_part_02">
-        Nese modo você tem um limite de tempo, limite de movimentos e o tabuleiro será embaralhado
-        constantemente.
+        In this mode you have a time limit, move limit, and the board will be constantly shuffled.
     </string>
 
     <!-- App Instructions -->
-    <string name="app_showcase_title_play">Prepare-se para um desafio de memória!</string>
-    <string name="app_showcase_title_statistics">Acompanhe o seu progresso</string>
-    <string name="app_showcase_title_emojis">Explore diferentes emojis</string>
+    <string name="app_showcase_title_play">Get ready for a memory challenge!</string>
+    <string name="app_showcase_title_statistics">Track your progress</string>
+    <string name="app_showcase_title_emojis">Explore different emojis</string>
 
     <string name="app_showcase_descriptions_play">
-        No HexEmoji você terá a oportunidade de explorar diferentes modos de jogo e testar a sua memória.
+        In HexEmoji, you will have the opportunity to explore different game modes and test your memory.
     </string>
     <string name="app_showcase_descriptions_statistics">
-        Confira suas estatísticas e veja como você está progredindo.
+        Check your statistics and see how you\'re progressing.
     </string>
     <string name="app_showcase_descriptions_emojis">
-        Descubra emojis enquanto joga. Quanto mais você vence, mais emojis desbloqueia!
-        Colete todos e complete sua coleção."
+        Discover emojis as you play. The more you win, the more emojis you unlock!
+        Collect them all and complete your collection."
     </string>
 
     <!-- Emojis -->
     <string name="emoji_name_identifier_prefix" translatable="false">emoji_name</string>
 
     <!-- Entry Screen -->
-    <string name="entry_screen_button_instructions">Instruções</string>
+    <string name="entry_screen_button_instructions">Instructions</string>
 
     <!-- Game Screen -->
     <string name="icon_title_game_info">Tutorial</string>
-    <string name="icon_content_description_game_info">Tutorial do modo de jogo.</string>
-    <string name="icon_content_description_exit_game">Sair da partida.</string>
+    <string name="icon_content_description_game_info">Game mode tutorial</string>
+    <string name="icon_content_description_exit_game">Exit the game.</string>
 
-    <string name="game_countdown_end_text">Já!</string>
+    <string name="game_countdown_end_text">Go!</string>
     <string name="game_timer_template" translatable="false">%1$d : %2$02d</string>
 
     <!-- Emoji Collection Screen -->
-    <string name="collection_unlocked_bar_description">Progressão de emojis desbloqueados</string>
-    <string name="collection_search_field_hint">Pesquisar</string>
-    <string name="collection_search_no_results">Nenhum resultado para a pesquisa</string>
-    <string name="collection_card_locked_content_description">Emoji bloqueado</string>
-    <string name="icon_content_description_exit_collection">Sair da coleção</string>
+    <string name="collection_unlocked_bar_description">Unlocked Emojis Progression</string>
+    <string name="collection_search_field_hint">Search</string>
+    <string name="collection_search_no_results">No results for search</string>
+    <string name="collection_card_locked_content_description">Locked emoji</string>
+    <string name="icon_content_description_exit_collection">Exit collection</string>
 
     <!-- Main Screens = Play, Statistics and Emojis Page -->
-    <string name="page_title_page_play">Jogar</string>
-    <string name="page_title_page_statistics">Estatísticas</string>
+    <string name="page_title_page_play">Play</string>
+    <string name="page_title_page_statistics">Statistics</string>
     <string name="page_title_page_emojis">Emojis</string>
-    <string name="icon_title_settings">Configurações</string>
-    <string name="icon_content_description_settings">Ver configurações</string>
-    <string name="icon_content_description_page_play">Navegar para página de modos de jogo</string>
-    <string name="icon_content_description_page_statistics">Navegar para página de estatísticas</string>
-    <string name="icon_content_description_page_emojis">Navegar para página de emojis</string>
+    <string name="icon_title_info">Information</string>
+    <string name="icon_title_purchase">Purchase</string>
+    <string name="icon_content_description_info">View app information</string>
+    <string name="icon_content_description_purchases">Purchase items</string>
+    <string name="icon_content_description_page_play">Navigate to game modes page</string>
+    <string name="icon_content_description_page_statistics">Navigate to statistics page</string>
+    <string name="icon_content_description_page_emojis">Navigate to emojis page</string>
+    <string name="app_info_menu_privacy_policy">Navigate to emojis page</string>
+    <string name="app_purchase_menu_unlock_all_emojis">Unlock all emojis</string>
 
     <!-- Statistics Page -->
-    <string name="weekly_victories_chart_title">Vitórias Semanais</string>
-    <string name="daily_emoji_message">Toque para desbloquear o seu emoji diário!</string>
-    <string name="daily_emoji_message_already_unlocked">Emoji diário desbloqueado. Volte amanhã!</string>
-    <string name="statistics_game_modes_tab_description">Estatísticas para cada modo de jogo.</string>
-    <string name="statistics_game_modes_all">Todos</string>
+    <string name="weekly_victories_chart_title">Weekly Victories</string>
+    <string name="daily_emoji_message">Tap to unlock your daily emoji!</string>
+    <string name="daily_emoji_message_already_unlocked">Daily emoji unlocked. Come back tomorrow!</string>
+    <string name="statistics_game_modes_tab_description">Statistics for each game mode.</string>
+    <string name="statistics_game_modes_all">All</string>
 
-    <string name="game_mode_statistic_total_games">Total de Partidas</string>
-    <string name="game_mode_statistic_victory_percentage">Vitórias</string>
-    <string name="game_mode_statistic_pairs_found">Pares Descobertos</string>
-    <string name="game_mode_statistic_favorite_board">Tabuleiro Favorito</string>
+    <string name="game_mode_statistic_total_games">Total Games</string>
+    <string name="game_mode_statistic_victory_percentage">Victories</string>
+    <string name="game_mode_statistic_pairs_found">Pairs Found</string>
+    <string name="game_mode_statistic_favorite_board">Favorite Board</string>
 
     <!-- Emojis Page -->
-    <string name="page_description_emojis">Explore sua coleção e desbloqueie emojis através de desafios especiais!</string>
-    <string name="collection_details_tab_description">Diferentes categorias de emojis</string>
-    <string name="challenges_none_available">Nenhum desafio disponível para a categoria</string>
-    <string name="challenges_section_description">Desafios</string>
-    <string name="challenges_refresh_description">Gerar novos desafios</string>
-    <string name="challenge_progress_label">Progresso:</string>
+    <string name="page_description_emojis">Explore your collection and unlock emojis through special challenges!</string>
+    <string name="collection_details_tab_description">Different categories of emojis</string>
+    <string name="challenges_none_available">No challenges available for the category</string>
+    <string name="challenges_section_description">Challenges</string>
+    <string name="challenges_refresh_description">Generate new challenges</string>
+    <string name="challenge_progress_label">Progress:</string>
 
     <!-- Board Size Selection Page -->
-    <string name="page_description_board_selection">Escolha o tamanho do tabuleiro</string>
+    <string name="page_description_board_selection">Choose the board size</string>
 
     <!-- Category Selection Page -->
-    <string name="page_description_category_selection">Escolha com quais emojis você quer jogar</string>
-    <string name="all_emojis_checkbox">Todos os Emojis</string>
+    <string name="page_description_category_selection">Choose which emojis you want to play with</string>
+    <string name="all_emojis_checkbox">All Emojis</string>
 
     <string name="emoji_category_image_content_description">
-        Imagem com exemplos de emojis que fazem parte desta categoria.
+         Image with examples of emojis that are part of this category.
     </string>
 
     <!-- Game Modes Page -->
-    <string name="page_description_game_modes">Explore diferentes modos e desafios!</string>
+    <string name="page_description_game_modes">Explore different modes and challenges!</string>
 
     <string name="game_mode_card_emoji_lotus" translatable="false">🪷</string>
     <string name="game_mode_card_emoji_hourglass_done" translatable="false">⌛</string>
@@ -193,25 +199,25 @@
     <!--    Complete 1 game(es) in "Sequence" using "Nature and Animals" emojis. -->
     <!--    Complete 3 game(es) in "Total Chaos" in fewer than 20 moves. -->
 
-    <string name="challenge_template_general">Complete %1$d partida(s) %2$sno \"%3$s\"%4$s%5$s</string>
-    <string name="challenge_template_board_constraint">\u0020em um tabuleiro de tamanho (%1$s)</string>
-    <string name="challenge_template_category_constraint">\u0020usando emojis de \"%1$s\"</string>
-    <string name="challenge_template_consecutive_games_constraint">consecutivas\u0020</string>
+    <string name="challenge_template_general">Complete %1$d game(es) %2$s in "%3$s"%4$s%5$s</string>
+    <string name="challenge_template_board_constraint">\u0020on a (%1$s) board size</string>
+    <string name="challenge_template_category_constraint">\u0020using "%1$s" emojis</string>
+    <string name="challenge_template_consecutive_games_constraint">consecutively\u0020</string>
 
-    <string name="challenge_template_timed">Complete %1$d partida(s) no \"%2$s\" em menos de %3$d segundos.</string>
+    <string name="challenge_template_timed">Complete %1$d match(es) in "%2$s" in less than %3$d seconds.</string>
 
-    <string name="challenge_template_limited_moves">Complete %1$d partida(s) no \"%2$s\" em menos de %3$d movimentos.</string>
+    <string name="challenge_template_limited_moves">Complete %1$d match(es) in "%2$s" in less than %3$d moves.</string>
 
     <!-- Emoji Categories -->
-    <string name="emoji_category_title_people_emotions">Pessoas e Emoções</string>
-    <string name="emoji_category_title_nature">Natureza e Animais</string>
-    <string name="emoji_category_title_food">Comida e Bebidas</string>
-    <string name="emoji_category_title_activities">Esportes e Atividades</string>
-    <string name="emoji_category_title_places_travel">Viagens e Lugares</string>
-    <string name="emoji_category_title_objects">Objetos</string>
-    <string name="emoji_category_title_symbols">Símbolos</string>
-    <string name="emoji_category_title_flags">Bandeiras</string>
-    <string name="emoji_category_title_numbers_letters">Números e Letras</string>
+    <string name="emoji_category_title_people_emotions">People and Emotions</string>
+    <string name="emoji_category_title_nature">Nature and Animals</string>
+    <string name="emoji_category_title_food">Food and Drinks</string>
+    <string name="emoji_category_title_activities">Sports and Activities</string>
+    <string name="emoji_category_title_places_travel">Travel and Places</string>
+    <string name="emoji_category_title_objects">Objects</string>
+    <string name="emoji_category_title_symbols">Symbols</string>
+    <string name="emoji_category_title_flags">Flags</string>
+    <string name="emoji_category_title_numbers_letters">Numbers and Letters</string>
 
     <string name="emoji_category_emoji_icon_people_emotions" translatable="false">😀</string>
     <string name="emoji_category_emoji_icon_nature" translatable="false">🐾</string>
@@ -224,69 +230,69 @@
     <string name="emoji_category_emoji_icon_numbers_letters" translatable="false">🇹</string>
 
     <string name="emoji_category_description_people_emotions">
-        Pessoas e diferentes expressões faciais, como sorrisos, risadas, tristeza, surpresa,
-        raiva, entre outros.
+        People and different facial expressions, such as smiles, laughter, sadness, surprise,
+        anger, among others.
     </string>
     <string name="emoji_category_description_nature">
-        Emojis que representam animais, insetos, flores, árvores e elementos naturais, como sol,
-        lua e chuva.
+        Emojis representing animals, insects, flowers, trees, and natural elements, like the sun,
+        moon, and rain.
     </string>
     <string name="emoji_category_description_food">
-        Emojis relacionados a alimentos, bebidas e guloseimas, como pizza, hambúrguer, sorvete,
-        café, entre outros.
+        Emojis related to food, drinks, and treats, such as pizza, burgers, ice cream,
+        coffee, among others.
     </string>
     <string name="emoji_category_description_activities">
-        Representam atividades, hobbies, esportes, instrumentos musicais, jogos e
-        outras formas de entretenimento.
+        Emojis that represent activities, hobbies, sports, musical instruments, games, and
+        other forms of entertainment.
     </string>
     <string name="emoji_category_description_places_travel">
-        Viagens, localizações, modos de transportes e construções variadas, como aviões, carros,
-        prédios e monumentos.
+        Travel, locations, modes of transport, and various buildings, such as airplanes, cars,
+        buildings, and monuments.
     </string>
     <string name="emoji_category_description_objects">
-        Emojis para items domésticos, celebrações e os mais diversos objetos.
+        Emojis for household items, celebrations, and the most diverse set of objects.
     </string>
     <string name="emoji_category_description_symbols">
-        Compreende emojis com diferentes formas e cores de coração, além de sinais, símbolos e formas.
+        Includes emojis with different shapes and colors of hearts, as well as signs, symbols, and shapes.
     </string>
     <string name="emoji_category_description_flags">
-        Um grupo de bandeiras de diversos países e localidades.
+        A group of flags from various countries and locations.
     </string>
     <string name="emoji_category_description_numbers_letters">
-        Emojis para os números de 0 a 9 e as 26 letras do alfabeto latino.
+        Emojis for the numbers 0 to 9 and the 26 letters of the Latin alphabet.
     </string>
 
     <!-- Game Modes -->
-    <string name="game_mode_title_zen">Modo Zen</string>
-    <string name="game_mode_title_against_clock">Contra o Relógio</string>
-    <string name="game_mode_title_limited_moves">Movimentos Limitados</string>
-    <string name="game_mode_title_sequence">Sequência</string>
-    <string name="game_mode_title_shuffled">Embaralhado</string>
-    <string name="game_mode_title_chaos">Caos Total!</string>
+    <string name="game_mode_title_zen">Zen Mode</string>
+    <string name="game_mode_title_against_clock">Against the Clock</string>
+    <string name="game_mode_title_limited_moves">Limited Moves</string>
+    <string name="game_mode_title_sequence">Sequence</string>
+    <string name="game_mode_title_shuffled">Shuffled</string>
+    <string name="game_mode_title_chaos">Total Chaos!</string>
 
     <string name="game_mode_description_zen">
-        Um modo relaxante sem limite de tempo ou pontuação. Você pode aproveitar o jogo sem pressão
-        e desfrutar a experiência.
+        A relaxing mode with no time limit or score. You can enjoy the game without pressure
+        and enjoy the experience.
     </string>
     <string name="game_mode_description_against_clock">
-        Desafie o relógio! Encontre todos os pares de emojis antes que o tempo se esgote e teste
-        sua habilidade!
+        Challenge the clock! Find all pairs of emojis before time runs out and test
+        your skill!
     </string>
     <string name="game_mode_description_limited_moves">
-        Enfrente o desafio e junte todos os pares de emojis com um número limitado de movimentos.
-        Pense com cuidado!
+        Face the challenge and match all pairs of emojis with a limited number of moves.
+        Think carefully!
     </string>
     <string name="game_mode_description_sequence">
-        Teste sua memória: encontre pares de emoji em sequência para vencer. Mas cuidado! Qualquer deslize
-        e você terá que começar do zero!
+        Test your memory: find emoji pairs in sequence to win. But be careful! Any mistake
+        and you\'ll have to start over!
     </string>
     <string name="game_mode_description_shuffled">
-        Os emojis são embaralhados a todo momento. Seja rápido e encontre os pares antes deles
-        mudarem de lugar!
+        Emojis are shuffled all the time. Be quick and find the pairs before they
+        change places!
     </string>
     <string name="game_mode_description_chaos">
-        Prepare-se para um desafio caótico! Supere seus limites e demonstre suas habilidades
-        jogando “Contra o Relógio”, “Movimentos Limitados” e “Embaralhado” ao mesmo tempo!
+        Prepare for a chaotic challenge! Overcome your limits and show your skills
+        by playing “Against the Clock”, “Limited Moves” and “Shuffled” at the same time!
     </string>
 
 </resources>

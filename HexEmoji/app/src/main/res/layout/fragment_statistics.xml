@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toStartOf="@id/statistics_section_guideline"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <enzzom.hexemoji.ui.custom.BarChartView
+    <sarueh.hexemoji.ui.custom.BarChartView
         android:id="@+id/victories_statistics_chart"
         android:layout_width="0dp"
         android:layout_height="0dp"
