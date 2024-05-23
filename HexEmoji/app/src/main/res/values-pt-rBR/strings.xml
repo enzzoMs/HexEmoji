@@ -10,7 +10,6 @@
     <string name="icon_content_description_close">Fechar página</string>
     <string name="button_content_description_previous_page">Página anterior</string>
     <string name="button_content_description_next_button">Próxima página</string>
-    <string name="app_action_fail_toast_msg">Erro ao completar ação. Tente novamente mais tarde.</string>
 
     <!-- Dialogs -->
     <string name="exit_game_message">Deseja mesmo sair? Você perderá todo o seu progresso nessa partida!</string>
@@ -125,16 +124,9 @@
     <string name="page_title_page_play">Jogar</string>
     <string name="page_title_page_statistics">Estatísticas</string>
     <string name="page_title_page_emojis">Emojis</string>
-    <string name="icon_title_info">Informações</string>
-    <string name="icon_title_purchase">Comprar</string>
-    <string name="icon_content_description_info">Ver informações do aplicativo</string>
-    <string name="icon_content_description_purchases">Comprar itens</string>
     <string name="icon_content_description_page_play">Navegar para página de modos de jogo</string>
     <string name="icon_content_description_page_statistics">Navegar para página de estatísticas</string>
     <string name="icon_content_description_page_emojis">Navegar para página de emojis</string>
-    <string name="app_info_menu_privacy_policy">Política de Privacidade</string>
-    <string name="app_purchase_menu_unlock_all_emojis">Desbloquear todos os emojis</string>
-    <string name="app_connection_fail_toast_msg">Não foi possível conectar-se ao Google Play.</string>
 
     <!-- Statistics Page -->
     <string name="weekly_victories_chart_title">Vitórias Semanais</string>

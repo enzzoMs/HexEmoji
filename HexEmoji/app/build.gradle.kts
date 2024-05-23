@@ -15,8 +15,8 @@ android {
         applicationId = "sarueh.hexemoji"
         minSdk = 24
         targetSdk = 34
-        versionCode = 21
-        versionName = "1.0"
+        versionCode = 22
+        versionName = "1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -62,10 +62,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
 
     implementation("com.google.android.play:review-ktx:2.0.1")
-
-    // Billing
-    val billingVersion = "6.2.0"
-    implementation("com.android.billingclient:billing:$billingVersion")
 
     // Navigation
     val navVersion = "2.7.0"

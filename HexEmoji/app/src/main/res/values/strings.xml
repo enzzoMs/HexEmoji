@@ -2,10 +2,6 @@
 <resources>
 
     <!-- General -->
-    <string name="app_privacy_policy_link" translatable="false">
-        https://github.com/enzzoMs/HexEmoji/blob/main/PRIVACY_POLICY.md
-    </string>
-
     <string name="app_name_complete" translatable="false">HexEmoji</string>
     <string name="app_name_first_part" translatable="false">Hex</string>
     <string name="app_name_last_part" translatable="false">Emoji</string>
@@ -18,8 +14,6 @@
     <string name="button_content_description_previous_page">Previous page</string>
     <string name="button_content_description_next_button">Next page</string>
     <string name="progress_ratio_template" translatable="false">%1$d / %2$d</string>
-    <string name="app_action_fail_toast_msg">Error completing action. Please try again later.</string>
-    <string name="app_connection_fail_toast_msg">Unable to connect to Google Play.</string>
 
     <!-- Dialogs -->
     <string name="exit_game_message">Do you really want to leave? You will lose all your progress in this game!</string>
@@ -140,15 +134,9 @@
     <string name="page_title_page_play">Play</string>
     <string name="page_title_page_statistics">Statistics</string>
     <string name="page_title_page_emojis">Emojis</string>
-    <string name="icon_title_info">Information</string>
-    <string name="icon_title_purchase">Purchase</string>
-    <string name="icon_content_description_info">View app information</string>
-    <string name="icon_content_description_purchases">Purchase items</string>
     <string name="icon_content_description_page_play">Navigate to game modes page</string>
     <string name="icon_content_description_page_statistics">Navigate to statistics page</string>
     <string name="icon_content_description_page_emojis">Navigate to emojis page</string>
-    <string name="app_info_menu_privacy_policy">Navigate to emojis page</string>
-    <string name="app_purchase_menu_unlock_all_emojis">Unlock all emojis</string>
 
     <!-- Statistics Page -->
     <string name="weekly_victories_chart_title">Weekly Victories</string>
