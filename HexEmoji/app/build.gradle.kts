@@ -8,22 +8,24 @@ plugins {
 }
 
 android {
-    namespace = "sarueh.hexemoji"
+    namespace = "ems.hexemoji"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "sarueh.hexemoji"
+        applicationId = "ems.hexemoji"
         minSdk = 24
         targetSdk = 34
-        versionCode = 23
-        versionName = "1.0.1"
+        versionCode = 3
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        kapt {
-            arguments {
-                arg("room.schemaLocation", "$projectDir/schemas")
-            }
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
+
+        hilt {
+            enableAggregatingTask = true
         }
     }
 
@@ -39,11 +41,11 @@ android {
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
 
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     viewBinding {
         enable = true
@@ -53,23 +55,23 @@ android {
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.10.0")
+    implementation("androidx.core:core-ktx:1.13.1")
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("com.google.android.material:material:1.12.0")
 
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("androidx.emoji2:emoji2-bundled:1.4.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.1")
 
     implementation("com.google.android.play:review-ktx:2.0.1")
 
     // Navigation
-    val navVersion = "2.7.0"
+    val navVersion = "2.7.7"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
     // Room
-    val roomVersion = "2.5.2"
+    val roomVersion = "2.6.1"
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")

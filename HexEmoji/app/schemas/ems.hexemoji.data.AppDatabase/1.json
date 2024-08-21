@@ -1,0 +1,360 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "5190a50c4ba1759db4a84048530f1808",
+    "entities": [
+      {
+        "tableName": "emojis",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`unicode` TEXT NOT NULL, `identifier` TEXT NOT NULL, `category` TEXT NOT NULL, `unlocked` INTEGER NOT NULL, PRIMARY KEY(`unicode`))",
+        "fields": [
+          {
+            "fieldPath": "unicode",
+            "columnName": "unicode",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "identifier",
+            "columnName": "identifier",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "category",
+            "columnName": "category",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "unlocked",
+            "columnName": "unlocked",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "unicode"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "game_statistics",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `num_of_pairs_found` INTEGER NOT NULL, `game_mode` TEXT NOT NULL, `board_size` TEXT NOT NULL, `week_day` TEXT NOT NULL, `day` INTEGER NOT NULL, `month` INTEGER NOT NULL, `victory` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "numOfPairsFound",
+            "columnName": "num_of_pairs_found",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gameMode",
+            "columnName": "game_mode",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "boardSize",
+            "columnName": "board_size",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weekDay",
+            "columnName": "week_day",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "day",
+            "columnName": "day",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "month",
+            "columnName": "month",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "victory",
+            "columnName": "victory",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "general_challenges",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`game_mode` TEXT NOT NULL, `board_size` TEXT, `consecutive_games` INTEGER NOT NULL, `constrained_to_category` INTEGER NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `total_games` INTEGER NOT NULL, `completed_games` INTEGER NOT NULL, `reward_emoji_unicode` TEXT NOT NULL, `category` TEXT NOT NULL, FOREIGN KEY(`reward_emoji_unicode`) REFERENCES `emojis`(`unicode`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "gameMode",
+            "columnName": "game_mode",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "boardSize",
+            "columnName": "board_size",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "consecutiveGames",
+            "columnName": "consecutive_games",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "constrainedToCategory",
+            "columnName": "constrained_to_category",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "totalGames",
+            "columnName": "total_games",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "completedGames",
+            "columnName": "completed_games",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rewardEmojiUnicode",
+            "columnName": "reward_emoji_unicode",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "category",
+            "columnName": "category",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_general_challenges_reward_emoji_unicode",
+            "unique": false,
+            "columnNames": [
+              "reward_emoji_unicode"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_general_challenges_reward_emoji_unicode` ON `${TABLE_NAME}` (`reward_emoji_unicode`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "emojis",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "reward_emoji_unicode"
+            ],
+            "referencedColumns": [
+              "unicode"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "timed_challenges",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`game_mode` TEXT NOT NULL, `time_limit_in_seconds` INTEGER NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `total_games` INTEGER NOT NULL, `completed_games` INTEGER NOT NULL, `reward_emoji_unicode` TEXT NOT NULL, `category` TEXT NOT NULL, FOREIGN KEY(`reward_emoji_unicode`) REFERENCES `emojis`(`unicode`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "gameMode",
+            "columnName": "game_mode",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timeLimitInSeconds",
+            "columnName": "time_limit_in_seconds",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "totalGames",
+            "columnName": "total_games",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "completedGames",
+            "columnName": "completed_games",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rewardEmojiUnicode",
+            "columnName": "reward_emoji_unicode",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "category",
+            "columnName": "category",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_timed_challenges_reward_emoji_unicode",
+            "unique": false,
+            "columnNames": [
+              "reward_emoji_unicode"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_timed_challenges_reward_emoji_unicode` ON `${TABLE_NAME}` (`reward_emoji_unicode`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "emojis",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "reward_emoji_unicode"
+            ],
+            "referencedColumns": [
+              "unicode"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "limited_moves_challenges",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`game_mode` TEXT NOT NULL, `move_limit` INTEGER NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `total_games` INTEGER NOT NULL, `completed_games` INTEGER NOT NULL, `reward_emoji_unicode` TEXT NOT NULL, `category` TEXT NOT NULL, FOREIGN KEY(`reward_emoji_unicode`) REFERENCES `emojis`(`unicode`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "gameMode",
+            "columnName": "game_mode",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "moveLimit",
+            "columnName": "move_limit",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "totalGames",
+            "columnName": "total_games",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "completedGames",
+            "columnName": "completed_games",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rewardEmojiUnicode",
+            "columnName": "reward_emoji_unicode",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "category",
+            "columnName": "category",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_limited_moves_challenges_reward_emoji_unicode",
+            "unique": false,
+            "columnNames": [
+              "reward_emoji_unicode"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_limited_moves_challenges_reward_emoji_unicode` ON `${TABLE_NAME}` (`reward_emoji_unicode`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "emojis",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "reward_emoji_unicode"
+            ],
+            "referencedColumns": [
+              "unicode"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5190a50c4ba1759db4a84048530f1808')"
+    ]
+  }
+}

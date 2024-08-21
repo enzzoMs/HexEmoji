@@ -35,12 +35,12 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <sarueh.hexemoji.ui.custom.GameBoardView
+    <ems.hexemoji.ui.custom.GameBoardView
         android:id="@+id/sequence_game_board"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <sarueh.hexemoji.ui.custom.CountDownView
+    <ems.hexemoji.ui.custom.CountDownView
         android:id="@+id/sequence_countdown"
         custom:initialValue="@integer/game_countdown_initial_value"
         custom:endText="@string/game_countdown_end_text"
